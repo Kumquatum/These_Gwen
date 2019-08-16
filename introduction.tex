@@ -1,0 +1,33 @@
+\chapter*{Introduction}         % ne pas numéroter
+\phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclure dans TdM
+
+Une thèse ou un mémoire devrait normalement débuter par une
+introduction. Celle-ci est traitée comme un chapitre normal, sauf
+qu'elle n'est pas numérotée.
+
+\section{La compléxité du vivant}
+
+
+
+\section*{Phrases utiles à retravailler et intégrer}
+
+\begin{itemize}
+\item "Studies have shown that each gene is estimated on average to interact with four to eight other genes1 and to be involved in 10 biological functions" [10.1038/s41598-017-18705-z]
+\item "A very clear partition of different biological networks is provided by Christensen et al. [1], who separated these networks into five main categories as follows: [metabolic networks, signal transduction networks,transcriptional regulatory networks, protein-protein networks, functional gene networks]" [10.1093/bfgp/elt003]
+%% Bouquin à la coloc de Clément à Sète, pas retrouvé sur le net jusque là 
+\item "Le vieillissement est un continuum conduisant une personne en bonne santé à une réduction de sa réserve fonctionnelle, puis de sa capacité fonctionnelle et de sa qualité de vie. CEs différents aspects ne décrivent pas un chemin linéaire ou ordonné." [Patient agé : particularités de la consultation, Gilles Berrut]
+\end{itemize}
+
+
+%% Points que je veux aborder :
+%%  - Definition des reseau arrete / noeud
+%%  - Definition des modules par l'effet de modularité
+%%  - Ce à quoi ils peuvent servir : raccrochage de fonction a certains genes, detection de pathways, detection de reseaux de regulation
+
+
+
+%%    • Weighted aspect [trop general, aura plutot sa place dans la thèse]
+%% But because of the multi-functionality aspect of each gene, such GCN using only binary state between genes (1 = correlated, 0 = not correlated) lead to information loss\cite{Langfelder2008}. Therefore, a new class of GCN have been developed: weighted gene co-expression networks. One of the most famous implementation is the R package WGCNA\cite{Langfelder2008}, but one can also mention the recent wTO\cite{Gysi2018} package which consider both positive and negative correlation for GCN building. Instead of a simple pairwise correlation, these packages weight the similarity score by calculating a factor taking into account other properties of the network. In the case of WGCNA, it specifies an adjacency score which raise the similarity to a power, which will increase the strength of strong similarities while keeping low week ones. In the case of wTO, it determine an average accounting for all common neighbors of a node.
+
+%%    • Topological aspect
+%%    • Co-expression properties (Scale-free-network entre autres ?)
