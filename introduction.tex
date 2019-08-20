@@ -1,12 +1,74 @@
-\chapter*{Introduction}         % ne pas numéroter
-\phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclure dans TdM
+\setcounter{chapter}{1}         % permet de débuter l'intro à 1. au lieu de 0.
+\chapter*{Introduction}         % enlève la numérotation
+\phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclus l'intro dans la table des matières
 
 Une thèse ou un mémoire devrait normalement débuter par une
 introduction. Celle-ci est traitée comme un chapitre normal, sauf
 qu'elle n'est pas numérotée.
 
-\section{La compléxité du vivant}
+\section{La complexité du vivant}
+\begin{itemize}
+\item "La cellule constitue l'unité de base constituant tout être vivant. Son bon fonctionnement est assuré par l'encodage de toute l'information nécessaire dans la molécule d'ADN présente en chacune."
+\item Intro sur les différents niveaux d'encodage et traduction de l'information (de ADN à proteine en passant par ARNm)
+\item L'ARNm comme témoin des activités et processus cellulaires
+\item La variabilité de l'expression, d'un organisme à un autre, d'un contexte à un autre (maladie, age), d'un instant t à t+1 (quelques secondes, matin/soir, lendemain, etc.)
+\end{itemize}
 
+\subsection{L'étude des perturbation du vivant pour la résolution de conditions cliniques}
+
+\section{Les technologies de séquençage}
+\begin{itemize}
+\item Avant propos sur le développement des technologies de séquençage avec la quantification d'ARNm par rt-qPCR, le séquençage par gel, etc.
+\item Transition vers les technologies de séquençage nouvelle génération
+\end{itemize}
+
+\subsection{Microarray}
+\begin{itemize}
+\item Principe
+\item Utilisation avec des exemple
+\item Propriétés mathématiques et techniques : distribution, normalisation, contrôle qualité, filtration
+\begin{itemize}
+    \item Distribution
+    \item Normalisation : taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition
+    \item Contrôle qualité
+    \item Filtration
+\end{itemize}
+\item Explication du déclin mais avec contraste sur son utilité quand pas besoin de whole transcriptome
+\end{itemize}
+
+\subsection{RNA-Seq}
+\begin{itemize}
+\item Principe
+\item Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray, et un comptage dans le cas du RNA-seq
+\item Explication de l'essor du RNA-seq (couts, precision, etc.)
+\item Propriétés mathématiques et techniques : distribution, normalisation, contrôle qualité, filtration
+\end{itemize}
+
+\section{Le traitement de l'information biologique}
+\subsection{Evolution du traitement}
+\begin{itemize}
+\item Des statistiques descriptives à l'expression différentielle
+\end{itemize}
+
+\subsection{La modélisation du vivant}
+\begin{itemize}
+\item De la régulation des gènes à son approximation par des modèles statistiques
+\item Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph
+\end{itemize}
+
+\subsection{Théorie des graphes}
+\begin{itemize}
+\item Principe 
+\item Différences / ressemblance entre graphe et reseau ?
+\item Les types de réseaus/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
+\end{itemize}
+
+\section{Les réseaux de  co-expression}
+\begin{itemize}
+\item Principe / pipeline 
+\item Les différents scores de similarité : Pearson, Spearman, bicor, mutual information
+\item La pondération des scores 
+\end{itemize}
 
 
 \section*{Phrases utiles à retravailler et intégrer}
@@ -16,6 +78,7 @@ qu'elle n'est pas numérotée.
 \item "A very clear partition of different biological networks is provided by Christensen et al. [1], who separated these networks into five main categories as follows: [metabolic networks, signal transduction networks,transcriptional regulatory networks, protein-protein networks, functional gene networks]" [10.1093/bfgp/elt003]
 %% Bouquin à la coloc de Clément à Sète, pas retrouvé sur le net jusque là 
 \item "Le vieillissement est un continuum conduisant une personne en bonne santé à une réduction de sa réserve fonctionnelle, puis de sa capacité fonctionnelle et de sa qualité de vie. CEs différents aspects ne décrivent pas un chemin linéaire ou ordonné." [Patient agé : particularités de la consultation, Gilles Berrut]
+\item "It has been reported that nearly one in four studies uses public data to address a biological problem without generating new raw data (Rung and Brazma, 2013)." [10.3389/fpls.2016.00444]
 \end{itemize}
 
 
