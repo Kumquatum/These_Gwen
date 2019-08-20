@@ -1,4 +1,4 @@
-%% GABARIT POUR THÈSE STANDARD
+%% GABARIT POUR THÈSE PAR ARTICLES
 %%
 %% Consulter la documentation de la classe ulthese pour une
 %% description détaillée de la classe, de ce gabarit et des options
@@ -9,8 +9,10 @@
 %% Déclaration de la classe avec le type de grade
 %%   [l'un de LLD, DMus, DPsy, DThP, PhD]
 %% et les langues les plus courantes. Le français sera la langue par
-%% défaut du document.
-\documentclass[PhD,english,french]{ulthese}
+%% défaut du document. L'option 'bibsection' permet de créer des
+%% bibliographies par chapitre présentées sous forme de section
+%% numérotée.
+\documentclass[PhD,bibsection,english,french]{ulthese}
   %% Encodage utilisé pour les caractères accentués dans les fichiers
   %% source du document. Les gabarits sont encodés en UTF-8. Inutile
   %% avec XeLaTeX, qui gère Unicode nativement.
@@ -20,11 +22,16 @@
   %% Quelques exemples; décommenter au besoin.
   %\usepackage{amsmath}       % recommandé pour les mathématiques
   %\usepackage{ncccomma}      % gestion de la virgule dans les nombres
+  %% 
+  %%\usepackage[toc]{glossaries}      % gestion du glossaire
+  %%\makeglossaries
 
   %% Utilisation d'une autre police de caractères pour le document.
   %% - Sous LaTeX
   %\usepackage{mathpazo}      % texte et mathématiques en Palatino
   %\usepackage{mathptmx}      % texte et mathématiques en Times
+  \usepackage[scaled]{helvet}
+  \renewcommand\familydefault{\sfdefault} 
   %% - Sous XeLaTeX
   %\setmainfont{TeX Gyre Pagella}      % texte en Pagella (Palatino)
   %\setmathfont{TeX Gyre Pagella Math} % mathématiques en Pagella (Palatino)
@@ -46,8 +53,12 @@
     og=«, fg=»                     % caractères « et » sont les guillemets
   }
 
-  %% Style de la bibliographie.
- \bibliographystyle{}
+  %% Suppression du numéro de section de la bibliographie. Utilisation
+  %% de \extrasfrench parce que c'est la dernière langue déclarée dans
+  %% \documentclass, ci-dessus.
+  %\addto\extrasfrench{%
+  %  \renewcommand{\bibsection}{\section*{\bibname}\prebibhook}}
+  
 
   %% Déclarations des pages de titre. Remplacer les éléments entre < >.
   %% Supprimer les caractères < >. Couper un long titre ou un long
@@ -58,10 +69,9 @@
   % \soustitre{Sous-titre le cas échéant}
   % \soustitre{Ceci est un exemple de long sous-titre \\
   %   avec saut de ligne manuel}
-  \auteur{<Prénom Nom>}
-  \annee{<20xx>}
-  \programme{Doctorat en <discipline> <-- majeure, s'il y a lieu>}
-  \direction{<Prénom Nom>, <directeur ou directrice> de recherche}
+  \auteur{Gwenaëlle Lemoine}
+  \annee{2020}
+  \direction{Arnaud Droit, directeur de recherche}
   % \codirection{<Prénom Nom>, <codirecteur ou codirectrice> de recherche}
   % \codirection{<Prénom Nom>, <codirecteur ou codirectrice> de recherche \\
   %              <Prénom Nom>, <codirecteur ou codirectrice> de recherche}
@@ -85,6 +95,8 @@
 \listoffigures                  % production de la liste des figures
 \cleardoublepage
 
+\include{acronymes}              % acronymes
+
 \dedicace{Dédicace si désiré}
 \cleardoublepage
 
@@ -97,14 +109,19 @@
 \mainmatter                     % corps du document
 
 \include{introduction}          % introduction
-\include{chapitre1}             % chapitre 1
-\include{chapitre2}             % chapitre 2, etc.
+\include{chapitre1-articles}    % chapitre 1
+\include{chapitre2-articles}    % chapitre 2, etc.
 \include{conclusion}            % conclusion
+\include{discussion}            % discussion
 
 \appendix                       % annexes le cas échéant
 
 \include{annexe}                % annexe A
 
-\bibliography{}                 % production de la bibliographie
+%%\include{glossaire}             % glossaire
+%%\glsaddall
+%%\printglossary
+%%\printglossary[type=nomenclature]
+%%\bibliographystyle{plain}
 
 \end{document}
