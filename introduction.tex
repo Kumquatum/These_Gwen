@@ -13,10 +13,11 @@ qu'elle n'est pas numérotée.
 \item L'ARNm comme témoin des activités et processus cellulaires
 \item La variabilité de l'expression, d'un organisme à un autre, d'un contexte à un autre (maladie, age), d'un instant t à t+1 (quelques secondes, matin/soir, lendemain, etc.)
 \end{itemize}
+%% Un mot sur les SNPs ? Ou inutile
 
 \subsection{L'étude des perturbation du vivant pour la résolution de conditions cliniques}
 
-\section{Les technologies de séquençage}
+\section{Les technologies de séquençage de l'expression des gènes}
 \begin{itemize}
 \item Avant propos sur le développement des technologies de séquençage avec la quantification d'ARNm par rt-qPCR, le séquençage par gel, etc.
 \item Transition vers les technologies de séquençage nouvelle génération
@@ -26,10 +27,11 @@ qu'elle n'est pas numérotée.
 \begin{itemize}
 \item Principe
 \item Utilisation avec des exemple
-\item Propriétés mathématiques et techniques : distribution, normalisation, contrôle qualité, filtration
+\item Propriétés mathématiques et techniques
 \begin{itemize}
     \item Distribution
-    \item Normalisation : taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition
+    \item Normalisation : Normalization is a process designed to identify and correct
+technical biases. 2 types of norm : Between and within normalization (cf. formation marie laure meme si c'est pour le RNA-seq). Pourquoi normalisation log2 : le log pour passer à une échelle symétrique autour de 0, le 2 car c'est + facile à interpréter, chaque fois qu'on augmente le ratio Ti de 1, on double la up regulation  %%(https://www.researchgate.net/post/Why_do_we_usually_use_Log2_when_normalizing_the_expression_of_genes et https://www.nature.com/articles/ng1032z)
     \item Contrôle qualité
     \item Filtration
 \end{itemize}
@@ -41,19 +43,20 @@ qu'elle n'est pas numérotée.
 \item Principe
 \item Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray, et un comptage dans le cas du RNA-seq
 \item Explication de l'essor du RNA-seq (couts, precision, etc.)
-\item Propriétés mathématiques et techniques : distribution, normalisation, contrôle qualité, filtration (https://www.biostars.org/p/349881/)
+\item Propriétés mathématiques et techniques : distribution, normalisation (taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition), contrôle qualité, filtration  (https://www.biostars.org/p/349881/)
 \end{itemize}
 
 \section{Le traitement de l'information biologique}
-\subsection{Evolution du traitement}
+\subsection{L'expression différentielle}
 \begin{itemize}
-\item Des statistiques descriptives à l'expression différentielle
+  \item
+% \item Des statistiques descriptives à l'expression différentielle %% Bof, j'ai pas retrouvé de stade "stats explo" 
 \end{itemize}
 
 \subsection{La modélisation du vivant}
 \begin{itemize}
-\item De la régulation des gènes à son approximation par des modèles statistiques
-\item Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph
+\item De la régulation des gènes à son approximation par des modèles statistiques, en passant par la biologie des systemes qui est trop couteuse pour des organismes complexes %% mal formulé car dans le desordre (le dernier point devrait venir en 2e)
+\item Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph et qui sont moins couteux car probabilistes (ils ne sont pas la vérité mais une approximation)
 \end{itemize}
 
 \subsection{Théorie des graphes}
