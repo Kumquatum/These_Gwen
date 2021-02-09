@@ -1,27 +1,58 @@
 \setcounter{chapter}{1}         % permet de débuter l'intro à 1. au lieu de 0.
 \chapter*{Introduction}         % enlève la numérotation
 \phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclus l'intro dans la table des matières
+\graphicspath{ {./img/intro} }
 
 Une thèse ou un mémoire devrait normalement débuter par une
 introduction. Celle-ci est traitée comme un chapitre normal, sauf
 qu'elle n'est pas numérotée.
 
+%% ######################
+%% GROSSE AIDE A LA BIBLIO https://www.connectedpapers.com
+%% #####################
+
 \section{La complexité du vivant}
+\subsection{D'un code unique à un fonctionnement multiple}
 \begin{itemize}
 \item "La cellule constitue l'unité de base constituant tout être vivant. Son bon fonctionnement est assuré par l'encodage de toute l'information nécessaire dans la molécule d'ADN présente en chacune."
 \item Intro sur les différents niveaux d'encodage et traduction de l'information (de ADN à proteine en passant par ARNm)
 \item L'ARNm comme témoin des activités et processus cellulaires
 \item La variabilité de l'expression, d'un organisme à un autre, d'un contexte à un autre (maladie, age), d'un instant t à t+1 (quelques secondes, matin/soir, lendemain, etc.)
+\item Un mot sur l'épigénétique quand même qui est responsable de ces variations d'expression
 \end{itemize}
+
 %% Un mot sur les SNPs ? Ou inutile
 
-\subsection{L'étude des perturbation du vivant pour la résolution de conditions cliniques}
+% \subsection{Les ARNs : une famille nombreuse}
+% %% Review sur les ARN : https://link.springer.com/content/pdf/10.1007%2Fs11427-013-4557-2.pdf
+% \begin{itemize}
+%     \item Codant
+%     \item Non codant
+%     \begin{itemize}
+%         \item 
+%     \end{itemize}
+% \end{itemize}
+
+\includegraphics{img/intro/rna_familly_tree.jpg}
+
+%% TRANSITION : parler des erreurs/variabilité biologique ? 
+
+% \subsection{L'étude des perturbation du vivant pour la résolution de conditions cliniques}
+\subsection{L'étude des perturbation de l'expression pour la résolution de conditions cliniques}
 
 \section{Les technologies de séquençage de l'expression des gènes}
+%% TODO : merge avec 1.1 partie d'avant
+
+%% Nb publi pour le ration de microarray / RNA seq de jeux de données ?
+
+
+%% historique des techno et qques specificités : https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005457
 \begin{itemize}
 \item Avant propos sur le développement des technologies de séquençage avec la quantification d'ARNm par rt-qPCR, le séquençage par gel, etc.
 \item Transition vers les technologies de séquençage nouvelle génération
 \end{itemize}
+
+%% Un TRES bon site sur les technos de sequencage : http://education.knoweng.org/sequenceng/
 
 \subsection{Microarray}
 \begin{itemize}
@@ -30,6 +61,7 @@ qu'elle n'est pas numérotée.
 \item Propriétés mathématiques et techniques
 \begin{itemize}
     \item Distribution
+    "Données continues, il est possible de construire des modèles d’analyse statistique ense basant sur des hypothèses de normalité des données (Smyth, 2004). Ces techniquesd’analyse, adaptées aux données gaussiennes ne peuvent pas être appliquées directementaux données RNA-seq qui sont des données de comptage, discrètes et positives" %% https://tel.archives-ouvertes.fr/tel-01424124/document
     \item Normalisation : Normalization is a process designed to identify and correct
 technical biases. 2 types of norm : Between and within normalization (cf. formation marie laure meme si c'est pour le RNA-seq). Pourquoi normalisation log2 : le log pour passer à une échelle symétrique autour de 0, le 2 car c'est + facile à interpréter, chaque fois qu'on augmente le ratio Ti de 1, on double la up regulation  %%(https://www.researchgate.net/post/Why_do_we_usually_use_Log2_when_normalizing_the_expression_of_genes et https://www.nature.com/articles/ng1032z)
     \item Contrôle qualité
@@ -41,37 +73,135 @@ technical biases. 2 types of norm : Between and within normalization (cf. format
 \subsection{RNA-Seq}
 \begin{itemize}
 \item Principe
-\item Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray, et un comptage dans le cas du RNA-seq
+\item Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray (variable continue), et un comptage dans le cas du RNA-seq (variable discrète).
 \item Explication de l'essor du RNA-seq (couts, precision, etc.)
-\item Propriétés mathématiques et techniques : distribution, normalisation (taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition), contrôle qualité, filtration  (https://www.biostars.org/p/349881/)
+\item Propriétés mathématiques : distribution(binomiale negative) %% Justification binomiale negative "Negative binomial (NB) distribution is the established gold standard, because of its ability to accurately model RNA-seq data with a low number of available replicates [7]." https://doi.org/10.1093/bib/bbx115
+\item normalisations : %% cf. formation marie laure, il y a toutes les refs de publi a prendre
+%% La raison du l'utilisation des pseudo counts et du log dans le RNA-seqyo : https://www.biorxiv.org/content/biorxiv/early/2020/05/19/2020.05.19.100214.full.pdf
+\begin{itemize}
+    \item Within sample
+    \item Between samples
+\end{itemize}
+%% À classer entre within/between plus ahut selon ce qui est marqué dans la formation de marie laure : taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition), contrôle qualité, filtration  (https://www.biostars.org/p/349881/)
 \end{itemize}
 
-\section{Le traitement de l'information biologique}
-\subsection{L'expression différentielle}
+\section{Le traitement statistique de l'information biologique}
+\subsection{L'expression différentielle : les acteurs majeurs}
 \begin{itemize}
-  \item
+  \item Méthode de capture des acteurs majeurs
+  \item Pas d'étude du système 
 % \item Des statistiques descriptives à l'expression différentielle %% Bof, j'ai pas retrouvé de stade "stats explo" 
 \end{itemize}
 
-\subsection{La modélisation du vivant}
+\subsection{La modélisation du vivant : des acteurs au système}
 \begin{itemize}
 \item De la régulation des gènes à son approximation par des modèles statistiques, en passant par la biologie des systemes qui est trop couteuse pour des organismes complexes %% mal formulé car dans le desordre (le dernier point devrait venir en 2e)
 \item Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph et qui sont moins couteux car probabilistes (ils ne sont pas la vérité mais une approximation)
 \end{itemize}
 
-\subsection{Théorie des graphes}
+\subsection{Les réseaux biologiques : le système vu via la théorie des graphes}
 \begin{itemize}
-\item Principe 
+\item Principe : les graphes sont une méthode de plus en plus utilisée dans la représentation du fonctionnement d'organismes puisqu'ils permettent d'avoir une vision à l'échelle du système tout entier.
+%% Jolie intro à s'inspire : https://www.nature.com/articles/s41467-019-08746-5
 \item Différences / ressemblance entre graphe et reseau ?
-\item Les types de réseaus/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
+\item Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
+\item Les problèmes de visualisation de grands réseaux %% section layout de ce livre https://sites.fas.harvard.edu/~airoldi/pub/books/BookDraft-CsardiNepuszAiroldi2016.pdf
 \end{itemize}
 
 \section{Les réseaux de  co-expression}
+
+%% GROOOOOSSSE PUBLI REVIEW sur la co-expression ET la comparaison de modules, aka co-expr differentielle https://doi.org/10.1109/TCBB.2019.2893170
+
+\subsection{But}
+"Gene co-expression networks seek to identify transcrip- tional patterns indicative of functional interactions and regulatory relationships between genes" %%https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1700-9 + Barabási A-L, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12:56–68. + Furlong LI. Human diseases through the lens of network biology. Trends Genet. 2013;29:150–9.
+
+\subsection{Principe}
+%% Relire `van Dam, S., Võsa, U., van der Graaf, A., Franke, L. & de Magalhães, J. P. Gene co-expression analysis for functional classification and gene–disease predictions. Brief. Bioinform. bbw139 (2017). doi:10.1093/bib/bbw139`
 \begin{itemize}
-\item Principe / pipeline 
-\item Les différents scores de similarité : Pearson, Spearman, bicor, mutual information
-\item La pondération des scores 
+    \item Réseaux binaires (0 = pas de connexion, 1 = connexion). Pour et contres.
+    \item Réseaux pondérés. Pourquoi c'est vers ça qu'on s'est orientés ? Car les connections entre gènes ne sont pas binaires, elles sont plutot multiples et très dépendantes temporellement. Une meme cellule échantillonnée à des temps différents aura un profil plus ou moins différent. On y retrouvera les grandes fonctions clefs mais les aspects plus variables auront peut etre changé. D'où aussi la nécessité d'un bon nombre d'échantillons pour assurer la validité des résultats. Sinon les correlations ne sont pas représentatives.
 \end{itemize}
+\subsection{Construction}
+\begin{itemize}
+\item Les différents scores de similarité : Pearson, Spearman, bicor, mutual information
+\item La pondération des scores (adjacence et TOM) et la propriété d'invariance d'échelle (scale-free). Reparler de barbarasi et son celebre article (https://science.sciencemag.org/content/325/5939/412/tab-pdf) + Pourquoi elle est parfois encore discutée (https://www.nature.com/articles/s41467-019-08746-5) alors que tout de même pertinente en biologie. 
+\end{itemize}
+\subsection{Détection de modules}
+\begin{itemize}
+    \item Notion de communauté
+    \item Définition du partitionnement (clustering) et des différentes techniques
+\end{itemize}
+
+\subsection{Exploitation des modules de gènes}
+
+\subsubsection{Intégration biologique}
+%% AKA knowledge driven
+\begin{itemize}
+    \item Enrichissement
+    \item Test d'association
+\end{itemize}
+
+\subsubsection{Association phenotypique}
+%% aussi knowledge driven
+
+%%\subsection{Capitalisation sur l'information intrinsèque aux données}
+
+\subsubsection{Étude topologique}
+%% AKA data driven
+
+%% Note : à voir si je présente aussi ici la comparaison de module vu que je vais ptet évoquer l'expression differentielle ici pour faire le parallele avec l'analyse transcripto classique. Sinon ça ira dans l'intro du chapitre avec l'article de GWENA.
+
+\begin{itemize}
+    \item Degré
+    \item Définition de hub gene
+    A trier / ordonner entre les différentes définitions, ce qu'elles visent, ce qu'elles appaortent et si possible une comparaison d'entre elles. On distinguera les mesure purement basées sur la theorie des graphs et celles impliquant des mesures statistique de significativité d'un gene comme hub (cf publi sur DHGA)
+    \begin{itemize}
+        \item Def 1 : Network theory : "A node is defined as hub node, if its connection degree is greater than average connection degree of the network" %% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5215982/
+        \item Def 2 : Network hubs, the core elements in the network, can be defined using a range of different measures. These measures quantify distinct aspects of topological centrality, which can be defined as the capacity of a node to influence or be influenced by other nodes by virtue of its connection topology (Fornito et al., 2016).
+    \end{itemize}
+\end{itemize}
+\subsubsection{Expression différentielle}
+Pas sur de foutre ca là... Peut etre plutot en intro de la section complete en guise de "En analyse RNA classique, une méthode data driven est l'expression différentielle, mais en co-expression on a a disposition plus d'information extractable, et ce grace a la theorie des graphes" 
+
+\subsubsection{Comparaison de modules}
+
+Ou co-expression différentielle
+%% "However, searching for differences in networks requires great sensitivity to the initial choice of data. For example, the absence of a shared link in mouse and human co-expression networks does not necessarily indicate divergent function. Instead, differences in the mouse and human co-expression networks may indicate differences in the technical platforms or the experimental conditions used to build the networks" http://doi.org/10.1371/journal.pgen.1000776
+
+\subsection{Interprétation des résultats}
+
+\subsubsection{Comparabilité des résultats issus de RNA-seq et de microarray}
+\begin{itemize}
+    \item Pas les meme hub genes %% "Microarray and RNA-seq-derived networks have different hub genes" https://academic.oup.com/bioinformatics/article/31/13/2123/196230
+\end{itemize}
+
+\section{Le vieillissement, système hautement imbriqué}
+%% Idée de début de paragraphe
+S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adpatés, c'est bien le vieillissement. Source multi-factorielle de changements dans l'organisme, il est chez l'humain à l'origine d'une dégradation progressive des fonctions de base du corps.
+
+\subsection{Définition biologique}
+\begin{itemize}
+    \item Facteurs : raccourcissement des télomères, phénomènes d'inflammation, réduction de la machinerie cellulaire
+    \item Manifestation : Ralentissement de la division cellulaire, développement de cellules non-fonctionnelles / nocives (aka tumeurs), malfonctionnement des tissus/organes
+\end{itemize}
+
+\subsection{Enjeux}
+Un enjeu de santé publique
+\begin{itemize}
+    \item Susceptibilité aux maladies opportunistes
+    \item tdeetAutonomie patient
+    \item Médicalisation précoce
+\end{itemize}
+
+\subsection{La capture de l'information liée au vieillissement par la transcriptomique}
+
+\begin{itemize}
+    \item La dérégulation de la transcription comme phénomène précédemment mentionné
+    \item L'insuffisance de la capture de biomarqueurs pour un processus aussi compliqué que le vieillissement. Donc la nécessité d'une étude en réseau
+    \item 
+    
+\end{itemize}
+%% https://doi.org/10.1007/978-981-32-9005-1_3
 
 
 \section*{Phrases utiles à retravailler et intégrer}
@@ -97,3 +227,8 @@ technical biases. 2 types of norm : Between and within normalization (cf. format
 
 %%    • Topological aspect
 %%    • Co-expression properties (Scale-free-network entre autres ?)
+
+
+
+%% Infos sur la peau : these super interessante => https://dumas.ccsd.cnrs.fr/dumas-01599807/document% \end{itemize}
+
