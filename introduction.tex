@@ -1,37 +1,38 @@
+%%%%%%%%%%%%%%%%%%
+%% INTRODUCTION %%
+%%%%%%%%%%%%%%%%%%
+
 \setcounter{chapter}{1}         % permet de débuter l'intro à 1. au lieu de 0.
 \chapter*{Introduction}         % enlève la numérotation
 \phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclus l'intro dans la table des matières
 \graphicspath{ {./img/intro} }
 
-Une thèse ou un mémoire devrait normalement débuter par une
-introduction. Celle-ci est traitée comme un chapitre normal, sauf
-qu'elle n'est pas numérotée.
-
 %% ######################
 %% GROSSE AIDE A LA BIBLIO https://www.connectedpapers.com
 %% #####################
 
+
+
+
+%%%%%%%%%%%%%%%%%% LA COMPLEXITÉ DU VIVANT %%%%%%%%%%%%%%%%%%
+
 \section{La complexité du vivant}
+
 \subsection{D'un code unique à un fonctionnement multiple}
+
+Bien que toutes les cellules d'un organisme possèdent la même information génétique via un ADN identique, plusieurs types cellulaires de fonction différente cohabitent pour former des tissus variés. Ces différences provennant d'un contrôle de l'expression ou de la répréssion d'un gène sont le fruit d'un ensemble de mécanismes de régulation établis dès les premières différenciations cellulaire dans le développement d'un organisme. Différentes types de mécanismes vont alors impacter la qualité et la quantité d'ARN messager (ARNm) produit par les cellules :
 \begin{itemize}
-\item "La cellule constitue l'unité de base constituant tout être vivant. Son bon fonctionnement est assuré par l'encodage de toute l'information nécessaire dans la molécule d'ADN présente en chacune."
-\item Intro sur les différents niveaux d'encodage et traduction de l'information (de ADN à proteine en passant par ARNm)
-\item L'ARNm comme témoin des activités et processus cellulaires
-\item La variabilité de l'expression, d'un organisme à un autre, d'un contexte à un autre (maladie, age), d'un instant t à t+1 (quelques secondes, matin/soir, lendemain, etc.)
-\item Un mot sur l'épigénétique quand même qui est responsable de ces variations d'expression
+\item La régulation de l'initiation de la transcription : la fixation d'une protéine sur l'ADN entraine l'impossibilité de fixation de l'ARN polymérase ou à l'inverse favorise son recrutement pour la transcription d'un gène.
+\item  La conformation de la chromatine : les repliements de l'ADN pour la condenser dans une cellule implique de rendre disponible certaines régions à la transcription et indisponible d'autres.
+\item La modification post transciptionnelle : les ARNm nécessitent l'ajout d'une 7-methylguanosine sur l'extrémité 5' (coiffe 5'), un épissage alternatif, et une polyadenylation (queue poly A) sur l'extrémité 3' afin d'être traduits en protéine. En leur absence, ces ARNm sont détruits par la cellule.
+\item  La méthylation : les îlots CpG situés sur l'ADN (notamment dans les promoteurs) peuvent subir l'ajout d'un groupement méthyl, empêchant alors la fixation de différents agents de la transcription.
+\item La susceptibilité à la dégradation : afin de perdurer plus de quelques minutes dans la cellule [\^Yu\_2001], certains ARN contiennent ou évitent certains motifs de nucléotides (éléments riches en AU, codon stop prématuré, taille de queue poly-A) ou bien sont victimes d'ARN non codants (ARNmi et ARNip) qui vont favoriser leur dégradation
+% \item [^Yu_2001]: Yu J, Russell JE. Structural and functional analysis of an mRNP complex that mediates the high stability of human beta-globin mRNA. Mol Cell Biol. 2001;21(17):5879-5888. doi:10.1128/mcb.21.17.5879-5888.2001 
+\item La régulation de la traduction : le contrôle du recrutement des sous unités des ribosomes, leur altération, ou la compétition des ARN de transfert (ARNt) pour la terminaison sont des paramètres impactant la production finale d'une protéine sans erreur et ne sera donc pas dégradée.
 \end{itemize}
 
-%% Un mot sur les SNPs ? Ou inutile
 
-% \subsection{Les ARNs : une famille nombreuse}
-% %% Review sur les ARN : https://link.springer.com/content/pdf/10.1007%2Fs11427-013-4557-2.pdf
-% \begin{itemize}
-%     \item Codant
-%     \item Non codant
-%     \begin{itemize}
-%         \item 
-%     \end{itemize}
-% \end{itemize}
+Lors des perturbation (maladie, stress, âge, etc.) du fonctionnement cellulaire normal, sain, cette régulation de l'expression s'en retrouve pertubée. Le transcriptome (ensemble des ARN ou transcrits produits) est alors un témoin direct des fonctions mises en défaut. L'étude de la quantité de chacun donne ainsi un moyen direct direct de comprendre l'origine d'effets macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.).
 
 \includegraphics{img/intro/rna_familly_tree.jpg}
 
@@ -85,6 +86,10 @@ technical biases. 2 types of norm : Between and within normalization (cf. format
 %% À classer entre within/between plus ahut selon ce qui est marqué dans la formation de marie laure : taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition), contrôle qualité, filtration  (https://www.biostars.org/p/349881/)
 \end{itemize}
 
+
+%%%%%%%%%%%%%% LE TRAITEMENT STATISTIQUE DE L'INFORMATION BIOLOGIQUE %%%%%%%%%%%%%%
+
+
 \section{Le traitement statistique de l'information biologique}
 \subsection{L'expression différentielle : les acteurs majeurs}
 \begin{itemize}
@@ -107,6 +112,10 @@ technical biases. 2 types of norm : Between and within normalization (cf. format
 \item Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
 \item Les problèmes de visualisation de grands réseaux %% section layout de ce livre https://sites.fas.harvard.edu/~airoldi/pub/books/BookDraft-CsardiNepuszAiroldi2016.pdf
 \end{itemize}
+
+
+%%%%%%%%%%%%%%%%%% LES RESEAUX DE CO-EXPRESSION %%%%%%%%%%%%%%%%%%
+
 
 \section{Les réseaux de  co-expression}
 
@@ -174,6 +183,10 @@ Ou co-expression différentielle
 \begin{itemize}
     \item Pas les meme hub genes %% "Microarray and RNA-seq-derived networks have different hub genes" https://academic.oup.com/bioinformatics/article/31/13/2123/196230
 \end{itemize}
+
+
+%%%%%%% L'INTÉRÊT DE l'ANALYSE PAR CO-EXPRESSION POUR L'ÉTUDE DU VIEILLISSEMENT %%%%%%%
+
 
 \section{Le vieillissement, système hautement imbriqué}
 %% Idée de début de paragraphe
