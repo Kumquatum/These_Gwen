@@ -18,23 +18,66 @@
 
 \section{La complexité du vivant}
 
-\subsection{D'un code unique à un fonctionnement multiple}
+\subsection{Un fonctionnement multiple issu d'un code unique}
 
-Bien que toutes les cellules d'un organisme possèdent la même information génétique via un ADN identique, plusieurs types cellulaires de fonction différente cohabitent pour former des tissus variés. Ces différences provennant d'un contrôle de l'expression ou de la répréssion d'un gène sont le fruit d'un ensemble de mécanismes de régulation établis dès les premières différenciations cellulaire dans le développement d'un organisme. Différentes types de mécanismes vont alors impacter la qualité et la quantité d'ARN messager (ARNm) produit par les cellules :
+Le vivant est fait d'une diversité d'organismes à l'image de sa complexité. Chacun de ces organismes est composé d'une ou plusieurs cellules œuvrant ensemble pour la survie et la reproduction de celui-ci. Ces êtres multicellulaires sont bien souvent constitués d’une association de cellules à la fonction et la forme bien différente de ses voisines. Ainsi, chez des organismes "simples" comme les myxozoan (maximum de 7 cellules) [10.1098/rspb.2010.0282] tout comme chez des organismes de taille bien plus importante comme l'humain, on retrouve des cellules spécialisée pour une fonction spécifique [REF]: une protection, un acheminement d'éléments nutritifs, une transmission de matériel génétique, etc. Chez l’homme, ces cellules seront par exemple respectivement des keratynocytes [REF], des cellules endothéliales de l’intima [REF], des ovocytes [REF]. En s’assemblant entre cellules de même type, puis en formant des complexes avec d’autres types cellulaires [REF], les organismes parviennent à former alors des structures qu’on nomme tissu [REF]. La combinaison de keratynocytes, de mélanocytes, de cellules de Langerhans et les cellules de Merkel connectées par une matrice extra-cellulaire forment ainsi le tissu épidermal, ou plus simplement l’épiderme [REF].
+
+\begin{figure*}[hb!]
+    \centering
+    % \includegraphics[width=0.95\textwidth]{img/intro/code_genetique.png}
+    \includegraphics[width=0.8\textwidth]{img/intro/cell_type_feuillet.jpg}
+    \caption{Exemple de la diversité de cellules selon le tissu et feuillet embryonnaire dont elles sont issues.}
+    \label{fig:intro_code_genetique}
+\end{figure*}
+
+
+Pour effectuer chacune de ces tâches spécialisée, les cellules de type différent vont produire en partie des protéines ayant des fonctions biologiques différentes de ses voisines. La Gene Ontology distingue 32 ontologies (catégories de fonctions) qu'on peut regrouper en 3 familles de fonctions [ISBN 9780138004644]: 
 \begin{itemize}
-\item La régulation de l'initiation de la transcription : la fixation d'une protéine sur l'ADN entraine l'impossibilité de fixation de l'ARN polymérase ou à l'inverse favorise son recrutement pour la transcription d'un gène.
-\item  La conformation de la chromatine : les repliements de l'ADN pour la condenser dans une cellule implique de rendre disponible certaines régions à la transcription et indisponible d'autres.
-\item La modification post transciptionnelle : les ARNm nécessitent l'ajout d'une 7-methylguanosine sur l'extrémité 5' (coiffe 5'), un épissage alternatif, et une polyadenylation (queue poly A) sur l'extrémité 3' afin d'être traduits en protéine. En leur absence, ces ARNm sont détruits par la cellule.
-\item  La méthylation : les îlots CpG situés sur l'ADN (notamment dans les promoteurs) peuvent subir l'ajout d'un groupement méthyl, empêchant alors la fixation de différents agents de la transcription.
-\item La susceptibilité à la dégradation : afin de perdurer plus de quelques minutes dans la cellule [\^Yu\_2001], certains ARN contiennent ou évitent certains motifs de nucléotides (éléments riches en AU, codon stop prématuré, taille de queue poly-A) ou bien sont victimes d'ARN non codants (ARNmi et ARNip) qui vont favoriser leur dégradation
-% \item [^Yu_2001]: Yu J, Russell JE. Structural and functional analysis of an mRNP complex that mediates the high stability of human beta-globin mRNA. Mol Cell Biol. 2001;21(17):5879-5888. doi:10.1128/mcb.21.17.5879-5888.2001 
-\item La régulation de la traduction : le contrôle du recrutement des sous unités des ribosomes, leur altération, ou la compétition des ARN de transfert (ARNt) pour la terminaison sont des paramètres impactant la production finale d'une protéine sans erreur et ne sera donc pas dégradée.
+    \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Ex : la β-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose [10.1016/S0022-2836(61)80072-7].
+    \item les fonctions de signalisation/liaison : en se fixant à un recepteur ou en étant un récepteur à la fixation d'un ligand, les proteines permettent de faire transiter de l'information en intra ou extra cellulaire. La fixation entraine la transmission d'un signal physique ou chimique via une cascade d'événements qui vont conduire à une réponse cellulaire. Ex : la production d'une protéine d'insuline par le pancréas va, en se fixant sur les récepteurs membranaires des cellules, déclancher des mécanismes de stockage du glucose. Cela se traduit dans le foie par l'initiation de la transformation du glucose en glycogène.
+    \item les fonctions de structuration : les protéines par leur forme et propriétés physico chimiques hautement modulables permettent de donner une architecture et/ou des propriétés mécaniques aux cellules dans/autour desquelles elles se trouvent. Ex : la combinaison de proteines de myosin II et d'actin permettent la contraction musculaire par des phénomènes de coulissage de ces protéines.
 \end{itemize}
+
+
+Pour être produites, ces protéines suivent chacune un plan de construction prédéfini appelé code génétique. Stocké dans une molécule d'ADN (Acide DesoxyRibonucléique) pour chaque chromosome, ce code est présent à l'identique dans chacune des cellules d'un organisme. L'ADN est un polymère de longueur variable selon les espèces et dont la séquence est composée de 4 types de nucléotides : adénosine, tyrosine, guanine, et cytosine. Au long de sa séquence, l'ADN stocke l'information relative aux protéines sous forme d'unités qu'on nomme gène, de telle façon qu'une protéine n'est produisible que par un seul gène. Chez l'homme (sur qui on se concentrera dans ce manuscrit) la version 37 de GENCODE [https://www.gencodegenes.org/human/stats.html] considère ainsi qu'il existe 60 651 gènes. Cependant, tous parmis eux ne produisent pas de protéine. On distingue en réalité les gènes dits "codants" (19951 toujours dans GENCODE 37) car produisant des protéines, et les gènes "non-codants" qui codent pour plusieurs autres entités moléculaires utiles à la cellules.
+
+Chez l'homme et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant mono brin alors que l'ADN est double brin (d'où sa représentation classique en échelle), il ne possède pas de thymine mais à la place de l'uranine, et il est évidemment de beaucoup plus petite taille car il n'embarque que l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_gene}).
+
+\begin{figure*}[h!]
+    \centering
+    % \includegraphics[width=0.95\textwidth]{img/intro/code_genetique.png}
+    \includegraphics[width=0.8\textwidth]{img/intro/code_genetique.png}
+    \caption{Correspondance de triplets de nucléotides avec l'acide aminé produit.}
+    \label{fig:intro_code_genetique}
+\end{figure*}
+
+
+Une fois copié depuis l'ADN, l'ARNm immature sort du noyau vers le cytoplasme pour subir une étape de maturation : composé de sous unités appelées introns et exons, l'ARNm se voit retirer ses introns et certaines sections d'exons selon les besoin de sous-fonction de la protéine finale. On nomme "transcrits" toutes ces variations d'ARNm d'un même gène (Figure des modes d'épissage alternatif). Ainsi, on considère que la transcription d'un gène sous n'importe lequel de ses transcrits correspond à l'expression de son gène dans un échantillon. Par la suite, une étape de traduction de l'ARNm en polymère d'acides aminés donnera la base de la protéine. Après un repliement du polymère et des modifictions dites "post-traduction" par la machinerie cellulaire, la protéine sera enfin opérationnelle pour réaliser la fonction qui lui incombe. 
+
+
+\subsection{La régulation de l'expression pour une spécification cellulaire}
+
+On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule est capable de n'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité ddes cellules est en fait permise par des mécanismes de régulation de l'expression des gènes (et par extension la répression) qui sont établis dès les premières différenciations cellulaire dans le développement d'un organisme. Tout ces mécanismes sont imbriqués pour ajuster au plus fin l'expression des gènes et donc la quantité de la ou les protéines necessaires à l'instant t à la cellule. On distingue les mécanismes suivants : 
+\begin{itemize}
+    \item \textbf{La régulation de l'initiation de la transcription} : lors de la transcription de l'ADN d'un gène en ARNm, l'ARN polymérase chargée de la transcription vient se fixer sur l'ADN sur le site d'initiation de la transcription (appelé promoteur) pour ensuite commencer à lire la séquence. La fixation au préalable d'une protéine sur ce site (facteur de transcription) entraine alors l'impossibilité de fixation de l'ARN polymérase chargée de la transcription ou à l'inverse favorise son recrutement pour la transcription du gène visé. Très souvents présents dans des boucles de retro-action, ces facteurs de transcription peuvent ainsi être eux-même inactivés par des substances variées. L'exemple le plus connu est l'opéron lactose : en présence de lactose dans la cellule, le facteur de transcription (represseur) lacl est inactivé par la fixation de lactose sur lui même et de la beta-galactosidase codée par le gène lacZ est produite. En l'absence de lactose, il est libre de se fixer sur le promoteur lac qui est le site d'initiation de la transcription pour les gènes lacZ, lacY, et lacA.
+    \item \textbf{La conformation de la chromatine} : les repliements de l'ADN pour la condenser dans une cellule implique de rendre spatialement disponible certaines régions à la transcription et indisponible d'autres.
+    \item \textbf{La modification post transciptionnelle} : les ARNm nécessitent l'ajout d'une 7-methylguanosine sur l'extrémité 5' (coiffe 5'), un épissage alternatif, et une polyadenylation (queue poly A) sur l'extrémité 3' afin d'être traduits en protéine. En leur absence, ces ARNm sont détruits par la cellule.
+    \item \textbf{La méthylation} : les îlots CpG situés sur l'ADN (notamment dans les promoteurs) peuvent subir l'ajout d'un groupement méthyl, empêchant alors la fixation de différents agents de la transcription.
+    \item \textbf{La susceptibilité à la dégradation} : afin de perdurer plus de quelques minutes dans la cellule [Yu2001], certains ARN contiennent ou évitent des motifs de nucléotides influant la vitesse de dégradation (éléments riches en AU, codon stop prématuré, taille de queue poly-A). Des ARN non codants (ARNmi et ARNip) se fixant sur eux peuvent également favoriser leur dégradation.
+    \item \textbf{La régulation de la traduction} : le contrôle du recrutement des sous unités des ribosomes, leur altération, ou la compétition des ARN de transfert (ARNt) pour la terminaison sont des paramètres impactant la production finale d'une protéine sans erreur et ne sera donc pas dégradée.
+% [Yu2001]: Yu J, Russell JE. Structural and functional analysis of an mRNP complex that mediates the high stability of human beta-globin mRNA. Mol Cell Biol. 2001;21(17):5879-5888. doi:10.1128/mcb.21.17.5879-5888.2001 
+\end{itemize}
+
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA REDACTION PROPRE  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+
 
 
 Lors des perturbation (maladie, stress, âge, etc.) du fonctionnement cellulaire normal, sain, cette régulation de l'expression s'en retrouve pertubée. Le transcriptome (ensemble des ARN ou transcrits produits) est alors un témoin direct des fonctions mises en défaut. L'étude de la quantité de chacun donne ainsi un moyen direct direct de comprendre l'origine d'effets macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.).
 
 \includegraphics{img/intro/rna_familly_tree.jpg}
+%% https://www.sciencedirect.com/science/article/pii/S0167488916302919
 
 %% TRANSITION : parler des erreurs/variabilité biologique ? 
 
