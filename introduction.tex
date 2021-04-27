@@ -1,8 +1,5 @@
-%%%%%%%%%%%%%%%%%%
-%% INTRODUCTION %%
-%%%%%%%%%%%%%%%%%%
-
 \setcounter{chapter}{1}         % permet de débuter l'intro à 1. au lieu de 0.
+\setcounter{section}{0}
 \chapter*{Introduction}         % enlève la numérotation
 \phantomsection\addcontentsline{toc}{chapter}{Introduction} % inclus l'intro dans la table des matières
 \graphicspath{ {./img/intro} }
@@ -20,20 +17,20 @@
 
 \subsection{Un fonctionnement multiple issu d'un code unique}
 
-Le vivant est fait d'une diversité d'organismes à l'image de sa complexité. Chacun de ces organismes est composé d'une ou plusieurs cellules œuvrant ensemble pour la survie et la reproduction de celui-ci. Ces êtres multicellulaires sont bien souvent constitués d’une association de cellules à la fonction et la forme bien différente de ses voisines. Ainsi, chez des organismes "simples" comme les myxozoan (maximum de 7 cellules) [10.1098/rspb.2010.0282] tout comme chez des organismes de taille bien plus importante comme l'humain, on retrouve des cellules spécialisée pour une fonction spécifique [REF]: une protection, un acheminement d'éléments nutritifs, une transmission de matériel génétique, etc. Chez l’homme, ces cellules seront par exemple respectivement des keratynocytes [REF], des cellules endothéliales de l’intima [REF], des ovocytes [REF]. En s’assemblant entre cellules de même type, puis en formant des complexes avec d’autres types cellulaires [REF], les organismes parviennent à former alors des structures qu’on nomme tissu [REF]. La combinaison de keratynocytes, de mélanocytes, de cellules de Langerhans et les cellules de Merkel connectées par une matrice extra-cellulaire forment ainsi le tissu épidermal, ou plus simplement l’épiderme [REF].
+Le vivant est fait d'une diversité d'organismes à l'image de sa complexité. Chacun de ces organismes est composé d'une ou plusieurs cellules œuvrant ensemble pour la survie et la reproduction de celui-ci. Ces êtres multicellulaires sont bien souvent constitués d’une association de cellules à la fonction et la forme bien différente de ses voisines. Ainsi, chez des organismes "simples" comme les myxozoan (maximum de 7 cellules) [10.1098/rspb.2010.0282] tout comme chez des organismes de taille bien plus importante comme l'humain, on retrouve des cellules spécialisée pour une fonction spécifique [REF] (Figure \ref{fig:intro_tissu_type_cellulaire}): une protection, un acheminement d'éléments nutritifs, une transmission de matériel génétique, etc. Chez l’homme, ces cellules seront par exemple respectivement des keratynocytes [REF], des cellules endothéliales de l’intima [REF], des ovocytes [REF]. En s’assemblant entre cellules de même type, puis en formant des complexes avec d’autres types cellulaires [REF], les organismes parviennent à former alors des structures qu’on nomme tissu [REF]. La combinaison de keratynocytes, de mélanocytes, de cellules de Langerhans et les cellules de Merkel connectées par une matrice extra-cellulaire forment ainsi le tissu épidermal, ou plus simplement l’épiderme [REF].
 
 \begin{figure*}[hb!]
     \centering
     % \includegraphics[width=0.95\textwidth]{img/intro/code_genetique.png}
     \includegraphics[width=0.8\textwidth]{img/intro/cell_type_feuillet.jpg}
     \caption{Exemple de la diversité de cellules selon le tissu et feuillet embryonnaire dont elles sont issues.}
-    \label{fig:intro_code_genetique}
+    \label{fig:intro_tissu_type_cellulaire}
 \end{figure*}
 
 
 Pour effectuer chacune de ces tâches spécialisée, les cellules de type différent vont produire en partie des protéines ayant des fonctions biologiques différentes de ses voisines. La Gene Ontology distingue 32 ontologies (catégories de fonctions) qu'on peut regrouper en 3 familles de fonctions [ISBN 9780138004644]: 
 \begin{itemize}
-    \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Ex : la β-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose [10.1016/S0022-2836(61)80072-7].
+    \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Ex : la \beta-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose [10.1016/S0022-2836(61)80072-7].
     \item les fonctions de signalisation/liaison : en se fixant à un recepteur ou en étant un récepteur à la fixation d'un ligand, les proteines permettent de faire transiter de l'information en intra ou extra cellulaire. La fixation entraine la transmission d'un signal physique ou chimique via une cascade d'événements qui vont conduire à une réponse cellulaire. Ex : la production d'une protéine d'insuline par le pancréas va, en se fixant sur les récepteurs membranaires des cellules, déclancher des mécanismes de stockage du glucose. Cela se traduit dans le foie par l'initiation de la transformation du glucose en glycogène.
     \item les fonctions de structuration : les protéines par leur forme et propriétés physico chimiques hautement modulables permettent de donner une architecture et/ou des propriétés mécaniques aux cellules dans/autour desquelles elles se trouvent. Ex : la combinaison de proteines de myosin II et d'actin permettent la contraction musculaire par des phénomènes de coulissage de ces protéines.
 \end{itemize}
@@ -41,9 +38,9 @@ Pour effectuer chacune de ces tâches spécialisée, les cellules de type diffé
 
 Pour être produites, ces protéines suivent chacune un plan de construction prédéfini appelé code génétique. Stocké dans une molécule d'ADN (Acide DesoxyRibonucléique) pour chaque chromosome, ce code est présent à l'identique dans chacune des cellules d'un organisme. L'ADN est un polymère de longueur variable selon les espèces et dont la séquence est composée de 4 types de nucléotides : adénosine, tyrosine, guanine, et cytosine. Au long de sa séquence, l'ADN stocke l'information relative aux protéines sous forme d'unités qu'on nomme gène, de telle façon qu'une protéine n'est produisible que par un seul gène. Chez l'homme (sur qui on se concentrera dans ce manuscrit) la version 37 de GENCODE [https://www.gencodegenes.org/human/stats.html] considère ainsi qu'il existe 60 651 gènes. Cependant, tous parmis eux ne produisent pas de protéine. On distingue en réalité les gènes dits "codants" (19951 toujours dans GENCODE 37) car produisant des protéines, et les gènes "non-codants" qui codent pour plusieurs autres entités moléculaires utiles à la cellules.
 
-Chez l'homme et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant mono brin alors que l'ADN est double brin (d'où sa représentation classique en échelle), il ne possède pas de thymine mais à la place de l'uranine, et il est évidemment de beaucoup plus petite taille car il n'embarque que l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_gene}).
+Chez l'homme et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant mono brin alors que l'ADN est double brin (d'où sa représentation classique en échelle), il ne possède pas de thymine mais à la place de l'uranine, et il est évidemment de beaucoup plus petite taille car il n'embarque que l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_genetique}).
 
-\begin{figure*}[h!]
+\begin{figure*}[!ht]
     \centering
     % \includegraphics[width=0.95\textwidth]{img/intro/code_genetique.png}
     \includegraphics[width=0.8\textwidth]{img/intro/code_genetique.png}
@@ -59,7 +56,7 @@ Une fois copié depuis l'ADN, l'ARNm immature sort du noyau vers le cytoplasme p
 
 On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule est capable de n'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité ddes cellules est en fait permise par des mécanismes de régulation de l'expression des gènes (et par extension la répression) qui sont établis dès les premières différenciations cellulaire dans le développement d'un organisme. Tout ces mécanismes sont imbriqués pour ajuster au plus fin l'expression des gènes et donc la quantité de la ou les protéines necessaires à l'instant t à la cellule. On distingue les mécanismes suivants : 
 \begin{itemize}
-    \item \textbf{La régulation de l'initiation de la transcription} : lors de la transcription de l'ADN d'un gène en ARNm, l'ARN polymérase chargée de la transcription vient se fixer sur l'ADN sur le site d'initiation de la transcription (appelé promoteur) pour ensuite commencer à lire la séquence. La fixation au préalable d'une protéine sur ce site (facteur de transcription) entraine alors l'impossibilité de fixation de l'ARN polymérase chargée de la transcription ou à l'inverse favorise son recrutement pour la transcription du gène visé. Très souvents présents dans des boucles de retro-action, ces facteurs de transcription peuvent ainsi être eux-même inactivés par des substances variées. L'exemple le plus connu est l'opéron lactose : en présence de lactose dans la cellule, le facteur de transcription (represseur) lacl est inactivé par la fixation de lactose sur lui même et de la beta-galactosidase codée par le gène lacZ est produite. En l'absence de lactose, il est libre de se fixer sur le promoteur lac qui est le site d'initiation de la transcription pour les gènes lacZ, lacY, et lacA.
+    \item \textbf{La régulation de l'initiation de la transcription} : lors de la transcription de l'ADN d'un gène en ARNm, l'ARN polymérase chargée de la transcription vient se fixer sur l'ADN sur le site d'initiation de la transcription (appelé promoteur) pour ensuite commencer à lire la séquence. La fixation au préalable d'une protéine sur ce site (facteur de transcription) entraine alors l'impossibilité de fixation de l'ARN polymérase chargée de la transcription ou à l'inverse favorise son recrutement pour la transcription du gène visé. Très souvents présents dans des boucles de retro-action, ces facteurs de transcription peuvent ainsi être eux-même inactivés par des substances variées. L'exemple le plus connu est l'opéron lactose : en présence de lactose dans la cellule, le facteur de transcription (represseur) lacl est inactivé par la fixation de lactose sur lui même et de la \beta-galactosidase codée par le gène lacZ est produite. En l'absence de lactose, il est libre de se fixer sur le promoteur lac qui est le site d'initiation de la transcription pour les gènes lacZ, lacY, et lacA.
     \item \textbf{La conformation de la chromatine} : les repliements de l'ADN pour la condenser dans une cellule implique de rendre spatialement disponible certaines régions à la transcription et indisponible d'autres.
     \item \textbf{La modification post transciptionnelle} : les ARNm nécessitent l'ajout d'une 7-methylguanosine sur l'extrémité 5' (coiffe 5'), un épissage alternatif, et une polyadenylation (queue poly A) sur l'extrémité 3' afin d'être traduits en protéine. En leur absence, ces ARNm sont détruits par la cellule.
     \item \textbf{La méthylation} : les îlots CpG situés sur l'ADN (notamment dans les promoteurs) peuvent subir l'ajout d'un groupement méthyl, empêchant alors la fixation de différents agents de la transcription.
@@ -94,40 +91,70 @@ Lors des perturbation (maladie, stress, âge, etc.) du fonctionnement cellulaire
 \begin{itemize}
 \item Avant propos sur le développement des technologies de séquençage avec la quantification d'ARNm par rt-qPCR, le séquençage par gel, etc.
 \item Transition vers les technologies de séquençage nouvelle génération
+\item Expliquer qu'actuellement ce ne sont quasiment plus que le microarray et le RNA-seq qui sont utilisé (= transition expliquant pourquoi on ne détaille qu'eux par la suite)
 \end{itemize}
 
 %% Un TRES bon site sur les technos de sequencage : http://education.knoweng.org/sequenceng/
 
+
+
 \subsection{Microarray}
+
+\subsubsection{But et protocole}
+
+Principe de la puce à ADN/ARN
+Coloration mono/duo
+Préparation de librairie
+Construction des puces
+Exemples d'utilisation ?
+
+\subsubsection{Propriétés mathématiques/techniques et normalisation}
+\label{subsubsection:microarray_props_and_normalisation}
+
+Distribution
 \begin{itemize}
-\item Principe
-\item Utilisation avec des exemple
-\item Propriétés mathématiques et techniques
-\begin{itemize}
-    \item Distribution
-    "Données continues, il est possible de construire des modèles d’analyse statistique ense basant sur des hypothèses de normalité des données (Smyth, 2004). Ces techniquesd’analyse, adaptées aux données gaussiennes ne peuvent pas être appliquées directementaux données RNA-seq qui sont des données de comptage, discrètes et positives" %% https://tel.archives-ouvertes.fr/tel-01424124/document
-    \item Normalisation : Normalization is a process designed to identify and correct
-technical biases. 2 types of norm : Between and within normalization (cf. formation marie laure meme si c'est pour le RNA-seq). Pourquoi normalisation log2 : le log pour passer à une échelle symétrique autour de 0, le 2 car c'est + facile à interpréter, chaque fois qu'on augmente le ratio Ti de 1, on double la up regulation  %%(https://www.researchgate.net/post/Why_do_we_usually_use_Log2_when_normalizing_the_expression_of_genes et https://www.nature.com/articles/ng1032z)
-    \item Contrôle qualité
-    \item Filtration
+\item  "Données continues, il est possible de construire des modèles d’analyse statistique ense basant sur des hypothèses de normalité des données (Smyth, 2004). Ces techniquesd’analyse, adaptées aux données gaussiennes ne peuvent pas être appliquées directementaux données RNA-seq qui sont des données de comptage, discrètes et positives" %% https://tel.archives-ouvertes.fr/tel-01424124/document
+\item     Normalisation : Normalization is a process designed to identify and correct
+\item technical biases. 2 types of norm : Between and within normalization (cf. formation marie laure meme si c'est pour le RNA-seq). Pourquoi normalisation log2 : le log pour passer à une échelle symétrique autour de 0, le 2 car c'est + facile à interpréter, chaque fois qu'on augmente le ratio Ti de 1, on double la up regulation  
 \end{itemize}
-\item Explication du déclin mais avec contraste sur son utilité quand pas besoin de whole transcriptome
-\end{itemize}
+%%(https://www.researchgate.net/post/Why_do_we_usually_use_Log2_when_normalizing_the_expression_of_genes et https://www.nature.com/articles/ng1032z)
+Contrôle qualité
+Filtration ?
+
+
+Explication du déclin au profit du RNA-seq mais avec contraste sur son utilité quand pas besoin de whole transcriptome.
+
+
+
+%% INFOS ET FORMULATION SUR LA NORMALISATION
+% Parmi les biais biologiques classiques, on retrouve le contenu en GC, la longueur des transcrits, la quantité d'ARN total,  weighted linear regression (lowess).
+% Pour corriger ces biais biologiques, plusieurs méthodes ont été proposées prenant chacune plus ou moins de biais en compte  : 
+% linear regression analysis1, log cen- tering, rank invariant methods2 and Chen’s ratio statistics3
+% SOURCE : 10.1038/ng1032
+
 
 \subsection{RNA-Seq}
+
+\subsubsection{But et protocole}
+
+Principe
 \begin{itemize}
-\item Principe
 \item Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray (variable continue), et un comptage dans le cas du RNA-seq (variable discrète).
 \item Explication de l'essor du RNA-seq (couts, precision, etc.)
-\item Propriétés mathématiques : distribution(binomiale negative) %% Justification binomiale negative "Negative binomial (NB) distribution is the established gold standard, because of its ability to accurately model RNA-seq data with a low number of available replicates [7]." https://doi.org/10.1093/bib/bbx115
-\item normalisations : %% cf. formation marie laure, il y a toutes les refs de publi a prendre
+\end{itemize}
+
+\subsubsection{Propriétés mathématiques/techniques et normalisation}
+\label{subsubsection:rnaseq_props_and_normalisation}
+
+Distribution(binomiale negative) %% Justification binomiale negative "Negative binomial (NB) distribution is the established gold standard, because of its ability to accurately model RNA-seq data with a low number of available replicates [7]." https://doi.org/10.1093/bib/bbx115
+Normalisations%% cf. formation marie laure, il y a toutes les refs de publi a prendre
 %% La raison du l'utilisation des pseudo counts et du log dans le RNA-seqyo : https://www.biorxiv.org/content/biorxiv/early/2020/05/19/2020.05.19.100214.full.pdf
 \begin{itemize}
     \item Within sample
     \item Between samples
 \end{itemize}
 %% À classer entre within/between plus ahut selon ce qui est marqué dans la formation de marie laure : taille de librairie (= profondeur de sequencage), contenu en GC, taille des gènes, composition de la population d'ARN de chaque condition), contrôle qualité, filtration  (https://www.biostars.org/p/349881/)
-\end{itemize}
+
 
 
 %%%%%%%%%%%%%% LE TRAITEMENT STATISTIQUE DE L'INFORMATION BIOLOGIQUE %%%%%%%%%%%%%%
@@ -235,10 +262,16 @@ Ou co-expression différentielle
 %% Idée de début de paragraphe
 S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adpatés, c'est bien le vieillissement. Source multi-factorielle de changements dans l'organisme, il est chez l'humain à l'origine d'une dégradation progressive des fonctions de base du corps.
 
+% Aide à la justification de l'utilisation de la co-expression dans l'étude du vieillissement : 10.1016/j.arr.2009.10.006
+
+%% GROSSE REVIEW : 10.1007/978-3-030-25650-0
+
 \subsection{Définition biologique}
 \begin{itemize}
     \item Facteurs : raccourcissement des télomères, phénomènes d'inflammation, réduction de la machinerie cellulaire
     \item Manifestation : Ralentissement de la division cellulaire, développement de cellules non-fonctionnelles / nocives (aka tumeurs), malfonctionnement des tissus/organes
+    \item Le vieillissement, contrairement aux maladies mendéliennes, est multifactoriel est se manifeste donc sous la forme d'un spectre
+    \item Différence Âge chronologique / âge biologique
 \end{itemize}
 
 \subsection{Enjeux}

@@ -12,7 +12,9 @@
 %% défaut du document. L'option 'bibsection' permet de créer des
 %% bibliographies par chapitre présentées sous forme de section
 %% numérotée.
-\documentclass[PhD,bibsection,english,french]{ulthese}
+% \documentclass[PhD,english,french]{ulthese}
+\documentclass[PhD,english,french,nonatbib]{ulthese}
+% \documentclass[PhD,bibsection,english,french,nonatbib]{ulthese}
   %% Encodage utilisé pour les caractères accentués dans les fichiers
   %% source du document. Les gabarits sont encodés en UTF-8. Inutile
   %% avec XeLaTeX, qui gère Unicode nativement.
@@ -38,16 +40,26 @@
   %\setmainfont{TeX Gyre Termes}       % texte en Termes (Times)
   %\setmathfont{TeX Gyre Termes Math}  % mathématiques en Termes (Times)
 
+  %% Packages ajoutés par moi
+  \usepackage{todonotes} % Notes de TODO avec \todo
+  \usepackage{multirow} % Tables avec lignes fusionnées
+  \usepackage{alphabeta} % Lettres grecques hors mode maths
+  
+  \usepackage{titlesec} % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
+   \titleformat{\chapter}[display]
+    {\normalfont\bfseries}{}{0pt}{\Huge}
+    
+  %% Redefinition de commande par moi
+  
+
   %% Gestion des hyperliens dans le document. S'assurer que hyperref
   %% est le dernier paquetage chargé.
   \usepackage{hyperref}
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
-  
-  %% Packages ajoutés par moi
-  \usepackage{todonotes}
+  \urlstyle{same}
 
   %% Options de mise en forme du mode français de babel. Consulter la
-  %% documentation du paquetage babel pour les options disponibles.
+  %% documentation du paquetage babel pour les options disponibles.https://vpn1.ulaval.ca/+CSCOE+/logon.html
   %% Désactiver (effacer ou mettre en commentaire) si l'option
   %% 'nobabel' est spécifiée au chargement de la classe.
   \frenchbsetup{%
@@ -59,8 +71,8 @@
   %% Suppression du numéro de section de la bibliographie. Utilisation
   %% de \extrasfrench parce que c'est la dernière langue déclarée dans
   %% \documentclass, ci-dessus.
-  %\addto\extrasfrench{%
-  %  \renewcommand{\bibsection}{\section*{\bibname}\prebibhook}}
+%   \addto\extrasfrench{%
+  %% Packages ajoutés par moi
   
 
   %% Déclarations des pages de titre. Remplacer les éléments entre < >.
@@ -117,15 +129,19 @@
 \include{conclusion}            % conclusion
 \include{discussion}            % discussion
 
-\appendix                       % annexes le cas échéant
 
+\bibliographystyle{plain-fr}    % bibliographie
+\bibliography{bibliographie}    % nom du fichier .bib
+
+\appendix                       % annexes le cas échéant
 \include{annexe_questions}      % annexe
 \include{annexe_netrep}
+\include{annexe_dbGaP}
 
 %%\include{glossaire}             % glossaire
 %%\glsaddall
 %%\printglossary
 %%\printglossary[type=nomenclature]
-%%\bibliographystyle{plain}
 
 \end{document}
+
