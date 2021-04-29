@@ -44,6 +44,9 @@
   \usepackage{todonotes} % Notes de TODO avec \todo
   \usepackage{multirow} % Tables avec lignes fusionnées
   \usepackage{alphabeta} % Lettres grecques hors mode maths
+  \usepackage[acronym]{glossaries} % Glossaire
+  \makeglossaries
+  \usepackage{appendix} % Test : Annexes formatées comme voulu
   
   \usepackage{titlesec} % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
    \titleformat{\chapter}[display]
@@ -133,15 +136,23 @@
 \bibliographystyle{plain-fr}    % bibliographie
 \bibliography{bibliographie}    % nom du fichier .bib
 
-\appendix                       % annexes le cas échéant
-\include{annexe_questions}      % annexe
-\include{annexe_netrep}
-\include{annexe_dbGaP}
+% \appendix                       % annexes le cas échéant
+% \chapter*{Annexes}
+% \addcontentsline{toc}{chapter}{Annexes}
+% \include{annexe_questions}      % annexe
+% \include{annexe_netrep}
+% \include{annexe_dbGaP}
 
-%%\include{glossaire}             % glossaire
-%%\glsaddall
-%%\printglossary
-%%\printglossary[type=nomenclature]
+\renewcommand{\appendixpagename}{Annexes}
+\renewcommand{\appendixtocname}{Annexes}
+\appendixpage
+\begin{appendices}
+    \include{annexe_questions}
+    \include{annexe_netrep}
+    \include{annexe_dbGaP}
+\end{appendices}
+
+
+\include{glossaire}             % glossaire
 
 \end{document}
-
