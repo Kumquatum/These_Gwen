@@ -5,56 +5,16 @@
 %%\chapter{Titre du chapitre}     % numéroté
 \label{chapter:multidim}
 
-% \section{Résumé}
-\todo[inline]{Causer avec MP de l'utilisation de "mécanisme" ou "fonction" (biologique) de façon interchangeable : bonne ou mauvaise idée ?}
-
 La variation de la distribution de la co-expression des gènes associée au vieillissement est une propriété qu'on a pu observer dans le muscle lors du chapitre précédent. Grâce à elle, on a pu isoler dans le chapitre précédent des gènes dont la fonction biologique est confirmée comme liée au vieillissement du muscle. On peut alors considérer l'étude de la topologie des réseaux de co-expression de gènes comme une méthode efficace pour la détection de gènes biomarqueurs du vieillissement dans un tissu. 
 
-Cependant le vieillissement est un phénomène qui ne se limite pas au muscle dans un organisme et touche bien d'autres tissus en parallèle. Les manifestations diffèrent toutefois d'un tissu à l'autre.
-% du fait de la variété dans la composition cellulaire des tissus. % <= pas que donc pas assez bien (ex: photo vieillissement)
-Dans chacun d'eux, l'analyse d'expression différentielle ainsi que d'autres méthodes d'analyse de gènes dites discrètes \cite{Barabasi2004} ont permis de relever nombre de biomarqueurs individuels du vieillissement. 
+Cependant le vieillissement est un phénomène qui ne se limite pas au muscle dans un organisme et touche bien d'autres tissus en parallèle. Dans chacun d'eux, le transcriptome est le témoin des modifications liées à l'avancée dans l'âge. Comme souligné en introduction (voir \ref{intro_biomarker_aging}), l'analyse d'expression différentielle ainsi que d'autres méthodes d'analyse de gènes discrètes \cite{Barabasi2004} ont permis de relever nombre de gènes (biomarqueurs) associés à l'âge et de créer des bases de données les regroupant. 
 
+Si certains de ces gènes ont déjà vu étudié les liens les unissant dans des fonctions physiologiques, ce n'est pas le cas de la majorité. Ce manque est dû aux méthodes longues et/ou couteuses d'obtention de ces informations qui requièrent notamment des expérimentation basées sur des inactivation ou sur-activation \todo{La traduction dans le grand dico du québec c'est "invalidation" mais y'a rien pour knock in. Et puis c'est moins parlant je trouve.} d'un ou plusieurs gènes (respectivement \textit{knockout} et \textit{knockin} en anglais). 
+L'information apportée par de tels liens permettrait pourtant d'aider à déterminer le type de modification observé \cite{Lopez-Otin2013} : l'activation/répression du gène observé est-elle le fruit d'une réponse à l'activation d'un autre gène voir mécanisme complet ? Ou bien est-elle à l'origine d'un mécanisme justement, avec ou sans autres gènes impliqué ? 
 
-Il se manifeste dans chacun sous des formes  différente avec pour certains
-Une difficulté supplémentaire se présente alors lors de l'isolement de biomarqueurs : les changements biologiques entraînés par l'altération de ces biomarqueurs lors du vieillissement sont-ils 
-entraînés par des mécanismes distincts au sain du tissu considéré ou bien sont-ils communs entre plusieurs changements et/ou tissus ?
-% un phénomène local au tissu ou bien plus général avec une incidence dans le tissu considéré ?
-% Sont-ils la cause ou la conséquence du vieillissement. 
-Une même modification avec le temps telle que le raccourcissement des télomères (abordé en X.X.X\todo{ref intro vieillissement}) peut ainsi donner des affections variable selon le tissu : fibroses pulmonaires, des anémies aplasique, des dyskératoses congénitale, etc. \cite{Armanios2012} (Table \ref{table:tissu_telomere_effet}). 
+Ces questions (qu'on peut résumer à "conséquence ou cause") ont d'autant plus d'intérêt que des études précédentes tendent à démontrer l'existence de bases communes au vieillissement (fonctions physiologiques et mécanismes) \cite{DeMagalhaes2009a}. On relève ainsi des signatures d'expression de gènes communes à plusieurs tissus dans leur état "âgé". Parmi les fonctions physiologiques détectées comme sur-exprimées par l'expression différentielle, on retrouve notamment des composantes de la réponse immunitaire/inflammatoire et de la dégradation lysosomale. À l'opposé, dans les fonctions détectées comme sous-exprimées, on retrouve des fonctions associées à l'encodage de protéines mitochondriales ainsi que des gènes responsables de la production de différents types de collagène. En complément, bien que n'étant pas commun à tous les tissus du corps, d'autres signatures sont communes à des sous groupes de tissus partageant des propriétés : accumulation de marques de réparation de l'ADN chez les tissus se renouvelant rapidement \cite{Armanios2012}, épuisement des capacités de régénération chez les tissus disposant d'une cache de cellules souches \cite{Ratajczak2017}, dommages à l'ADN plus présents chez les tissus soumis à des stress mécaniques \cite{Kubben2017}, etc.
 
-\begin{table}[h]
-\resizebox{\textwidth}{!}{
-\begin{tabular}{m{0.2\textwidth}m{0.2\textwidth}m{0.6\textwidth}}
-\textbf{Type de tissu}                                                                    & \textbf{Nom du tissu}                                            & \textbf{\begin{tabular}[c]{@{}l@{}}Manifestations pathologiques chez l'humain \\ avec syndromes télomériques\end{tabular}} \\ \hline
-\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Tissus à fort\\ renouvellement\end{tabular}}   & Peau                                                             & • Blanchissement prématuré des cheveux                                                                                     \\
-                                                                                          & \begin{tabular}[c]{@{}l@{}}Moelle \\ osseuse\end{tabular}        & • Anémie aplastique                                                                                                        \\
-                                                                                          & Immune                                                           & \begin{tabular}[c]{@{}l@{}}• Infections opportuniste\\ • Immunodéfiscience des cellules B, T et NK\end{tabular}            \\
-                                                                                          & \begin{tabular}[c]{@{}l@{}}Épithélium \\ intestinal\end{tabular} & \begin{tabular}[c]{@{}l@{}}• Entérocolite\\ • Émoussement villositaire\end{tabular}                                        \\
-\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Tissus à faible\\ renouvellement\end{tabular}} & Poumon                                                           & \begin{tabular}[c]{@{}l@{}}• Emphysème prématuré\\ • Fibrose pulmonaire idiopathique\end{tabular}                          \\
-                                                                                          & Foie                                                             & • Fibrose-cirrhose du foie cryptogénétique                                                                                 \\
-                                                                                          & Os                                                               & \begin{tabular}[c]{@{}l@{}}• Ostéoporose\\ • Nécrose avasculaire\end{tabular}                                              \\
-Cancer                                                                                    & Multi-tissus                                                     & \begin{tabular}[c]{@{}l@{}}• Cancers épithéliaux\\ • Hémopathies malignes\end{tabular}                                    
-\end{tabular}
-}
-\caption{Phénotypes de maladies spécifiques aux organes chez les humains ayant des télomères courts. Modifié d'après la Table 2 de Armanios 2012, \textit{The telomere syndromes} \cite{Armanios2012}}
-\label{table:tissu_telomere_effet}
-\end{table}
-
-
-
-Des études précédentes tendent à démontrer l'existence de bases communes au vieillissement \cite{DeMagalhaes2009a}. On relève ainsi des signatures d'expression de gènes communes à plusieurs tissus dans leur état "âgé". Parmi les fonctions détectées comme sur-exprimées par l'expression différentielle, on retrouve notamment des composantes de la réponse immunitaire/inflammatoire et de la dégradation lysosomale. À l'opposé, dans les fonctions détectées comme sous-exprimées, on retrouve des fonctions associées à l'encodage de protéines mitochondriales ainsi que des gènes responsables de la production de différents types de collagène.
-
-% ### REDO
-
-
-% ### END
-
-
-Cependant, la diversité des fonctions impliquées complexifie la compréhension des relations qui les unirait, et ce malgré l'interconnectivité des caractéristiques majeures du vieillissement définies par Lopèz et al. \cite{Lopez-Otin2013}. Le ciblage de gènes uniques permis par l'analyse d'expression différentiele apporte certes une connaissance sur les fonctions impliquées dans le vieillisseme
-
-Cependant comme on a pu l'exposer auparavant \todo{raccrocher les wagons avec l'intro quand elle sera écrite pour parler de l'avantage à utiliser des réseaux par rapport à de la simple DE}, le ciblage de gènes uniques comme le fait l'expression différentielle ne permet pas de comprendre au mieux les relations qui les unis. Ainsi il est plus compliqué d'estimer si leur sélection est issue de mécanismes du vieillissements distincts ou communs. Des études ciblées sur chacun des gènes apportent des réponses comme le rapporte la base de donnée CellAge \cite{Avelar2019} ou encore AGEMAP chez la souris \cite{Zahn2007} mais restent toutefois trop peu nombreuses pour couvrir la totalité des gènes impliqués dans le vieillissement ainsi que leurs interactions. 
-
-Dans ce chapitre, on s'attachera donc à déterminer si l'analyse par réseaux de co-expression de gènes permet potentiellement de répondre à ce besoin \todo{Peut etre reformuler pour que ça fasse plus hypothès/problématique}. On commencera traiter les données issues de différents tissus tout en expliquant les précautions prises, on poursuivra par l'exploration générale des modules de gènes obtenus, et enfin on s'attardera sur les apports du croisement de données entre modules modérément et/ou non préservés. \todo{Reverifier plus tard si ce plan tient toujours, notamment si on a pas rajouté un aspect etude de la déconnexion}
+L'analyse de co-expression de gènes ayant déjà démontré sa capacité à aider à la détermination de nouveaux liens, de nouvelles voies de signalisation dans un tissu \cite{Hughes2000}, on souhaite l'employer pour créer des liens entre tissus. Dans ce chapitre, on s'attachera donc à déterminer si l'analyse par réseaux de co-expression de gènes permet de répondre à ce besoin \todo{Peut etre reformuler pour que ça fasse plus hypothès/problématique}. On commencera par traiter les données issues de différents tissus tout en expliquant les précautions prises, on poursuivra par l'exploration générale des modules de gènes obtenus, et enfin on s'attardera sur les apports du croisement de données entre modules modérément et/ou non préservés. \todo{Reverifier plus tard si ce plan tient toujours, notamment si on a pas rajouté un aspect etude de la déconnexion}
 
 % Objectif principal : 
 % Étudier la variation de la déconnexion entre les tranches d'âge extrêmes 
