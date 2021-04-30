@@ -48,19 +48,30 @@
   \makeglossaries
   \usepackage{appendix} % Test : Annexes formatées comme voulu
   
+  \usepackage{graphicx} % Affichage d'image
+  \usepackage[export]{adjustbox} % Adaptation d'image à une div
+%   \usepackage{listings}
+%   \usepackage{xcolor}
+  \usepackage{rotating} % Tourne les figures
+  \usepackage{longtable} % Table sur plusieurs pages
+
+
+  
   \usepackage{titlesec} % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
    \titleformat{\chapter}[display]
     {\normalfont\bfseries}{}{0pt}{\Huge}
     
-  %% Redefinition de commande par moi
-  
-
   %% Gestion des hyperliens dans le document. S'assurer que hyperref
   %% est le dernier paquetage chargé.
   \usepackage{hyperref}
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
   \urlstyle{same}
 
+  %% Redefinition de commande par moi
+  
+  
+  
+  
   %% Options de mise en forme du mode français de babel. Consulter la
   %% documentation du paquetage babel pour les options disponibles.https://vpn1.ulaval.ca/+CSCOE+/logon.html
   %% Désactiver (effacer ou mettre en commentaire) si l'option
@@ -148,6 +159,7 @@
 \appendixpage
 \begin{appendices}
     \include{annexe_questions}
+    \include{annexe_add_file_GWENA}
     \include{annexe_netrep}
     \include{annexe_dbGaP}
 \end{appendices}

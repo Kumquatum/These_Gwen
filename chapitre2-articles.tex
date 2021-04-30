@@ -53,46 +53,75 @@ Par ailleurs, tous les donneurs ne peuvent pas être prélevés pour l'ensemble 
 \todo[inline]{Un Sankey diagramme des tissus avec col 1 = SMTS, col 2 = SMTSD, col 3 = tranche d'age à 10 ans}
 
 
-\subsection{Sélection des tissus et filtre des échantillons}
+\subsection{Sélection des tissus}
 
-Parmi les 54 tissus disponibles, tous n'étaient pas adaptés à l'étude globale du vieillissement chez l'humain. Ainsi un premier filtre a retiré tous les tissus liés à un seul sexe : Trompes de Fallope, Col de l'utérus, Utérus, Vagin, Sein, Ovaire, Prostate, Testicule. Un second filtre a été de retirer les échantillons de lignées cellulaires car non représentatifs du vieillissement biologique : Cellules - Lymphocytes transformés par EBV, Cellules - Fibroblastes cultivés, Cellules - Lignée cellulaire de leucémie (CML). Enfin, l'expression des tissus tumoraux a montré, dans des études préalables, des modèles d'expression génétique différents de ceux non tumoraux \todo{REF}. Par conséquent, ces tissus sont supprimées ici ainsi que les échantillons dont le statut cancéreux 
-était inconnu. 
+\todo[inline]{Faire une figure avec l'évolution de la disparition du nombre de tissus}
 
-\todo{Faire une figure avec l'évolution de la disparition du nombre de tissus}
+Le vieillissement est un phénomène dont les altérations moléculaires sont linéaires avec le temps, dont les dommages cellulaires sont super-linéaires \cite{Todhunter2018}, et où la mortalité associée augmente de façon exponentielle passé 20 ans \cite{Finch2016}. Afin de faciliter la détection de ces altérations grâce à l'analyse de co-expression différentielle, on s'est donc dans un premier temps concentré sur une sélection de tranches d'âges très contrastées. Les échantillons sélectionnés sont issus de donneurs entre 20 et 30 ans pour la tranche qu'on nommera "jeune", et entre 60 et 70 ans pour la tranche qu'on nommera "âgée". Les données de GTEx ne comportent toutefois pas un nombre d'échantillons similaire pour chacune de ces tranches du fait de la mortalité plus importante chez les personnes âgées que les personnes jeunes (principalement des décès par traumatisme chez les jeunes plutôt que par maladie chronique ou maladie liée à l'âge chez les âgés). Un premier filtre de notre pré-traitement restreint donc la sélection des tissus à ceux comportant au minimum 50 échantillons dans chacune des tranches d'âge, ce qui n'est pas le cas de la Vessie (20) et le Rein - Médulla (3). Ce nombre d'échantillons permet d'assurer un bon compromis entre des réseaux de co-expression de gènes robustes (donc non sensibles à des valeurs aberrantes) et la perte de plus de tissus à étudier dans cette analyse multidimensionnelle qu'on souhaite effectuer \cite{Liesecke2019}.
 
-Le vieillissement est un phénomène dont les altérations moléculaires sont linéaires avec le temps, dont les dommages cellulaires sont super-linéaires \cite{Todhunter2018}, et où la mortalité associée augmente de façon exponentielle passé 20 ans \cite{Finch2016}. Afin de faciliter la détection de ces altérations grâce à l'analyse de co-expression différentielle, je me suis donc dans un premier temps concentrée sur une sélection de tranches d'âges très contrastées. Ainsi, les échantillons sélectionnés sont issus de donneurs entre 20 et 30 ans pour la tranche qu'on nommera "jeune", et entre 60 et 70 ans pour la tranche qu'on nommera "âgée". Les données de GTEx ne comportent toutefois pas un nombre d'échantillons similaire pour chacune de ces tranches du fait de la mortalité plus importante chez les personnes âgées que les personnes jeunes (principalement des décès par traumatisme chez les jeunes plutôt que par maladie chronique ou maladie liée à l'âge chez les âgés). 
+Par ailleurs, tous les tissus restant n'étaient pas nécessairement adaptés à l'étude globale du vieillissement chez l'humain. Ainsi on a retiré tous les tissus liés à un seul sexe : Trompes de Fallope, Col de l'utérus, Utérus, Vagin, Sein, Ovaire, Prostate, Testicule. À ce retrait s'ajoute celui des échantillons de lignées cellulaires (dérivées ou non de tissus eux concervés) car non représentatifs du vieillissement biologique : Cellules - Lymphocytes transformés par EBV, Cellules - Fibroblastes cultivés, Cellules - Lignée cellulaire de leucémie (CML). 
 
-Parmi les tissus précédemment sélectionnés, j'ai donc à nouveau restreint le nombre de tissus à ceux comportant au minimum 50 échantillons dans chacune des tranches d'âge : Vessie (20) et Rein - Médulla (3). Ce nombre d'échantillons permet d'assurer un bon compromis entre des réseaux de co-expression de gènes robustes (donc non sensibles à des valeurs aberrantes) et la perte de plus de tissus à étudier dans cette analyse multidimensionnelle qu'on souhaite effectuer \cite{Liesecke2019}.
 
-En plus de ces sélections de tissus, seuls les échantillons répondant au critère d'inclusion dans la cohorte "GTEx Analysis Freeze" ont été retenus. Cette cohorte atteste que les échantillons n'étaient pas issus de donneurs ayant des liens de parenté ou de donneurs considérés comme des "anomalies" \todo{S'il y a une formule moins péjorative, je prends...} biologiques, par exemple des donneurs avec des duplications/déletions chromosomiques, affectés d'un syndrome tel que défini par la base de données OMIM \cite{Hamosh2005} (ce qui n'inclue pas les maladies liées au vieillissement donc), ou encore ayant effectué une chirurgie de transition de genre \todo{check ce que Maria répond pour la formulation correcte}. En finalité, ce sont 36\% des échantillons qui ont été retirés.
+\begin{figure*}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_sample_count_by_tissu.png}
+    \label{figure:sample_count_by_tissu}
+    \caption{Nombre d'échantilllons disponibles par tissu et par tranche d'âge de 10 ans dans les données de GTEx.}
+\end{figure*}
+
+
+\subsection{Filtre des échantillons}
+
+\todo[inline]{Faire une figure avec l'évolution de la disparition du nombre d'échantillons. Ou bien faire du 2 en 1 avec la précédente sur les selections de tissus ?}
+
+En plus de ces sélections de tissus, certains échantillons ont directement nécessité une filtration afin de prévenir de potentiels biais. Ainsi, seuls les échantillons répondant au critère d'inclusion dans la cohorte "GTEx Analysis Freeze" ont été retenus en premier lieu. Cette cohorte atteste que les échantillons n'étaient pas issus de donneurs ayant des liens de parenté ou de donneurs avec des critères d'exclusion, par exemple des donneurs avec des duplications/déletions chromosomiques, affectés d'un syndrome tel que défini par la base de données OMIM \cite{Hamosh2005} (ce qui n'inclue pas les maladies liées au vieillissement), ou encore ayant effectué une chirurgie de ré-assignation sexuelle. 
+
+Par ailleurs, l'expression des tissus tumoraux a montré, dans des études préalables, des modèles d'expression génétique différents de ceux non tumoraux \cite{Tang2017}. Par conséquent, les échantillons de ces donneurs on également été supprimées ici ainsi que les échantillons dont le statut cancéreux était inconnu. 
 
 
 \subsection{Correction des facteurs confondants}
 
-À l'instar de l'analyse d'expression différentielle, l'analyse de co-expression différentielle nécessite des données les moins biaisées possibles pour une construction de réseau de qualité. Ces biais (ou facteurs confondants) peuvent être tant techniques que biologiques et vont entraîner une augmentation de la variation de façon artificielle. Le risque est alors de détecter une différence et de l'assumer comme issue de l'expérience qu'on mène alors qu'elle est en fait due à ces biais. Dans le cas de la co-expression spécifiquement, ces bais peuvent entraîner des corrélations crédibles mais erronées entre certains gènes, altérant alors la construction du réseaux de co-expression et donc la détection des modules. Ainsi, il est essentiel de corriger ces facteurs confondants au préalable de l'utilisation de mon package GWENA /todo{REF} sur les données.
+À l'instar de l'analyse d'expression différentielle, l'analyse de co-expression différentielle nécessite des données biaisées au minimum pour une construction de réseau de qualité. Ces biais (ou facteurs confondants) peuvent être tant techniques que biologiques et vont entraîner une augmentation de la variation de façon artificielle. Le risque est alors de détecter une différence artificielle et de l'assumer comme expérimentalement pertinente alors qu'elle est en fait due aux biais. Dans le cas de la co-expression plus spécifiquement, ces bais peuvent entraîner des corrélations erronées mais qui semblent crédibles entre certains gènes. Elles altèrent alors la construction du réseaux de co-expression et par la suite la détection des modules qui se base sur un découpage en modules via les corrélations. Ainsi, il est essentiel de corriger ces facteurs confondants au préalable de l'utilisation du package R GWENA \todo{REF} sur les données comme on va le faire par la suite.
 
-La complexité de la correction des facteurs confondant réside dans leur suppression sans pour autant supprimer le signal expérimental d'intérêt, ici les variations dans le transcriptome dûs à l'âge. Comme précisé en \ref{subsubsection:microarray_props_and_normalisation} et \ref{subsubsection:rnaseq_props_and_normalisation},
-chaque technologie de séquençage a un premier ensemble de normalisations spécifique à elle. Dans le cadre de la construction de réseaux de co-expression de gènes, une attention particulière doit être portée en plus du fait des risques de fausse corrélations. Malgré le progrès de techniques ciblées sur des facteurs confondants connus comme le sexe, le poids, l'héritage génétique, celles-ci ne sont pas capables de corriger pour des facteurs peu explicites ou diffus comme la classe sociale, l'alimentation, la façon de manipuler des techniciens. La correction par composante principale est une méthode ayant montré de bons résultats (basé sur de la détection de pathways au sain de modules détectés) de corrections de facteurs confondant par rapport à l'utilisation de correction par regression multible, par le taux exonic, ou encore par le numéro d'intégrité d'ARN (\textit{RNA integrity number}, ou RIN). Cependant cette méthode va également corriger pour l'âge si utilisée telle quelle,
+La complexité de la correction des facteurs confondant réside dans leur suppression sans pour autant altérer la distribution des données ou supprimer le signal expérimental d'intérêt, ici les variations dans le transcriptome dûs à l'âge. Il est également important avec l'utilisation de GWENA de veiller à ce que la correction n'altère pas la topologie d'invariance d'échelle qu'on retrouve dans les données de transcriptomique après construction d'un réseau de co-expression. En effet, cela invaliderait la méthode de détection des modules.
+% Comme précisé en \ref{subsubsection:microarray_props_and_normalisation} et \ref{subsubsection:rnaseq_props_and_normalisation}, chaque technologie de séquençage a un premier ensemble de normalisations spécifique à elle, limitant ainsi un premier ensemble de biais spécifiques. 
+\todo{Je me demande si ces 2 paragraphes plus haut ne devraient pas finir en \ref{chapter:intro}}
+
+La base de données GTEx n'échappe pas aux biais et a même été étudiée sur le plan de la contamination \cite{Nieuwenhuis2020}.
+Malgré le progrès de techniques ciblées sur des facteurs confondants connus comme l'effet de lot, l'effet de centre de prélèvement, le sexe, le poids, etc., celles-ci ne sont pas capables de corriger pour des facteurs peu explicites ou diffus comme la classe sociale, l'alimentation, la façon de manipuler des techniciens, etc. La correction par composante principale (CP) vise à répondre à ce type de problématique et a montré de bons résultats selon une évaluation par validation de pathways au sain de modules détectés. \cite{Parsana2019}. Elle a également montré de meilleurs résultats que d'autres méthodes telles que que la régression multiple, le taux exonique, ou encore le numéro d'intégrité d'ARN (\textit{RNA integrity number}, ou RIN). Fait important pour la co-expression en particulier, cette méthode conserve la propriété d'invariance d'échelle des données.
+
+Cependant cette correction va également corriger pour notre variable d'intérêt, l'âge, si utilisée telle quelle. Pour conserver cette information tout en ayant un effet de correction par CP suffisant, on a donc ajusté la méthode pour ne retirer que les $n$ PC par tissu les plus corrélés à l'âge et retirant le moins de gènes corrélés à l'âge. Le nombre $n$ de PC à éliminer a été estimé en calculant la perte de corrélation entre le phénotype et l'expression des gènes et confirmé en recherchant le nombre de gènes significativement corrélés avec deux bases de données de gènes du vieillissement (Table \ref{table:nb_PC_corr_and_samples_by_tissue}) : GenAge \cite{DeMagalhaes2004} et Digital Aging Atlas \cite{Craig2015}.
+
+\begin{table}[h!]
+% \resizebox{\textwidth}{!}{
+\centering
+\begin{tabular}{llll}
+\multirow{2}{*}{\textbf{Tissu}} & \multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}Nombre de CP \\ corrigées\end{tabular}}} & \multicolumn{2}{l}{\textbf{Nombre d'échantillons}} \\ \cline{3-4} 
+                                &                                                                                             & \textbf{Jeune}            & \textbf{Âgé}           \\ \hline
+Adipeux sous-cutané             & 1                                                                                           & 58                        & 227                    \\
+Artère tibiale                  & 3                                                                                           & 65                        & 206                    \\
+Muqueuse œusophagienne          & 1                                                                                           & 59                        & 160                    \\
+Muscle œusophagien              & 3                                                                                           & 64                        & 138                    \\
+Muscle squelettique             & 5                                                                                           & 73                        & 281                    \\
+Nerf tibial                     & 4                                                                                           & 56                        & 219                    \\
+Peau non exposée au soleil      & 4                                                                                           & 50                        & 220                    \\
+Peau exposée au soleil          & 3                                                                                           & 65                        & 250                    \\
+Thyroïde                        & 3                                                                                           & 53                        & 227                    \\
+Sang complet                    & 1                                                                                           & 73                        & 259                   
+\end{tabular}
+% }
+\caption{Résumé du nombre de composantes utilisées pour effectuer la correction de l'expression par tissu, ainsi que le nombre d'échantillons inclus dans chacun pour les deux plages d'âge.}
+\label{table:nb_PC_corr_and_samples_by_tissue}
+\end{table}
+
+\todo[inline]{Idée de figure : remplacer cette table ou en touts cas la partie nb composantes par un ensemble de mini histogrames avec les deux bdd en un, et en facet pour chaque tissu.}
+
+\subsection{Filtre sur les gènes}
 
 
-À celle-ci s'ajoute des étapes de normalisation communes comme la correction du contenu en GC, 
 
 
-La normalisation des gènes doivent toutefois être adaptés dans le cadre de la construction de réseaux de  co-expression de gènes. 
-
-
-
-%% NON :  là mélange de filtration et normalisation
-% En effet, le signal lié à la topologie d'invariance d'échelle doit être préservé, chose que plusieurs méthodes ne conservent pas comme la sélection des gène différentiellement exprimés uniquement. 
-
-
-
-
-% Pour ce faire, plusieurs méthode (dont beaucoup issues de l'analyse d'expression différentielle) existent 
-% Pour supprimer les biais biologiques on retrouve des méthodes 
-
-
-\subsection{Construction des réseaux par tissu et détection des modules}
+\section{Construction des réseaux par tissu et détection des modules}
 
 
 
