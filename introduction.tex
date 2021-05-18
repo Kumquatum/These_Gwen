@@ -201,8 +201,11 @@ Normalisations%% cf. formation marie laure, il y a toutes les refs de publi a pr
     \item Réseaux binaires (0 = pas de connexion, 1 = connexion). Pour et contres.
     \item Réseaux pondérés. Pourquoi c'est vers ça qu'on s'est orientés ? Car les connections entre gènes ne sont pas binaires, elles sont plutot multiples et très dépendantes temporellement. Une meme cellule échantillonnée à des temps différents aura un profil plus ou moins différent. On y retrouvera les grandes fonctions clefs mais les aspects plus variables auront peut etre changé. D'où aussi la nécessité d'un bon nombre d'échantillons pour assurer la validité des résultats. Sinon les correlations ne sont pas représentatives.
 \end{itemize}
+
 \subsection{Construction}
 \begin{itemize}
+\item Pourquoi utiliser les counts plutôt que les FPKM, TPM, etc.
+\item Quelles étapes de pré-traitement ?
 \item Les différents scores de similarité : Pearson, Spearman, bicor, mutual information
 \item La pondération des scores (adjacence et TOM) et la propriété d'invariance d'échelle (scale-free). Reparler de barbarasi et son celebre article (https://science.sciencemag.org/content/325/5939/412/tab-pdf) + Pourquoi elle est parfois encore discutée (https://www.nature.com/articles/s41467-019-08746-5) alors que tout de même pertinente en biologie. 
 \end{itemize}
@@ -272,6 +275,9 @@ S'il est une condition biologique où les réseaux de co-expression sont particu
 %% Liens utiles :
 % https://www.nature.com/articles/35041709
 % https://www.nature.com/articles/nrm.2017.68 maladies définies comme associées à l'âge
+% ACcumulation erreurs et lien avec la mortalité (page 123) https://www.sciencedirect.com/science/article/abs/pii/S095506741730131X
+% Age dependant/independant mortality : https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality
+% REview biomarqueurs et forces d'action sur le vieillissement : https://sci-hub.se/10.1007/978-3-030-25650-0
 
 % "Two evolutionary theories of ageing — the mutation-accumulation and trade-off theories "
 
@@ -281,7 +287,8 @@ S'il est une condition biologique où les réseaux de co-expression sont particu
 
 \begin{itemize}
     \item Phenomène à la fois génétique (intrinseque) [] et environemental (extrinseque) 
-    \item Facteurs : raccourcissement des télomères, phénomènes d'inflammation, réduction de la machinerie cellulaire
+    \item Facteurs (hallmarks) : raccourcissement des télomères, phénomènes d'inflammation, réduction de la machinerie cellulaire
+    % Sterile inflammation, also known as ‘inflammaging’, is a hallmark of ageing and a contributing factor to many age-related diseases ( https://doi.org/10.1093/gerona/glu057). 
     \item Manifestation : Ralentissement de la division cellulaire, développement de cellules non-fonctionnelles / nocives (aka tumeurs), malfonctionnement des tissus/organes
     \item Le vieillissement, contrairement aux maladies mendéliennes, est multifactoriel est se manifeste donc sous la forme d'un spectre
     \item Différence Âge chronologique / âge biologique
@@ -318,7 +325,16 @@ Cancer                                                                          
 
 
 \subsection{Enjeux}
-Un enjeu de santé publique
+
+% Le vieillissement est un phénomène à distinguer de la longévité qui ne tient pas compte de l'aspect dégradation de la santé. 
+
+% Si la quête pour l'immortalité n'est pas souhaitable pour plusieurs raisons tant éthiques qu'économiques \cite{Hayflick2000}, la recherche pour un vieillissement en bonne santé se doit-elle de continuer.
+
+De Magalhães s'interrogeait en 2003 \cite{deMagalhes2003} d'une programmation génétique du vieillissement. La question sous-jacente abordée était finalement de savoir si analyser et comprendre indépendemment chaque conséquence néfaste et maladie apparaissant avec l'âge n'était pas une course perdue d'avance pour les combattre. Ainsi, De Magalhães envisageait que comprendre le fonctionnement global du vieillissement serait plus pérenne pour retarder d'un seul coup l'apparition de quelques, si ce n'est toutes, maladies chez la personne âgée.
+
+Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de santé publique.
+
+
 \begin{itemize}
     \item Susceptibilité aux maladies opportunistes
     \item tdeetAutonomie patient
@@ -337,7 +353,8 @@ Un enjeu de santé publique
     
 \end{itemize}
 %% https://doi.org/10.1007/978-981-32-9005-1_3
-
+%% https://www.sciencedirect.com/science/article/abs/pii/S0959438820300878
+%% https://onlinelibrary.wiley.com/doi/abs/10.1111/acel.13280
 
 \section*{Phrases utiles à retravailler et intégrer}
 

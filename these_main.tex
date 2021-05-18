@@ -41,29 +41,29 @@
   %\setmathfont{TeX Gyre Termes Math}  % mathématiques en Termes (Times)
 
   %% Packages ajoutés par moi
-  \usepackage{todonotes} % Notes de TODO avec \todo
-  \usepackage{multirow} % Tables avec lignes fusionnées
-  \usepackage{alphabeta} % Lettres grecques hors mode maths
-  \usepackage[acronym]{glossaries} % Glossaire
+  \usepackage{todonotes}            % Notes de TODO avec \todo
+  \usepackage{multirow}             % Tables avec lignes fusionnées
+  \usepackage{alphabeta}            % Lettres grecques hors mode maths
+  \usepackage[acronym]{glossaries}  % Glossaire
   \makeglossaries
-  \usepackage{appendix} % Test : Annexes formatées comme voulu
-  
-  \usepackage{graphicx} % Affichage d'image
-  \usepackage[export]{adjustbox} % Adaptation d'image à une div
+  \usepackage{appendix}             % Test : Annexes formatées comme voulu
+  \usepackage{textgreek}            % Lettres grecques hors formules de maths
+  \usepackage{graphicx}             % Affichage d'image
+  \usepackage[export]{adjustbox}    % Adaptation d'image à une div
 %   \usepackage{listings}
 %   \usepackage{xcolor}
-  \usepackage{rotating} % Tourne les figures
-  \usepackage{longtable} % Table sur plusieurs pages
-
-
+  \usepackage{rotating}             % Tourne les figures
+  \usepackage{longtable}            % Table sur plusieurs pages
+  \usepackage{svg}
+  \usepackage{booktabs}             % Tables plus propres avec pre-formatage
+  \usepackage{colortbl}             % Couleur dans des tables
   
-  \usepackage{titlesec} % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
+  \usepackage{titlesec}             % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
    \titleformat{\chapter}[display]
     {\normalfont\bfseries}{}{0pt}{\Huge}
     
-  %% Gestion des hyperliens dans le document. S'assurer que hyperref
-  %% est le dernier paquetage chargé.
-  \usepackage{hyperref}
+  %% /!\ S'assurer que hyperref est le dernier paquetage chargé.
+  \usepackage{hyperref}             % Gestion des hyperliens dans le document
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
   \urlstyle{same}
 
@@ -162,6 +162,7 @@
     \include{annexe_add_file_GWENA}
     \include{annexe_netrep}
     \include{annexe_dbGaP}
+    \include{annexe_chap2_genes_intersect_enrichments}
 \end{appendices}
 
 

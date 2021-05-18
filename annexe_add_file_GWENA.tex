@@ -1,4 +1,4 @@
-\chapter{Fichier additionnel au chapitre \ref{chapter:gwena}}
+\chapter{Fichier additionnel associé au chapitre \ref{chapter:gwena}}
 
 \begin{center}
 {\huge Additional file 1}\\
@@ -109,17 +109,19 @@ In order to limit batch effect and handle the maximum of other co-founding effec
 Correlation density in Figure \ref{fig:supp_fig_ageing_correlation_density} suggest a similarity between the corrections from 2 to 5 PC removal. Combined with the proportion of overlapping known ageing genes in Figure \ref{fig:supp_fig_ageing_genes_overlapping} we determined the optimal number of PC $n$ to remove to be 4.
 
 \clearpage
-\section*{Supplementary Results}
+\section{Supplementary Results}
 \subsection{Connectivity drop on all modules}
 \label{supp:supp_connectivity_drop}
 
 \begin{figure}[h!]
-    \begin{adjustbox}{addcode={
-        \begin{minipage}{\width}}{
-            \caption{Here is a caption of the figure which is so long that it has to be wrapped over multiple lines, but should not exceed the width (height after the rotation) of the image.
-        }\end{minipage}},rotate=90,center}
+    \begin{adjustbox}{addcode=
+        {\begin{minipage}{\width}}
+        {
+                \caption{Distribution of the connectivity for each gene by module between the two age range. Genes connectivity is ordered by increasing connectivity in the young condition (red).}
+            \end{minipage}
+        },rotate=90,center}
         \includegraphics[scale=.476]{img/annexe_add_file_GWENA/additional_file_figure_4.pdf}%
-      \end{adjustbox}
+    \end{adjustbox}
 \end{figure}
 
 \clearpage
