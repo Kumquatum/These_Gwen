@@ -214,7 +214,7 @@ Comme suggéré par les ratios de statut de préservation en table \ref{table:mo
 
 \subsection{Répartition des phénomènes communs liés au vieillissement dans plusieurs tissus}
 
-Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant être impliquées dans le vieillissement, les intersections de plus de 3 tissus et ayant au moins 5 gènes on été enrichies via GWENA. Comme visible en Annexe \ref{annexe:chap_2_genes_intersect_enrichments} dans les tables des enrichissements obtenus, 5 intersections n'ont pas donné d'enrichissement significatif malgré un nombre de gène équivalent à d'autres intersections avec enrichissement. Les 18 autres intersections ont quant à elles retourné des fonctions physiologiques (Gene Ontology \cite{Ashburner2000}, CORUM \cite{Ruepp2008}) et voies d'activation (KEGG \cite{Kanehisa2019}, REACTOME \cite{Fabregat2016}, WikiPathways\cite{Slenter2018}) connues comme faisant partie du vieillissement global, ou de manifestations spécifiques à plusieurs tissus. Ainsi on retrouve, dans ces intersections de modules peu ou pas préservés dans la tranche âgée, des fonctions associées à l'homéostasie, la régulation de la transcription, la gestion des dérivés réactifs de l'oxygène, l'inflammation, etc. (Table \ref{table:intersection_aging_global_phenomenons} et Figure \ref{figure:revigo_resume_4_enrich}). La muqueuse œsophagienne bien qu'ayant un nombre de gènes plus élevé que les autres tissus ne se retrouve pas sur-représentée dans ces phénomènes observés. Cela indique donc que la majorité de ses gènes se trouvent dans les intersections de faible taille, tant en gènes qu'en nombre de tissus recoupés. Le sang complet, le tissu adipeux sous-cutané, et la peau non exposée au soleil sont eux les tissus les moins présents dans ces intersections avec des phénomènes liés au vieillissement. Le sang complet est notablement absent des intersection avec des phénomènes liés à la coagulation. Les tissus ayant un fort renouvellement (voir en partie \ref{tissu_telomere_effet}) que sont les épithéliums (peau exposée au soleil, artère tibiale, muqueuse œsophagienne) sont porteurs d'un grand nombre de phénomènes, ainsi que la thyroïde et le muscle squelettique. 
+Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant être impliquées dans le vieillissement, les intersections de plus de 3 tissus et ayant au moins 5 gènes on été enrichies via GWENA. Comme visible en Annexe \ref{annexe:chap_2_genes_intersect_enrichments} dans les tables des enrichissements obtenus, 5 intersections n'ont pas donné d'enrichissement significatif malgré un nombre de gène équivalent à d'autres intersections avec enrichissement. Les 18 autres intersections ont quant à elles retourné des fonctions physiologiques (Gene Ontology \cite{Ashburner2000}, CORUM \cite{Ruepp2008}) et voies d'activation (KEGG \cite{Kanehisa2019}, REACTOME \cite{Fabregat2016}, WikiPathways\cite{Slenter2018}) connues comme faisant partie du vieillissement global, ou de manifestations spécifiques à plusieurs tissus. Ainsi on retrouve, dans ces intersections de modules peu ou pas préservés dans la tranche âgée, des fonctions associées à l'homéostasie, la régulation de la transcription, la gestion des dérivés réactifs de l'oxygène, l'inflammation, etc. (Table \ref{table:intersection_aging_global_phenomenons} et Figure \ref{figure:revigo_resume_4_enrich}). La muqueuse œsophagienne bien qu'ayant un nombre de gènes plus élevé que les autres tissus ne se retrouve pas sur-représentée dans ces phénomènes observés. Cela indique donc que la majorité de ses gènes se trouvent dans les intersections de faible taille, tant en gènes qu'en nombre de tissus recoupés. Le sang complet, le tissu adipeux sous-cutané, et la peau non exposée au soleil sont eux les tissus les moins présents dans ces intersections avec des phénomènes liés au vieillissement. Le sang complet est notablement absent des intersection avec des phénomènes liés à la coagulation. Les tissus ayant un fort renouvellement (voir en Table \ref{table:tissu_telomere_effet}) que sont les épithéliums (peau exposée au soleil, artère tibiale, muqueuse œsophagienne) sont porteurs d'un grand nombre de phénomènes, ainsi que la thyroïde et le muscle squelettique. 
 
 
 \begin{table}[]
@@ -281,26 +281,65 @@ Enfin, on a exploré le vieillissement et son phénomène de perturbation de la 
 
 \subsection{Les variation de co-expression dans l'intersection liée à l'inflammation}
 
-L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \cite{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler un ou quelques acteurs afin de 
-% L'inflammation systémique chronique de faible intensité est une manifestation courante du vieillissement.
-% La détection de ces différents phénomènes liée à l'âge ayant été permise par le ciblage 
+L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \cite{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler peu d'acteurs (gène, protéine, miRNA, etc.) et à se concentrer sur des contextes très précis \cite{Franceschi2017}. Bien qu'apportant un niveau de preuve inférieur à toute validation expérimentale, les réseaux de co-expression de gènes permettent de comprendre bien plus d'acteurs. À titre d'exemple, on a souhaité ici détaillé le cas de l'intersection de gènes associés à l'inflammation lors du vieillissement.
 
-\begin{figure}[b]
+\begin{figure}[p]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_plot_adipo_skinnosun_thyr.png}
-    \caption{Réseaux de co-expression des gènes de l'intersection associée au phénomène d'inflammation lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) et 3 tissus sont présentés : tissu adipeux, peau non exposée au soleil, et thyroïde.}
+    \caption{Réseaux de co-expression des gènes de l'intersection associée au phénomène d'inflammation lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : tissu adipeux, peau non exposée au soleil, et thyroïde.}
     \label{figure:graphs_intersection_plot_adipo_skinnosun_thyr}
 \end{figure}
 
+Les variation de motif dans la co-expression sont bien souvent la première cause de non préservation des modules. Des changements de score de centralité, des modifications de hub gene, des supression totales de signal sont bien souvent à l'origine de cette différence de topologie détectée entre les modules à l'aide de la co-expression différentielle \cite{Ritchie2016,Zhang2005a}. Cet effet se manifeste de plusieurs façons dans le cas de l'intersection sur l'inflammation comme visible en figure \ref{figure:graphs_intersection_plot_adipo_skinnosun_thyr}. Bien que la variation de la co-expression ne soit pas identique entre tous les tissus qui forment cette intersection, on observe des acteurs communs. Le gène RSAD précédemment mis en avant comme gène simulé par le FT IRF1 et un mARN devient ainsi un hub gene dans la condition âgée selon le classement de score de centralité. Cependant les sources de progression dans le classement selon la centralité divergent selon le tissu. Dans le tissu adipeux on constate que c'est dû à un renfort de la co-expression entre RSAD2 et IF44 associé à une perte de co-expression de CMPK2, hub gene gene dans la condition jeune. Dans la peau non exposée au soleil, on constate un renfort global de la co-expression avec toutefois une centralisation vers RSAD2. Une augmentation localisée entre OAS2 et OASL est également à noter. Enfin, dans la thyroïde, c'est une déconnexion entre HERC6 et OAS2 au profit de RSAD2 qui le rend hub gene dans la condition âgée. Si cette re-organisation de la co-expression vers RSAD2 aurait pu être issue d'une contribution d'IRF1 ou tout autre IRF étant donné les information précédentes, des analyses complémentaires ont précisé qu'aucun des IRF détectés comme FT auparavant n'était présent dans le module où se trouve RSAD2 (jeune comme âgé). L'origine de la variation de RSAD2 et OAS2/OASL pourrait donc être d'une autre nature qu'une modification de la transcription d'un ou plusieurs FT.
 
 
 \subsection{Cas particulier : le vieillissement spécifique à la peau}
 
+Si le vieillissement partage des mécanismes et altérations communes à travers plusieurs tissus, il existe parallèlement des altération spécifiques à certains tissus. Bien que ne permettant pas l'enrichissement global de la compréhension du vieillissement, ces altérations locales nécessitent de s'y intéresser afin de prévenir et prendre en charge les pathologies qui s'y rattachent. La peau est un des organes dont l'intégrité est la plus susceptible d'être mise à mal par le vieillissement en raison de son exposition directe avec l'environnement extérieur. Le premier facteur de vieillissement extrinsèque est le photo-vieillissement dont les effets sont cumulatifs avec le temps \cite{Farage2008}. Il se caractérise majoritairement pas une exposition aux UVs (UVA et UVB) qui vont induire des détériorations des fibres de collagène et d'élastine dans la peau. À noter également, des altérations de la matrice extra-cellulaire entre l'épiderme et le derme qui sont les deux couches composant la peau \cite{Rogowski-Tylman2016}.
+
+Un intersection faite de la peau exposée au soleil, la peau non exposée au soleil, et la muqueuse œusophagienne fait état dans notre cas d'un tel type de photo-vieillissement. Elle est composée principalement d'enrichissements sur des fonctions physiologiques directement liées à la synthèse et régulation de mélanine comme exposé en Figure \ref{figure:revigo_resume_melanine}. Ce pigment synthétisé par les mélanocytes à partir d'une oxydation de la thyrosine joue un rôle majeur de lutte contre les dégâts provoqués par les UVs \cite{Bettley1965}. On retrouve d'ailleurs le gène responsable de cette transformation, TYR, dans le réseau de co-expression en Figure \ref{figure:graphs_intersection_melanine} comme hub gene (score de centralité). On constate une relation forte de celui-ci avec un autre gène, SLC24A5, qui code pour un échangeur de cations (sodium, potassium, calcium) de façon générale. C'est notamment à lui que se rattachent les enrichissements de type \textit{secondary metabolite biosynthetic process}. En effet, si son effet a été m
+
+Si des soupçons 
 
 
-\subsection{Variation de la co-expression dans le XXX}
-Comme attendu au vu de la littérature, de nombreux enrichissements ont retourné des mécanismes et acteurs de l'inflammation. 
+\begin{figure}[b]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_enrich_skin.png}
+    \caption{.}
+    \label{figure:revigo_resume_melanine}
+\end{figure}
 
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_melanine.png}
+    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œusophagienne, peau non exposée au soleil, et peau exposée au soleil.}
+    \label{figure:graphs_intersection_melanine}
+\end{figure}
+
+
+% # Tissues :
+% # > esophagus_mucosa_mod_pres
+% # > skin_not_sun_exposed_mod_pres
+% # > skin_sun_exposed_mod_pres
+% # 0_0_0_0_1_0_0_0_0_0_1_0_1_0_0_0
+% # Nb genes : 7
+
+% |source |term_name                                               |
+% |:------|:-------------------------------------------------------|
+% |GO:BP  |melanin biosynthetic process                            |
+% |GO:BP  |melanin metabolic process                               |
+% |GO:BP  |secondary metabolite biosynthetic process               |
+% |GO:BP  |phenol-containing compound biosynthetic process         |
+% |GO:BP  |secondary metabolic process                             |
+% |GO:BP  |pigment biosynthetic process                            |
+% |GO:BP  |pigment metabolic process                               |
+% |GO:BP  |pigmentation                                            |
+% |GO:BP  |phenol-containing compound metabolic process            |
+% |GO:BP  |regulation of secondary metabolic process               |
+% |GO:BP  |regulation of melanin biosynthetic process              |
+% |GO:BP  |regulation of secondary metabolite biosynthetic process |
+% |GO:MF  |melanin-concentrating hormone receptor activity         |
+% |HPA    |retina; pigment epithelial cells[High]                  |
 
 
 
@@ -326,8 +365,7 @@ Comme attendu au vu de la littérature, de nombreux enrichissements ont retourn�
 
 \section{Conclusion}
 
-
-
+Grâce à leur capacité d'étude à plus large échelle, les réseaux de co-expression sont un outil à privilégier pour l'exploration multi-tissus d'un phénomène aussi global et complexe que le vieillissement. Notre mise en évidence de groupes gènes impliqués dans les deux phénomènes du vieillissement sur lesquels on s'est concentrés est encourageant quant à l'utilisation de la co-expression différentielle et l'étude des motifs impliqués. Des tissus portant les mêmes gènes peuvent ainsi être étudiées via la co-expression et permettre d'établir un lien direct entre les gènes et les marques du vieillissement. Des limitations restent toutefois présentes sur la nécessité pour se faire d'un grand nombre d'échantillon dans les tranches d'âge jeunes, ou en tout cas pas sur tout type de tissu. De même, une validation de ces résultats via expérimentalement reste un passage obligatoire et coûteux, bien que moins coûteux qu'un criblage à haut débit sans pré-sélection.
 
 
 
