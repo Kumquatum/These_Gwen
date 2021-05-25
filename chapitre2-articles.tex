@@ -281,7 +281,7 @@ Enfin, on a exploré le vieillissement et son phénomène de perturbation de la 
 
 \subsection{Les variation de co-expression dans l'intersection liée à l'inflammation}
 
-L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \cite{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler peu d'acteurs (gène, protéine, miRNA, etc.) et à se concentrer sur des contextes très précis \cite{Franceschi2017}. Bien qu'apportant un niveau de preuve inférieur à toute validation expérimentale, les réseaux de co-expression de gènes permettent de comprendre bien plus d'acteurs. À titre d'exemple, on a souhaité ici détaillé le cas de l'intersection de gènes associés à l'inflammation lors du vieillissement.
+L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \cite{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler peu d'acteurs en même temps (gène, protéine, miRNA, etc.) et à se concentrer sur des contextes très précis \cite{Franceschi2017}. Bien qu'apportant un niveau de preuve inférieur à toute validation expérimentale, les réseaux de co-expression de gènes permettent de comprendre bien plus d'acteurs. À titre d'exemple, on a souhaité ici détailler le cas de l'intersection de gènes associés à l'inflammation lors du vieillissement (Figure \ref{figure:revigo_resume_4_enrich}.D).
 
 \begin{figure}[p]
     \centering
@@ -295,71 +295,51 @@ Les variation de motif dans la co-expression sont bien souvent la première caus
 
 \subsection{Cas particulier : le vieillissement spécifique à la peau}
 
-Si le vieillissement partage des mécanismes et altérations communes à travers plusieurs tissus, il existe parallèlement des altération spécifiques à certains tissus. Bien que ne permettant pas l'enrichissement global de la compréhension du vieillissement, ces altérations locales nécessitent de s'y intéresser afin de prévenir et prendre en charge les pathologies qui s'y rattachent. La peau est un des organes dont l'intégrité est la plus susceptible d'être mise à mal par le vieillissement en raison de son exposition directe avec l'environnement extérieur. Le premier facteur de vieillissement extrinsèque est le photo-vieillissement dont les effets sont cumulatifs avec le temps \cite{Farage2008}. Il se caractérise majoritairement pas une exposition aux UVs (UVA et UVB) qui vont induire des détériorations des fibres de collagène et d'élastine dans la peau. À noter également, des altérations de la matrice extra-cellulaire entre l'épiderme et le derme qui sont les deux couches composant la peau \cite{Rogowski-Tylman2016}.
-
-Un intersection faite de la peau exposée au soleil, la peau non exposée au soleil, et la muqueuse œusophagienne fait état dans notre cas d'un tel type de photo-vieillissement. Elle est composée principalement d'enrichissements sur des fonctions physiologiques directement liées à la synthèse et régulation de mélanine comme exposé en Figure \ref{figure:revigo_resume_melanine}. Ce pigment synthétisé par les mélanocytes à partir d'une oxydation de la thyrosine joue un rôle majeur de lutte contre les dégâts provoqués par les UVs \cite{Bettley1965}. On retrouve d'ailleurs le gène responsable de cette transformation, TYR, dans le réseau de co-expression en Figure \ref{figure:graphs_intersection_melanine} comme hub gene (score de centralité). On constate une relation forte de celui-ci avec un autre gène, SLC24A5, qui code pour un échangeur de cations (sodium, potassium, calcium) de façon générale. C'est notamment à lui que se rattachent les enrichissements de type \textit{secondary metabolite biosynthetic process}. En effet, si son effet a été m
-
-Si des soupçons 
-
+Si le vieillissement partage des mécanismes et altérations communes à travers plusieurs tissus, il existe parallèlement des altération spécifiques à certains tissus. Bien que ne permettant pas l'enrichissement global de la compréhension du vieillissement, ces altérations locales nécessitent de s'y intéresser afin de prévenir et prendre en charge les pathologies qui s'y rattachent. La peau est un des organes dont l'intégrité est la plus susceptible d'être mise à mal par le vieillissement en raison de son exposition directe avec l'environnement extérieur. Le premier facteur de vieillissement extrinsèque est le photo-vieillissement dont les effets sont cumulatifs avec le temps \cite{Farage2008}. Il se caractérise majoritairement pas une exposition aux UVs (UVA et UVB) qui vont induire des détériorations des fibres de collagène et d'élastine dans la peau. À noter également, des altérations de la matrice extra-cellulaire entre l'épiderme et le derme qui sont les deux couches composant la peau \cite{Rogowski-Tylman2016}. 
 
 \begin{figure}[b]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_enrich_skin.png}
-    \caption{.}
+    \caption{Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil, et muqueuse œsophagienne. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur.}
     \label{figure:revigo_resume_melanine}
 \end{figure}
+
+Un intersection faite de la peau exposée au soleil, la peau non exposée au soleil, et la muqueuse œusophagienne fait état dans notre cas d'un tel type de photo-vieillissement. Elle est composée principalement d'enrichissements sur des fonctions physiologiques directement liées à la synthèse et régulation de mélanine comme exposé en Figure \ref{figure:revigo_resume_melanine}. Ce pigment synthétisé par les mélanocytes à partir d'une oxydation de la thyrosine joue un rôle majeur de lutte contre les dégâts provoqués par les UVs \cite{Bettley1965}. On retrouve d'ailleurs le gène responsable de cette transformation, TYR, dans le réseau de co-expression en Figure \ref{figure:graphs_intersection_melanine} comme hub gene (score de centralité). On constate une relation forte de celui-ci avec un autre gène, SLC24A5, qui code pour un échangeur de cations (sodium, potassium, calcium) de façon générale. C'est notamment à lui que se rattachent les enrichissements de type \textit{secondary metabolite biosynthetic process}. Aucune confirmation de son rôle de régulateur partiel de la production de mélanine n'a été faite chez l'homme malgré sa mise en évidence chez la souris \cite{Zhang2019,Ginger2008}. Contrairement à la tyrosinase produite par TYR qui se trouve dans les mélanosomes, la protéine NCKX5 produite par SLC24A5 est localisée dans les mithochondries. À ces deux gènes s'ajoute une relation de chacun avec CLEC12B dans la peau. Ce gène appartient à la famille des récepteurs de lectine de type C qui jouent un rôle essentiel dans l'immunité et l'homéostasie. La fonction de CLEC12B elle-même reste cependant encore mal caractérisée malgré la détection d'un motif d'inhibition classique basé sur la tyrosine des immuno-récepteurs dans sa séquence capable de lier SHP-1/SHP-2 \cite{Tone2019}. Ces derniers sont notamment suspectés d'avoir un rôle dans la progression des mélanomes \cite{Zhang2013}. 
+
+La Figure \ref{figure:graphs_intersection_melanine} permet de constater que la relation TYR/SLC24A5 tend à augmenter avec l'âge dans la peau exposée ou non au soleil, avec une augmentation plus forte dans la peau non exposée. Ces résultats coïncident avec l'augmentation de la production de mélanine constatée chez la personne âgée pour compenser la diminution globale de la densité de mélanocytes \cite{Gilchrest1979}. À l'inverse, la co-expression de CLEC12B avec SLC24A5 et TYR tend à diminuer avec l'âge. L'ensemble des ces résultats réunis ainsi que la littérature nous porte donc à penser que SLC24A5 et CLEC12B pourraient avoir un rôle dans le mécanisme de compensation de mélanogénèse avec l'âge.
 
 \begin{figure}[p]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_melanine.png}
-    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œusophagienne, peau non exposée au soleil, et peau exposée au soleil.}
+    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.99 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œusophagienne, peau non exposée au soleil, et peau exposée au soleil.}
     \label{figure:graphs_intersection_melanine}
 \end{figure}
 
 
-% # Tissues :
-% # > esophagus_mucosa_mod_pres
-% # > skin_not_sun_exposed_mod_pres
-% # > skin_sun_exposed_mod_pres
-% # 0_0_0_0_1_0_0_0_0_0_1_0_1_0_0_0
-% # Nb genes : 7
+\section{Discussion}
 
-% |source |term_name                                               |
-% |:------|:-------------------------------------------------------|
-% |GO:BP  |melanin biosynthetic process                            |
-% |GO:BP  |melanin metabolic process                               |
-% |GO:BP  |secondary metabolite biosynthetic process               |
-% |GO:BP  |phenol-containing compound biosynthetic process         |
-% |GO:BP  |secondary metabolic process                             |
-% |GO:BP  |pigment biosynthetic process                            |
-% |GO:BP  |pigment metabolic process                               |
-% |GO:BP  |pigmentation                                            |
-% |GO:BP  |phenol-containing compound metabolic process            |
-% |GO:BP  |regulation of secondary metabolic process               |
-% |GO:BP  |regulation of melanin biosynthetic process              |
-% |GO:BP  |regulation of secondary metabolite biosynthetic process |
-% |GO:MF  |melanin-concentrating hormone receptor activity         |
-% |HPA    |retina; pigment epithelial cells[High]                  |
+Le vieillissement peut être vu comme une imbrication de multiples phénomènes qui découlent d'une dérégulation du fonctionnement physiologique ou d'une réponse à cette dérégulation. En prenant en compte le système dans sa quasi intégralité, les réseaux de co-expression permettent d'acquérir de nouvelles connaissances au delà d'acteurs transcriptomiques individuels. Les variations au cours du temps des relations de co-expression entre gènes sont alors les témoins d'autant de voies d'activations qui s'altèrent. Leur suivi et mise en contraste au travers de la co-expression différentielle est donc un moyen supplémentaire de comprendre le déroulé des altérations \cite{Sharan2006, Southworth2009}. En comparant ces dernières entre de multiples tissus, il est possible d'en déduire à les mécanismes communs au vieillissement, et à l'inverse ceux spécifique. Dans cette étude, on s'est donc attaché étudier ce vieillissement d'un point de vue multi-dimensionnel en comparant les réseaux issus de multiples tissus, et ce entre deux tranches d'âge extrêmes. 
 
+Ce faisant, on a pu dans un premier temps observer les marques du vieillissement \cite{Lopez-Otin2013} dans les diverses intersections détectées associée à l'âge par notre analyse de co-expression différentielle : perte d'homéostatie, instabilité génomique, inflammation, dérivés réactifs de l'oxygène, etc. (Table \ref{table:intersection_aging_global_phenomenons} et Figure \ref{figure:revigo_resume_4_enrich}).
+% On a cependant pu constater la disparité de présence de ces marques du vieillissement entre tous les organes. Une majorité de gènes ne varient ainsi pas significativement lors du vieillissement comme cela a pu être observé auparavant \cite{Avelar2019} (Figure \ref{figure:upset_intersection_genes_tissu_unpres_modpres}). 
+% La disparité observée dans leur répartition dans toutes les intersections tient notamment 
 
+Certains tissus cependant sont plus sujets à ces variations et coïncident le plus souvent avec les tissus ayant un fort taux de renouvellement \cite{Armanios2012, Barker2010, Leblond1956} (Table \ref{table:intersection_aging_global_phenomenons}) avec l'exception dans notre cas de la thyroïde. Malgré une évidence des modifications que subit le système endocrinien avec le vieillissement, l'impact de celui-ci sur la thyroïde reste peu documenté hors pathologies graves \cite{Faggiano2011Sep}. En effet, les altérations endocrines thyroïdiennes (hypo ou hyperthyroïdies) sont souvent associées à un vieillissement "naturel" de la personne \cite{Cooper2004Dec}. Pourtant, les indices d'un rôle de la thyroïde sur la longévité s'accumulent ces dernières années \cite{Garasto2017Jul,Arosio2020Sep}. Renforcer les connaissances sur les altérations de la fonction thyroïdienne chez la personne âgée semble donc une voie intéressante pour l'amélioration de la durée de vie chez l'homme.
+
+L'inflammation chronique de faible intensité est une caractéristique majeure du vieillissement qu'on nomme également en anglais "inflammaging" \cite{Franceschi2014Jun} dont la complexité limite encore les connaissances à son sujet \cite{Franceschi2017}. Ce phénomène du vieillissement assumé comme étant un précurseur de plusieurs autres phénomènes du vieillissement \cite{Lopez-Otin2013} s'est retrouvé ici plutôt exprimé dans le tissu adipeux, la peau non exposée au soleil, ainsi que la thyroïde. Le détail des enrichissements fonctionnel est venu préciser cette composante de l'inflammation comme une réponse à une réaction virale en raison des nombreux régulateurs d'interférons présents.
+
+% Une étude de l'intersection de gènes caractéristiques de l'inflammation chronique de faible intensité a 
 
 \#\#\#\#\#\#\#\#\#\#\#\#\# TRAVAIL EN COURS \#\#\#\#\#\#\#\#\#\#\#\#\#
 
+l'absence d
+
+
+Chaque organe subit le vieillissement de différentes manières. 
 
 % Pourquoi le muscle vieillit vite malgré son faible taux de renouvellement : https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3874224/
-
-% À l'inverse, certains gènes dans les modules MP ou NP ne sont présent que dans leur tissu. Ceux-ci pouvant témoigner de fonctions physiologiques propres au vieillissement de ces tissus, ils ont également été enrichis module par module.
-
-% Les origines de la faible ou non préservation liées au vieillissement pouvant être variées, on a souhaité étudier les fonctions physiologiques contenues dans ces modules non préservés et peu préservés.
-
-% # Graphes de qques modules d'intérêt
-% Tests de diminution de co-expression 
-
-
-\section{Discussion}
-
 % 10.1371/journal.pcbi.1004220 p4 pour discuter la proximité des tissus
-% https://thyroidresearchjournal.biomedcentral.com/articles/10.1186/1756-6614-5-16 pour expliquer la faible connaissance du fonctionnement/effet de la thyroide dans le vieillissement malgré son affectation par masse de de phénomènes du vieillissement \ref{table:intersection_aging_global_phenomenons}
+
 % Explication potentielle du pourquoi une reaction virale alors que pas de virus : https://www.nature.com/articles/s41586-018-0784-9 + https://link.springer.com/chapter/10.1007/978-3-319-48344-3_13
 
 
