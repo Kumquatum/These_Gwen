@@ -20,6 +20,13 @@ As NetRep uses a permutation test with the null hypothesis of the module being n
 
 \[Z_{summary} = \frac{Z_{density} + Z_{connectivity}}{2}\] \\
 
+\begin{figure}[ht]
+    \includegraphics[width=\textwidth, center]{img/annexe_add_file_GWENA/additional_file_figure_1.pdf}
+    \caption{Combination of the permutation test result ans the $Z_{summary}$ result in GWENA to return a final result on the module comparison.}
+    \label{fig:supp_fig_comparison_schema_conclusion}
+\end{figure}
+
+
 With the NetRep notation :
 \begin{align*}
     Z_{density} & = median(Z_{cor.density},Z_{avg.edge.wei},Z_{mod.coh},Z_{avg.node.contrib}) \\
@@ -35,7 +42,7 @@ Where :
         avg.node.contrib & = \text{mean}_{i\in Mq}(\text{sign}(kME_i^{[ref](q)})kME_i^{[test](q)})  \\
         concor.wei.deg & = \text{cor}(kIM)^{[ref](q)}, kIM^{[test](q)}  \\
         concor.nod.contrib & = \text{cor}_{i\in Mq}(kME_i^{[ref](q)},kME_i^{[test](q)})  \\
-        concor.cor & = \text{cor}(vect.Matrix(r^{[ref](q)}), vect.Matrix(r^{[test](q)}))  \\
+        concor.cor & = \text{cor}(vect.Matrix(r^{[ref](q)}), vect.Matrix(r^{[test](q)}))  
     \end{align*}
 \end{small}
 
@@ -50,11 +57,6 @@ This score returns :
 
 The results from both NetRep permutation test and the $Z_{summary}$ are then combined in GWENA as shown in Figure \ref{fig:supp_fig_comparison_schema_conclusion} and return a final result on the module comparison.
 
-\begin{figure}[h!]
-    \includegraphics[width=\textwidth, center]{img/annexe_add_file_GWENA/additional_file_figure_1.pdf}
-    \caption{Combination of the permutation test result ans the $Z_{summary}$ result in GWENA to return a final result on the module comparison.}
-    \label{fig:supp_fig_comparison_schema_conclusion}
-\end{figure}
 
 %% ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 %% +                                    Details data                                  +
@@ -92,14 +94,14 @@ Phenotype          & GTEx\_Analysis\_v8\_Annotations\_SubjectPhenotypesDS.txt
 
 In order to limit batch effect and handle the maximum of other co-founding effects, we chose to use a method based on PC-correction as recommended by Parsana et al. \cite{Parsana2019} for GTEx data. However age is usually included in this confounding factors, therefore is corrected. Since we're interested in gene changes we adapted the method to remove only the top $n$ PC correlated to age and which removed the least of genes correlating with age. The $n$ number of PC to remove was estimated by calculating the loss of correlation between phenotype and genes expression (Figure \ref{fig:supp_fig_ageing_correlation_density}) and confirmed by looking for the number of significantly correlated genes with two ageing gene databases (Figure \ref{fig:supp_fig_ageing_genes_overlapping}): GenAge \cite{Tacutu2018} and Digital Aging Atlas \cite{Craig2015}.
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     % \centering
     \includegraphics[width=\textwidth, center]{img/annexe_add_file_GWENA/additional_file_figure_2.pdf}
     \caption{Ageing genes correlation density with phenotype depending on the number of PC corrected. Left figure contains all PC correction tested. For clarity we filtered on the first 10 PC corrected on the right figure.}
     \label{fig:supp_fig_ageing_correlation_density}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     % \centering
     \includegraphics[width=\textwidth, center]{img/annexe_add_file_GWENA/additional_file_figure_3.pdf}
     \caption{Number of genes known to be associated with ageing.}
@@ -113,7 +115,7 @@ Correlation density in Figure \ref{fig:supp_fig_ageing_correlation_density} sugg
 \subsection{Connectivity drop on all modules}
 \label{supp:supp_connectivity_drop}
 
-\begin{figure}[h!]
+\begin{figure}[hb]
     \begin{adjustbox}{addcode=
         {\begin{minipage}{\width}}
         {
@@ -227,7 +229,7 @@ GO:BP           & positive regulation of wound healing                          
 
 The distribution of the newly and previously found terms in the enrichment analysis across the the sub-modules from young and old age range (Figure \ref{fig:supp_fig_upset_subclusters_enrichments}).
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     % \centering
     \includegraphics[width=\textwidth, center]{img/annexe_add_file_GWENA/additional_file_figure_5.pdf}
     \caption{Overlap between the enrichments found in sub-cluster 1 young, sub-cluster 1 old, and sub-cluster 6 old.(Upset diagram)}

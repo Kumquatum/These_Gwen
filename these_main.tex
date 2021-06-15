@@ -12,9 +12,11 @@
 %% défaut du document. L'option 'bibsection' permet de créer des
 %% bibliographies par chapitre présentées sous forme de section
 %% numérotée.
+  
 % \documentclass[PhD,english,french]{ulthese}
-\documentclass[PhD,english,french,nonatbib]{ulthese}
+\documentclass[PhD,english,french,nonatbib]{ulthese} % nonatbib car pas compatible avec author-year citation
 % \documentclass[PhD,bibsection,english,french,nonatbib]{ulthese}
+
   %% Encodage utilisé pour les caractères accentués dans les fichiers
   %% source du document. Les gabarits sont encodés en UTF-8. Inutile
   %% avec XeLaTeX, qui gère Unicode nativement.
@@ -43,13 +45,16 @@
   %% Packages ajoutés par moi
   \usepackage{todonotes}            % Notes de TODO avec \todo
   \usepackage{multirow}             % Tables avec lignes fusionnées
+  
   \usepackage{alphabeta}            % Lettres grecques hors mode maths
   \usepackage[acronym]{glossaries}  % Glossaire
   \makeglossaries
   \usepackage{appendix}             % Test : Annexes formatées comme voulu
   \usepackage{textgreek}            % Lettres grecques hors formules de maths
   \usepackage{graphicx}             % Affichage d'image
+  \usepackage{lscape}               % Rotation en paysage d'un environnement de feuille
   \usepackage[export]{adjustbox}    % Adaptation d'image à une div
+%   \usepackage{adjustbox}    % Adaptation d'image à une div
 %   \usepackage{listings}
 %   \usepackage{xcolor}
   \usepackage{rotating}             % Tourne les figures
@@ -57,21 +62,56 @@
   \usepackage{svg}
   \usepackage{booktabs}             % Tables plus propres avec pre-formatage
   \usepackage{colortbl}             % Couleur dans des tables
+  \usepackage{enumitem}             % Circled numbers
+  \usepackage{float}                % Positionnement des figures tables plus "facilement" ?
+  \usepackage{silence}              % Permet de virer les warnings indésirables
+  \WarningFilter{latex}{Label}      % Warnings sur ref multiples mais c'est voulu
+  \WarningFilter{glossaries}{Overriding \printglossary}  % Warnings sur le glossaire
+  \WarningFilter{glossaries}{overriding `theglossary'}
+  
+  \usepackage[font=footnotesize]{caption} % Change la taille des textes de caption
+%   \usepackage[font=scriptsize]{caption} % Change la taille des textes de caption
   
   \usepackage{titlesec}             % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
    \titleformat{\chapter}[display]
     {\normalfont\bfseries}{}{0pt}{\Huge}
+    
+  \usepackage[resetlabels]{multibib}             % Permet de faire des bibliographie par chapitre
+  \newcites{A,B}{References,Références}          % Défini une biblio A et B pour le chapitre 1 et 2
+  \renewcommand{\bibsection}{\section{\bibname}} % Passe les biblio en tant que section
     
   %% /!\ S'assurer que hyperref est le dernier paquetage chargé.
   \usepackage{hyperref}             % Gestion des hyperliens dans le document
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
   \urlstyle{same}
 
-  %% Redefinition de commande par moi
+
+
+  
+   %%% Personal helper functions
+   
+   %% Own command to make notes with ref inside text and not into footnote
+   % USE :
+   %   This is a test to which a note is added\note{test1}{mycounter}
+   %   \ref{note:mycounter:test1} Explanation linked to the note
+  \newcommand\note[2]{\getid{#1}\label{note:#1:#2}\textsuperscript{\ref{note:#1:#2}}}
+  \makeatletter
+  \newcommand{\getid}[1]{%
+      \@ifundefined{c@#1}
+      {% the counter doesn't exist
+        \newcounter{#1}\setcounter{#1}{1}%
+      }
+      {% the counter exists
+        \stepcounter{#1}%
+      }%
+      \def\@currentlabel{\arabic{#1}}
+  }
+  \makeatother
+
   
   
   
-  
+
   %% Options de mise en forme du mode français de babel. Consulter la
   %% documentation du paquetage babel pour les options disponibles.https://vpn1.ulaval.ca/+CSCOE+/logon.html
   %% Désactiver (effacer ou mettre en commentaire) si l'option
@@ -124,28 +164,28 @@
 \listoffigures                  % production de la liste des figures
 \cleardoublepage
 
-\include{acronymes}              % acronymes
+\include{acronymes}                             % acronymes
 
-\dedicace{Dédicace si désiré}
+\dedicace{Dédicace si désiré}                   % dédicace
 \cleardoublepage
 
 \epigraphe{Texte de l'épigraphe}{Source ou auteur}
 \cleardoublepage
 
-\include{remerciements}         % remerciements
-\include{avantpropos}           % avant-propos
+\include{remerciements}                         % remerciements
+\include{avantpropos}                           % avant-propos
 
-\mainmatter                     % corps du document
+\mainmatter                                     % corps du document
 
-\include{introduction}          % introduction
-\include{chapitre1-articles}    % chapitre 1
-\include{chapitre2-articles}    % chapitre 2, etc.
-\include{conclusion}            % conclusion
-\include{discussion}            % discussion
+\include{introduction}                          % introduction
+\include{chap1-article}                         % chapitre 1
+\include{chap2-article}                         % chapitre 2, etc.
+\include{conclusion}                            % conclusion
+\include{discussion}                            % discussion
 
-
-\bibliographystyle{plain-fr}    % bibliographie
-\bibliography{bibliographie}    % nom du fichier .bib
+\renewcommand{\bibsection}{\chapter{\bibname}}  % Repasse en chapitre la biblio qui était en section
+\bibliographystyle{plain-fr}                    % bibliographie
+\bibliography{bibliographie}                    % nom du fichier .bib
 
 % \appendix                       % annexes le cas échéant
 % \chapter*{Annexes}

@@ -1,0 +1,342 @@
+% \setcounter{chapter}{2}
+% \setcounter{section}{2}
+\chapter{Chapitre 1 - GWENA}
+% \chapter*{Chapitre 1 - GWENA}
+% \phantomsection\addcontentsline{toc}{chapter}{Chapitre 1 - GWENA} 
+\label{chapter:gwena}
+
+
+\section{Résumé}
+
+\subsection{Contexte}
+L'analyse de l'expression des gènes par le biais de réseaux de co-expression peut être utilisée pour étudier les relations modulaires entre des gènes remplissant différentes fonctions biologiques. Une description approfondie de chacun des modules du réseau est donc une étape essentielle pour comprendre les processus sous-jacents contribuant à une maladie ou à un phénotype. L'intégration biologique, l'étude de la topologie et la comparaison des conditions (par exemple, sauvage vs mutant) sont les principales méthodes pour y parvenir, mais à ce jour, aucun outil ne les combine toutes en un seul pipeline.
+
+\subsection{Résultats}
+Nous présentons ici GWENA, un nouveau package R qui intègre la construction de réseaux de co-expression de gènes et la caractérisation complète des modules détectés par l'enrichissement d'ensembles de gènes, l'association phénotypique, la détection de gènes pivots, le calcul de métriques topologiques et la co-expression différentielle. Pour démontrer ses performances, nous avons appliqué GWENA sur deux ensembles de données de muscle squelettique provenant de patients jeunes et âgés de l'étude GTEx. De façon remarquable, nous avons priorisé un gène dont l'implication dans le développement et la croissance du muscle était inconnue. De plus, de nouvelles perspectives sur les variations des modèles de co-expression ont été identifiées. Le phénomène connu de perte de connectivité associé au vieillissement a été associé à une réorganisation globale des relations conduisant à l'expression de fonctions connues liées au vieillissement.
+
+\subsection{Conclusion}
+GWENA est un package R disponible via Bioconductor (\url{https://bioconductor.org/packages/release/bioc/html/GWENA.html}) qui a été développé pour effectuer une analyse étendue des réseaux de co-expression génique. Grâce aux informations biologiques et topologiques ainsi qu'à la co-expression différentielle, ce package aide à disséquer le rôle des relations entre les gènes dans les conditions de maladies ou les phénotypes ciblés. GWENA va au-delà des paquets existants qui effectuent des analyses de co-expression en incluant de nouveaux outils pour caractériser pleinement les modules, tels que la co-expression différentielle, des bases de données d'enrichissement supplémentaires et la visualisation du réseau.
+
+
+
+\section{Abstract}
+\subsection{Background}
+Network-based analysis of gene expression through co-expression networks can be used to investigate modular relationships occurring between genes performing different biological functions. An extended description of each of the network modules is therefore a critical step to understand the underlying processes contributing to a disease or a phenotype. Biological integration, topology study and conditions comparison (e.g. wild vs mutant) are the main methods to do so, but to date no tool combines them all into a single pipeline.
+
+\subsection{Results}
+Here we present GWENA, a new R package that integrates gene co-expression network construction and whole characterization of the detected modules through gene set enrichment, phenotypic association, hub genes detection, topological metric computation, and differential co-expression. To demonstrate its performance, we applied GWENA on two skeletal muscle datasets from young and old patients of GTEx study. Remarkably, we prioritized a gene whose involvement was unknown in the muscle development and growth. Moreover, new insights on the variations in patterns of co-expression were identified. The known phenomena of connectivity loss associated with aging was found coupled to a global reorganization of the relationships leading to expression of known aging related functions.
+
+\subsection{Conclusion}
+GWENA is an R package available through Bioconductor (\url{https://bioconductor.org/packages/release/bioc/html/GWENA.html}) that has been developed to perform extended analysis of gene co-expression networks. Thanks to biological and topological information as well as differential co-expression, the package helps to dissect the role of genes relationships in diseases conditions or targeted phenotypes. GWENA goes beyond existing packages that perform co-expression analysis by including new tools to fully characterize modules, such as differential co-expression, additional enrichment databases, and network visualization.
+
+\subsection{Keywords}
+co-expression network, differential co-expression, R package, pipeline, aging, skeletal muscle
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Background                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Background}
+
+
+The study of biological functions through discrete genes analysis methods has allowed the elucidation of numerous pathways and the understanding of gene-disease associations \citeA{Barabasi2004}. The full comprehension of the complex interactions taking place in cellular processes requires methods that are able to grasp the connections between the genes involved \citeA{Hartwell1999}. To address this issue, biological networks have been used as a framework to represent and study relationships between genes. In a gene network, a node represents a gene and an edge joining two nodes represents their relationship. Among the measures of relationship, weighted co-expression is one of the most widely used thanks to the popularity of the WGCNA R package \citeA{Langfelder2008} where the relationships are quantified (weight) instead of only a presence/absence information. The use of gene co-expression networks thus led to important discoveries such as the characterization of functional elements in \textit{Arabidopsis} \citeA{Mao2009}, help with prognosis in breast cancer \citeA{Tang2018}, and more generally identification and prioritization of disease candidate genes \citeA{Graaf2017}. 
+
+When constructing gene co-expression networks, existing tools usually follow the same methodology. Using either microarray or RNA-seq gene expression, a co-expression score based on correlation is computed between each pair of genes in the samples. A clustering method is then selected to detect groups of strongly co-expressed genes called modules. The search for meaning in the co-expression relations classically involves the integration of biological information, as well as the study of topology \citeA{Graaf2017}. Biological integration usually involves two methods, namely gene set enrichment and phenotypic association \citeA{Graaf2017, Langfelder2008}. A phenotypic association is based on the correlation between the eigengene (a representative of gene expression profile) of the module and a phenotype measured on the samples. Despite typically having a low yet significant correlation \citeA{Zhang2013}, phenotypic associations are used as a surrogate to study the molecular changes related to a condition. By looking for the genes responsible for the correlation, this method serves as a means of causal genes discovery or a way to find the effect of the condition on the phenotype \citeA{Tseng2013}. As for the gene set enrichment, the most common enrichment test is based on the over-representation analysis (ORA) of a group of genes (in this case modules) compared to a reference of biological annotations such as Gene Ontology (GO) \citeA{Ashburner2000} or Reactome \citeA{Fabregat2016}. This approach, based on the guilt-by-association approach, allows the identification of new gene functions. The consideration of the scale-free topology property of gene co-expression networks also allow the use of graph theory metrics and methods to analyze the networks from a new perspective.
+The highly-connected genes also known as hub genes are often relevant for the functionality of the module, either being a regulator \citeA{Pierson2015} or a gene coding for an essential function \citeA{Hahn2005}. Their detection and the investigation of the neighboring gene is therefore an opportunity to understand the mechanisms at work.
+
+Like differential expression analysis, co-expression analysis can be used in a differential way to compare conditions (e.g.:wild vs. mutant). This method aims to isolate dissimilarities \citeA{Chowdhury2019} that would not be found by solely studying the GCN of a condition of interest (e.g. disease, phenotype). Variations in gene co-expression between multiple conditions can translate into appearance/disappearance of modules, changes in gene composition of a module, or rearrangement of genes within a module potentially leading to separation into several other modules \citeA{Graaf2017}. These modifications of patterns reveal insights on the biological alterations in modules of interest and can suggest possible regulatory events linked to the studied condition (e.g. : transcription factors, miRNA). Such concepts were used successfully in recent publications to  detect specific gene modules involved in ovarian or breast cancer \citeA{Gov2017, Bhuva2019} or in recovery from water stress in \textit{Cleistogenes} \citeA{Yan2019}.
+
+To date, multiple tools exist that perform one or few of the functionalities described previously but none combine them all into a single pipeline. Moreover, no available tool includes differential co-expression, exploits the potential of other topological metrics such as connectivity, or enables analysis to be carried out with other R packages or software as easily. In order to meet all these needs, we developed an R package for Gene Whole co-Expression Network Analysis (GWENA) available on Bioconductor (\url{https://bioconductor.org/packages/release/bioc/html/GWENA.html}). Based on a modified version of WGCNA for the network construction and module detection, GWENA is a modular pipeline that provides ORA enrichment on 9 biological sources, phenotypic association, hub genes detection, and differential co-expression between multiple conditions. These come with a set of descriptive visualizations that help the user understand and interpret complex results of gene co-expression network analysis.
+
+In order to demonstrate the capabilities of our tool, we applied it to investigate skeletal muscle aging using publicly available gene expression data from donors spanning different age ranges from the GTEx database (ref). Skeletal muscle aging is indeed a major source of mobility loss in the elderly, resulting in a high fall ratio, depression, and therefore an increased mortality \citeA{Bulut2017}. This decrease in the regenerative capacity of skeletal muscles and their progressive atrophy (sarcopenia) \citeA{Santilli2014} gradually leads to a reduction of the contractile force and thus a loss of autonomy of the individuals \citeA{Janssen2002}. Recent studies have made progress in finding factors associated to evolution of sarcopenia \citeA{Sakuma2017, Bulut2017}, such as body weight \citeA{Jiao2017}, but the understanding of their intricate molecular mechanisms is still lacking.
+
+In this article, we will therefore provide details on the implementation of our new R package GWENA. A presentation of its application will be done with the study of gene co-expression in young muscle, and then in the context of skeletal muscle aging by comparing samples from younger and older donors.  Finally, a qualitative comparison will be made with other existing tools.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Implementation                                                              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{img/chap1/figure_1.pdf}
+    \caption{Detailed steps of analysis performed in GWENA's pipeline, from expression data to characterization of the modules and comparison of conditions. \textcircled{\small{1}} Input : expression matrix pre-normalized and aggregated to gene level if it is a transcript matrix. \textcircled{\small{2}} Filtering : optional genes filtration according to transcriptomic input technology. \textcircled{\small{3}} Co-expression network construction : computation through modified WGCNA function of a correlation matrix on the gene expression matrix, then transformation into an adjacency matrix, and finally into a topological overlap matrix (TOM). \textcircled{\small{4}} Modules detection : genes clusterization over the TOM with another modified WGCNA function. \textcircled{\small{5}} Biological integration : gene set enrichment of each module using g:Profiler services, and phenotypic association if a phenotype matrix is provided to describe the samples. \textcircled{\small{6}} Graph analysis : transformation of the TOM in a graph to compute different topological metrics, detect the hub genes, and detect sub-modules of one module. \textcircled{\small{7}} Modules differential co-expression over N conditions : permutation test using NetRep combined with a Z summary to detect preserved or unpreserved modules.} 
+    \label{fig:fig_pipeline_schema}
+\end{figure*}
+
+
+\section{Implementation}
+
+Designed as an R Bioconductor package, GWENA is a modular pipeline intended to ease the construction, interpretation and comparison of GCN. It reproduces a classical GCN analysis reinforced by complementary tools (Fig. \ref{fig:fig_pipeline_schema}). 
+
+
+\subsection{Input}
+
+Both microarray and  RNA-seq normalized expression can be used as input. The choice of normalization method is left to the user as it is highly dependent on the technology used to produce the raw data and the experimental design. Data must be stored in a table with genes as columns and samples as rows, or in a SummarizedExperiment object \citeA{morgan1summarizedexperiment2018}. The minimal number of samples recommended is about 20 samples \citeA{Langfelder2014FAQ} with 100 samples ensuring a more robust networks \citeA{Liesecke2019}.
+
+Transcript-level data (probes or transcript) need to be aggregated to the gene level for the next steps (i.e. probes measurement summarized to their corresponding gene) \citeA{miller2011}. Its execution is left to the user as the transcriptomic technology impacts the aggregation method to choose. However, it is recommended to use the highest mean probes expression for microarray data, and the counts sum for RNA-seq. This can be achieved with the collapsing R function as described by Miller et al. \citeA{miller2011}.
+
+
+\subsection{Filtering}
+
+Genes are not always informative for modules detection as genes not always vary and their expression can be linked to technical biases. An additional filtering step can thus be applied to avoid noise and speed up the pipeline analysis. This operation must be carried out with caution as it may impact the network construction. Over-filtering may result in loss of informative signal and changing the data distribution could break the scale-free topology \citeA{Parsana2019, Langfelder2014FAQ}. In addition, co-expression network analysis is a method designed to handle larger amount of data than differential expression analyses and can capture more subtle significant gene expression variation \citeA{Hudson2009,Tseng2013}.
+
+Two filters meeting these criteria are available in GWENA:
+\begin{enumerate}
+    \item Low count filter : removes genes having a lower count than a pre-defined threshold (default is 5). It prevents confusing the true expression of a gene with an expression due to technical background noise. 
+    \item Low variation filter : removes genes which expression is too similar across samples. As co-expression modules detection relies on the discrimination of similarity between gene expression profiles across samples, genes that so not vary sufficiently across samples may be randomly clustered in the same (or in different) modules which would not reflect the biological reality.
+\end{enumerate}
+
+
+\subsection{Co-expression network construction}
+
+The well-known R package WGCNA \citeA{Langfelder2008} was modified in order to be integrated it in our modular pipeline : the co-expression network construction step which computes the genes pairwise co-expression score has been isolated in its own R function. The first step of the co-expression score computation is the calculation of a correlation matrix based on the gene expression matrix. The Spearman correlation was added to the automated version of network construction in WGCNA as it ensures a better representation of genes monotonic relationships \citeA{Song2012}.
+A power law distribution is then fitted on the correlation matrix and the “correlation matrix is then raised to the estimated power, resulting in an adjacency matrix \citeA{Yip2007}. According to the hierarchical organization of gene co-expression networks \citeA{Ravasz2003}, a topological overlap matrix (TOM) \citeA{Yip2007} is then computed using the adjacency matrix which represents the final gene co-expression score matrix.
+Finally, the function return this matrix along with metadata information regarding the computation to ensure a good tracking of the performed operations.
+
+
+\subsection{Modules detection}
+
+The modules detection part from WGCNA was isolated in a new R function using the previously calculated gene co-expression score matrix as input. A hierarchical clustering is performed on the matrix which is then cut according to the dynamic cut tree method \citeA{Langfelder2008_cutree} in order to define the modules and the genes they contain. The first component of the principal component analysis of each module is used as a representative of their respective gene expression profile and is called an eigengene. In addition to its summarizing function, the eigengene is used to merge the highly-correlated modules. The gene co-expression profile of each module is visible using a dedicated function, with the eigengene highlighted. The function finally returns a detailed object with the detected modules as lists of genes identifiers, the dendrogram of the clustering, and the modules before merge. 
+
+
+\subsection{Biological integration}
+
+Biological integration consists of two different analyses, namely gene set enrichment and phenotypic association. 
+
+The gene set enrichment (or functional enrichment) analysis is performed using g:Profiler \citeA{Raudvere2019} through their gprofiler2 R package. Their enrichment function covers 9 biological functional databases: Gene Ontology (GO) \citeA{Ashburner2000}, Kyoto Encyclopedia of Genes and Genomes (KEGG) \citeA{Kanehisa2019}, Reactome \citeA{Fabregat2016}, Transfac \citeA{Matys2006}, miRTarBase \citeA{Chou2018}, Human Protein Atlas (HPA) \citeA{Uhlen2015}, CORUM \citeA{Ruepp2008}, Human Phenotype ontology (HP) \citeA{Kohler2019}, WikiPathways \citeA{Slenter2018}. Realizing a custom enrichment file through a Gene Matrix Transposed (GMT) format in gprofiler2 requires the use of additional functions. Also, gprofiler2 does not provide a merging function between the output of classical and custom enrichment to return all the enrichments in a single output. GWENA therefore provides a wrapper of these functions to have an all-in-one function.
+
+The phenotypic association uses the eigengene returned in the output of the module detection function to perform a correlation test on a matrix of given phenotypes. If a phenotype is qualitative instead of quantitative, the variable encoding the phenotype is transformed into a binary variable (also known as dummy variable). 
+
+
+\subsection{Graph analysis}
+
+To analyze the topology of the graph and allow its visualization, GWENA imports the igraph \citeA{Gabor2009} R package. A wrapping function including integrity checks use the gene co-expression score matrix to build a graph object on which all igraph topological metrics can be computed (e.g. degree, connectivity, strength). 
+Among the multiple metrics computable on a network, hub genes remain the most studied structure. As they can be defined according to different methods, the three most popular ones were implemented: highest connectivity \citeA{Azuaje2014}, highest degree \citeA{Tseng2013}, and Kleinberg's score \citeA{Kleinberg1999a}. 
+GWENA visualization function simplifies the native plotting function of igraph and adapts it to GCN to assist in their interpretation (e.g. the native implementation of an edge filter parameter, as these are complete graphs). The layout selection was also favored towards scale-free topology compatible layouts as they are a main property of GCN.
+Sub-modules within previously detected modules can provide valuable information about the distribution and communication between biological functions within a module. GWENA allows their detection by performing a partitioning around medoids (PAM) clustering method \citeA{Kaufmann1987, Schubert2019} with an automatic estimation of the number of cluster through a silhouette coefficient. These sub-modules can also be passed to the graph plot function to display them and see their organization.
+
+
+\subsection{Modules differential co-expression}
+
+Analysis of module preservation or non-preservation can be performed between different conditions such as treatments or phenotype. To isolate modules whose topology changes between conditions, GWENA first performs a permutation test using the NetRep R package \citeA{Ritchie2016}. Seven topological metrics are computed on each module in each condition. A permutation is then applied to the selected control condition where each node label of the modules is randomly reassigned without replacement to another and the seven metrics are then recomputed on it. Using these permutations as a null distribution \citeA{phipson2010}, modules are considered preserved if all seven topological metrics are significant for the alternative hypothesis (one or two-sided) with the chosen alpha error.
+
+As the unpreservation of a module cannot be assumed from the non significant modules, a second step of preservation evaluation is carried out using a Z summary score \citeA{Langfelder2011, Li2015}. The final score returned by GWENA is the combination of these two steps (Additional file 1: Figure S1).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Results and discussion                                                      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Results and discussion}
+
+To present GWENA's use and its capability to isolate genes groups or co-expression patterns of interest in a single condition or multiple conditions, we analyzed RNA-seq skeletal muscle data from GTEx (v8)\citeA{GTEx2015} (Additional file 1: Table S1). This data set contains 19,312 genes from 803 samples representing ages ranging from 20 to 70 years old. Low read counts and the low variation genes were discarded using the filtering function of GWENA to decrease the noise, resulting in 18870 genes.
+
+As GTEx data is known to be subject to multiple confounding factors (batch effect, experimental bias, read contamination, etc.) \citeA{Nieuwenhuis2020a,Somekh2019a,Parsana2019}, a partial PC-correction\citeA{Parsana2019} was applied to correct the data (Additional file 1: Figure S2 and S3). To investigate the aging process two subsets representing contrasting age classes were selected from the corrected data set: 73 samples between 20 and 30 years old (referred as young in this report), and 292 samples between 60 and 70 years old (referred as old in this report). Both datasets were analyzed using GWENA's pipeline with default parameters, except for the correlation method parameter which was selected to be "spearman" instead of the default "pearson" as it is less prone to outliers. 
+
+\begin{figure*}[p]
+    \centering
+    \includegraphics[width=0.90\textwidth]{img/chap1/figure_2.pdf}
+    \caption{Available visualizations in GWENA along the pipeline applied to the aging study on the whole age range. A : modules merge as a bipartite graph from plot\_modules\_merge function and the genes distribution inside each of them (log scale). B : phenotypic association between the 35 modules and age, sex, BMI, ethnicity, weight. C : Manhattan-like enrichment plot (interactive in GWENA) of module 10 on GO, KEGG, Reactome, Transfac, miRTarBase, Human Protein Atlas, CORUM, Human Phenotype ontology, WikiPathways. D: module 19's network visualization as a graph with muscle enrichment genes colored in red and others in blue. The zoom focus on ENSG00000158022 / ENSG00000107372 / ENSG00000265972 and related hub genes. E : expression profile of module 19 split depending on the correlation sign to the eigengene.}
+    \label{fig:fig_resume_visu}
+\end{figure*}
+
+
+\subsection{Single condition modules analysis}
+
+To illustrate the process of analyzing a single condition with GWENA, we initially focused on studying the muscle gene co-expression computed in the young sub-population. The 95 modules detected on the co-expression score matrix with GWENA were merged according to their similarity indices, which resulted in a total of 35 modules (Fig \ref{fig:fig_resume_visu}a). Each module was then tested for its association with a selected set of phenotypes related to muscle aging (i.e. age, sex, ethnicity, body weight and BMI) to isolate modules of interest. As shown in Fig. \ref{fig:fig_resume_visu}b, 15 of these modules were significantly associated with at least one of the phenotypes.
+
+These modules were provided to GWENA enrichment analysis (p value \textless 0.05 with g:SCS multiple testing correction) to identify their biological functions and assess their potential involvement in muscle function (Table \ref{table:mod_young_bio_integration_summary}). All modules were at least enriched in one term and 8 obtained enrichment terms related to muscle activity or metabolism (Table \ref{table:mod_young_bio_integration_summary}). Modules 19, 21 and 25 were the top 3 enriched for terms related to muscle function. However, modules 21 and 25 terms were mostly coming from Human Protein Atlas and were also related to a wide range of additional tissues such as the pancreas, the cervix, the bladder, the stomach, or the skin and were thus deemed less specific for muscle aging than module 19. 
+
+Briefly, the remaining module 19 presented 77\% of genes positively correlated to its eigengene (therefore 23 negatively, Fig. \ref{fig:fig_resume_visu}d), and the muscle enriched terms involved muscle adaptation and negative regulation of hypertrophy (Table \ref{table:mod19_enrichments}, Fig. \ref{fig:fig_resume_visu}c). The detection of hub genes by GWENA returned 12 hub genes, some of which are known as transcription factors. Among them, ARID5B (ENSG00000150347) is a transcription factor strongly co-expressed with KLF15 (ENSG00000163884) and TRIM63 (ENSG00000158022) (Fig. \ref{fig:fig_resume_visu}e). These two genes are present in the GO term GO:0014888 (striated muscle adaptation) to which ARID5B is not associated. The function of ARID5B is well known in adipocytes and hepatocytes but is still rarely studied in skeletal muscle metabolism. However, the knockout of this gene in mice has shown structural defects in the sarcomere structure \citeA{Murray2018}.
+
+\begin{table}[H]
+\centering
+% \resizebox{\columnwidth}{!}{
+\begin{tabular}{lllll}
+\textbf{module} & \textbf{\# genes} & \textbf{\# pheno. asso.} & \textbf{\# enrichment} & \textbf{\% muscle enrich.} \\ \hline
+0               & 11                & NA                       & NA                     & NA                         \\
+1               & 5335              & 1                        & 3288                   & 0.6                        \\
+2               & 3661              & 2                        & 1098                   & 0.4                        \\
+3               & 3355              & 0                        & 1620                   & 0.3                        \\
+4               & 1001              & 1                        & 1883                   & 1.0                        \\
+5               & 987               & 0                        & 1626                   & 0.0                        \\
+6               & 699               & 0                        & 457                    & 0.6                        \\
+7               & 546               & 0                        & 428                    & 1.1                        \\
+8               & 409               & 0                        & 561                    & 0.7                        \\
+9               & 310               & 1                        & 729                    & 0.3                        \\
+10              & 308               & 0                        & 58                     & 5.2                        \\
+11              & 261               & 0                        & 857                    & 0.0                        \\
+12              & 214               & 0                        & 847                    & 15.0                       \\
+13              & 207               & 0                        & 452                    & 1.4                        \\
+14              & 197               & 1                        & 767                    & 0.5                        \\
+15              & 175               & 2                        & 233                    & 0.0                        \\
+16              & 137               & 1                        & 6                      & 0.0                        \\
+17              & 136               & 0                        & 1                      & 0.0                        \\
+18              & 129               & 2                        & 20                     & 0.0                        \\
+19              & 108               & 2                        & 18                     & 3.7                        \\
+20              & 77                & 2                        & 52                     & 0.0                        \\
+21              & 72                & 1                        & 233                    & 2.8                        \\
+22              & 63                & 0                        & 24                     & 0.0                        \\
+23              & 57                & 0                        & 10                     & 0.0                        \\
+24              & 55                & 0                        & 8                      & 0.0                        \\
+25              & 47                & 2                        & 82                     & 8.5                        \\
+26              & 47                & 0                        & 32                     & 0.0                        \\
+27              & 46                & 0                        & 12                     & 0.0                        \\
+28              & 43                & 0                        & 147                    & 4.7                        \\
+29              & 40                & 0                        & 17                     & 0.0                        \\
+30              & 35                & 1                        & 2                      & 0.0                        \\
+31              & 31                & 1                        & 12                     & 0.0                        \\
+32              & 27                & 0                        & 1                      & 0.0                        \\
+33              & 24                & 0                        & 23                     & 0.0                        \\
+34              & 20                & 1                        & 3                      & 0.0                       
+\end{tabular}
+% }
+\caption{Summary of detected modules and related biological integration. The number (\#) of genes is indicated for each module (module 0 being a false module containing the unassigned genes. The number of phenotypic associations with the variables of interest (weight, sex, ethnicity, bmi, age) are counted for each one. The number of enrichments corresponds to the count of significant terms on each cumulative biological database. The ratio (\%) of enriched terms associated with muscle is then established as the number of terms containing one or more elements of the following corpus: "muscle", "sarco*", "*", "muscul*", "actin*", "myosin*" (where * denotes a completion by any other character string)
+}
+\label{table:mod_young_bio_integration_summary}
+\end{table}
+
+
+
+ Coupled with the results of GWENA, this may corroborate the involvement of ARID5B in the adaptation of striated muscle in response to a stimulus. Moreover, it has recently been shown that ARID5B knockout in mice was associated with increased glucose metabolism via an increased translocation of SLC2A4 (ENSG00000181856)\citeA{Okazaki2020}. Since SLC2A4 is a gene that is also regulated by KLF15 \citeA{Gray2002, Fan2018}, this supports the idea that ARID5B has implications in skeletal muscle function and more precisely in glucose metabolism. GWENA thus allowed the identification of a gene that may give new insight in the muscle development and growth which needs to be confirmed by further experiments.
+
+\begin{table}[H]
+\centering
+% \resizebox{\columnwidth}{!}{
+\begin{tabular}{lll}
+\textbf{source} & \textbf{term name}                                                                                    & \textbf{p val.} \\ \hline
+GO:BP           & response to hormone                                                                                   & 0.0015          \\
+GO:BP           & \begin{tabular}[c]{@{}l@{}}negative regulation of muscle \\ hypertrophy\end{tabular}                  & 0.0033          \\
+GO:BP           & muscle adaptation                                                                                     & 0.0118          \\
+GO:BP           & response to peptide hormone                                                                           & 0.0129          \\
+GO:BP           & striated muscle adaptation                                                                            & 0.0255          \\
+GO:BP           & \begin{tabular}[c]{@{}l@{}}platelet-derived growth factor \\ receptor signaling pathway\end{tabular}  & 0.0328          \\
+GO:BP           & regulation of muscle adaptation                                                                       & 0.0434          \\
+GO:MF           & enzyme binding                                                                                        & 0.0097          \\
+MIRNA           & hsa-miR-6882-5p                                                                                       & 0.0002          \\
+MIRNA           & hsa-miR-197-5p                                                                                        & 0.0039          \\
+MIRNA           & hsa-miR-152-5p                                                                                        & 0.0125          \\
+MIRNA           & hsa-miR-6878-5p                                                                                       & 0.0282          \\
+REAC            & \begin{tabular}[c]{@{}l@{}}Regulation of FOXO transcriptional \\ activity by acetylation\end{tabular} & 0.0126          \\
+TF              & \begin{tabular}[c]{@{}l@{}}Factor: Zbtb37; motif: \\ NYACCGCRNTCACCGCR; match class: 1\end{tabular}   & 0.0073          \\
+TF              & \begin{tabular}[c]{@{}l@{}}Factor: RNF96; motif: \\ BCCCGCRGCC; match class: 1\end{tabular}           & 0.0074          \\
+TF              & \begin{tabular}[c]{@{}l@{}}Factor: ETF; motif: \\ GVGGMGG; match class: 1\end{tabular}                & 0.0193          \\
+TF              & \begin{tabular}[c]{@{}l@{}}Factor: AP-2; motif: \\ SNNNCCNCAGGCN\end{tabular}                         & 0.0306          \\
+TF              & \begin{tabular}[c]{@{}l@{}}Factor: AP-2; motif: \\ SNNNCCNCAGGCN; match class: 0\end{tabular}         & 0.0306         
+\end{tabular}
+% }
+\caption{Module 19 young enriched terms table. Multiple enrichment are linked to muscle development and growth}
+\label{table:mod19_enrichments}
+\end{table}
+
+
+\subsection{Multiple conditions modules comparison and analysis}
+
+Differential expression analysis allowed the detection of genes involved in aging in the last years (GenAge \citeA{Tacutu2018}, Digital Ageing Atlas \citeA{Craig2015}). Such discriminant analysis is limited in helping to understand aging as this phenomenon is composed of concomitant mechanisms \citeA{Zierer2015}. Understanding the relationships between the genes is therefore crucial to determine the altered functions and the changes involved. Differential GCN between conditions overcomes this problem by detecting the subtle pattern modifications. 
+Using our previously defined young (20 to 30 years old) and old (50 to 60 years old) skeletal muscle modules, we ran GWENA's GCN differential co-expression functionality to compare the modules between these age ranges. The GCN of each module detected in the young sub-population were taken as a reference and tested against the ones detected in the old sub-population.
+
+\begin{table}[H]
+\centering
+% \resizebox{\columnwidth}{!}{
+\begin{tabular}{lll}
+\textbf{Comparison status} & \textbf{\# modules} & \textbf{Modules id}                                                                                           \\ \hline
+preserved                  & 11                  & \begin{tabular}[c]{@{}l@{}}1, 2, 3, 4, 6, 8, 9, 11,\\ 12, 14, 19\end{tabular}                                 \\
+moderately preserved       & 17                  & \begin{tabular}[c]{@{}l@{}}7, 10, 13, 17, 18, 20,\\ 21, 22, 23, 24, 25, 27,\\ 28, 30, 31, 33, 34\end{tabular} \\
+unpreserved                & 2                   & 16, 32                                                                                                        \\
+inconclusive               & 4                   & 5, 15, 26, 29                                                                                                
+\end{tabular}
+% }
+\caption{Modules comparison between young and old age range and their comparison status }
+\label{table:comparison_young}
+\end{table}
+
+
+From the 35 modules detected in the previously described single condition analysis of young muscle data, GWENA's differential GCN of young versus old age range returned 2 modules that were unpreserved, 17 modules that were moderately preserved, 11 modules that were preserved, and 4 that were inconclusive (Table \ref{table:comparison_young}, Additional file 1: Figure S1). Unpreserved and moderately preserved modules are the most promising for identifying groups of genes differently expressed with age. Few and heterogeneous significant enrichment terms were associated to unpreserved modules while several moderately preserved modules had enrichment terms known to be linked to aging \citeA{Kuehne2017, Lopez-Otin2013, DeMagalhaes2009, Zierer2015} such as transcription regulation (module 21), cellular stress (modules 20 and 27), immune response (modules 7 and 28), cell proliferation (module 13). 
+
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics{img/chap1/figure_3.pdf}
+    % \includegraphics[width=0.95\columnwidth]{img/chap1/figure_3.pdf}
+    \caption{Modules 7 and 19 genes (nodes) connectivity distribution between young and old age ranges. Young age range is used as reference for sorting genes by increasing connectivity. A comparison over all modules can be found in Additional file 1: Figure S4}.
+    \label{fig:fig_connectivity_drop}
+\end{figure}
+
+
+In addition to this biological information, the topological comparison of these modules allows to grasp the nature of the variations in the relationships between genes (nodes in the network) and their co-expression score (edge weight in the network). Connectivity, as defined by J. Dong and S. Horwath \citeA{Dong2007}, is a common topological metric computed in GCN as it is representative of the network robustness and is known to be linked to network deregulation \citeA{Anglani2014, Bormann2016}. Over all modules, the connectivity of the genes in module 7 was noticeably dropping between young and old age range (Fig. \ref{fig:fig_connectivity_drop}, Additional file 1: Figure S4). 
+Using a co-expression score filter of 0.95, this loss of connectivity materialized in the network through a disconnection (edge loss) of peripheral genes (genes with low degree) such as in sub-module 4 between the young and old age range (Fig. \ref{fig:fig_graph_diff_cluster}a, b). Several other genes of the module 7 from the young age range also showed an increased connectivity when observed in the old age range, which therefore reflects a reconnection (edge gain) to other genes. These results confirm the observations from previous studies of a connectivity loss in the network of modules linked to aging \citeA{Southworth2009, Bormann2016}. Overall, they support an alteration of the transcription regulation.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{img/chap1/figure_4.pdf}
+    \caption{Module 7 network comparison between young and old. A: module 7 GCN graph plotted with GWENA (0.95 co-expression score filter) for young age range with sub-clusters detected. B: same as A but for the old age range. A zoom is made on sub-module 4 to show the peripheral genes disconnection. The new sub-module 6 is visible in purple in the old graph. C: difference network heatmap (old - young) ordered according to young age range network dendrogram. Sub-modules from old age range are visible on the top of the heatmap in columns, and sub-modules from young age range on the right in rows. Three zooms are made on the heatmap on the areas corresponding to sub-module 6 genes. Zoom \textcircled{\small{1}} contains the genes reconnecting in the old age range.}
+    \label{fig:fig_graph_diff_cluster}
+\end{figure*}
+
+GWENA sub-module detection method on the module 7 revealed an impact of this reorganization of the gene connections by detecting 5 optimal sub-modules for the young age range, and 6 optimal sub-modules for the old age range. The gene composition of the sub-modules was highly similar between the condition (at least 81\% common genes). Most of the differences in the gene composition are due to the disconnection of peripheral genes as previously spotted, and a small portion of the differences are due to the reconnection of genes or their attribution to another sub-module (Fig. \ref{fig:fig_graph_diff_cluster}a, b). This rewiring of the network is in line with known compensatory processes occurring during aging \citeA{Lopez-Otin2013}. By triggering molecular processes involved in limiting or repairing cellular stress damage, these adaptive modifications aim to restore a homeostatic state.
+
+To support this information, the new sub-module (sub-module 6 in Fig. \ref{fig:fig_graph_diff_cluster}b) appearing in the old age range was investigated further. Its creation is at the expense of the sub-module 1 of the young age range and of the 13 genes composing it, 8 of the genes are from the sub-module 1, 3 are reconnecting genes, and 2 are from sub-modules 2 and 3. A gene set enrichment analysis with GWENA of this sub-module 6 revealed significant enrichment in functions related to wound healing, coagulation, vessel diameter, platelet degranulation, and plasminogen activation (Additional file 1: Table S2). This is coherent with known morphological alterations of the vascular system in the aged skeletal muscle \citeA{ElAssar2013, Gopinath2008}, and the global immune/inflammatory response increased in aging \citeA{DeMagalhaes2009}. Also, 51 enrichments from young sub-module 1 were not found significant in any of the sub-modules in the old age range. These enrichments involve antibacterial humoral response and negative regulation of endopeptidase activity. These terms are known to be associated with satellite cells (muscle stem cells responsible for muscle regeneration) regulators released by the vasculature in higher quantity in young skeletal muscle \citeA{Gopinath2008}. 
+
+To complement these analyses, we investigated the variations of co-expression scores leading to the appearance of sub-module 6 in the old age range. Using the network co-expression matrix $\delta$ returned by GWENA for each condition, a co-expression difference matrix (Fig. \ref{fig:fig_graph_diff_cluster}c) was computed such as $\delta_{old} - \delta_{young}$. In this matrix, gene pairs with a negative score indicates a decrease in the co-expression over aging while a positive score indicates an increase in the co-expression. Among the variations, 3 genes showed a significant increase in co-expression between them but also towards other genes of sub-module 6. The pattern visible in Fig. \ref{fig:fig_graph_diff_cluster}c \textcircled{\small{1}} and \textcircled{\small{2}} suggest that these genes may be driving the co-expression changes occurring in this sub-module. These genes are FGG (ENSG00000171557), FGA (ENSG00000171560), and FGB (ENSG00000171564), the three fibrinogen chain coding genes involved in the polymerization of a fibrin matrix. This finding is consistent with previous studies about the increasing fibrinogen content in the elderly skeletal muscle leading to persistent fibrin deposition preventing myofiber repair \citeA{Mann2011, Gligorijevic2018}. They also support the hypothesis of an inflammatory response triggered by a fibrin accumulation. All these results allowed by GWENA's capacity to study the topology and the biological context easily tend to support the idea of not only a global loss in connectivity in aging but also of a gene co-expression reorganization. Our tools also highlighted the biological translation of this reorganization as a potential compensatory response from antibacterial humoral response and endopeptidase activity towards coagulation and wound response.
+
+
+\subsection{GWENA's contribution and comparison with existing tools}
+
+\begin{table*}[ht]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}llllll@{}}
+\multicolumn{2}{l}{\textbf{Functionalities}}                                                                                      & \textbf{GWENA} & \textbf{WGCNA} & \textbf{CEMiTool} & \textbf{wTO} \\ \midrule
+\multirow{5}{*}{\begin{tabular}[c]{@{}l@{}}Gene set \\ enrichment\end{tabular}} & - Gene ontology                                 & yes            & yes            & no               & no           \\
+                                                                                & - Pathways (KEGG/Reactome)                      & yes            & no             & no                & no           \\
+                                                                                & - Regulation actors (TRANSFAC/miRTarBase)       & yes            & no             & no                & no           \\
+                                                                                & - Protein databases (Human Protein Atlas/CORUM) & yes            & no             & no                & no           \\
+                                                                                & - Custom GMT import                             & yes            & no             & yes               & no           \\
+\multicolumn{2}{l}{Native network visualization}                                                                                  & yes            & no             & no\note{tabfunc}{vizCEMi}               & yes          \\
+\multicolumn{2}{l}{Phenotype association}                                                                                         & yes            & yes            & yes               & no           \\
+\multicolumn{2}{l}{Hub gene detection}                                                                                            & yes            & yes\note{tabfunc}{hubWGCNA}           & yes\note{tabfunc}{hubCEMi}              & no           \\
+\multicolumn{2}{l}{Igraph compatibility for extended topology metrics calculation}                                                & yes            & no             & no                & no           \\
+\multicolumn{2}{l}{Sub-module detections inside module \& graph coloration accordingly}                                                                & yes            & no             & no                & no            \\
+\multicolumn{2}{l}{Modules differential co-expression}                                                                         & yes            & yes\note{tabfunc}{compWGCNA}           & no                & no\note{tabfunc}{compwTO}          
+\end{tabular}
+}
+\caption{Key features of GWENA compared to similar tools such as WGCNA, CEMiTool and wTO. As some differences remain under the same labels, details are provided about their content. \ref{note:tabfunc:vizCEMi}) CEMiTool allows network visualization only if a protein-protein interaction network file is provided, \ref{note:tabfunc:hubWGCNA}) WGCNA only provides a single hub gene selection by module, \ref{note:tabfunc:hubCEMi}) CEMiTool persistently provides the top 10 hub genes independently of the module size or connectivity, \ref{note:tabfunc:compWGCNA}) WGCNA's differential co-expression does not correct for multiple testing, \ref{note:tabfunc:compwTO}) wTO have no differential co-expression method available but provides a consensus network method.
+}
+\label{table:functionnalities_benchmark}
+\end{table*}
+
+
+Weighted GCN can be computed from existing tools such as WGCNA \citeA{Langfelder2008}, wTO \citeA{Gysi2018}, CEMiTool \citeA{Russo2018}. As both GWENA and CEMiTool use elements from WGCNA, they share notable functionalities. They use similar network construction and modules detection functions from WGCNA but offer their own filter on the datasets. GWENA has been enhanced with additional checks on the network construction (such as aberrant power check) compared to WGCNA and CEMiTool. On its side, wTO used a different version of a topological score to construct the network as they don't perform a power law conversion on the correlation matrix and don't use the same definition of topological transformation. Therefore, the main differences between WGCNA, wTO, CEMiTool and GWENA lie in the added functionalities for module analysis. 
+
+Regarding biological integration, wTO provides neither phenotypic association nor gene set enrichment. The other three tools allow phenotypic association but differ on gene set enrichment analysis. While CEMiTool only allows enrichment on imported GMTs, WGCNA and GWENA allow enrichment on gene ontology. GWENA is the only one allowing enrichment on other databases of pathways, regulatory agents, and proteins (in addition to imported GMTs).
+
+Additional topological analysis functions are also available in several of these tools. The most common, hub gene detection, is present in WGCNA, CEMiTool, and GWENA in different forms. CEMitool and WGCNA offer respectively as hub gene the top 10 most connected genes and genes with a top kME score (membership module based on eigengene). However, methods based on a fixed number of hub genes tend to bias the information since the number of hub genes can vary according to the number of genes present in the module. GWENA therefore proposes several methods (highest connectivity, superior degree, Kleinberg's score) based on a selection of genes with a hub score above a threshold. Another addition specific to GWENA is the ability to re-detect sub-modules into a defined module in order to further investigate the co-expression reconnection organization, and then identify the relations between enrichments associated to each sub-modules by visualizing them on the graph plot.
+
+GWENA includes a differential co-expression analysis in the analysis pipeline as opposed to packages dedicated solely to it (DiffCoEx \citeA{Tesson2010}, CoDiNA \citeA{Gysi2020}, CoXpress \citeA{Watson2006}) or packages like wTO or CEMiTool that do not contain this analysis. The method in GWENA differs from the one present in WGCNA in that it includes a permutation test to prevent the problem of multi-testing. With the addition of the Z-summary score to detect unpreserved modules, GWENA is therefore the only pipeline including a differential co-expression analysis with high confidence in modules found unpreserved. The Table \ref{table:functionnalities_benchmark} finally provide a head-to-head comparison for all functionalities made available by GWENA.
+
+CEMiTool and wTO are built as stand-alone tools with little or no eased interfacing with other tools. WGCNA is similar to them except for exporting networks to Cytoscape \citeA{Hu2014} or VisANT \citeA{PaulShannon2003}. Conversely, GWENA has been developed according to a modular architecture in order to facilitate the realization with an external tool of one of the stages of the analysis pipeline defined in Fig. \ref{fig:fig_pipeline_schema}. GWENA will thus be more easily adaptable to follow future developments in co-expression network analysis methodology.
+
+GWENA, as other GCN analysis tool has limitations. A first one common to all GCN construction method is that the quality of input data (e.g. filtration and/or proper normalization) will inevitably bias the results, especially if it breaks the scale-free property. A second limitation is the design of the permutation test that prevents reporting a significant unpreservation. The non-rejection of the null hypothesis of unpreservation can only state a lack of evidence of preservation. Therefore, unpreserved modules are determined among these modules lacking evidence (the non-significant modules) by the calculation of Z summary which only provide a tendency in the unpreservation \citeA{Langfelder2011}. The present application of GWENA to skeletal muscle aging also presents its own limitation. All analyses were performed on skeletal muscle sample and results were commented regarding this context. However, to be sure of the specificity of the findings, an additional differential co-expression of the modules should be performed on samples from other tissues from subjects with similar age range. As single-cell technologies are becoming common, the differential co-expression could also be used to target the cell-to-cell specific aging variation inside a tissue. Finally, as co-expression networks were unsigned and aging is a complex phenomenon involving actors beyond gene expression, causal effect of any finding need to be experimentally verified. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%   Conclusion                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+In this paper, we introduced GWENA, an R package on Bioconductor to construct and analyze GCN in a single pipeline through a whole range of tools from biological integration, topological analysis, and differential co-expression. The package reduces complexity of the GCN analysis through simple input and output functions combined to a set of visualizations to explore the results. The separation of each step of the analysis in one function also allows quick and easy replacement if users wish to use another method for this block.
+
+GWENA demonstrated its performances on both single and multiple condition analysis through an exploration of variations of skeletal muscle function and processes in aging. The single condition analysis showed it is possible to find new genes potentially involved in an existing GO annotation using hub genes, network neighboring genes and gene sets enrichments. The differential co-expression analysis between young and old samples isolated modules specifically linked to aging and detected the rearrangement in connectivity related to aging. Additional analysis supported the observed genes co-expression reorganization beyond simple connectivity loss. This resulted in a reinforcement of previous supposition on inflammatory response to fibrin increases in skeletal muscle aging.	
+
+
+
+\bibliographystyleA{plain-fr}
+% \bibliographyA{bibliographie}
+\bibliographyA{chap1-biblio}
