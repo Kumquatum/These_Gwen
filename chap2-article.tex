@@ -8,14 +8,14 @@ La variation de la distribution de la co-expression des gènes associée au viei
 Cependant, le vieillissement est un phénomène qui ne se limite pas au muscle dans un organisme et touche bien d'autres tissus en parallèle. Dans chacun d'eux, le transcriptome est un témoin des modifications liées à l'avancée dans l'âge \citeB{DeMagalhaes2010}. Via son analyse par expression différentielle et d'autres méthodes d'analyse de gènes discrètes \citeB{Barabasi2004}, nombre de gènes (biomarqueurs) associés à l'âge ont pu être détectés dans les différents tissus du corps humain. Si pour certains de ces gènes on a déjà étudié leur relation avec des fonctions physiologiques, ce n'est pas le cas de la majorité. Suite à ces études fines de certains gènes, il est également rare bien qu'intéressant de connaître comment leur relation évolue plus globalement, au-delà des fonctions physiologiques considérées.
 % Ce manque d'information sur les relations est dû au coût et à la longueur des méthodes pour obtenir les relations entre deux ou quelques gènes. En effet, elles requièrent le plus souvent des expérimentations basées sur des inactivations ou sur-activation d'un ou plusieurs gènes (respectivement \textit{knockout} et \textit{knockin} en anglais). 
 Pour pouvoir investiguer chaque relation et impact de chaque gène, la méthode courante implique le plus souvent de réaliser des expérimentations d'inactivation ou sur-activation d'un ou plusieurs gènes (respectivement \textit{knockout} et \textit{knockin} en anglais). Le coût important de ces manipulations, tant en temps qu'en argent limite alors une réalisation en masse pour caractériser en masse les relations entre deux ou quelques gènes. 
-L'information apportée par de tels liens permettrait pourtant d'aider à déterminer le type de modification observé \citeB{Lopez-Otin2013} : l'activation ou répression du gène observé est-elle le fruit d'une réponse à l'activation d'un autre gène voir mécanisme \citeB{Bechtel2013} complet ? Ou bien est-elle à l'origine d'un mécanisme justement, avec ou sans autres gènes impliqués ? 
+L'information apportée par de tels liens permettrait pourtant d'aider à déterminer le type de modification observé \citeB{Lopez-Otin2013}. Ainsi on pourrait estimer si l'activation ou répression du gène observé est le fruit d'une réponse à l'activation d'un autre gène voir mécanisme \citeB{Bechtel2013} complet, ou plutôt l'origine d'un mécanisme avec ou sans autres gènes impliqués.
 
-Ces questions, qu'on peut résumer à "conséquence ou cause", ont d'autant plus d'intérêt que des études précédentes tendent à démontrer l'existence de bases communes au vieillissement tant en termes de fonctions physiologiques que de mécanismes \citeB{DeMagalhaes2009a}. On relève ainsi des signatures d'expression de gènes communes à plusieurs tissus dans leur état "âgé". Parmi les fonctions physiologiques détectées comme sur-exprimées par l'expression différentielle, on retrouve notamment des composantes de la réponse immunitaire ou inflammatoire et de la dégradation lysosomale. À l'opposé, dans les fonctions détectées comme sous-exprimées, on retrouve des fonctions associées à l'encodage de protéines mitochondriales ainsi que des gènes responsables de la production de différents types de collagène. En complément, bien que ne concernant pas tous les tissus du corps, d'autres signatures sont communes à des sous groupes de tissus partageant des propriétés tant moléculaires que cellules. On retrouve par exemple une accumulation de marques de réparation de l'ADN chez les tissus se renouvelant rapidement \citeB{Armanios2012}, un épuisement des capacités de régénération chez les tissus disposant d'une cache de cellules souches \citeB{Ratajczak2017}, des dommages à l'ADN plus présents chez les tissus soumis à des stress mécaniques \citeB{Kubben2017}.
+Ces questions ont d'autant plus d'intérêt que des études précédentes tendent à démontrer l'existence de bases communes au vieillissement tant en termes de fonctions physiologiques que de mécanismes \citeB{DeMagalhaes2009a}. On relève ainsi des signatures d'expression de gènes communes à plusieurs tissus dans leur état "âgé". Parmi les fonctions physiologiques détectées comme sur-exprimées par l'expression différentielle, on retrouve notamment des composantes de la réponse immunitaire ou inflammatoire et de la dégradation lysosomale. À l'opposé, dans les fonctions détectées comme sous-exprimées, on retrouve des fonctions associées à l'encodage de protéines mitochondriales ainsi que des gènes responsables de la production de différents types de collagène. En complément, bien que ne concernant pas tous les tissus du corps, d'autres signatures sont communes à des sous groupes de tissus partageant des propriétés tant moléculaires que cellules. On retrouve par exemple une accumulation de marques de réparation de l'ADN chez les tissus se renouvelant rapidement \citeB{Armanios2012}, un épuisement des capacités de régénération chez les tissus disposant d'une cache de cellules souches \citeB{Ratajczak2017}, des dommages à l'ADN plus présents chez les tissus soumis à des stress mécaniques \citeB{Kubben2017}.
 
 L'analyse de co-expression de gènes a démontré sa capacité à aider à la détermination de nouveaux liens, de nouvelles voies de signalisation dans un tissu \citeB{Hughes2000}. 
 Fort de ces réalisations, on s'est interrogé quant à la capacité de la co-expression différentielle à détecter des acteurs du vieillissement non pas simplement entre deux tranches d'âges, mais ceux-ci transversalement à de multiples tissus humains. 
 Les différences observées pourraient permettre, contrairement à l'analyse mono-tissu, d'explorer spécifiquement les phénomènes du vieillissement communs ou bien uniques aux différents tissus. 
-Par cette démarche, on cherche ainsi dans chacun de ces cas à isoler de nouveaux gènes candidats et à prouver l'intérêt de la co-expression différentielle pour y parvenir.
+Par cette démarche, on va ainsi montrer dans chacun de ces cas la détection de nouveaux gènes candidats et à prouver l'intérêt de la co-expression différentielle pour y parvenir.
 Une première phase de traitement des données issues de différents tissus a tout d'abord permis de s'assurer de leur comparabilité entre tissus. 
 % On a ensuite effectué une exploration générale des modules de gènes obtenus via une revue des fonctions physiologiques et des gènes pivots détectés dans chacun. 
 Après une détection des modules de co-expression, on a isolé les modules variant avec l'âge à l'aide d'une analyse de co-expression différentielle pour chaque tissu. Tous ont été recoupés entre eux pour sélectionner les gènes variants en commun. Deux branches ont alors été explorées avec un exemple détaillé dans chacune : les intersections de tissus présentant des phénomènes communs du vieillissement, et les intersections de tissus présentant des phénomènes de vieillissement spécifiques. 
@@ -29,7 +29,7 @@ Nos résultats montrent que dans chacune de ces branches, on est parvenu à une 
 
 \subsection{Contextualisation des données}
 
-On a ici utilisé à nouveau les données issues de l'étude GTEx \citeB{Ardlie2015} dans notre étude. Pour approfondir les informations données lors du chapitre \ref{chapter:gwena}, ces données sont le regroupement d'échantillons prélevés sur 54 tissus (+1 tissu qui est en fait un assemblage de lignées cellulaires dérivées de patients atteints de leucémie myéloïde aiguë\citeB{Way2020}) et 980 donneurs dans sa dernière version, la v8. Cette variété de tissus vise à être le plus représentatif possible des différents tissus chez l'humain au vu du coût de prélèvement et d'analyse de chaque échantillon. Les biopsies sont effectuées sur des donneurs décédés avec leur accord préalable, l'accord d'un proche ou l'accord du représentant légal. Elles sont réalisées sur 4 centres de collecte, puis analysées sur place ou transférées selon le tissu avec réfrigération durant le transport. Ces échantillons sont évalués sur plusieurs critères pour jauger leur admissibilité et échantillon non conforme est exclu de la cohorte. On retrouve : 
+Les données de GTEx étant l'un des rares jeux de données à contenir autant de tissus sains différents et en grand nombre, on les a à nouveau utilisées. Pour approfondir les informations données lors du chapitre \ref{chapter:gwena}, ces données sont le regroupement d'échantillons prélevés sur 54 tissus (+1 tissu qui est en fait un assemblage de lignées cellulaires dérivées de patients atteints de leucémie myéloïde aiguë\citeB{Way2020}) et 980 donneurs dans sa dernière version, la v8. Cette variété de tissus vise à être le plus représentatif possible des différents tissus chez l'humain au vu du coût de prélèvement et d'analyse de chaque échantillon. Les biopsies sont effectuées sur des donneurs décédés avec leur accord préalable, l'accord d'un proche ou l'accord du représentant légal. Elles sont réalisées sur 4 centres de collecte, puis analysées sur place ou transférées selon le tissu avec réfrigération durant le transport. Ces échantillons sont évalués sur plusieurs critères pour jauger leur admissibilité et échantillon non conforme est exclu de la cohorte. On retrouve : 
 \begin{itemize}
     \item des critères cliniques : absence de contamination au VIH, absence de chimiothérapie dans les 2 ans, absence de transfusion sanguine dans les 48 h, etc.
     \item des critères anatomopathologiques : absence de tissu cancéreux, absence de pathologie tissulaire, etc.
@@ -40,7 +40,14 @@ On a ici utilisé à nouveau les données issues de l'étude GTEx \citeB{Ardlie2
 Sur la majorité des échantillons ont été effectué des séquençages de génome (\textit{Whole Genome Sequencing}, WGS), des séquençages d'exome complet (\textit{Whole Exome Sequencing}, WES), des séquençages de transcriptome (aussi appelé séquençage d'ARN, RNA-Seq), ainsi que des images de coupes histologiques colorées. Des données reformatées sont également mises à disposition telle que les locus de caractères quantitatifs (\textit{quantitative trait loci}, QTL) et l'expression de gène qui est ce que l'on va utiliser ici. Ces données sont disponibles sur le site du consortium GTEx (\url{https://gtexportal.org}) accompagnées d'information sur le phénotype des échantillons. En raison du fort potentiel d'identification des donneurs, le phénotype donné publiquement est partiel, et le phénotype complet est disponible sur demande auprès de dbGaP après soumission d'un dossier de projet à renouveler chaque année (Annexe \ref{annexe:dbgap}).
 
 
-\begin{figure}
+Par ailleurs, tous les donneurs n'ont pas pu être prélevés pour l'ensemble des 54 tissus et ce sont en moyenne 23,4 tissus qui ont été prélevés sur la version 8 de l'étude GTEx. Certains tissus ont été priorisés lors des biopsies : tissu adipeux (sous-cutané), artère tibiale, cœur (ventricule gauche), poumon, muscle (squelettique), nerf tibial, peau (exposée au soleil), thyroïde, sang complet. Parmi les différents tissus biopsiés, il est à noter que certains sont issus d'un même organe et on a ainsi 31 organes biopsiés pour 54 tissus biopsiés en tout.
+
+% \todo[inline]{Un Sankey diagramme des tissus avec col 1 = SMTS, col 2 = SMTSD, col 3 = tranche d'age à 10 ans}
+
+
+\subsection{Sélection des tissus}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_filtre_donnees.pdf}
     % \includesvg[scale=.5]{img/chap2/chap2_filtre_donnees.svg}
@@ -49,44 +56,36 @@ Sur la majorité des échantillons ont été effectué des séquençages de gén
     % \caption{Nombre d'échantillons disponibles par tissu et par tranche d'âge de 10 ans dans les données de GTEx.}
 \end{figure}
 
-Par ailleurs, tous les donneurs n'ont pas pu être prélevés pour l'ensemble des 54 tissus et ce sont en moyenne 23,4 tissus qui ont été prélevés sur la version 8 de l'étude GTEx. Certains tissus ont été priorisés lors des biopsies : tissu adipeux (sous-cutané), artère tibiale, cœur (ventricule gauche), poumon, muscle (squelettique), nerf tibial, peau (exposée au soleil), thyroïde, sang complet. Parmi les différents tissus biopsiés, il est à noter que certains sont issus d'un même organe et on a ainsi 31 organes biopsiés pour 54 tissus biopsiés en tout.
-
-% \todo[inline]{Un Sankey diagramme des tissus avec col 1 = SMTS, col 2 = SMTSD, col 3 = tranche d'age à 10 ans}
-
-
-\subsection{Sélection des tissus}
 
 Le vieillissement est un phénomène dont les altérations moléculaires sont linéaires avec le temps, dont les dommages cellulaires sont super-linéaires \citeB{Todhunter2018}, et où la mortalité associée augmente de façon exponentielle passée 20 ans \citeB{Finch2016}. Afin de faciliter la détection de ces altérations grâce à l'analyse de co-expression différentielle, on s'est donc dans un premier temps concentré sur une sélection de tranches d'âges très contrastées. Les échantillons sélectionnés sont issus de donneurs entre 20 et 30 ans pour la tranche qu'on nommera "\textbf{jeune}", et entre 60 et 70 ans pour la tranche qu'on nommera "\textbf{âgée}". Les données de GTEx ne comportent toutefois pas un nombre d'échantillons similaire pour chacune de ces tranches du fait de la mortalité plus importante chez les personnes âgées que les personnes jeunes. Ce déséquilibre est principalement dû aux causes de décès pour chaque tranche d'âge avec des décès par traumatisme chez les jeunes plutôt que par maladie chronique ou maladie liée à l'âge chez les âgés. Un premier filtre de notre pré-traitement restreint donc la sélection des tissus à ceux comportant au minimum 50 échantillons dans chacune des tranches d'âge, ce qui n'est pas le cas de la Vessie (20) et le Rein - Médulla (3). Ce nombre d'échantillons permet d'assurer un bon compromis entre des réseaux de co-expression de gènes robustes, donc non sensibles à des valeurs aberrantes, et la perte de plus de tissus à étudier dans cette analyse multidimensionnelle qu'on souhaite effectuer \citeB{Liesecke2019}.
 
 Tous les tissus restant n'étaient pas nécessairement adaptés à l'étude globale du vieillissement chez l'humain. Ainsi on a retiré tous les tissus liés à un seul sexe : Trompes de Fallope, Col de l'utérus, Utérus, Vagin, Sein, Ovaire, Prostate, Testicule. À ce retrait s'ajoute celui des échantillons de lignées cellulaires (dérivées ou non de tissus eux conservés) car non représentatifs du vieillissement biologique : Cellules - Lymphocytes transformés par EBV, Cellules - Fibroblastes cultivés, Cellules - Lignée cellulaire de leucémie (CML). 
 
 
-\begin{figure*}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_sample_count_by_tissu.png}
     \caption{Nombre d'échantillons disponibles par tissu et par tranche d'âge de 10 ans dans les données de GTEx.}
     \label{figure:sample_count_by_tissu}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Filtre des échantillons}
 
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/chap2/chap2_sample_count_by_tissu_after_filter.pdf}
+    \caption{Nombre d'échantillons disponibles par tissu dans les tranches d'âge jeune (20-30) et âgé (60-70) après filtration selon la cohorte et le statut cancéreux.}
+    \label{figure:sample_count_by_tissu_after_filter}
+\end{figure}
 
 En plus de ces sélections de tissus, certains échantillons ont directement nécessité une filtration afin de prévenir de potentiels biais qui pourraient altérer l'analyse de co-expression ou l'interprétation des modules en étant issus. Ainsi, seuls les échantillons répondant au critère d'inclusion dans la cohorte "GTEx Analysis Freeze" ont été retenus en premier lieu (Figure \ref{figure:data_filters}. Cette cohorte atteste que les échantillons n'étaient pas :
 \begin{itemize}
     \item issus de donneurs ayant des liens de parenté ou de donneurs avec des critères d'exclusion, par exemple des donneurs avec des duplications ou délétions chromosomiques
     \item affectés d'un syndrome tel que défini par la base de données OMIM \citeB{Hamosh2005}, hors maladies liées au vieillissement
     \item ayant effectué une chirurgie de ré-assignation sexuelle
-
 \end{itemize}
 % issus de donneurs ayant des liens de parenté ou de donneurs avec des critères d'exclusion, par exemple des donneurs avec des duplications ou délétions chromosomiques, affectés d'un syndrome tel que défini par la base de données OMIM \citeB{Hamosh2005} (ce qui n'inclue pas les maladies liées au vieillissement), ou encore ayant effectué une chirurgie de ré-assignation sexuelle. 
-
-\begin{figure}[hb]
-    \centering
-    \includegraphics[width=1\textwidth]{img/chap2/chap2_sample_count_by_tissu_after_filter.pdf}
-    \caption{Nombre d'échantillons disponibles par tissu dans les tranches d'âge jeune (20-30) et âgé (60-70) après filtration selon la cohorte et le statut cancéreux.}
-    \label{figure:sample_count_by_tissu_after_filter}
-\end{figure}
 
 Par ailleurs, l'expression des tissus tumoraux a montré, dans des études préalables, des modèles d'expression génétique différents de ceux non tumoraux \citeB{Tang2017}. Par conséquent, les échantillons de ces donneurs ont également été supprimées ici ainsi que les échantillons dont le statut cancéreux était inconnu. La répartition finale des échantillons par tissu et par tranche d'âge est visible en Figure \ref{figure:sample_count_by_tissu_after_filter}.
 
@@ -101,19 +100,15 @@ On a considéré comme base dans cette étude uniquement les gènes codants pour
 
 À l'instar de l'analyse d'expression différentielle, l'analyse de co-expression différentielle nécessite des données biaisées au minimum pour une construction de réseau de qualité. Ces biais (ou facteurs confondants) peuvent être tant techniques que biologiques et vont entraîner une augmentation de la variation de façon artificielle. Le risque est alors de détecter une différence artificielle et de l'assumer comme expérimentalement pertinente alors qu'elle est en fait due aux biais. Dans le cas de la co-expression plus spécifiquement, ces biais peuvent entraîner des corrélations erronées mais qui semblent crédibles entre certains gènes. Elles altèrent alors la construction du réseau de co-expression et par la suite la détection des modules qui se base sur un découpage en modules via les corrélations. Ainsi, il est essentiel de corriger ces facteurs confondants au préalable de l'utilisation du package R GWENA \citeB{Lemoine2021Dec} sur les données comme on va le faire par la suite.
 
-La complexité de la correction des facteurs confondants réside dans leur suppression sans pour autant altérer la distribution des données ou supprimer le signal expérimental d'intérêt, ici les variations dans le transcriptome dues à l'âge. Il est également important avec l'utilisation de GWENA de veiller à ce que la correction n'altère pas la topologie d'invariance d'échelle qu'on retrouve dans les données de transcriptomique après construction d'un réseau de co-expression \citeB{Zhang2005a}. En effet, cela invaliderait la méthode de détection des modules ultérieure car celle-ci repose sur une méthode présupposant la présence d'une telle topologie pour fonctionner.
+La complexité de la correction des facteurs confondants réside dans leur suppression sans pour autant altérer la distribution des données ou supprimer le signal expérimental d'intérêt, ici les variations dans le transcriptome dues à l'âge. 
+% Il est également important avec l'utilisation de GWENA de veiller à ce que la correction n'altère pas la topologie d'invariance d'échelle qu'on retrouve dans les données de transcriptomique après construction d'un réseau de co-expression \citeB{Zhang2005a}. En effet, cela invaliderait la méthode de détection des modules ultérieure car celle-ci repose sur une méthode présupposant la présence d'une telle topologie pour fonctionner.
+Il est également important avec l'utilisation de GWENA de veiller à ce que la correction n'altère pas la topologie d'invariance d'échelle (\textit{scale-free topology}) qu'on retrouve dans les réseaux de co-expression construits sur des données de transcriptomique \citeB{Zhang2005a}. Cette propriété assure que la distribution des degrés des nœuds suivent en fait une loi de puissance. Briser cette topologie perturberait la détection des modules dans le réseau car la méthode employée pour cela présuppose la présence d'une telle topologie pour fonctionner.
 
 % \todo{Je me demande si ces 2 paragraphes plus haut ne devraient pas finir en intro de thèse}
 
-La base de données GTEx n'échappe pas aux biais \citeB{Parsana2019} et a même été étudiée sur le plan de la contamination \citeB{Nieuwenhuis2020}.
-Malgré le progrès de techniques ciblées sur des facteurs confondants connus comme l'effet de lot, l'effet de centre de prélèvement, le sexe, le poids, etc., celles-ci ne sont pas capables de corriger pour des facteurs peu explicites ou diffus comme la classe sociale, l'alimentation, la façon de manipuler des techniciens, etc. La correction par composante principale (CP) vise à répondre à ce type de problématique et a montré de bons résultats selon une évaluation par validation de voies de signalisation au sain de modules détectés \citeB{Parsana2019}. Elle a également montré de meilleurs résultats que d'autres méthodes telles que la régression multiple, le taux exonique, ou encore le numéro d'intégrité d'ARN (\textit{RNA integrity number}, ou RIN). Fait important pour la co-expression en particulier, cette méthode conserve la propriété d'invariance d'échelle des données nécessaire à la construction des modules de co-expression dans notre méthode.
-
-Cependant, cette correction va également corriger l'âge qui est notre variable d'intérêt. Afin de conserver cette information tout en ayant un effet de correction par CP sur les autres facteurs confondants, on a donc ajusté la méthode estimant le nombre $n$ de CP par lequel corriger les jeux de données. Au lieu d'utiliser une procédure de permutation \citeB{Buja1992Oct}, l'estimation de $n$ s'est faite en deux étapes :
-\begin{itemize}
-    \item Un test de corrélation de chaque gène avec l'âge associé à chaque échantillon (donc patient) en fonction de différent $n$ PC corrigées donne une liste de gènes significativement associés à l'âge.
-    \item Cette liste de gènes par $n$ PC corrigées est ensuite croisée avec deux bases de données de gènes connus comme étant associés au vieillissement : GenAge \citeB{DeMagalhaes2004} et Digital Aging Atlas \citeB{Craig2015}. Y sont alors compté le nombre de gènes significatifs recoupés.
-\end{itemize}
-Finalement, le $n$ de PC à corriger retenu est celui où le nombre de gènes significatifs est le plus haut dans chaque base de données. En cas de divergence de ce $n$ entre les bases de données, on a sélectionné la valeur la plus basse de $n$ afin de ne pas risquer de corriger l'âge (Table \ref{table:nb_PC_corr_and_samples_by_tissue}).
+% La base de données GTEx n'échappe pas aux biais \citeB{Parsana2019} et a même été étudiée sur le plan de la contamination \citeB{Nieuwenhuis2020}.
+La base de données GTEx n'échappe pas aux biais \citeB{Parsana2019, Nieuwenhuis2020} et doit donc passer par cette étape sensible de correction des facteurs confondants dans le cadre de notre analyse de co-expression.
+Malgré le progrès de techniques ciblées sur des facteurs confondants connus comme l'effet de lot, l'effet de centre de prélèvement, le sexe, le poids, etc., celles-ci ne sont pas capables de corriger pour des facteurs peu explicites ou diffus comme la classe sociale, l'alimentation, la façon de manipuler des techniciens, etc. La correction par composante principale (CP) vise à répondre à ce type de problématique et a montré de bons résultats selon une évaluation par validation de voies de signalisation au sain de modules détectés \citeB{Parsana2019}. Elle a également montré de meilleurs résultats que d'autres méthodes telles que la régression multiple, le taux exonique, ou encore le numéro d'intégrité d'ARN (\textit{RNA integrity number}, ou RIN). Fait important pour la co-expression en particulier, cette méthode conserve la propriété d'invariance d'échelle des données requise pour la construction des modules de co-expression dans notre méthode.
 
 
 \begin{table}[h!]
@@ -136,6 +131,15 @@ Sang complet                    & 1                                             
 \label{table:nb_PC_corr_and_samples_by_tissue}
 \end{table}
 
+
+Cependant, cette correction va également corriger l'âge qui est notre variable d'intérêt. Afin de conserver cette information tout en ayant un effet de correction par CP sur les autres facteurs confondants, on a donc ajusté la méthode estimant le nombre $n$ de CP par lequel corriger les jeux de données. Au lieu d'utiliser une procédure de permutation \citeB{Buja1992Oct}, l'estimation de $n$ s'est faite en deux étapes :
+\begin{itemize}
+    \item Un test de corrélation de chaque gène avec l'âge associé à chaque échantillon (donc patient) en fonction de différent $n$ PC corrigées donne une liste de gènes significativement associés à l'âge.
+    \item Cette liste de gènes par $n$ PC corrigées est ensuite croisée avec deux bases de données de gènes connus comme étant associés au vieillissement : GenAge \citeB{DeMagalhaes2004} et Digital Aging Atlas \citeB{Craig2015}. Y sont alors compté le nombre de gènes significatifs recoupés.
+\end{itemize}
+Finalement, le $n$ de PC à corriger retenu est celui où le nombre de gènes significatifs est le plus haut dans chaque base de données. En cas de divergence de ce $n$ entre les bases de données, on a sélectionné la valeur la plus basse de $n$ afin de ne pas risquer de corriger l'âge (Table \ref{table:nb_PC_corr_and_samples_by_tissue}).
+
+
 % \todo[inline]{Idée de figure : remplacer cette table ou en touts cas la partie nb composantes par un ensemble de mini histogrames avec les deux bdd en un, et en facet pour chaque tissu.}
 
 
@@ -143,21 +147,29 @@ Sang complet                    & 1                                             
 
 Une fois les données pré-traitée, nous avons généré un réseau de co-expression de gènes indépendamment sur chacun des 10 tissus et tranche d'âge à l'aide du package GWENA \citeB{Lemoine2021Dec}. Les paramètres spécifiés étaient ceux par défaut de la fonction \verb+build_net+ à l'exception de la corrélation qui était basée sur Spearman et du seuil d'ajustement de la loi de puissance fixé à 0,8. Dans chaque réseau de tissu, on a ensuite détecté le nombre de modules via la fonction \verb+detect_modules+ selon un seuil de coupe de l'arbre hiérarchique identique dans chaque tissu et une taille de module minimale fixée à 20 gènes. Chaque ensemble de modules a ensuite été testé à l'aide de la fonction \verb+compare_conditions+ par tissu entre les deux tranches d'âges pour identifier les modules préservés, modérément préservés et non préservés avec le vieillissement.
 
+\subsection{Investigation des phénomènes communs ou spécifiques du vieillissement}
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_intersection_explication.pdf}
+    \caption{Schéma simplifié, avec trois tissus seulement, de la méthode de construction des intersections spécifiques et communes du vieillissement.}
+    \label{figure:chap2_intersection_explication}
+\end{figure}
+
+Dans chaque tissu on a isolé les modules de co-expression modérément préservés (MP) et non préservés (NP) entre les deux tranches d'âge. On a ensuite effectué une intersection de leur contenu en gènes entre tous les tissus afin d'isoler les gènes participant à des phénomènes communs à plusieurs tissus et ceux participant à des phénomènes plus spécifiques d'un sous ensemble de tissus partageant des propriétés biologiques \ref{figure:chap2_intersection_explication}. Tous ont ensuite été enrichis via la fonction \verb+bio_enrich+ de GWENA et leurs résultats revus en regard de la littérature sur le vieillissement. Pour les plus pertinents d'entre eux, un résumé des termes Gene Ontology selon leur similarité sémantique a été réalisé à l'aide du package R rrvgo \citeB{rrvgo2021} qui reprend le principe de l'outil REVIGO \citeB{Supek2011Jul}.
 
 
 
 \section{Résultats}
 
+\subsection{Répartition des gènes en fonction de la tranche d'âge et du tissu}
 
 \begin{figure}[!hb]
     \centering
-    \includegraphics[width=1\textwidth]{img/chap2/chap2_repartition_genes_modules_tissus.png}
+    \includegraphics[width=0.95\textwidth]{img/chap2/chap2_repartition_genes_modules_tissus.png}
     \caption{Répartition des gènes (en échelle log10) pour chaque tissu entre les deux tranches d'âge jeune (bleu) et âgée (rouge)}
     \label{figure:repartition_genes_modules_tissus}
 \end{figure}
-
-
-\subsection{Répartition des gènes en fonction de la tranche d'âge et du tissu}
 
 La répartition des gènes entre les modules est hétérogène, tant entre les tranches d'âge qu'entre les tissus (Figure \ref{figure:repartition_genes_modules_tissus}), avec une moyenne à 26 modules tout confondu (25.2 pour les âgés et 26.8 pour les jeunes). Le module 0 présent sur la figure regroupe les gènes sans association à un module. Celui-ci est quasi systématiquement plus grand dans la tranche âgée que jeune, à l'exception des tissus de la thyroïde et du sang complet. Les tissus où cet écart est le plus creusé sont ceux disposant du plus grand nombre de modules dans la tranche d'âge jeune. Ces résultats sont cohérents avec la tendance à la perte de co-expression constatée dans les tranches d'âge âgées \citeB{Southworth2009} : la perturbation des voies de signalisation au cours du vieillissement entraîne une diminution de la co-expression entre gènes de ces voies.
 
@@ -192,7 +204,6 @@ Sang complet                    & 9                 & 64              & 4       
 
 Afin d'observer des similarités de mécanismes du vieillissement entre ces différents tissus, on a dans un premier temps regardé si des gènes communs existaient entre les modules modérément préservés (MP) et non  préservés (NP). Le diagramme UpSet \citeB{Lex2014} visible en Figure \ref{figure:upset_intersection_genes_tissu_unpres_modpres} permet de constater le faible recouvrement entre les gènes contenus dans les modules MP et NP. Ce diagramme révèle également que le maximum de tissus avec des gènes communs est 5. Ce chiffre est à mettre en contraste avec le fait que les modules créés par GWENA pour un même tissu ne sont pas chevauchant. Un gène classé dans un module ne sera donc pas également classé dans un autre et on aurait pu espérer une intersection au maximum de taille 10 étant donné qu'on dispose de 10 tissus. 
 
-\todo{Peut être retravailler la figure pour la découper selon le nombre de tissus à l'intersection (de 1 à 5)}
 \begin{landscape}
 \begin{figure}[p]
   \centering
@@ -207,11 +218,9 @@ En plus de ce nombre maximal de tissus présent dans une intersection, certains 
 
 \subsection{Répartition des phénomènes communs liés au vieillissement dans plusieurs tissus}
 
-Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant être impliquées dans le vieillissement, les intersections de plus de 3 tissus et ayant au moins 5 gènes ont été enrichies via GWENA. Comme visible en Annexe \ref{annexe:chap_2_genes_intersect_enrichments} dans les tables des enrichissements obtenus, 5 intersections n'ont pas donné d'enrichissement significatif malgré un nombre de gènes équivalent à d'autres intersections avec enrichissement. Les 18 autres intersections ont quant à elles retourné des fonctions physiologiques (Gene Ontology \citeB{Ashburner2000}, CORUM \citeB{Ruepp2008}) et voies d'activation (KEGG \citeB{Kanehisa2019}, REACTOME \citeB{Fabregat2016}, WikiPathways\citeB{Slenter2018}) connues comme faisant partie du vieillissement global, ou de manifestations spécifiques à plusieurs tissus. Ainsi on retrouve, dans ces intersections de modules peu ou pas préservés dans la tranche âgée, des fonctions associées à l'homéostasie, la régulation de la transcription, la gestion des dérivés réactifs de l'oxygène, l'inflammation, etc. (Table \ref{table:intersection_aging_global_phenomenons} et Figure \ref{figure:revigo_resume_4_enrich}). La muqueuse œsophagienne bien qu'ayant un nombre de gènes plus élevé que les autres tissus ne se retrouve pas sur-représentée dans ces phénomènes observés. Cela indique donc que la majorité de ses gènes se trouvent dans les intersections de faible taille, tant en gènes qu'en nombre de tissus recoupés. Le sang complet, le tissu adipeux sous-cutané et la peau non exposée au soleil sont eux les tissus les moins présents dans ces intersections avec des phénomènes liés au vieillissement. Le sang complet est notablement absent des intersections avec des phénomènes liés à la coagulation. Les tissus ayant un fort renouvellement (voir en Table \ref{table:tissu_telomere_effet}) que sont les épithéliums (peau exposée au soleil, artère tibiale, muqueuse œsophagienne) sont porteurs d'un grand nombre de phénomènes, ainsi que la thyroïde et le muscle squelettique. 
-
-
-\begin{table}[]
-\resizebox{\textwidth}{!}{
+\begin{table}[hb]
+\centering
+\resizebox{0.8\textwidth}{!}{
 \begin{tabular}{@{}lllllllllll@{}}
 \rotatebox{90}{\textbf{Muqueuse œusophagienne}}   & \rotatebox{90}{\textbf{Artère tibiale}}                      & \rotatebox{90}{\textbf{Thyroïde}}                 & \rotatebox{90}{\textbf{Muscle squelettique}}      & \rotatebox{90}{\textbf{Peau exposée au soleil}}   & \rotatebox{90}{\textbf{Muscle œusophagien}}       & \rotatebox{90}{\textbf{Nerf tibial}}              & \rotatebox{90}{\textbf{Peau non exposée au soleil}} & \rotatebox{90}{\textbf{Adipeux sous-cutané}}      & \rotatebox{90}{\textbf{Sang complet}}             & \textbf{Phénomène du vieillissement observé}       \\ \midrule
 \cellcolor[HTML]{F8A102} & \cellcolor[HTML]{F8A102}            &                          & \cellcolor[HTML]{F8A102} &                          &                          &                          & \cellcolor[HTML]{F8A102}   &                          &                          & Homéostasie                               \\
@@ -237,6 +246,9 @@ Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant ê
 \end{table}
 
 
+Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant être impliquées dans le vieillissement, les intersections de plus de 3 tissus et ayant au moins 5 gènes ont été enrichies via GWENA. Comme visible en Annexe \ref{annexe:chap_2_genes_intersect_enrichments} dans les tables des enrichissements obtenus, 5 intersections n'ont pas donné d'enrichissement significatif malgré un nombre de gènes équivalent à d'autres intersections avec enrichissement. Les 18 autres intersections ont quant à elles retourné des fonctions physiologiques (Gene Ontology \citeB{Ashburner2000}, CORUM \citeB{Ruepp2008}) et voies d'activation (KEGG \citeB{Kanehisa2019}, REACTOME \citeB{Fabregat2016}, WikiPathways\citeB{Slenter2018}) connues comme faisant partie du vieillissement global, ou de manifestations spécifiques à plusieurs tissus. Ainsi on retrouve, dans ces intersections de modules peu ou pas préservés dans la tranche âgée, des fonctions associées à l'homéostasie, la régulation de la transcription, la gestion des dérivés réactifs de l'oxygène, l'inflammation, etc. (Table \ref{table:intersection_aging_global_phenomenons} et Figure \ref{figure:revigo_resume_4_enrich}). La muqueuse œsophagienne bien qu'ayant un nombre de gènes plus élevé que les autres tissus ne se retrouve pas sur-représentée dans ces phénomènes observés. Cela indique donc que la majorité de ses gènes se trouvent dans les intersections de faible taille, tant en gènes qu'en nombre de tissus recoupés. Le sang complet, le tissu adipeux sous-cutané et la peau non exposée au soleil sont eux les tissus les moins présents dans ces intersections avec des phénomènes liés au vieillissement. Le sang complet est notablement absent des intersections avec des phénomènes liés à la coagulation. Les tissus ayant un fort renouvellement (voir en Table \ref{table:tissu_telomere_effet}) que sont les épithéliums (peau exposée au soleil, artère tibiale, muqueuse œsophagienne) sont porteurs d'un grand nombre de phénomènes, ainsi que la thyroïde et le muscle squelettique. 
+
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_4_enrich.png}
@@ -249,10 +261,6 @@ Des anomalies phénotypiques ont été relevées (via enrichissement sur HPO \ci
 
 Enfin, on a exploré le vieillissement et son phénomène de perturbation de la régulation de la transcription en évaluant l'enrichissement d'éléments de régulation (MiRTarBase \citeB{Chou2018}, TRANSFAC \citeB{Matys2006}). L'intersection présentant des phénomènes de coagulation globale est ainsi fortement enrichi en micro ARN (miARN). Ceux-ci contiennent notamment des miARN associés aux 3 gènes de la génération de fibrinogène FGA, FGB, FGG comme détectés lors du chapitre précédent. Quelques autres intersections. Deux facteurs de transcription (FT), HNF1A et HNF1B, sont également significatifs bien que normalement exprimés dans le foie. Cela s'explique par la production de facteurs de la coagulation (dont FGA, FGB, FGG) dans celui-ci et un effet connu de l'altération de production de ces facteurs dans le cadre d'une perturbation de l'expression de HNF1A et HNF1B \citeB{Costa2003}. L'intersection associée à l'inflammation quant à elle ne présente qu'un seul miARN agissant ici sur RSAD2, IFI44, OASL, et EPSTI1 présents dans l'intersection. RSAD2 et OASL sont également connus pour être stimulé par des interférons de type I (\textalpha{} et \textbeta{}) qui ont entre autres IRF1 (pour \textit{interferon related factor 1}) pour FT \citeB{Schoggins2011}. Ce facteur IRF1 fait par ailleurs parti de la liste des FT détectés dans cette intersection. On y trouve un large panel d'autres membres de la famille d'IRF (de 1 à 9 à l'exception d'IRF6) dont l'implication dans l'inflammation s'exerce tant dans la réaction innée qu’acquise \citeB{Frisch2020}. Mais tous les FT détectés via enrichissement n'étaient pas des IRF. Bien que n'étant pas directement liés à la régulation des interférons, STAT2 est présent dans la voie de signalisation des interférons \textalpha{} et \textbeta{} détecté plus tôt (R-HSA-909733). Le dernier FT identifié, FOXP1, n'est quant à lui pas contenu dans cette voie, mais agit sur l'engagement des cellules souches mésenchymateuses et la sénescence au cours du vieillissement \citeB{Infante2018} et sur de la régulation d'autres cytokines, l'interleukine 1 et 12 d'après UniprotKB (Q9H334).
 
-\subsection{Les variation de co-expression dans l'intersection liée à l'inflammation}
-
-L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \citeB{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler peu d'acteurs en même temps (gène, protéine, miARN, etc.) et à se concentrer sur des contextes très précis \citeB{Franceschi2017}. Bien qu'apportant un niveau de preuve inférieur à toute validation expérimentale, les réseaux de co-expression de gènes permettent de comprendre bien plus d'acteurs. À titre d'exemple, on a souhaité ici détailler le cas de l'intersection de gènes associés à l'inflammation lors du vieillissement (Figure \ref{figure:revigo_resume_4_enrich}.D).
-
 \begin{figure}[p]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_plot_adipo_skinnosun_thyr.png}
@@ -260,7 +268,20 @@ L'inflammation systémique chronique de faible intensité est une des marques co
     \label{figure:graphs_intersection_plot_adipo_skinnosun_thyr}
 \end{figure}
 
+
+\subsection{Les variation de co-expression dans l'intersection liée à l'inflammation}
+
+L'inflammation systémique chronique de faible intensité est une des marques connues du vieillissement \citeB{Lopez-Otin2013, Franchini2006}. La complexité des mécanismes d'immunité et d'inflammation rend ce phénomène particulièrement difficile à étudier et les publications actuelles tendent donc à cibler peu d'acteurs en même temps (gène, protéine, miARN, etc.) et à se concentrer sur des contextes très précis \citeB{Franceschi2017}. Bien qu'apportant un niveau de preuve inférieur à toute validation expérimentale, les réseaux de co-expression de gènes permettent de comprendre bien plus d'acteurs. À titre d'exemple, on a souhaité ici détailler le cas de l'intersection de gènes associés à l'inflammation lors du vieillissement (Figure \ref{figure:revigo_resume_4_enrich}.D).
+
+
 Les variations de motif dans la co-expression sont bien souvent la première cause de non-préservation des modules \citeB{Ritchie2016}. Des changements de score de centralité, des modifications de gène pivot (\textit{hub gene}), des suppressions totales de signal sont bien souvent à l'origine de cette différence de topologie détectée entre les modules à l'aide de la co-expression différentielle \citeB{Ritchie2016,Zhang2005a}. Cet effet se manifeste de plusieurs façons dans le cas de l'intersection sur l'inflammation comme visible en figure \ref{figure:graphs_intersection_plot_adipo_skinnosun_thyr}. Bien que la variation de la co-expression ne soit pas identique entre tous les tissus qui forment cette intersection, on observe des acteurs communs. Le gène RSAD2 précédemment mis en avant comme gène simulé par le FT IRF1 et un mARN devient ainsi un gène pivot dans la condition âgée selon le classement de score de centralité. Cependant, les sources de progression dans le classement selon la centralité divergent selon le tissu. Dans le tissu adipeux on constate que c'est dû à un renfort de la co-expression entre RSAD2 et IF44 associé à une perte partielle de co-expression globale par CMPK2, gène pivot dans la condition jeune. Dans la peau non exposée au soleil, on constate un renfort global de la co-expression avec toutefois une centralisation vers RSAD2. Une augmentation localisée entre OAS2 et OASL est également à noter. Enfin, dans la thyroïde, c'est une déconnexion entre HERC6 et OAS2 au profit de RSAD2 qui le rend gène pivot dans la condition âgée. Si cette réorganisation de la co-expression vers RSAD2 aurait pu être issue d'une contribution d'IRF1 ou tout autre IRF étant donné les informations précédentes, des analyses complémentaires ont précisé qu'aucun des IRF détectés comme FT auparavant n'était présent dans le module où se trouve RSAD2 (jeune comme âgé). L'origine de la variation de RSAD2 et OAS2/OASL pourrait donc être d'une autre nature qu'une modification de la transcription d'un ou plusieurs FT.
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_melanine.png}
+    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.99 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œsophagienne, peau non exposée au soleil et peau exposée au soleil.}
+    \label{figure:graphs_intersection_melanine}
+\end{figure}
 
 
 \subsection{Cas particulier : le vieillissement spécifique à la peau}
@@ -269,16 +290,9 @@ Si le vieillissement partage des mécanismes et altérations communes à travers
 % La peau est un des organes dont l'intégrité est la plus susceptible d'être mise à mal par le vieillissement en raison de son exposition directe avec l'environnement extérieur. 
 % Le premier facteur de vieillissement extrinsèque est le photo-vieillissement dont les effets sont cumulatifs avec le temps \citeB{Farage2008}. Il se caractérise majoritairement pas une exposition aux UVs (UVA et UVB) qui vont induire des détériorations des fibres de collagène et d'élastine dans la peau. À noter également, des altérations de la matrice extra-cellulaire entre l'épiderme et le derme qui sont les deux couches composant la peau \citeB{Rogowski-Tylman2016}. 
 
-\begin{figure}[hb]
-    \centering
-    \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_enrich_skin.png}
-    \caption{Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil et muqueuse œsophagienne. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur.}
-    \label{figure:revigo_resume_melanine}
-\end{figure}
-
 % Une intersection faite de la peau exposée au soleil, la peau non exposée au soleil et la muqueuse œsophagienne fait état dans notre cas d'un tel type de photo-vieillissement. 
 Une intersection faite de la peau exposée au soleil, la peau non exposée au soleil et la muqueuse œsophagienne fait état dans notre cas d'un tel type de vieillissement. 
-Elle est en effet composée principalement d'enrichissements sur des fonctions physiologiques directement liées à la synthèse et régulation de mélanine comme exposé en Figure \ref{figure:revigo_resume_melanine}. 
+Elle est en effet composée principalement d'enrichissements sur des fonctions physiologiques directement liées à la synthèse et régulation de mélanine comme exposé en Figure \ref{figure:revigo_resume_melanine}.
 % Ce pigment synthétisé par les mélanocytes à partir d'une oxydation de la tyrosine joue un rôle majeur de lutte contre les dégâts provoqués par les UV \citeB{Bettley1965}. 
 C'est le gène TYR, impliqué dans cette synthèse qu'on trouve dans le réseau de co-expression de notre intersection qui entraîne notamment cet enrichissement. Il est détecté comme gène pivot (score de centralité) dans chacun des tissus et chacune des tranches d'âge (Figure \ref{figure:graphs_intersection_melanine}), attestant ainsi de son rôle majeur dans la régulation de la mélanogénèse. On constate qu'il est lié dans la condition jeune par une relation forte (dissimilarité < 0.8 en moyenne) avec un autre gène, SLC24A5. Ce gène est connu pour coder pour un échangeur de cations (sodium, potassium, calcium) de façon générale et a été plusieurs fois soupçonné d'une contribution à la régulation de la mélanogénèse \citeB{Zhang2019,Ginger2008}. C'est notamment à lui que se rattachent les enrichissements de type \textit{secondary metabolite biosynthetic process}. 
 % Aucune confirmation de son rôle de régulateur partiel de la production de mélanine n'a été faite chez l'homme malgré sa mise en évidence chez la souris . 
@@ -286,16 +300,17 @@ C'est le gène TYR, impliqué dans cette synthèse qu'on trouve dans le réseau 
 % dans le cas des deux tissus de peau, mais pas dans la muqueuse œsophagienne
 À ces deux gènes s'ajoute une relation de chacun avec CLEC12B dans le cas des deux tissus de peau et pas de la muqueuse œsophagienne. Ce gène appartient à la famille des récepteurs de lectine de type C qui jouent un rôle essentiel dans l'immunité et l'homéostasie à laquelle contribue la mélanine localement. La fonction de CLEC12B elle-même reste cependant encore mal caractérisée malgré la présence d'un motif d'inhibition basé sur la tyrosine d'un immunorécepteur dans son domaine intracellulaire. Ceci lui permettrait donc de recruter SHP-1/SHP-2 \citeB{Hoffmann2007Aug, Tone2019}, deux phosphatases suspectées d'avoir un rôle dans la progression des mélanomes \citeB{Zhang2013}. 
 
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_enrich_skin.png}
+    \caption{Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil et muqueuse œsophagienne. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur.}
+    \label{figure:revigo_resume_melanine}
+\end{figure}
+
 La Figure \ref{figure:graphs_intersection_melanine} permet de constater que la relation TYR/SLC24A5 tend à augmenter avec l'âge dans la peau exposée ou non au soleil. Si l'augmentation est très marquée la peau non exposée au soleil, elle est bien moindre dans la peau non exposée. Ces résultats coïncident avec l'augmentation de la production de mélanine constatée chez la personne âgée pour compenser la diminution globale de la densité de mélanocytes \citeB{Gilchrest1979}. À l'inverse, la co-expression de CLEC12B avec SLC24A5 et TYR tend à diminuer avec l'âge, ainsi que l'intégralité de la co-expression de l'intersection.
 
 La muqueuse œsophagienne elle semble interagir plus étroitement avec deux autres gènes, GML et ALX1 avec toutefois une interaction notable de la peau exposée au soleil avec ALX1 également. ALX1 est un gène jouant un rôle dans la migration cellulaire dans les structures craniofaciale lors du stade embryon, tandis que la fonction de GML est peu connu en dehors d'une potentielle contribution dans la voie d'activation de l'apoptose via p53 en cas de dommage à l'ADN. Comme visible en Figure \ref{figure:graphs_intersection_melanine}, la relation entre ces gènes ainsi qu'avec le gène TYR tend à diminuer dans la tranche âgée, qu'il s'agisse de la muqueuse œsophagienne comme de la peau exposée au soleil.
 
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_melanine.png}
-    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.99 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œsophagienne, peau non exposée au soleil et peau exposée au soleil.}
-    \label{figure:graphs_intersection_melanine}
-\end{figure}
 
 
 

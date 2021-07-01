@@ -126,6 +126,9 @@
   %% de \extrasfrench parce que c'est la dernière langue déclarée dans
   %% \documentclass, ci-dessus.
 %   \addto\extrasfrench{%
+%     \renewcommand{\bibsection}{\section*{\bibname}\prebibhook}}
+
+
   %% Packages ajoutés par moi
   
 
@@ -183,7 +186,8 @@
 \include{conclusion}                            % conclusion
 \include{discussion}                            % discussion
 
-\renewcommand{\bibsection}{\chapter{\bibname}}  % Repasse en chapitre la biblio qui était en section
+\renewcommand{\bibsection}{\chapter*{\bibname}}  % Repasse en chapitre la biblio qui était en section et enlève le numero devant
+\phantomsection\addcontentsline{toc}{chapter}{Bibliographie} % rajoute la biblio dans la TdM 
 \bibliographystyle{plain-fr}                    % bibliographie
 \bibliography{bibliographie}                    % nom du fichier .bib
 

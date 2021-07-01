@@ -60,12 +60,12 @@ In this article, we will therefore provide details on the implementation of our 
 %%   Implementation                                                              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{img/chap1/figure_1.pdf}
     \caption{Detailed steps of analysis performed in GWENA's pipeline, from expression data to characterization of the modules and comparison of conditions. \textcircled{\small{1}} Input : expression matrix pre-normalized and aggregated to gene level if it is a transcript matrix. \textcircled{\small{2}} Filtering : optional genes filtration according to transcriptomic input technology. \textcircled{\small{3}} Co-expression network construction : computation through modified WGCNA function of a correlation matrix on the gene expression matrix, then transformation into an adjacency matrix, and finally into a topological overlap matrix (TOM). \textcircled{\small{4}} Modules detection : genes clusterization over the TOM with another modified WGCNA function. \textcircled{\small{5}} Biological integration : gene set enrichment of each module using g:Profiler services, and phenotypic association if a phenotype matrix is provided to describe the samples. \textcircled{\small{6}} Graph analysis : transformation of the TOM in a graph to compute different topological metrics, detect the hub genes, and detect sub-modules of one module. \textcircled{\small{7}} Modules differential co-expression over N conditions : permutation test using NetRep combined with a Z summary to detect preserved or unpreserved modules.} 
     \label{fig:fig_pipeline_schema}
-\end{figure*}
+\end{figure}
 
 
 \section{Implementation}
@@ -138,12 +138,12 @@ To present GWENA's use and its capability to isolate genes groups or co-expressi
 
 As GTEx data is known to be subject to multiple confounding factors (batch effect, experimental bias, read contamination, etc.) \citeA{Nieuwenhuis2020a,Somekh2019a,Parsana2019}, a partial PC-correction\citeA{Parsana2019} was applied to correct the data (Additional file 1: Figure S2 and S3). To investigate the aging process two subsets representing contrasting age classes were selected from the corrected data set: 73 samples between 20 and 30 years old (referred as young in this report), and 292 samples between 60 and 70 years old (referred as old in this report). Both datasets were analyzed using GWENA's pipeline with default parameters, except for the correlation method parameter which was selected to be "spearman" instead of the default "pearson" as it is less prone to outliers. 
 
-\begin{figure*}[p]
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.90\textwidth]{img/chap1/figure_2.pdf}
     \caption{Available visualizations in GWENA along the pipeline applied to the aging study on the whole age range. A : modules merge as a bipartite graph from plot\_modules\_merge function and the genes distribution inside each of them (log scale). B : phenotypic association between the 35 modules and age, sex, BMI, ethnicity, weight. C : Manhattan-like enrichment plot (interactive in GWENA) of module 10 on GO, KEGG, Reactome, Transfac, miRTarBase, Human Protein Atlas, CORUM, Human Phenotype ontology, WikiPathways. D: module 19's network visualization as a graph with muscle enrichment genes colored in red and others in blue. The zoom focus on ENSG00000158022 / ENSG00000107372 / ENSG00000265972 and related hub genes. E : expression profile of module 19 split depending on the correlation sign to the eigengene.}
     \label{fig:fig_resume_visu}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Single condition modules analysis}
@@ -271,12 +271,12 @@ From the 35 modules detected in the previously described single condition analys
 In addition to this biological information, the topological comparison of these modules allows to grasp the nature of the variations in the relationships between genes (nodes in the network) and their co-expression score (edge weight in the network). Connectivity, as defined by J. Dong and S. Horwath \citeA{Dong2007}, is a common topological metric computed in GCN as it is representative of the network robustness and is known to be linked to network deregulation \citeA{Anglani2014, Bormann2016}. Over all modules, the connectivity of the genes in module 7 was noticeably dropping between young and old age range (Fig. \ref{fig:fig_connectivity_drop}, Additional file 1: Figure S4). 
 Using a co-expression score filter of 0.95, this loss of connectivity materialized in the network through a disconnection (edge loss) of peripheral genes (genes with low degree) such as in sub-module 4 between the young and old age range (Fig. \ref{fig:fig_graph_diff_cluster}a, b). Several other genes of the module 7 from the young age range also showed an increased connectivity when observed in the old age range, which therefore reflects a reconnection (edge gain) to other genes. These results confirm the observations from previous studies of a connectivity loss in the network of modules linked to aging \citeA{Southworth2009, Bormann2016}. Overall, they support an alteration of the transcription regulation.
 
-\begin{figure*}[!ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.95\textwidth]{img/chap1/figure_4.pdf}
     \caption{Module 7 network comparison between young and old. A: module 7 GCN graph plotted with GWENA (0.95 co-expression score filter) for young age range with sub-clusters detected. B: same as A but for the old age range. A zoom is made on sub-module 4 to show the peripheral genes disconnection. The new sub-module 6 is visible in purple in the old graph. C: difference network heatmap (old - young) ordered according to young age range network dendrogram. Sub-modules from old age range are visible on the top of the heatmap in columns, and sub-modules from young age range on the right in rows. Three zooms are made on the heatmap on the areas corresponding to sub-module 6 genes. Zoom \textcircled{\small{1}} contains the genes reconnecting in the old age range.}
     \label{fig:fig_graph_diff_cluster}
-\end{figure*}
+\end{figure}
 
 GWENA sub-module detection method on the module 7 revealed an impact of this reorganization of the gene connections by detecting 5 optimal sub-modules for the young age range, and 6 optimal sub-modules for the old age range. The gene composition of the sub-modules was highly similar between the condition (at least 81\% common genes). Most of the differences in the gene composition are due to the disconnection of peripheral genes as previously spotted, and a small portion of the differences are due to the reconnection of genes or their attribution to another sub-module (Fig. \ref{fig:fig_graph_diff_cluster}a, b). This rewiring of the network is in line with known compensatory processes occurring during aging \citeA{Lopez-Otin2013}. By triggering molecular processes involved in limiting or repairing cellular stress damage, these adaptive modifications aim to restore a homeostatic state.
 

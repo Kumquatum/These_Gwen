@@ -83,29 +83,58 @@ On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un org
 Qu'il s'agisse du génome entier, du génome de tissus ou du génome de cellule spécifiques, les études de profilage transcriptomique ont permis de mieux comprendre le fonctionnement basal et sain de ces entités \cite{Hughes2000, Cloonan2008Jul}. Aussi appelées "approches systématiques", ces études servent en premier lieu à identifier de gènes impliqués dans des fonctions physiologiques (annotation) \cite{Munji2019Nov}, à associer des régions de l'ADN à des traits quantitatifs (locus de caractère quantitatif LCQ ou en anglais QTL) \cite{Sarkar2019Apr}, ou encore à identifier des mécanismes de régulation de la transcription \cite{Segales2016Dec} ou des mécanismes cellulaires tels que la différenciation \cite{Godoy2018Jul}, la réparation de l'ADN \cite{Jividen2018Dec}, etc. De plus en plus de ces études permettent par la suite une réutilisation de ces données en les déposant dans des répertoires en ligne tels que Gene Expression Omnibus \cite{Barrett2013Jan} et ArrayExpress \cite{Athar2019Jan}. Ils ont notamment été utilisées pour créer Expression Atlas \cite{Lukk2010Apr}, une carte globale d'expression des gènes avec une mise à jour récente pour inclure des données provenant du séquençage de cellules uniques \cite{Papatheodorou2020Jan}. Ces données ainsi que la connaissance associée par les études dont elles sont issues permettent alors d'avoir une vision générale du fonctionnement sain de l'humain pour mieux étudier par contraste les perturbations qui occurrent.
 
 % Lors des perturbations du fonctionnement cellulaire par une maladie, le stress, l'âge, la régulation de l'expression se retrouve altérée. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. L'étude de la quantité de chaque transcrit exprimé donne alors un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables.
-Ces perturbations du fonctionnement cellulaire peuvent provenir de différentes conditions telles qu'une maladie, une mutation, un stress, ou encore l'âge. Avec chacune d'elle, la régulation de l'expression se retrouve altérée différemment par rapport au fonctionnement sain. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. L'étude de la quantité de chaque transcrit exprimé donne ainsi un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables.
+Ces perturbations du fonctionnement cellulaire peuvent provenir de différentes conditions telles qu'une maladie, une mutation, un stress, ou encore l'âge. Avec chacune d'elle, la régulation de l'expression se retrouve altérée différemment par rapport au fonctionnement sain. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. 
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN AVEC CITATIONS  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+L'étude de la quantité de chaque transcrit exprimé donne ainsi un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables. En recherchant les transcrits dont la quantité change significativement entre une personne saine et une personne affectée par la condition considérée, il est alors possible d'isoler des biomarqueurs de la condition en question. Outre leur rôle d'aide au dépistage de certaines conditions, les biomarqueurs ont un intérêt en termes de soin car ils peuvent représenter ce qu'on nomme une cible thérapeutique : en conceptualisant des molécules en fonction du biomarqueur, on peut être capable d'interférer avec le biomarqueur, ses précurseurs, ses co-acteurs ou ses produits, le tout en vue de limiter son ou ses impacts négatifs.
+
+%% Suite de paragraphe ?
+% Un point sur la différence d'expression d'un point de vue global ou d'un point de vue tissu spécifique ?
+
+%% Transition
+La détection fiable de ces biomarqueurs est alors primordiale et dépend tant de la méthode de quantification des transcrits que de leur analyse.
+
+%% Sources d'aide à la rédaction
+% https://www.mdpi.com/1422-0067/18/8/1652/htm#B4-ijms-18-01652 : Transcriptome Profiling in Human Diseases: New Advances and Perspectives
+% Intro utile pour retravailler cette section : https://www.nature.com/articles/nrg.2017.96
+
+%% Infos potentiellement rajoutables :
+% - On s'est intéressés tardivement au transcriptome historiquement car on pensait que tout le non codant était du "junk DNA". Ça a changé avec l'arrivée en 2000 du premier génome humain (https://www.ncbi.nlm.nih.gov/pubmed/5065367/). Formulation "De la première version du génome humain dans les années 2000 à sa dernière version complète en 2021, l'analyse du génome humain a permis de désavouer l'hypothèse du junk DNA. On ne considérant plus le génome non-codant comme inutile, l'étude du transcriptome au complet a permis de nombreuses perspectives d'études sur des conditions cliniques alors dans une impasse.
+
+\section{Les technologies de transcriptomique pour la quantification de l'expression des gènes}
+
+% Depuis leur démocratisation dans les années 80, les techniques de séquençage ont largement évolué au point qu'on distingue à présent 3 générations. La première génération, bien que plus d'actualité, a permis la première tentative de séquençage du transcriptome humain \cite{}. % <- c'est dans le cadre du sequencage genomique qu'on parle de générations
+
+
+L'ARN est une molécule dont la stabilité est faible et la dégradation rapide en raison des nombreuses enzymes de dégradation la ciblant dans une cellule. Les technologies de transcriptomiques utilisent donc rarement les ARN en eux même et vont plutôt construire des ADN complémentaires (ADNc) de leurs séquences à l'aide de transcriptases reverse découvertes en 1970 \cite{Temin1970Jun}. 
+
+Les premières technologies de transcriptomique furent basées sur les marqueurs de séquence exprimée (MSE ou en anglais \textit{expressed sequenced tags}), de courtes séquences de cDNA identifiantes de transcrits. Développés au début des années 70, les MSE ont servi de base à la méthode Sanger inventée en 1975 \cite{Sanger1975May} qui deviendra une technique de séquençage très populaire \cite{Marra1998Jan}. Cette méthode, dite rétrospectivement de "bas débit", a permis tant le séquençage des ARN que leur quantification. Les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr} ont ainsi été réalisés à l'aide de ces méthodes via MSE. La quantification par réaction en chaine d'ARN retro transposé (RT-qPCR de l'anglais \textit{reverse transcription quantitative polymerase chain reaction}) combinée à un buvardage de northern (en anglais \textit{northernblot}) fut également utilisée à partir de la fin des années 80 en raison de sa grande précision sur la quantification \cite{Becker-Andre1989Nov}.
+
+Leur utilisation dans l'étude de l'expression des gènes va toutefois tendra à diminuer au profit de nouvelles technologies dites de "haut débit" capable de quantifier 
+
+% In 1979, teams at Harvard and Caltech extended the basic idea of making DNA copies of mRNAs in vitro to amplifying a library of such in bacterial plasmids.[4]
+% In 1982, the idea of selecting random or semi-random clones from such a cDNA library for sequencing was explored by Greg Sutcliffe and coworkers.[5]
+% In 1983, Putney et al. sequenced 178 clones from a rabbit muscle cDNA library.[6]
+% In 1991, Adams and co-workers coined the term EST and initiated more systematic sequencing as a project (starting with 600 brain cDNAs).[2] 
+
+% L'ARN est une molécule dont la stabilité est faible et la dégradation rapide en raison des nombreuses enzymes de dégradation la ciblant dans une cellule. Les technologies de séquençages ont donc subit de nombreuses évolutions avant d'arriver à une précision suffisante pour analyser les séquences d'ARN et réaliser ces séquençages pour une grande quantité d'ARN. 
+
+% Dans les années 70 et 80, les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr} ont été réalisés à l'aide d'enzymes de restriction produisant des fragments d'ARN ensuite migré sur des électrophorèses sur gel pour déterminer leur séquence. Malgré les découvertes permises par cette technique de lyse enzymatique, le temps requis et  vont progressivement entrainer un déclin de son utilisation au profit du séquençage Sanger \cite{Sanger1975May}. Développée en 1975 pour le séquençage génomique initialement, le séquençage Sanger et son essor ont su bénéficier à l'étude transcriptomique grâce au développement de la technique de transformation des ARN en ADN complémentaire (ADNc) \cite{Ying2004Jul} à l'aide de rétro-transcriptases \cite{Temin1970Jun}. Parallèlement, 
+
+SAGE (\textit{Serial Analysis of Gene Expression})
+
+% la limitation du nombre de nucléotides par séquence sur un gel et la toxicité des réactifs employés
+
+% Cette technique étant longue et sujette à des erreur de lecture
+
+% Dans les années 70 et 80 se sont développées les premières annotations de transcriptome partiel \cite{} ou complet pour des organismes à ARN tels que les bactériophages \cite{}. 
 
 
 
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA REDACTION PROPRE  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
-
-
-- Profiling
-    - DB : Gene Expression Omnibus (GEO), ENCODE [92] and the Genotype-Tissue Expression (GTEx) Project, A majority of these data sets are published in online repositories, such as the Gene Expression Omnibus (Barrett et al. 2013) and ArrayExpress (Rustici et al. 2013), and have been utilized to determine the global map of human gene expression (Lukk et al. 2010).
-- étude d'isoformes (transcrits alternatifs)
-- Biomarqueurs de maladie
-- Des cibles thérapeutiques
-- D'un point de vue global ou d'un point de vue tissu spécifique
-
-
-% Lors des perturbations (maladie, stress, âge, etc.) du fonctionnement cellulaire sain, cette régulation de l'expression s'en retrouve perturbée. Le transcriptome (ensemble des ARN ou transcrits produits) est alors un témoin direct des fonctions mises en défaut. L'étude de la quantité de chacun donne ainsi un moyen direct direct de comprendre l'origine d'effets macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.).
-
-\section{Les technologies de séquençage de l'expression des gènes}
-%% TODO : merge avec 1.1 partie d'avant
-
 %% Nb publi pour le ration de microarray / RNA seq de jeux de données ?
-
 
 %% historique des techno et qques specificités : https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005457
 \begin{itemize}
