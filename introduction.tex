@@ -20,16 +20,16 @@
 
 Le vivant est fait d'une diversité d'organismes à l'image de sa complexité. Chacun de ces organismes est composé d'une ou plusieurs cellules œuvrant ensemble pour la survie et la reproduction de celui-ci. Ces êtres multicellulaires sont bien souvent constitués d’une association de cellules à la fonction et la forme bien différente de ses voisines. Ainsi, chez des organismes constitués d'un très faible nombre de cellules comme les myxozoan (maximum de 7 cellules) \cite{Morris2010Aug} tout comme chez des organismes de taille bien plus importante comme l'humain (entre 10\textsuperscript{12} et 10\textsuperscript{16} \cite{Bianconi2013}), on retrouve des cellules spécialisées pour une fonction spécifique \cite{Panina2020Sep} (Figure \ref{fig:intro_tissu_type_cellulaire}) \todo{à refaire en schematique ou à citer ou faire une figure avec la dernière table de cette page https://www.proteinatlas.org/humanproteome/celltype}: une protection, un acheminement d'éléments nutritifs, une transmission de matériel génétique, etc. Chez l’homme, ces cellules seront par exemple respectivement des kératinocytes \cite{Yuki2007Apr}, des cellules endothéliales de l’intima \cite{Yuan1991Aug}, des ovocytes \cite{Trounson2013}. En s’assemblant entre cellules de même type, puis en formant des complexes avec d’autres types cellulaires, les organismes parviennent à former alors des structures qu’on nomme tissu \cite{Hekselman2020Mar}. La combinaison de kératinocytes, de mélanocytes, de cellules de Langerhans et les cellules de Merkel connectées par une matrice extra-cellulaire forment ainsi le tissu épidermal, ou plus simplement l’épiderme \cite{Bettley1965}.
 
-\begin{figure*}[hb!]
+\begin{figure}[hb!]
     \centering
     % \includegraphics[width=0.95\textwidth]{img/intro/code_genetique.png}
     \includegraphics[width=0.8\textwidth]{img/intro/cell_type_feuillet.jpg}
     \caption{Exemple de la diversité de cellules selon le tissu et feuillet embryonnaire dont elles sont issues.}
     \label{fig:intro_tissu_type_cellulaire}
-\end{figure*}
+\end{figure}
 
 
-Pour effectuer chacune de ces tâches spécialisées, les cellules de type différent vont produire en partie des protéines ayant des fonctions biologiques différentes de ses voisines. La Gene Ontology distingue 32 ontologies (catégories de fonctions) qu'on peut regrouper en 3 familles de fonctions \cite{Mathews2012}: 
+Pour effectuer chacune de ces tâches spécialisées, les cellules de type différents vont produire en partie des protéines ayant des fonctions biologiques différentes de ses voisines. La Gene Ontology distingue 32 ontologies (catégories de fonctions) qu'on peut regrouper en 3 familles de fonctions \cite{Mathews2012}: 
 \begin{itemize}
     \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Ex : la \textbeta-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose \cite{Jacob1961Jun}.
     \item les fonctions de signalisation/liaison : en se fixant à un récepteur ou en étant un récepteur à la fixation d'un ligand, les protéines permettent de faire transiter de l'information en intra ou extra cellulaire. La fixation entraine la transmission d'un signal physique ou chimique via une cascade d'événements qui vont conduire à une réponse cellulaire. Ex : la production d'une protéine d'insuline par le pancréas va, en se fixant sur les récepteurs membranaires des cellules, déclencher des mécanismes de stockage du glucose. Cela se traduit dans le foie par l'initiation de la transformation du glucose en glycogène.
@@ -85,8 +85,6 @@ Qu'il s'agisse du génome entier, du génome de tissus ou du génome de cellule 
 % Lors des perturbations du fonctionnement cellulaire par une maladie, le stress, l'âge, la régulation de l'expression se retrouve altérée. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. L'étude de la quantité de chaque transcrit exprimé donne alors un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables.
 Ces perturbations du fonctionnement cellulaire peuvent provenir de différentes conditions telles qu'une maladie, une mutation, un stress, ou encore l'âge. Avec chacune d'elle, la régulation de l'expression se retrouve altérée différemment par rapport au fonctionnement sain. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. 
 
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN AVEC CITATIONS  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-
 L'étude de la quantité de chaque transcrit exprimé donne ainsi un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables. En recherchant les transcrits dont la quantité change significativement entre une personne saine et une personne affectée par la condition considérée, il est alors possible d'isoler des biomarqueurs de la condition en question. Outre leur rôle d'aide au dépistage de certaines conditions, les biomarqueurs ont un intérêt en termes de soin car ils peuvent représenter ce qu'on nomme une cible thérapeutique : en conceptualisant des molécules en fonction du biomarqueur, on peut être capable d'interférer avec le biomarqueur, ses précurseurs, ses co-acteurs ou ses produits, le tout en vue de limiter son ou ses impacts négatifs.
 
 %% Suite de paragraphe ?
@@ -105,60 +103,67 @@ La détection fiable de ces biomarqueurs est alors primordiale et dépend tant d
 \section{Les technologies de transcriptomique pour la quantification de l'expression des gènes}
 
 % Depuis leur démocratisation dans les années 80, les techniques de séquençage ont largement évolué au point qu'on distingue à présent 3 générations. La première génération, bien que plus d'actualité, a permis la première tentative de séquençage du transcriptome humain \cite{}. % <- c'est dans le cadre du sequencage genomique qu'on parle de générations
+\subsection{Historique des technologies de transcriptomique}
+
+L'ARN est une molécule dont la stabilité est faible et la dégradation rapide en raison des nombreuses enzymes de dégradation la ciblant dans une cellule. Les premières technologies de transcriptomiques utilisent donc rarement les ARN en eux même et vont plutôt construire des ADN complémentaires (ADNc) de leurs séquences à l'aide de transcriptases reverse découvertes en 1970 \cite{Temin1970Jun}. Ces premières technologies de transcriptomique furent basées sur les marqueurs de séquence exprimée (MSE ou en anglais \textit{expressed sequenced tags}), de courtes séquences d'ADNc identifiantes de transcrits qu'on détectait ensuite par migration sur gel. Développés au début des années 70, les MSE ont servi de base à la méthode SAGE (\textit{Serial Analysis of Gene Expression}) créée en 1995 \cite{Velculescu1995Oct} qui analyse les MSE concaténés via le séquençage Sanger lui-même inventé en 1975 \cite{Sanger1975May} et technique de séquençage alors très populaire à l'époque \cite{Marra1998Jan}. Cette méthode, dite rétrospectivement de "bas débit", a permis les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr}. La quantification par réaction en chaine d'ARN retro transposé (RT-qPCR de l'anglais \textit{reverse transcription quantitative polymerase chain reaction}) combinée à un buvardage de northern (en anglais \textit{northernblot}) fut également utilisée à partir de la fin des années 80 en raison de sa grande précision sur la quantification de transcrits \cite{Becker-Andre1989Nov}.
+% Les premières technologies de transcriptomique furent basées sur les marqueurs de séquence exprimée (MSE ou en anglais \textit{expressed sequenced tags}), de courtes séquences de cDNA identifiantes de transcrits. Développés au début des années 70, les MSE ont servi de base à la méthode Sanger inventée en 1975 \cite{Sanger1975May} qui deviendra une technique de séquençage très populaire \cite{Marra1998Jan}. Cette méthode, dite rétrospectivement de "bas débit", a permis tant le séquençage des ARN que leur quantification. Les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr} ont ainsi été réalisés à l'aide de ces méthodes via MSE. La quantification par réaction en chaine d'ARN retro transposé (RT-qPCR de l'anglais \textit{reverse transcription quantitative polymerase chain reaction}) combinée à un buvardage de northern (en anglais \textit{northernblot}) fut également utilisée à partir de la fin des années 80 en raison de sa grande précision sur la quantification \cite{Becker-Andre1989Nov}.
 
 
-L'ARN est une molécule dont la stabilité est faible et la dégradation rapide en raison des nombreuses enzymes de dégradation la ciblant dans une cellule. Les technologies de transcriptomiques utilisent donc rarement les ARN en eux même et vont plutôt construire des ADN complémentaires (ADNc) de leurs séquences à l'aide de transcriptases reverse découvertes en 1970 \cite{Temin1970Jun}. 
-
-Les premières technologies de transcriptomique furent basées sur les marqueurs de séquence exprimée (MSE ou en anglais \textit{expressed sequenced tags}), de courtes séquences de cDNA identifiantes de transcrits. Développés au début des années 70, les MSE ont servi de base à la méthode Sanger inventée en 1975 \cite{Sanger1975May} qui deviendra une technique de séquençage très populaire \cite{Marra1998Jan}. Cette méthode, dite rétrospectivement de "bas débit", a permis tant le séquençage des ARN que leur quantification. Les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr} ont ainsi été réalisés à l'aide de ces méthodes via MSE. La quantification par réaction en chaine d'ARN retro transposé (RT-qPCR de l'anglais \textit{reverse transcription quantitative polymerase chain reaction}) combinée à un buvardage de northern (en anglais \textit{northernblot}) fut également utilisée à partir de la fin des années 80 en raison de sa grande précision sur la quantification \cite{Becker-Andre1989Nov}.
-
-Leur utilisation dans l'étude de l'expression des gènes va toutefois tendra à diminuer au profit de nouvelles technologies dites de "haut débit" capable de quantifier 
-
-% In 1979, teams at Harvard and Caltech extended the basic idea of making DNA copies of mRNAs in vitro to amplifying a library of such in bacterial plasmids.[4]
-% In 1982, the idea of selecting random or semi-random clones from such a cDNA library for sequencing was explored by Greg Sutcliffe and coworkers.[5]
-% In 1983, Putney et al. sequenced 178 clones from a rabbit muscle cDNA library.[6]
-% In 1991, Adams and co-workers coined the term EST and initiated more systematic sequencing as a project (starting with 600 brain cDNAs).[2] 
-
-% L'ARN est une molécule dont la stabilité est faible et la dégradation rapide en raison des nombreuses enzymes de dégradation la ciblant dans une cellule. Les technologies de séquençages ont donc subit de nombreuses évolutions avant d'arriver à une précision suffisante pour analyser les séquences d'ARN et réaliser ces séquençages pour une grande quantité d'ARN. 
-
-% Dans les années 70 et 80, les premiers séquençages de transcriptome partiel \cite{Jeppesen1970Apr} ou complet pour des organismes à ARN de petite taille \cite{Fiers1976Apr} ont été réalisés à l'aide d'enzymes de restriction produisant des fragments d'ARN ensuite migré sur des électrophorèses sur gel pour déterminer leur séquence. Malgré les découvertes permises par cette technique de lyse enzymatique, le temps requis et  vont progressivement entrainer un déclin de son utilisation au profit du séquençage Sanger \cite{Sanger1975May}. Développée en 1975 pour le séquençage génomique initialement, le séquençage Sanger et son essor ont su bénéficier à l'étude transcriptomique grâce au développement de la technique de transformation des ARN en ADN complémentaire (ADNc) \cite{Ying2004Jul} à l'aide de rétro-transcriptases \cite{Temin1970Jun}. Parallèlement, 
-
-SAGE (\textit{Serial Analysis of Gene Expression})
-
-% la limitation du nombre de nucléotides par séquence sur un gel et la toxicité des réactifs employés
-
-% Cette technique étant longue et sujette à des erreur de lecture
-
-% Dans les années 70 et 80 se sont développées les premières annotations de transcriptome partiel \cite{} ou complet pour des organismes à ARN tels que les bactériophages \cite{}. 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/count_by_year_rnaseq_microarray_est.pdf}
+    \caption{Évolution de l'utilisation des différentes techniques de transcriptomique en se basant sur le nombre de publications les mentionnant. Les résultats proviennent du site PubMed (\url{https://pubmed.ncbi.nlm.nih.gov}) avec les requêtes suivantes : \textbf{MSE} = "cDNA library" OR "cDNA libraries" OR "complementary DNA library" OR "complementary DNA libraries" OR "expressed sequence tag" OR "expressed sequence tags", \textbf{Puce à ADN} = "micro array" OR "microarray" NOT "chromosomal", \textbf{RNA-seq} = "RNA Seq" OR "RNA-Seq" OR "RNASeq".}
+    \label{fig:count_by_year_rnaseq_microarray_est}
+\end{figure}
 
 
+L'utilisation de SAGE et de RT-qPCR dans l'étude de l'expression des gènes a toutefois diminué dans les années qui ont suivi au profit de nouvelles technologies capables de quantifier un plus grand nombre de transcrits simultanément \cite{Lowe2017May}. Les puces à ADN par hybridation (en anglais \textit{hybridation-based microarrays}) ont ainsi été prisés dès le milieu des années 90 \cite{Schena1995Oct} après la commercialisation de la première puce Affimetrix \cite{Lenoir2006} en raison de leur faible rapport coût sur transcrits quantifiés. Cependant, face à la contrainte des puces à ADN de devoir connaître les séquences des transcrits à quantifier, la technologie du RNA-seq est devenue un incontournable dans nombre d'études. 
+Profitant de l'amélioration des technologies de séquençage génomique via toujours une rétro-transposition de l'ARNm en ADNc, la technologie du RNA-seq va émerger dans les années 2000 et est annoncée comme révolutionnaire \cite{Wang2009Jan}. Toutefois, sa mention dans une publication n'arrivera qu'en 2008 \cite{Nagalakshmi2008Jun} bien que la technologie ait été utilisée pour des données publiées dès 2006 \cite{Cheung2006Dec}.
 
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA REDACTION PROPRE  \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-
-%% Nb publi pour le ration de microarray / RNA seq de jeux de données ?
-
-%% historique des techno et qques specificités : https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005457
-\begin{itemize}
-\item Avant propos sur le développement des technologies de séquençage avec la quantification d'ARNm par rt-qPCR, le séquençage par gel, etc.
-\item Transition vers les technologies de séquençage nouvelle génération
-\item Expliquer qu'actuellement ce ne sont quasiment plus que le microarray et le RNA-seq qui sont utilisé (= transition expliquant pourquoi on ne détaille qu'eux par la suite)
-\end{itemize}
-
-%% Un TRES bon site sur les technos de sequencage : http://education.knoweng.org/sequenceng/
+Les puces à ADN et le RNA-seq sont encore aujourd'hui les deux technologies de quantification de l'expression des gènes utilisées, malgré le déclin annoncé des puces à ADN (Figure \ref{fig:count_by_year_rnaseq_microarray_est}). Les bio-informaticien·ne·s sont donc amené·e·s à devoir traiter et analyser les données issues de chacune en tenant compte des propriétés biologiques, techniques et statistiques respectives à chacune des deux technologies.
 
 
+%% Sources d'aide à la rédaction
+% Un TRES bon site sur les technos de sequencage : http://education.knoweng.org/sequenceng/
 
-\subsection{Microarray}
+%% Infos potentiellement rajoutables :
+% - L'importance et l'impact du projet de séquençage du génome humain sur les technologies de séquençage avec les retombée bénéfique pour la transcriptomique :  invalidation de l'idée de "junk DNA" et profit des techno dev pour la génomique grace a juste l'utilisation de cDNA pour transformer le RNA
+% - La variété des techno transcripto qui s'est développée avec le scRNA-Seq, real time RNA-seq, etc.
+% - Parler des l'impact de toutes ces technos sur le transcriptome humain ? Plutot dans une sections à part
 
-\subsubsection{But et protocole}
+\subsection{Les puces à ADN}
 
-Principe de la puce à ADN/ARN
-Coloration mono/duo
-Préparation de librairie
-Construction des puces
-Exemples d'utilisation ?
+% \subsubsection{But et protocole}
+\subsubsection{Principe}
+
+
+Les puces à ADN modernes consistent en une lame de verre sur laquelle est déposé un ensemble de fragments d'ADN nommés amorces (en anglais \textit{probes}) dans des puits qui correspondent aux ARN que l'on souhaite quantifier. Les constructeurs de puces à ADN tels que Affymetrix, Illumina ou Agilent mettent donc à disposition plusieurs modèles d'amorces prédéfinies sur puce pour réaliser la quantification de l'expression de gènes chez un organisme. Certains laboratoires universitaires disposent également de l'équipement pour réaliser leurs propres puces avec des amorces sélectionnées pour une étude \cite{Thompson2001Apr}. Cette option est particulièrement pertinente lors de la quantification d'organismes à l'annotation récente, d'organismes non disponibles en puce chez les constructeurs ou bien lors d'étude sur des sous ensembles de transcrits par rapport aux librairies des puces constructeur.
+
+Pour venir réagir avec les amorces de la puce, les transcrits sont tout d'abord isolés de l'échantillon par purification. Une étape de transcription inverse donne ensuite l'ensemble des cDNA capables d'être liés avec les amorces. Afin de quantifier par fluorescence l'hybridation des cDNA aux amorces, les cDNA sont associés à des marqueurs fluorescents. Certaines puces sont prévues pour une utilisation avec un seul marqueur et sont dites à un seul canal, tandis que d'autres sont à deux canaux et permettent alors l'hybridation de deux échantillons différents tels que deux conditions (ex : sain/malade, sauvage/muté, etc.) \cite{Bumgarner2013Jan}. Chacun est reconnaissable sur la puce car marqué avec des fluorochromes différents : la Cyanine 3 qui émet à  570 nm (vert) et la Cyanine 5 qui émet à 670 nm (rouge). Les puits contenant plusieurs amorces visant un même gène, une hybridation compétitive a lieu et permet pour un même transcrit de quantifier relativement chacun des échantillons \cite{Koltai2008Apr}. Après une étape de rinçage, les puces sont scannées par un laser qui va exciter les marqueurs fluorescent. Un détecteur équipé d'un capteur de fluorescence va mesurer l'intensité émanant de chaque puits et chaque longueur d'onde s'il s'agit d'une puce à deux canaux. 
+
+\todo{Reprendre la figure en commentaire en rajoutant au début l'aspect extraction/purification} 
+% https://www.researchgate.net/figure/DNA-Microarray-Hybridization-using-a-two-channel-and-b-single-channel-microarray_fig6_44227364
+
+
+En parallèle de cette méthode la plus courante, d'autres méthodes existent pour la construction des puces à ADN. On a présenté ici la version par dépôt d'amorces, mais il existe également une méthode par synthèse \textit{in situ}. Cette méthode permet notamment l'utilisation d'amorces de plus grande taille (> 70 mers ou nucléotides) qui augmentent la spécificité \cite{Liu2010}. Des puces à ADN utilisent également des billes de polystyrènes à la place de la lame de verre pour la fixation des amorces et se servent de ratios entre deux colorations n'interférant pas avec la fluorescence pour identifier l'amorce \cite{Nesterov-Mueller2014Oct}. Quelle que soit la méthode utilisée, le signal détecté doit ensuite être traité en fonction de la puce utilisée.
+
+% Le signal détecté doit ensuite être traité en fonction de la puce utilisée 
+
+% Principe de la puce à ADN/ARN
+% Coloration mono/duo
+% Préparation de librairie
+% Construction des puces
+% Exemples d'utilisation ?
+
+% %% Infos potentiellement rajoutables :
+% - Les autres utilisations posibles du microarray : https://en.wikipedia.org/wiki/DNA_microarray#Uses_and_types
 
 \subsubsection{Propriétés mathématiques/techniques et normalisation}
 \label{subsubsection:microarray_props_and_normalisation}
+
+En raison de la nature de capture du signal des puces à ADN, les données capturées sont de type continu. Il est donc possible de con
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
 Distribution
 \begin{itemize}
