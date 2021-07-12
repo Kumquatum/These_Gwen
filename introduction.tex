@@ -12,6 +12,8 @@
 
 \todo[inline]{Quid d'un plan à la charles avec une intro qui est juste faite de "Mise en situation" et "Description des chapitres" et de faire des chapitres dédiés pour "L'information biologique en transcriptomique", "Les réseaux et l'impact sur l'analyse de données", "Le phénomène du vieillissement" ?}
 
+\todo[inline]{Rajouter une mini intro très générale avec un petit paragraphe pour faire un plan à la fois de l'intro et des deux chapitres et conclusion/discussion.}
+
 %%%%%%%%%%%%%%%%%% LA COMPLEXITÉ DU VIVANT %%%%%%%%%%%%%%%%%%
 
 \section{La complexité du vivant}
@@ -31,15 +33,15 @@ Le vivant est fait d'une diversité d'organismes à l'image de sa complexité. C
 
 Pour effectuer chacune de ces tâches spécialisées, les cellules de type différents vont produire en partie des protéines ayant des fonctions biologiques différentes de ses voisines. La Gene Ontology distingue 32 ontologies (catégories de fonctions) qu'on peut regrouper en 3 familles de fonctions \cite{Mathews2012}: 
 \begin{itemize}
-    \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Ex : la \textbeta-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose \cite{Jacob1961Jun}.
-    \item les fonctions de signalisation/liaison : en se fixant à un récepteur ou en étant un récepteur à la fixation d'un ligand, les protéines permettent de faire transiter de l'information en intra ou extra cellulaire. La fixation entraine la transmission d'un signal physique ou chimique via une cascade d'événements qui vont conduire à une réponse cellulaire. Ex : la production d'une protéine d'insuline par le pancréas va, en se fixant sur les récepteurs membranaires des cellules, déclencher des mécanismes de stockage du glucose. Cela se traduit dans le foie par l'initiation de la transformation du glucose en glycogène.
-    \item les fonctions de structuration : les protéines par leur forme et propriétés physico-chimiques hautement modulables permettent de donner une architecture ou des propriétés mécaniques aux cellules dans/autour desquelles elles se trouvent. Ex : la combinaison de protéines de myosine II et d'actine permettent la contraction musculaire par des phénomènes de coulissage de ces protéines.
+    \item les fonctions catalytiques : les protéines, dans ce cas appelées enzymes, comportent une activité d'augmentation du taux de réaction chimique en diminuant l'énergie d'activation nécessaire. Ces enzymes sont spécifiques d'une transformation d'un substrat vers un produit. Elles peuvent cependant voir leur fonction altérée par des activateurs (co-facteurs, co-enzymes) et des inhibiteurs (co-respresseurs). Par exemple, la \textbeta-galactosidase va catalyser la transformation du lactose en glucose + galactose dans l'opéron lactose \cite{Jacob1961Jun}.
+    \item les fonctions de signalisation/liaison : en se fixant à un récepteur ou en étant un récepteur à la fixation d'un ligand, les protéines permettent de faire transiter de l'information en intra ou extra cellulaire. La fixation entraine la transmission d'un signal physique ou chimique via une cascade d'événements qui vont conduire à une réponse cellulaire. Par exemple, la production d'une protéine d'insuline par le pancréas va, en se fixant sur les récepteurs membranaires des cellules, déclencher des mécanismes de stockage du glucose. Cela se traduit dans le foie par l'initiation de la transformation du glucose en glycogène.
+    \item les fonctions de structuration : les protéines par leur forme et propriétés physico-chimiques hautement modulables permettent de donner une architecture ou des propriétés mécaniques aux cellules dans/autour desquelles elles se trouvent. Par exemple, la combinaison de protéines de myosine II et d'actine permettent la contraction musculaire par des phénomènes de coulissage de ces protéines.
 \end{itemize}
 
 
-Pour être produites, ces protéines suivent chacune un plan de construction prédéfini appelé code génétique. Stocké dans une molécule d'ADN (Acide DesoxyRibonucléique) pour chaque chromosome, ce code est présent à l'identique dans chacune des cellules d'un organisme. L'ADN est un polymère de longueur variable selon les espèces et dont la séquence est composée de 4 types de nucléotides : adénosine, tyrosine, guanine et cytosine. Au long de sa séquence, l'ADN stocke l'information relative aux protéines sous forme d'unités qu'on nomme gène, de telle façon qu'une protéine n'est productible que par un seul gène. Chez l'homme (sur qui on se concentrera dans ce manuscrit) la version 37 de GENCODE [https://www.gencodegenes.org/human/stats.html] considère ainsi qu'il existe 60 651 gènes. Cependant, tous parmi eux ne produisent pas de protéine. On distingue en réalité les gènes dits "codants" (19951 toujours dans GENCODE 37) car produisant des protéines et les gènes "non-codants" qui codent pour plusieurs autres entités moléculaires utiles à la cellule.
+Pour être produites, ces protéines suivent chacun un plan de constructinr défini dans le code génétique de la cellule. L'ADN~(Acide DesoxyRibinucléique) est le support de cette information génétique. L'ADN est un polymère de longueur variable selon les espèces et dont la séquence est composée de 4 types de nucléotides : adénosine, tyrosine, guanine et cytosine. Au long de sa séquence, l'ADN stocke l'information relative aux protéines sous forme d'unités qu'on nomme gène. Chez l'homme (sur qui on se concentrera dans ce manuscrit) la version 37 de GENCODE [https://www.gencodegenes.org/human/stats.html] considère ainsi qu'il existe 60 651 gènes. Cependant, tous parmi eux ne produisent pas de protéine. On distingue en réalité les gènes dits "codants" (19951 toujours dans GENCODE 37) car produisant des protéines et les gènes "non-codants" qui codent pour plusieurs autres entités moléculaires utiles à la cellule.
 
-Chez l'homme et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant mono brin alors que l'ADN est double brin (d'où sa représentation classique en échelle), il ne possède pas de thymine mais à la place de l'uranine, et il est évidemment de beaucoup plus petite taille car il n'embarque que l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_genetique}).
+Chez l'homme et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant mono brin alors que l'ADN est double brin. Dans ce système la thymine est remplace par l'uranine. La taille d'un brin d'ARNm est plus petite que celle d'un fragment d'ADN car il n'embarque que l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_genetique}).
 
 \begin{figure*}[!ht]
     \centering
@@ -55,7 +57,7 @@ Une fois copié depuis l'ADN, l'ARNm immature sort du noyau vers le cytoplasme p
 
 \subsection{La régulation de l'expression pour une spécification cellulaire}
 
-On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule est capable de n'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité des cellules est permise par les différents mécanismes de régulation de l'expression des gènes (et par extension la répression) qui sont établis dès les premières différenciations cellulaires dans le développement d'un organisme. Tous ces mécanismes, dits de régulation, sont imbriqués pour ajuster en temps réel la quantité de la ou les protéines nécessaires à l'instant t à la cellule. On distingue les mécanismes suivants : 
+On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule n'est capable d'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité des cellules est permise par les différents mécanismes de régulation de l'expression des gènes (et par extension la répression) qui sont établis dès les premières différenciations cellulaires dans le développement d'un organisme. Tous ces mécanismes, dits de régulation, sont imbriqués pour ajuster en temps réel la quantité de la ou les protéines nécessaires au fonctionnement immédiat de la cellule. On distingue les mécanismes suivants : 
 \begin{itemize}
     \item \textbf{La régulation de l'initiation de la transcription} : lors de la transcription de l'ADN d'un gène en ARNm, l'accessibilité des régions cis-régulatrices dépend de l'impact de plusieurs éléments de régulations parmi lesquels on retrouve les amplificateurs (\textit{enhancers}) et les inactivateurs (\textit{silencers}), des séquences riches en motifs de facteurs de transcription et capable respectivement d'augmenter ou diminuer le niveau d'expression des gènes \cite{Levo2014Jul}. Très souvent présents dans des boucles de rétro-action, ces facteurs de transcription qui sont des protéines peuvent être eux-mêmes inactivés par des acteurs variés tels que des ARN non codants et des protéines \cite{Chen2020May}.
     % ZaZo0o : l'expression spatiotemporelles des gènes est conférée par l'action conjointes de l'accécibilité des résions cis-régulatrices et de la présences de facteurs de transcription. Parmis les séquences régulatrices, on retrouve les séquences enhancers, qui sont des séquences riches en motifs  de facteurs de transcription, et sont capable d'activer et de booster le niveau d'expression des gènes de mannière tissus-spécifique.
@@ -80,12 +82,12 @@ On l'a dit précédemment, l'ADN est identique dans toutes les cellules d'un org
 \subsection{L'étude l'expression des gènes pour la résolution de conditions cliniques}
 
 
-Qu'il s'agisse du génome entier, du génome de tissus ou du génome de cellule spécifiques, les études de profilage transcriptomique ont permis de mieux comprendre le fonctionnement basal et sain de ces entités \cite{Hughes2000, Cloonan2008Jul}. Aussi appelées "approches systématiques", ces études servent en premier lieu à identifier de gènes impliqués dans des fonctions physiologiques (annotation) \cite{Munji2019Nov}, à associer des régions de l'ADN à des traits quantitatifs (locus de caractère quantitatif LCQ ou en anglais QTL) \cite{Sarkar2019Apr}, ou encore à identifier des mécanismes de régulation de la transcription \cite{Segales2016Dec} ou des mécanismes cellulaires tels que la différenciation \cite{Godoy2018Jul}, la réparation de l'ADN \cite{Jividen2018Dec}, etc. De plus en plus de ces études permettent par la suite une réutilisation de ces données en les déposant dans des répertoires en ligne tels que Gene Expression Omnibus \cite{Barrett2013Jan} et ArrayExpress \cite{Athar2019Jan}. Ils ont notamment été utilisées pour créer Expression Atlas \cite{Lukk2010Apr}, une carte globale d'expression des gènes avec une mise à jour récente pour inclure des données provenant du séquençage de cellules uniques \cite{Papatheodorou2020Jan}. Ces données ainsi que la connaissance associée par les études dont elles sont issues permettent alors d'avoir une vision générale du fonctionnement sain de l'humain pour mieux étudier par contraste les perturbations qui occurrent.
+Qu'il s'agisse du génome entier, du génome de tissus ou du génome de cellule spécifiques, les études de profilage transcriptomique ont permis de mieux comprendre le fonctionnement basal et sain de ces entités \cite{Hughes2000, Cloonan2008Jul}. Aussi appelées "approches systématiques", ces études servent en premier lieu à identifier de gènes impliqués dans des fonctions physiologiques (annotation) \cite{Munji2019Nov}, à associer des régions de l'ADN à des traits quantitatifs (locus de caractère quantitatif LCQ ou en anglais QTL) \cite{Sarkar2019Apr}, ou encore à identifier des mécanismes de régulation de la transcription \cite{Segales2016Dec} ou des mécanismes cellulaires tels que la différenciation \cite{Godoy2018Jul}, la réparation de l'ADN \cite{Jividen2018Dec}, etc. De plus en plus de ces études permettent par la suite une réutilisation de ces données en les déposant dans des répertoires en ligne tels que Gene Expression Omnibus (GEO) \cite{Barrett2013Jan} et ArrayExpress \cite{Athar2019Jan}. Ils ont notamment été utilisées pour créer Expression Atlas \cite{Lukk2010Apr}, une carte globale d'expression des gènes avec une mise à jour récente pour inclure des données provenant du séquençage de cellules uniques \cite{Papatheodorou2020Jan}. Ces données ainsi que la connaissance associée par les études dont elles sont issues permettent alors d'avoir une vision générale du fonctionnement sain de l'humain pour mieux étudier par contraste les perturbations qui occurrent.
 
 % Lors des perturbations du fonctionnement cellulaire par une maladie, le stress, l'âge, la régulation de l'expression se retrouve altérée. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. L'étude de la quantité de chaque transcrit exprimé donne alors un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables.
 Ces perturbations du fonctionnement cellulaire peuvent provenir de différentes conditions telles qu'une maladie, une mutation, un stress, ou encore l'âge. Avec chacune d'elle, la régulation de l'expression se retrouve altérée différemment par rapport au fonctionnement sain. Le transcriptome, ensemble des ARN ou transcrits produits, est alors un témoin direct des fonctions mises en défaut \cite{Morozova2009Aug}. 
 
-L'étude de la quantité de chaque transcrit exprimé donne ainsi un moyen direct de comprendre l'origine de manifestations macroscopiques (irritation atopique, tumeur, nécrose, etc.) ou moléculaires (augmentation du taux de glucose, malabsorption de nutriments, augmentation du pH, etc.) observables. En recherchant les transcrits dont la quantité change significativement entre une personne saine et une personne affectée par la condition considérée, il est alors possible d'isoler des biomarqueurs de la condition en question. Outre leur rôle d'aide au dépistage de certaines conditions, les biomarqueurs ont un intérêt en termes de soin car ils peuvent représenter ce qu'on nomme une cible thérapeutique : en conceptualisant des molécules en fonction du biomarqueur, on peut être capable d'interférer avec le biomarqueur, ses précurseurs, ses co-acteurs ou ses produits, le tout en vue de limiter son ou ses impacts négatifs.
+L'étude de la quantité de chaque transcrit exprimé donne ainsi un moyen direct de comprendre l'origine de manifestations macroscopique tel que la présence de tumeur ou nécrose dans les tissus. Ce type d'étude permet également une compréhension plus fine des variations moléculaires telles que des variations de pH ou la mauvaise absorption de nutriment dans l'organisme. En recherchant les transcrits dont la quantité change significativement entre une personne saine et une personne affectée par la condition considérée, il est alors possible d'isoler des biomarqueurs de la condition en question. Outre leur rôle d'aide au dépistage de certaines conditions, les biomarqueurs ont un intérêt en termes de soin car ils peuvent représenter ce qu'on nomme une cible thérapeutique. En conceptualisant des molécules en fonction du biomarqueur, on peut être capable d'interférer avec le biomarqueur, ses précurseurs, ses co-acteurs ou ses produits, le tout en vue de limiter leurs potentiels impacts négatifs.
 
 %% Suite de paragraphe ?
 % Un point sur la différence d'expression d'un point de vue global ou d'un point de vue tissu spécifique ?
@@ -137,15 +139,27 @@ Les puces à ADN et le RNA-seq sont encore aujourd'hui les deux technologies de 
 \subsubsection{Principe}
 
 
-Les puces à ADN modernes consistent en une lame de verre sur laquelle est déposé un ensemble de fragments d'ADN nommés amorces (en anglais \textit{probes}) dans des puits qui correspondent aux ARN que l'on souhaite quantifier. Les constructeurs de puces à ADN tels que Affymetrix, Illumina ou Agilent mettent donc à disposition plusieurs modèles d'amorces prédéfinies sur puce pour réaliser la quantification de l'expression de gènes chez un organisme. Certains laboratoires universitaires disposent également de l'équipement pour réaliser leurs propres puces avec des amorces sélectionnées pour une étude \cite{Thompson2001Apr}. Cette option est particulièrement pertinente lors de la quantification d'organismes à l'annotation récente, d'organismes non disponibles en puce chez les constructeurs ou bien lors d'étude sur des sous ensembles de transcrits par rapport aux librairies des puces constructeur.
+Les puces à ADN modernes consistent en une lame de verre sur laquelle est déposé un ensemble de fragments d'ADN nommés amorces (en anglais \textit{probes}) dans des puits qui correspondent aux ARN que l'on souhaite quantifier. Les constructeurs de puces à ADN tels que Affymetrix, Illumina ou Agilent mettent donc à disposition plusieurs modèles d'amorces prédéfinies sur puce pour réaliser la quantification de l'expression de gènes chez un organisme \cite{Liu2010}. Certains laboratoires universitaires disposent également de l'équipement pour réaliser leurs propres puces avec des amorces sélectionnées pour une étude \cite{Thompson2001Apr}. Cette option est particulièrement pertinente lors de la quantification d'organismes à l'annotation récente, d'organismes non disponibles en puce chez les constructeurs ou bien lors d'étude sur des sous ensembles de transcrits par rapport aux librairies des puces constructeur.
 
-Pour venir réagir avec les amorces de la puce, les transcrits sont tout d'abord isolés de l'échantillon par purification. Une étape de transcription inverse donne ensuite l'ensemble des cDNA capables d'être liés avec les amorces. Afin de quantifier par fluorescence l'hybridation des cDNA aux amorces, les cDNA sont associés à des marqueurs fluorescents. Certaines puces sont prévues pour une utilisation avec un seul marqueur et sont dites à un seul canal, tandis que d'autres sont à deux canaux et permettent alors l'hybridation de deux échantillons différents tels que deux conditions (ex : sain/malade, sauvage/muté, etc.) \cite{Bumgarner2013Jan}. Chacun est reconnaissable sur la puce car marqué avec des fluorochromes différents : la Cyanine 3 qui émet à  570 nm (vert) et la Cyanine 5 qui émet à 670 nm (rouge). Les puits contenant plusieurs amorces visant un même gène, une hybridation compétitive a lieu et permet pour un même transcrit de quantifier relativement chacun des échantillons \cite{Koltai2008Apr}. Après une étape de rinçage, les puces sont scannées par un laser qui va exciter les marqueurs fluorescent. Un détecteur équipé d'un capteur de fluorescence va mesurer l'intensité émanant de chaque puits et chaque longueur d'onde s'il s'agit d'une puce à deux canaux. 
+
+
+Pour venir réagir avec les amorces de la puce, les transcrits sont tout d'abord isolés de l'échantillon par purification. Une étape de transcription inverse donne ensuite l'ensemble des cDNA capables d'être liés avec les amorces. Afin de quantifier par fluorescence l'hybridation des cDNA aux amorces, les cDNA sont associés à des marqueurs fluorescents. Certaines puces sont prévues pour une utilisation avec un seul marqueur et sont dites à un seul canal, tandis que d'autres sont à deux canaux et permettent alors l'hybridation de deux échantillons différents tels que deux conditions (ex : sain/malade, sauvage/muté, etc.) \cite{Bumgarner2013Jan}. Chacun est reconnaissable sur la puce car marqué avec des fluorochromes différents : la Cyanine 3 qui émet à  570 nm (vert) et la Cyanine 5 qui émet à 670 nm (rouge). Les puits contenant plusieurs amorces visant un même gène, une hybridation compétitive a lieu et permet pour un même transcrit de quantifier relativement chacun des échantillons \cite{Koltai2008Apr}. Après une étape de rinçage, les puces sont scannées par un laser qui va exciter les marqueurs fluorescent. Un détecteur équipé d'un capteur de fluorescence va mesurer l'intensité émanant de chaque puits et chaque longueur d'onde s'il s'agit d'une puce à deux canaux. Il en résulte une image, ou deux si il y a deux canaux, tel que visible en Figure \ref{}.LETTRE \todo[inline]{a preciser}.
+
+\begin{figure}
+    \centering
+    % \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 
 \todo{Reprendre la figure en commentaire en rajoutant au début l'aspect extraction/purification} 
 % https://www.researchgate.net/figure/DNA-Microarray-Hybridization-using-a-two-channel-and-b-single-channel-microarray_fig6_44227364
 
 
-En parallèle de cette méthode la plus courante, d'autres méthodes existent pour la construction des puces à ADN. On a présenté ici la version par dépôt d'amorces, mais il existe également une méthode par synthèse \textit{in situ}. Cette méthode permet notamment l'utilisation d'amorces de plus grande taille (> 70 mers ou nucléotides) qui augmentent la spécificité \cite{Liu2010}. Des puces à ADN utilisent également des billes de polystyrènes à la place de la lame de verre pour la fixation des amorces et se servent de ratios entre deux colorations n'interférant pas avec la fluorescence pour identifier l'amorce \cite{Nesterov-Mueller2014Oct}. Quelle que soit la méthode utilisée, le signal détecté doit ensuite être traité en fonction de la puce utilisée.
+
+En parallèle de cette méthode la plus courante, d'autres méthodes existent pour la construction des puces à ADN. On a présenté ici la version par dépôt d'amorces, mais il existe aussi une méthode par synthèse \textit{in situ}. Cette méthode permet notamment l'utilisation d'amorces de plus grande taille (> 70 mers ou nucléotides) qui augmentent la spécificité \cite{Liu2010}. Certaines puces à ADN utilisent également des billes de polystyrènes à la place de la lame de verre pour la fixation des amorces et se servent de ratios entre deux colorations n'interférant pas avec la fluorescence pour identifier l'amorce \cite{Nesterov-Mueller2014Oct}. 
+
+Afin de transformer les images obtenues, quelle que soit la technique, en une donnée exploitable, le signal détécté sur chacun doit ensuite être traité en fonction de la puce utilisée. Les puces à ADN sur lame de verre étant les plus courantes, on s'attardera par la suite sur leur traitement en particulier.
 
 % Le signal détecté doit ensuite être traité en fonction de la puce utilisée 
 
@@ -158,12 +172,76 @@ En parallèle de cette méthode la plus courante, d'autres méthodes existent po
 % %% Infos potentiellement rajoutables :
 % - Les autres utilisations posibles du microarray : https://en.wikipedia.org/wiki/DNA_microarray#Uses_and_types
 
-\subsubsection{Propriétés mathématiques/techniques et normalisation}
-\label{subsubsection:microarray_props_and_normalisation}
+% \subsubsection{Propriétés mathématiques/techniques et normalisation}
+% \label{subsubsection:microarray_props_and_normalisation}
+\subsubsection{Pré-traitement des données de puce à ADN}
 
-En raison de la nature de capture du signal des puces à ADN, les données capturées sont de type continu. Il est donc possible de con
+% En raison de la nature de capture du signal des puces à ADN, les données capturées sont de type continu. Il est donc possible de con
+
+% La fluorescence des transcrits hybridés étant captée sous la forme d'un signal continu à intensité variable, les données issues de puce à ADN seront de même nature. Cette valeur qu'on nomme parfois "abondance" est par ailleurs relative car l'intensité du signal reçu est systématiquement rapportée sur le signal reçu sur un contrôle blanc, sans fluorescence (en anglais \textit{background}).
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics{img/intro/true_microarray_picture_10.1016_j.fss.2004.10.012.png}
+    \caption{Image d'une puce à ADN à deux canaux rouge et vert. (a) Canal rouge en échelle de gris, (b) Canal vert en échelle de gris, (c,d) Cannaux respectifs colorés selon leur fluorescence, (e) Puce à ADN visualisée en coloration RGB (\textit{Red Green Blue}). Des artefacts de fluorescence sont visibles en ligne 5. Issu de Lukac et al. 2005 \cite{Lukac2005May}.}
+    \label{fig:true_microarray_picture_10.1016_j.fss.2004.10.012}
+\end{figure}
+
+L'intensité de fluorescence, aussi appelée abondance, détectée par le capteur constitue la donnée retournée pour un transcrit donné sur une puce à ADN en théorie. Comme on peut le voir en Figure \ref{true_microarray_picture_10.1016_j.fss.2004.10.012}, cette abondance n'est toutefois pas uniforme au sein d'un même puits. L'image capturée va donc rarement être utilisée en tant que telle pour donner les abondances chiffrées finales et va passer par un premier ensemble d'ajustement.
+
+% L'acquisition en elle-même va ainsi demander de s'assurer de l'absence d'artefacts, du bon alignement de la grille de lecture pour bien circonscrire les puits, de contrôler des contaminations (poussière, reste de réactant, microparticule, etc.). De même, la fluorescence n'étant pas uniforme sur tout le puits, une mesure parmi la médiane, la somme, le ratio d'intensité, etc. peuvent être employées afin de donner la valeur d'abondance. 
+
+En 2004, Petrov et al. \cite{Petrov2004Nov} ont ainsi exploré en détail l'impact de différents paramètres expérimentaux et de différents choix de correction du signal en se basant sur un contrôle qualité approfondit des puces étudiées. Le pré-traitement de l'image prise d'une puce à ADN y est découpé selon 4 étapes, plus une s'il s'agît d'une puce à deux canaux : l'alignement d'image (si deux canaux), le placement de grille, la détection de puits, la segmentation et la mesure de qualité (Figure \ref{microarray_image_preprocessing}). Ces étapes permettent en finalité s'assurer une reproductibilité dans la valeur d'abondance détectée, ainsi qu'une robustesse face à des évènements tels que des artefacts de fluorescences, des contaminations de puits, ou encore des variations de fluorescence entre réplicats.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/microarray_image_preprocessing.pdf}
+    \caption{Ordre des différentes étapes de pré-traitement d'une image de puce à ADN. Modifié d'après Petrov et al \cite{Petrov2004Nov}.}
+    \label{fig:microarray_image_preprocessing}
+\end{figure}
+
+Une fois cette étape de traitement de l'image effectuée, de nombreux biais techniques peuvent encore impacter la valeur chiffrée retournée depuis l'image corrigée. On applique donc une étape dite de normalisation qui visera tant à palier les biais techniques contrôlables qu'incontrôlables. Si des normalisations consensus existent, il faut toutefois noter que la variété de modèles de puces à ADN et de conditions d'utilisation peut demander l'utilisation de normalisations supplémentaires. 
+% En cela, l'expérimentateur est donc une personne experte qui saura choisir les normalisation 
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/microarray_normalization.pdf}
+    \caption{Normalisations consensus de puces à ADN : la normalisation de l'arrière-plan, la normalisation intra puce, et la normalisation inter puces.}
+    \label{fig:microarray_normalization}
+\end{figure}
+
+Étant donné leur grande variée, on se concentrera ici sur les normalisations consensus uniquement \cite{Smyth2003Dec} (Figure \ref{microarray_normalization}). La normalisation de l'arrière-plan est l'une d'entre elle et va venir corriger le biais d'intensité parasite lié au phénomène d'hybridation non spécifique des transcrits. Par une simple soustraction de l'intensité de l'arrière-plan à l'intensité détectée dans chaque puits on va permettre de compenser le biais. Les intensités des puces à ADN ayant tendance à varier indépendamment de l'échantillon mesuré, on va également réaliser une normalisation entre puces afin d'assurer leur comparabilité. Qu'il s'agisse de comparer une puce avec deux canaux, ou deux puces avec un canal, on va transformer les intensités de telle sorte que celles-ci aient des intensités de même ordre de grandeur. La méthode variera cependant selon le type et le nombre de canaux des puces bien la plupart soient une adaptation d'une normalisation par quantiles. Dans le cas des puces à deux canaux, une normalisation supplémentaire va consister à 
+
+
+
+% Pour pouvoir comparer deux puces à ADN, 
+% Les puces à ADN ayant tendance à varier pour un même échantillon mesuré, on peut également appliquer ce qu'on nomme une normalisation intra puce. Celle-ci va permettre
+
+Un premier biais à corriger est le phénomène d'hybridation non spécifique des transcrits où ceux-ci vont venir se lier à des amorces ne correspondant pas nécessairement à leur séquence. La normalisation concernant ce biais se fait par la simple soustraction de l'intensité de l'arrière-plan à l'intensité détectée dans chaque puits. 
+Lors de la comparaison de conditions puces à ADN
+
+% On débute le plus souvent ce
+% On sépare généralement ces transformations en "normalisation" pour la gestion des biais techniques, et "" pour la gestion des biais biologiques. 
+
+Par un phénomène connu d'hybridation non spécifiques des transcrits, une 
+
+
+Les données sont alors normalisées pour éliminer les biais techniques et ajustée contrôlée en accord avec les propriétés mathématiques qu'elles possèdent. En 2015 sort le package Bioconductor \textit{limma} qui va devenir une référence car y sont regroupé les étapes de normalisation et contrôle élémentaires. 
+
 
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+
+NOTE D'AIDE : parler d'une correction, et expliquer pourquoi on la fait en mentionnant la propriété mathématique en cause :
+- saturation du signal
+- correction background
+- normalisation in et between samples
+- quantile normalization
+- QC : artifacts removal
+- log 2 parce que PCR d'amplification avant dépot sur la puce /!\/!\/!\/!\/!\ Ajouter cette info dans la partie Principe juste avant.
+
+
+Étant un signal lumineux détecté par un capteur capacitif, les données de puce à ADN sont donc de nature continue.
+
 
 Distribution
 \begin{itemize}
@@ -179,6 +257,13 @@ Filtration ?
 Explication du déclin au profit du RNA-seq mais avec contraste sur son utilité quand pas besoin de whole transcriptome.
 
 
+
+
+%% Sources d'aide à la rédaction
+% Un TRES bon site sur les technos de sequencage : http://education.knoweng.org/sequenceng/
+
+%% Infos potentiellement rajoutables :
+% RAjouter une explication d'en quoi consiste chaque étape ?
 
 %% INFOS ET FORMULATION SUR LA NORMALISATION
 % Parmi les biais biologiques classiques, on retrouve le contenu en GC, la longueur des transcrits, la quantité d'ARN total,  weighted linear regression (lowess).
@@ -214,8 +299,17 @@ Normalisations%% cf. formation marie laure, il y a toutes les refs de publi a pr
 %%%%%%%%%%%%%% LE TRAITEMENT STATISTIQUE DE L'INFORMATION BIOLOGIQUE %%%%%%%%%%%%%%
 
 
-\section{Le traitement statistique de l'information biologique}
+\section{Le traitement statistique et logique de l'information transcriptomique}
+
+Pour parvenir à déterminer la fonction physiologique des gènes ou leur action dans le cadre d'une condition, les analyses d'expression de gènes ont plusieurs outils à disposition. 
+
+
+% Les analyses de l'expression des gènes ont pour but majeur l'identification de gènes responsables o
+
 \subsection{L'expression différentielle : les acteurs majeurs}
+
+
+
 \begin{itemize}
   \item Méthode de capture des acteurs majeurs
   \item Pas d'étude du système 

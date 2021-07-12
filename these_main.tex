@@ -34,7 +34,7 @@
   %% - Sous LaTeX
   %\usepackage{mathpazo}      % texte et mathématiques en Palatino
   %\usepackage{mathptmx}      % texte et mathématiques en Times
-  \usepackage[scaled]{helvet}
+  \usepackage[scaled]{helvet} % texte en Helvetica
   \renewcommand\familydefault{\sfdefault} 
   %% - Sous XeLaTeX
   %\setmainfont{TeX Gyre Pagella}      % texte en Pagella (Palatino)
@@ -135,7 +135,7 @@
   %% Déclarations des pages de titre. Remplacer les éléments entre < >.
   %% Supprimer les caractères < >. Couper un long titre ou un long
   %% sous-titre manuellement avec \\.
-  \titre{Développement de méthodes et outils d'analyse transcriptomique par réseaux de co-expression de gènes pour la détection de gènes candidats dans le vieillissement humain de différents tissus}
+  \titre{Développement de méthodes et outils d'analyse transcriptomique par réseaux de co-expression de gènes pour la détection de gènes candidats dans le vieillissement de différents tissus humain}
   % \titre{Ceci est un exemple de long titre \\
   %   avec saut de ligne manuel}
   % \soustitre{Sous-titre le cas échéant}
@@ -158,6 +158,8 @@
 \include{abstract}              % résumé anglais
 \cleardoublepage
 
+% \setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 \tableofcontents                % production de la TdM
 \cleardoublepage
 
