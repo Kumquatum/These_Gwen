@@ -3,7 +3,7 @@
 
 \section{Introduction}
 
-La variation de la distribution de la co-expression des gènes associée au vieillissement est une propriété qu'on a pu observer dans le muscle auparavant \citeB{Lemoine2021Dec}(Chapitre \ref{chapter:gwena}). Grâce à elle, on a pu isoler des gènes dont la fonction physiologique \citeB{Keeling2019Nov} est confirmée comme liée au vieillissement du muscle. On peut alors considérer l'étude de la topologie des réseaux de co-expression de gènes comme une méthode efficace pour la détection de gènes biomarqueurs du vieillissement dans un tissu. 
+La variation de la distribution de la co-expression des gènes associée au vieillissement est une propriété qu'on a pu observer dans le muscle auparavant \citeB{Lemoine2021Dec}. Grâce à elle, on a pu isoler des gènes dont la fonction physiologique \citeB{Keeling2019Nov} est confirmée comme liée au vieillissement du muscle. On peut alors considérer l'étude de la topologie des réseaux de co-expression de gènes comme une méthode efficace pour la détection de gènes biomarqueurs du vieillissement dans un tissu. 
 
 Cependant, le vieillissement est un phénomène qui ne se limite pas au muscle dans un organisme et touche bien d'autres tissus en parallèle. Dans chacun d'eux, le transcriptome est un témoin des modifications liées à l'avancée dans l'âge \citeB{DeMagalhaes2010}. Via son analyse par expression différentielle et d'autres méthodes d'analyse de gènes discrètes \citeB{Barabasi2004}, nombre de gènes (biomarqueurs) associés à l'âge ont pu être détectés dans les différents tissus du corps humain. Si pour certains de ces gènes on a déjà étudié leur relation avec des fonctions physiologiques, ce n'est pas le cas de la majorité. Suite à ces études fines de certains gènes, il est également rare bien qu'intéressant de connaître comment leur relation évolue plus globalement, au-delà des fonctions physiologiques considérées.
 % Ce manque d'information sur les relations est dû au coût et à la longueur des méthodes pour obtenir les relations entre deux ou quelques gènes. En effet, elles requièrent le plus souvent des expérimentations basées sur des inactivations ou sur-activation d'un ou plusieurs gènes (respectivement \textit{knockout} et \textit{knockin} en anglais). 
@@ -127,7 +127,7 @@ Peau exposée au soleil          & 3                                            
 Thyroïde                        & 3                                                                                           & 53                        & 227                    \\
 Sang complet                    & 1                                                                                           & 73                        & 259                   
 \end{tabular}
-\caption{Résumé du nombre de composantes utilisées pour effectuer la correction de l'expression par tissu, ainsi que le nombre d'échantillons inclus dans chacun pour les deux plages d'âge.}
+\caption{Résumé du nombre de composantes utilisées pour effectuer la correction de l'expression par tissu, ainsi que le nombre d'échantillons inclus dans chacun pour les deux tranches d'âge.}
 \label{table:nb_PC_corr_and_samples_by_tissue}
 \end{table}
 
@@ -208,7 +208,7 @@ Afin d'observer des similarités de mécanismes du vieillissement entre ces diff
 \begin{figure}[p]
   \centering
   \includegraphics[width=1.5\textheight]{img/chap2/chap2_upset_genes_unpres_modpres_by_tissue.pdf}
-  \caption{Intersections entre tous les jeux de gènes pour chaque couple tissu / statut de préservation. Le diagramme Upset est une représentation qui vise à remplacer une visualisation par diagramme de Venn, ce dernier n'étant pas adaptée à la représentation de plus de 5 catégories. La matrice d'intersection (en orange) indique quel couple tissu / statut est considéré dans l'intersection (rose si pris en compte, gris si non) et quels sont les autres tissus dans cette intersection (ligne rose). L'histogramme des tailles de groupe (gris) à gauche de la matrice indique le nombre total de gène contenu dans le couple tissu / statut en ligne. L'histogramme des tailles d'intersection indique le nombre de gènes contenu dans l'intersection indiquée en matrice d'intersection pour cette colonne.}
+  \caption[Intersections entre tous les jeux de gènes pour chaque couple tissu / statut de préservation]{Intersections entre tous les jeux de gènes pour chaque couple tissu / statut de préservation. Le diagramme Upset est une représentation qui vise à remplacer une visualisation par diagramme de Venn, ce dernier n'étant pas adaptée à la représentation de plus de 5 catégories. La matrice d'intersection (en orange) indique quel couple tissu / statut est considéré dans l'intersection (rose si pris en compte, gris si non) et quels sont les autres tissus dans cette intersection (ligne rose). L'histogramme des tailles de groupe (gris) à gauche de la matrice indique le nombre total de gène contenu dans le couple tissu / statut en ligne. L'histogramme des tailles d'intersection indique le nombre de gènes contenu dans l'intersection indiquée en matrice d'intersection pour cette colonne.}
   \label{figure:upset_intersection_genes_tissu_unpres_modpres}
 \end{figure}
 \end{landscape}
@@ -241,7 +241,7 @@ En plus de ce nombre maximal de tissus présent dans une intersection, certains 
 8                        & 7                                   & 7                        & 6                        & 5                        & 4                        & 4                        & 3                          & 2                        & 1                        & \textbf{Total}                   
 \end{tabular}
 }
-\caption{Phénomènes connus dans le vieillissement et observés dans les intersections de modules MP et NP pour chaque tissu. Les modules MP et NP ont été joints par tissus et les tissus ont été ordonnés par nombre décroissant de phénomènes du vieillissement présent. MEC : Matrice extra-cellulaire.}
+\caption[Phénomènes connus dans le vieillissement et observés dans les intersections de modules MP et NP pour chaque tissu]{Phénomènes connus dans le vieillissement et observés dans les intersections de modules MP et NP pour chaque tissu. Les modules MP et NP ont été joints par tissus et les tissus ont été ordonnés par nombre décroissant de phénomènes du vieillissement présent. MEC : Matrice extra-cellulaire.}
 \label{table:intersection_aging_global_phenomenons}
 \end{table}
 
@@ -252,7 +252,7 @@ Pour mieux comprendre les fonctions physiologiques communes en jeu et pouvant ê
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_4_enrich.png}
-    \caption{Exemple de résumé des enrichissements sur GO pour 4 des intersections par carte proportionnelle. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur. Chaque carte présente ici un phénomène connu dans le vieillissement : A. Homéostasie (GO \textit{Biological Process}), B. Régulation de la transcription (GO \textit{Biological Process}), C. Dérivés réactifs de l'oxygène (GO \textit{Molecular Function}), D. Inflammation (GO \textit{Biological Process}) }
+    \caption[Exemple de résumé des enrichissements sur GO pour 4 des intersections par carte proportionnelle]{Exemple de résumé des enrichissements sur GO pour 4 des intersections par carte proportionnelle. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur. Chaque carte présente ici un phénomène connu dans le vieillissement : A. Homéostasie (GO \textit{Biological Process}), B. Régulation de la transcription (GO \textit{Biological Process}), C. Dérivés réactifs de l'oxygène (GO \textit{Molecular Function}), D. Inflammation (GO \textit{Biological Process}) }
     \label{figure:revigo_resume_4_enrich}
 \end{figure}
 
@@ -264,7 +264,7 @@ Enfin, on a exploré le vieillissement et son phénomène de perturbation de la 
 \begin{figure}[p]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_plot_adipo_skinnosun_thyr.png}
-    \caption{Réseaux de co-expression des gènes de l'intersection associée au phénomène d'inflammation lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : tissu adipeux, peau non exposée au soleil et thyroïde.}
+    \caption[Réseaux de co-expression des gènes de l'intersection associée au phénomène d'inflammation lors du vieillissement entre les deux tranches d'âge]{Réseaux de co-expression des gènes de l'intersection associée au phénomène d'inflammation lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.95 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : tissu adipeux, peau non exposée au soleil et thyroïde.}
     \label{figure:graphs_intersection_plot_adipo_skinnosun_thyr}
 \end{figure}
 
@@ -279,7 +279,7 @@ Les variations de motif dans la co-expression sont bien souvent la première cau
 \begin{figure}[p]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_graphs_intersection_melanine.png}
-    \caption{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.99 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œsophagienne, peau non exposée au soleil et peau exposée au soleil.}
+    \caption[Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge]{Réseaux de co-expression des gènes de l'intersection associée à la surproduction de mélanine lors du vieillissement entre les deux tranches d'âge. Le réseau est filtré à 0.99 de dissimilarité (sur une échelle de 0 à 1) pour des questions de lisibilité et 3 tissus sont présentés : muqueuse œsophagienne, peau non exposée au soleil et peau exposée au soleil.}
     \label{figure:graphs_intersection_melanine}
 \end{figure}
 
@@ -303,7 +303,7 @@ C'est le gène TYR, impliqué dans cette synthèse qu'on trouve dans le réseau 
 \begin{figure}[hb]
     \centering
     \includegraphics[width=1\textwidth]{img/chap2/chap2_revigo_resume_enrich_skin.png}
-    \caption{Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil et muqueuse œsophagienne. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur.}
+    \caption[Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil et muqueuse œsophagienne]{Résumé des enrichissements sur GO par carte proportionnelle de l'intersection peau exposée au soleil, peau non exposée au soleil et muqueuse œsophagienne. Chaque ensemble de GO terme partageant une ontologie parente commune (selon un score de similarité) est groupé sous une même couleur.}
     \label{figure:revigo_resume_melanine}
 \end{figure}
 

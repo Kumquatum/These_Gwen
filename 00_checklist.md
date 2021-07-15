@@ -8,9 +8,12 @@
     - Soit essayer de redéfinir des alias différents pour les articles dans les chapitres. Ex : Ritchie2016 → Ritchie2016Chap1
 
 ## Rédaction
-
+- [ ] Refaire les titres de table et figure pour qu'ils soient plus courts dans la liste à base de \caption[Titre résumé]{Titre classique : description}
+- [ ] Rajouter l'intro de chapitre 1 et notamment mentionner que l'article est CC-BY
 
 ## Admninistratif
-- [ ] Faire signer par tous les auteurs de l'article GWENA une autorisation d'insertion dans la thèse
-- [ ] Remplir l'autorisation d'insertion d'article en anglais dans la thèse
-- [ ] Relancer Francine sur le mail d'autorisation de rédaction en anglais
+- ~~[x] Faire signer par tous les auteurs de l'article GWENA une autorisation d'insertion dans la thèse~~
+    -  Pas besoin, article en CC-BY
+    -  Le marquer dans l'intro chapitre 1
+- [x] Remplir l'autorisation d'insertion d'article en anglais dans la thèse
+- [x] Relancer Francine sur le mail d'autorisation de rédaction en anglais
