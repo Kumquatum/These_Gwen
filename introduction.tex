@@ -232,17 +232,20 @@ L'utilisation des puces à ADN reste toutefois pertinente dans d'autres types d'
 
 \subsubsection{Principe}
 
-Aujourd'hui, le séquençage de l'ARN (RNA-seq) est devenu la technologie privilégiée pour les études transcriptomiques. Issue des techniques de séquençage nouvelle génération, le RNA-seq permet d'étudier le transcriptome d'un organisme sans connaissance préalable de sa séquence \cite{Wang2009Jan}. Le protocole de préparation des transcrits est le même que pour les puces à ADN sauf dans le cas d'un séquençage direct de l'ARN. Après prélèvement des échantillons, les transcrits sont isolés par purification et rétro-transcrits en ADNc. Ceux-ci sont alors amplifiés par PCR et fragmentés selon la taille requise par la technologie de séquençage. Le séquençage peut se faire actuellement par seconde ou troisième génération dépendant de l'objectif poursuivit. Les technologies de seconde génération, avec notamment celle d'Illumina (Figure \ref{}), sont ainsi adaptées dans le cadre d'une comparaison de conditions. Elles produisent rapidement un séquençage au rapport qualité prix raisonnable avec un minimum de 30 millions de lectures alignées recommandées par le projet ENCODE \cite{ENCODE2012} pour de l'ARN total chez l'homme. Les technologies de troisième génération telles que PacBio ou Nanopore (Figure \ref{}) sont quant à elles plus longues mais peuvent séquencer des fragments de taille bien supérieure à ceux de seconde génération. Cette capacité les rend donc particulièrement adaptée à l'analyse de la variété de transcrits issus de l'épissage alternatif \cite{Bergsma2018Jan}. Les lectures de ces fragments (en anglais \textit{read}) sont ensuite alignées sur un transcriptome de référence ou sont l'objet d'un assemblage de transcriptome\textit{de novo}. Les lectures sont enfin comptabilisées pour chaque isoforme d'un gène (en anglais \textit{counts}) et doivent être traitées avant d'être analysées.
+Aujourd'hui, le séquençage de l'ARN (RNA-seq) est devenu la technologie privilégiée pour les études transcriptomiques. Issue des techniques de séquençage nouvelle génération, le RNA-seq permet d'étudier le transcriptome d'un organisme sans connaissance préalable de sa séquence \cite{Wang2009Jan}. Le protocole de préparation des transcrits est le même que pour les puces à ADN sauf dans le cas d'un séquençage direct de l'ARN. Après prélèvement des échantillons, les transcrits sont isolés par purification et rétro-transcrits en ADNc. Ceux-ci sont alors amplifiés par PCR et fragmentés selon la taille requise par la technologie de séquençage. Le séquençage peut se faire actuellement par seconde ou troisième génération dépendant de l'objectif poursuivit. Les technologies de seconde génération, avec notamment celle d'Illumina (Figure \ref{fig:rnaseq_workflow}), sont ainsi adaptées dans le cadre d'une comparaison de conditions. Elles produisent rapidement un séquençage au rapport qualité prix raisonnable avec un minimum de 30 millions de lectures alignées recommandées par le projet ENCODE \cite{ENCODE2012} pour de l'ARN total chez l'homme. Les technologies de troisième génération telles que PacBio ou Nanopore (Figure \ref{fig:rnaseq_workflow}) sont quant à elles plus longues mais peuvent séquencer des fragments de taille bien supérieure à ceux de seconde génération. Cette capacité les rend donc particulièrement adaptée à l'analyse de la variété de transcrits issus de l'épissage alternatif \cite{Bergsma2018Jan}. Les lectures de ces fragments (en anglais \textit{read}) sont ensuite alignées sur un transcriptome de référence ou sont l'objet d'un assemblage de transcriptome\textit{de novo}. Plusieurs méthodes partant de différents postulats existent pour réaliser cette étape d'alignement loin d'être triviale. Chacune possède ses avantages et limites qu'il faut toutefois prendre en compte en cela qu'elles impactent l'expression finale quantifiée \cite{Yi2018Oct,Srivastava2020Dec}. Dans la catégorie des associations aligneurs et quantifieurs utilisés pour la quantification, les aligneurs STAR \cite{Dobin2013Jan} et minimap2 \cite{Li2018Sep} associés au quantifieur RSEM \cite{Li2011Dec} sont parmi les plus utilisés et donnent des quantifications extrêmement précises car ils donnent la position de chaque lecture de transcrits sur un génome de référence ou \textit{de novo}. Ils sont cependant assez lents et notamment dans le cas d'un alignement \textit{de novo}. À l'opposé se trouvent les logiciels Salmon \cite{Patro2017Apr} et Kallisto \cite{Bray2016May}, des quantifieurs basés sur un principe de d'alignement probabiliste nommé \textit{selective-alignment} pour Salmon et \textit{pseudo-alignment} pour Kallisto. Plus rapides que les aligneurs classiques, ils sont en raison de leurs euristiques plus sujets aux erreurs de quantification bien qu'elles restent faibles. Ils sont également incapables de détecter de nouveaux gènes étant donné leur utilisation d'un index de transcriptome. Quelle que soit la méthode employée pour comptabiliser les lectures par transcrit, ces données doivent ensuite être traitées avant d'être analysées.
 
-\todo[inline]{schema pipeline RNA-seq exemple illumina et exemple pacbio ou nanopore + rajouter ref plus haut}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/2_meth_transcripto/intro_2_rnaseq_workflpow.pdf}
+    \caption{Déroulé d'une opération de quantification d'expression par RNA-seq.}
+    \label{fig:rnaseq_workflow}
+\end{figure}
 
 
 \subsubsection{Pré-traitement des données}
 
-Le RNA-seq comme les puces à ADN nécessite de normaliser et transformer les données pour les rendre exploitable en retirant les biais techniques et biologiques. 
-% Pour rendre comparable des échantillons issus de réplicats biologiques, il faut ainsi tenir compte la profondeur de séquençage. Si comme dit précédemment on vise une couverture minimale de 30 millions par exemple ce nombre variera dans un certain intervalle en fonction de la condition étudiée. Il est donc nécessaire de rapporter les comptages bruts de lectures sur le nombre total de lectures de l'échantillon. De cette normalisation a été dérivée une des mesures de quantification en RNA-seq, le CPM, pour \textit{count per million} où le rapport est encore divisé par un million pour des raisons de lisibilités qui n'entrainent pas de changement de propriétés mathématiques. Une autre métrique bien connue est le FPKM pour le séquençage à lecture par paire (en anglais \textit{paired-end}) ou RPKM lorsqu'il s'agit de séquençage à lecture unique (en anglais \textit{single end}). Sa normalisation qui consiste à prendre le CPM et à le diviser par la longueur des gènes 
-
-Si la division des comptes bruts par la profondeur de séquençage et 1 million qui donne des comptes par million (CPM et en anglais \textit{count per million}) est une normalisation consensus, d'autres normalisations couramment rencontrées ne peuvent être appliquées aussi systématiquement. La normalisation donnant des FPKM pour le séquençage à lecture par paire (en anglais \textit{paired-end}) ou RPKM lorsqu'il s'agit de séquençage à lecture unique (en anglais \textit{single end}) est ainsi une normalisation à éviter lors d'analyses comparatives \cite{Wagner2012Dec}. En divisant directement les CPM par la longueur des gènes pour tenir compte du biais de comptage en faveur des gènes de petite taille, les FPKM/RPKM entraînent potentiellement une somme de lectures normalisée différente dans chaque échantillon. L'analyse comparative étant un des intérêts majeur de la transcriptomique en recherche en médecine moléculaire et biologie, d'autres mesures normalisées compatibles ont été développées. Le RLE, pour \textit{Relative Log Expression} \cite{Anders2010Oct} et le TMM pour \textit{Trimmed Mean of M-values} \cite{Robinson2010Mar} sont ainsi des normalisations recommandées par l'étude du French StatOmique Consortium\footnote{Dans cette publication, le RLE est introduit par le biais du package DESeq \cite{Anders2010Oct} qui implémente cette mesure} en 2013 \cite{Dillies2013Nov}. Tous deux partent du principe que l'expression de la majorité des gènes ne change pas entre deux conditions. Le RLE consiste tout d'abord à calculer une pseudo référence (Équation \ref{pseudoref}) via une moyenne géométrique sur tous les échantillons \cite{Gandolfo2018Feb} qui contrairement au RPKM conserve bien une somme de lectures identique entre échantillons et est moins sensible aux valeurs extrêmes que la moyenne arithmétique. Un facteur de taille (Équation \ref{sizefactor} est ensuite calculé comme la médiane des rapports entre les comptages de chaque échantillon avec ceux de la pseudo-référence. Celui-ci est alors utilisé pour normaliser les comptes bruts de chaque échantillon.
+Le RNA-seq comme les puces à ADN nécessite de normaliser et transformer les données pour les rendre exploitable en retirant les biais techniques et biologiques. Des contrôles qualités existent ainsi pour contrôler dans un premier temps des artefacts de séquençage comme un k-mer sur-représenté, ou des erreurs de formatage ou encodage des fichiers par exemple. Du côté de la normalisation, si la division des comptes bruts par la profondeur de séquençage et 1 million qui donne des comptes par million (CPM et en anglais \textit{count per million}) est une normalisation consensus, d'autres normalisations couramment rencontrées ne peuvent être appliquées aussi systématiquement. La normalisation donnant des FPKM pour le séquençage à lecture par paire (en anglais \textit{paired-end}) ou RPKM lorsqu'il s'agit de séquençage à lecture unique (en anglais \textit{single end}) est ainsi une normalisation à éviter lors d'analyses comparatives \cite{Wagner2012Dec}. En divisant directement les CPM par la longueur des gènes pour tenir compte du biais de comptage en faveur des gènes de petite taille, les FPKM/RPKM entraînent potentiellement une somme de lectures normalisée différente dans chaque échantillon. L'analyse comparative étant un des intérêts majeur de la transcriptomique en recherche en médecine moléculaire et biologie, d'autres mesures normalisées compatibles ont été développées. Le RLE, pour \textit{Relative Log Expression} \cite{Anders2010Oct} et le TMM pour \textit{Trimmed Mean of M-values} \cite{Robinson2010Mar} sont ainsi des normalisations recommandées par l'étude du French StatOmique Consortium\footnote{Dans cette publication, le RLE est introduit par le biais du package DESeq \cite{Anders2010Oct} qui implémente cette mesure} en 2013 \cite{Dillies2013Nov}. Tous deux partent du principe que l'expression de la majorité des gènes ne change pas entre deux conditions. Le RLE consiste tout d'abord à calculer une pseudo référence (Équation \ref{pseudoref}) via une moyenne géométrique sur tous les échantillons \cite{Gandolfo2018Feb} qui contrairement au RPKM conserve bien une somme de lectures identique entre échantillons et est moins sensible aux valeurs extrêmes que la moyenne arithmétique. Un facteur de taille (Équation \ref{sizefactor} est ensuite calculé comme la médiane des rapports entre les comptages de chaque échantillon avec ceux de la pseudo-référence. Celui-ci est alors utilisé pour normaliser les comptes bruts de chaque échantillon.
 % Celui-ci est alors utilisé pour calculer les paramètres $\mu_{i j}$ et $\sigma^2_{i j}$ de la loi binomiale négative qui sert à estimer les comptes de lectures d'un échantillon $j$ pour un gène $i$ (Équation \ref{readcount}).
 
 \begin{equation}\label{pseudoref}
@@ -264,7 +267,7 @@ j & = \text{échantillon} = 1,..., m \\
 k & = \text{table de comptes de lectures observés } n \times m 
 \end{align*}
 
-Le TMM quant à lui effectue une normalisation par le nombre de fragments d'ARN pour chaque gène dans chaque échantillon et s'en sert pour calculer la valeur M qui est rapport du niveau moyen en base 2, soit un log2 entre les échantillons de deux conditions (Équation \ref{mvalue}). Parallèlement, il calcule la valeur A qui est la valeur absolue du niveau d'expression (Équation \ref{avalue}). Ces deux valeurs sont respectivement tronquées de 30\% et 5\% et servent à estimer une moyenne pondérée par référence (l'échantillon au quartile haut le plus proche de la moyenne des quartiles haut) (Équation \ref{weightedmean}) qui permet enfin de calculer le facteur de normalisation (Équation \ref{normtmmfactor}).
+Le TMM quant à lui effectue une normalisation par le nombre de fragments d'ARN pour chaque gène dans chaque échantillon et s'en sert pour calculer la valeur M qui est rapport du niveau moyen en base 2, soit un log2 entre les échantillons de deux conditions (Équation \ref{mvalue}). Certains comptes pouvant être nulls ce que ne peut accepter un $log$, il est d'usage d'employer des pseudo-comptes qui sont des comptes auxquels on a ajouté 1 \cite{Booeshaghi2021Mar}. Parallèlement, il calcule la valeur A qui est la valeur absolue du niveau d'expression (Équation \ref{avalue}). Ces deux valeurs sont respectivement tronquées de 30\% et 5\% et servent à estimer une moyenne pondérée par référence (l'échantillon au quartile haut le plus proche de la moyenne des quartiles haut) (Équation \ref{weightedmean}) qui permet enfin de calculer le facteur de normalisation (Équation \ref{normtmmfactor}).
 
 \begin{equation}\label{mvalue}
     M_g = \log_{2} \left(\frac{Y_{gk} / N_k}{Y_{gk'} / N_k'}\right)
@@ -296,7 +299,7 @@ Où :
 % Get weighted mean of M after trimming and calculate normalization factor 
 
 
-Une étude détaillée des performances et propriétés mathématiques du RLE et du TMM a par ailleurs été publiée en 2016 en reprenant les différentes étapes de leur normalisation pour en tirer des équivalences \cite{Maza2016} (Figure \ref{fig:maza2016_table2}). À ces méthodes de normalisation s'ajoute des méthodes de normalisation se basant sur le contenu en GC qui va favoriser ou défavoriser le séquençage, ou encore des méthodes utilisant, à l'instar des puces à ADN, des gènes contrôle, le plus souvent des gènes dit de ménage (en anglais \textit{housekeeping genes}). Si elles peuvent être adaptées à certains contextes d'analyse, elles sont cependant peu ou pas utilisées dans ceux sur lesquels on se concentre par la suite dans cette thèse. 
+Une étude détaillée des performances et propriétés mathématiques du RLE et du TMM a par ailleurs été publiée en 2016 en reprenant les différentes étapes de leur normalisation pour en tirer des équivalences \cite{Maza2016} (Figure \ref{fig:maza2016_table2}). On y mentionne d'ailleurs un filtÀ ces méthodes de normalisation s'ajoute des méthodes de normalisation se basant sur le contenu en GC qui va favoriser ou défavoriser le séquençage, ou encore des méthodes utilisant, à l'instar des puces à ADN, des gènes contrôle, le plus souvent des gènes dit de ménage (en anglais \textit{housekeeping genes}). Si elles peuvent être adaptées à certains contextes d'analyse, elles sont cependant peu ou pas utilisées dans ceux sur lesquels on se concentre par la suite dans cette thèse. 
 
 \begin{figure}[!h]
     \centering
@@ -305,59 +308,66 @@ Une étude détaillée des performances et propriétés mathématiques du RLE et
     \label{fig:maza2016_table2}
 \end{figure}
 
-% Enfin d'autres méthodes de normalisation existent également mais sont adaptée à d'autres contextes d'analyse que ceux sur lesquels on se concentre par la suite dans cette thèse. 
-% RNA molar concentration (rmc) and can be biased towards identifying the differentiall
-
-% Contrairement aux données de microarray qui sont continues, les données de RNA-seq sont discrètes en raison de la quantification par compte de lecture.  % <= UTILE QUE SI JE PARLE DE LA MODELISATION
-% qui appartient donc à l'ensemble des entiers naturels $\mathbb{N}$.
-% Un mot sur le fait qu'on applique pas les mêmes méthodes de normalisation car la nature du signal n'est pas le même : une fluorescence pour le microarray (variable continue), et un comptage dans le cas du RNA-seq (variable discrète).
-
-
 
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
- 
-
-
-% Distribution(binomiale negative) %% Justification binomiale negative "Negative binomial (NB) distribution is the established gold standard, because of its ability to accurately model RNA-seq data with a low number of available replicates [7]." https://doi.org/10.1093/bib/bbx115
-% Normalisations%% cf. formation marie laure, il y a toutes les refs de publi a prendre
-%% La raison du l'utilisation des pseudo counts et du log dans le RNA-seqyo : https://www.biorxiv.org/content/biorxiv/early/2020/05/19/2020.05.19.100214.full.pdf
-
-
-
-%%%%%%%%%%%%%% LE TRAITEMENT STATISTIQUE DE L'INFORMATION BIOLOGIQUE %%%%%%%%%%%%%%
-
 
 \section{Les méthodes d'analyse de l'information transcriptomique pour l'étude comparative}
 
-Pour parvenir à déterminer la fonction physiologique des gènes ou leur action dans le cadre d'une condition, les analyses d'expression de gènes ont plusieurs outils à disposition. 
+% La démocratisation de la quantification par puce à ADN et encore plus par RNA-seq a entraîné une explosion de la taille des jeux de données de transcriptome, ainsi que leur nombre disponible publiquement en ligne.
+
+L'explosion de la taille et quantité de jeux de données mis à disposition publiquement engendre une demande croissante en techniques d'analyse capable de les gérer mais également de profiter de la précision de séquençage apportée. En recherche en médecine moléculaire et plus largement en biologie comparative, ce sont des méthodes d'étude des différences d'expression de gènes entre conditions qui ont été largement employées pour .
+
+
+
+
+
+
+
+
+
+Afin d'identifier et comprendre les gènes et transcrits acteurs de différentes condition et plus spécifiquement de maladies, l'analyse transcriptomique dispose de plusieurs outils. 
+
+
+Pour parvenir à déterminer la fonction physiologique des gènes, des transcrits, ou leur action dans le cadre d'une condition, plusieurs outils d'analyse sont à disposition.
+
+% les analyses d'expression de gènes ont plusieurs outils à disposition. 
+
+
+
+ 
+
 
 
 % Les analyses de l'expression des gènes ont pour but majeur l'identification de gènes responsables o
 
-\subsection{L'expression différentielle : les acteurs majeurs}
+% \subsection{L'expression différentielle : les acteurs majeurs}
+\subsection{L'analyse différentielle : les acteurs majeurs du changement}
+
+
+- Méthode de capture des acteurs majeurs
+- Pas d'étude du système 
+- splicng alternatif
+- expression differentielle
+% - Des statistiques descriptives à l'expression différentielle %% Bof, j'ai pas retrouvé de stade "stats explo" 
+
+
+% \subsection{La modélisation du vivant : des acteurs au système}
+
+- De la régulation des gènes à son approximation par des modèles statistiques, en passant par la biologie des systemes qui est trop couteuse pour des organismes complexes %% mal formulé car dans le desordre (le dernier point devrait venir en 2e)
+- reseaux interaction proteine proteine
+- Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph et qui sont moins couteux car probabilistes (ils ne sont pas la vérité mais une approximation)
 
 
 
-\begin{itemize}
-  \item Méthode de capture des acteurs majeurs
-  \item Pas d'étude du système 
-% \item Des statistiques descriptives à l'expression différentielle %% Bof, j'ai pas retrouvé de stade "stats explo" 
-\end{itemize}
-
-\subsection{La modélisation du vivant : des acteurs au système}
-\begin{itemize}
-\item De la régulation des gènes à son approximation par des modèles statistiques, en passant par la biologie des systemes qui est trop couteuse pour des organismes complexes %% mal formulé car dans le desordre (le dernier point devrait venir en 2e)
-\item Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph et qui sont moins couteux car probabilistes (ils ne sont pas la vérité mais une approximation)
-\end{itemize}
 
 \subsection{Les réseaux biologiques : le système vu via la théorie des graphes}
-\begin{itemize}
-\item Principe : les graphes sont une méthode de plus en plus utilisée dans la représentation du fonctionnement d'organismes puisqu'ils permettent d'avoir une vision à l'échelle du système tout entier.
+
+- Principe : les graphes sont une méthode de plus en plus utilisée dans la représentation du fonctionnement d'organismes puisqu'ils permettent d'avoir une vision à l'échelle du système tout entier.
 %% Jolie intro à s'inspire : https://www.nature.com/articles/s41467-019-08746-5
-\item Différences / ressemblance entre graphe et reseau ?
-\item Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
-\item Les problèmes de visualisation de grands réseaux %% section layout de ce livre https://sites.fas.harvard.edu/~airoldi/pub/books/BookDraft-CsardiNepuszAiroldi2016.pdf
-\end{itemize}
+- Différences / ressemblance entre graphe et reseau ?
+- Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
+- Les problèmes de visualisation de grands réseaux %% section layout de ce livre https://sites.fas.harvard.edu/~airoldi/pub/books/BookDraft-CsardiNepuszAiroldi2016.pdf
+
 
 
 %%%%%%%%%%%%%%%%%% LES RESEAUX DE CO-EXPRESSION %%%%%%%%%%%%%%%%%%
@@ -365,12 +375,27 @@ Pour parvenir à déterminer la fonction physiologique des gènes ou leur action
 
 \section{Les réseaux de  co-expression}
 
+% Carter, "l'origine" 10.1093/bioinformatics/bth234
+
 %% GROOOOOSSSE PUBLI REVIEW sur la co-expression ET la comparaison de modules, aka co-expr differentielle https://doi.org/10.1109/TCBB.2019.2893170
 
 % https://www.mdpi.com/2073-4425/3/3/344/htm
 
 \subsection{But}
 "Gene co-expression networks seek to identify transcrip- tional patterns indicative of functional interactions and regulatory relationships between genes" %%https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1700-9 + Barabási A-L, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12:56–68. + Furlong LI. Human diseases through the lens of network biology. Trends Genet. 2013;29:150–9.
+
+
+% ###### NORMALISAITON
+% Normalization methods for RNA-seq data are different from those used for microarray data.
+% Also for RNA-seq data there are several different methods that are being used, but not without
+% debate. Fragments/Reads Per Kilobase of transcript per Million mapped reads (FPKM/RPKM)
+% [61, 62] and Transcripts Per Million (TPM) [63] values, are normalization methods that correct
+% for the total number of reads in a sample, as well as gene length [61]. One issue with these
+% methods is that if a very highly expressed gene increases in expression, these normalization
+% methods will make it appear as if all other genes decrease in expression. This is particularly
+% important for co-expression analysis as it will create a false impression of positive co-
+% expression between all these other genes
+% These de Sipko van Damn
 
 \subsection{Principe}
 %% Relire `van Dam, S., Võsa, U., van der Graaf, A., Franke, L. & de Magalhães, J. P. Gene co-expression analysis for functional classification and gene–disease predictions. Brief. Bioinform. bbw139 (2017). doi:10.1093/bib/bbw139`
