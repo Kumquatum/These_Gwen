@@ -56,7 +56,7 @@ Une fois copié depuis l'ADN, l'ARNm immature, composé de sous unités appelée
 
 \subsection{La régulation de l'expression pour une spécification cellulaire}
 
-Comme mentionné précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule n'est capable d'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité des cellules est permise par les différents mécanismes de régulation de l'expression des gènes (et par extension leur répression) qui sont établis dès les premières différenciations cellulaires au cours du développement d'un organisme. Tous ces mécanismes, dits de régulation, sont interconnectés pour ajuster en temps réel la quantité de protéines nécessaires au fonctionnement immédiat de la cellule. On distingue les mécanismes suivants : 
+Comme mentionné précédemment, l'ADN est identique dans toutes les cellules d'un organisme, alors même que chaque cellule n'est capable d'exprimer que les gènes spécifiques à sa fonction (de la myosine pour les myocytes, de la kératine pour les kératinocytes, etc.). Cette capacité des cellules est permise par les différents mécanismes de régulation de l'expression des gènes (et par extension leur répression) qui sont établis dès les premières différenciations cellulaires au cours du développement d'un organisme. Tous ces mécanismes, dits de régulation, sont interconnectés pour ajuster en temps réel la quantité de protéines nécessaires au fonctionnement immédiat de la cellule \cite{Weake2010Jun}. On distingue les mécanismes suivants : 
 \begin{itemize}
     \item \textbf{La régulation de l'initiation de la transcription} : lors de la transcription de l'ADN d'un gène en ARNm, l'accessibilité des régions cis-régulatrices dépend de l'impact de plusieurs éléments de régulations parmi lesquels on retrouve les amplificateurs (\textit{enhancers} en anglais) et les inactivateurs (\textit{silencers} en anglais), des séquences riches en motifs de liaison de facteurs de transcription capables respectivement d'augmenter ou diminuer le niveau d'expression des gènes \cite{Levo2014Jul}. Très souvent présents dans des boucles de rétro-action, ces facteurs de transcription qui sont des protéines peuvent eux-mêmes voir leur expression augmentée ou diminuée par des acteurs variés tels que des ARN non-codants et des protéines \cite{Chen2020May}.
     % ZaZo0o : l'expression spatiotemporelles des gènes est conférée par l'action conjointes de l'accécibilité des résions cis-régulatrices et de la présences de facteurs de transcription. Parmis les séquences régulatrices, on retrouve les séquences enhancers, qui sont des séquences riches en motifs  de facteurs de transcription, et sont capable d'activer et de booster le niveau d'expression des gènes de mannière tissus-spécifique.
@@ -309,71 +309,52 @@ Une étude détaillée des performances et propriétés mathématiques du RLE et
 \end{figure}
 
 
+
+
+
+
+\section{L'analyse transcriptomique par réseaux de co-expression}
+
+L'explosion de la taille et quantité de jeux de données mis à disposition publiquement engendre une demande croissante en techniques d'analyse capable de les gérer la masse et de profiter de la précision de séquençage apportée. 
+% En recherche en médecine moléculaire et plus largement en biologie comparative, ce sont des méthodes d'étude des différences d'expression de gènes entre conditions qui ont été largement employées pour .
+% Dépendant de la problématique à laquelle on cherche à répondre, il existe plusieurs méthodes. À l'aide de l'outil TopHat \cite{Trapnell2009May}, il est par exemple possible de faire de la découverte de variant à partir de données de RNA-seq pour expliquer des variations phénotypiques \cite{Bakhtiarizadeh2020Aug}. Toujours avec des données de RNA-seq, il est possible d'étudier les isoformes de transcrits pour un gène qui sont parfois responsables de pathologies \cite{Cooper2009Feb}.
+% En réalisant
+% Pour analyser des données de quantification d'expression, la méthode d'analyse d'expression différentielle fut très rapideemtn 
+L'analyse d'expression différentielle fut la première méthode dédiée spécifiquement à l'analyse des données de quantification d'expression contrairement à des méthodes de statistique exploratoire comme l'analyse par composantes principales (ACP) \cite{deKok2005Jan}. Elle consiste à comparer l'expression de chaque gène entre des conditions, le plus souvent un contrôle contre un test, pour déterminer avec un test statistique quels gènes voient leur expression significativement changer dans la condition test. Si plusieurs méthodes ont été développées pour s'assurer de la robustesse d'identification \cite{Soneson2013Dec,Spies2019Jan}, le cœur de chacun reste le même : identifier les gènes sur-exprimés ou sous-exprimés. Dans la recherche permanente qu'est la priorisation de gènes candidats à une maladie, cette méthode a donc grandement contribué à la connaissance approfondie de certaines pathologies ainsi que permis d'y associer des biomarqueurs pour réaliser des diagnostics \cite{Costa-Silva2017Dec}. Outre les problèmes de reproductibilité soulevés par plusieurs études \cite{Ostlund2014}, les analyses d'expression différentielle présentent cependant l'inconvénient d'être limitées à quelques gènes d'un ou plusieurs mécanismes qui impliquent pourtant bien plus de gènes. À titre d'exemple, nombre de gènes associés à des maladies Mendéliennes sont exprimés dans plusieurs tissus sans entrainer nécessairement de disfonctionnement, suggérant  plus une interaction problématique \cite{Hekselman2020Mar}. De plus, l'analyse d'expression différentielle est mise en difficulté dans le cas de gènes à large variance étant donné la tendance à ces plages de variance à se chevaucher \cite{Ostlund2014}. Elle en vient alors à manquer des gènes dont l'implication est effective dans certaines conditions \cite{delaFuente2010Jul}. L'analyse par réseaux de co-expression de gènes s'est notamment développée dans l'optique de répondre à ce type de problématique. En ne considérant non pas seulement les gènes mais leur dynamique d'expression, leur synchronisation, les réseaux de co-expression visent à identifier les motifs de variation de la transcription qui indiquent des interactions fonctionnelles ou de régulation des relations entre gènes \cite{Parsana2019}.
+
+% Barabási A-L, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12:56–68. + Furlong LI. Human diseases through the lens of network biology. Trends Genet. 2013;29:150–9.
+
+
+
 \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
-\section{Les méthodes d'analyse de l'information transcriptomique pour l'étude comparative}
+% \subsection{Principe de la co-expression et définitions des réseaux}
+\subsection{Définitions des réseaux et principe de la co-expression}
 
-% La démocratisation de la quantification par puce à ADN et encore plus par RNA-seq a entraîné une explosion de la taille des jeux de données de transcriptome, ainsi que leur nombre disponible publiquement en ligne.
-
-L'explosion de la taille et quantité de jeux de données mis à disposition publiquement engendre une demande croissante en techniques d'analyse capable de les gérer mais également de profiter de la précision de séquençage apportée. En recherche en médecine moléculaire et plus largement en biologie comparative, ce sont des méthodes d'étude des différences d'expression de gènes entre conditions qui ont été largement employées pour .
-
+L'analyse par réseaux de co-expression de gènes (RCG, en anglais GCN pour \textit{Gene Co-expression Network}) a su bénéficier des avancées en théorie des réseaux depuis sa conception pour encoder au mieux les relations entre gènes et étudier les relations les liants \cite{Barabasi2011Jan}. La théorie des réseaux appartient elle-même à la théorie des graphes, structure mathématique derrière les réseaux \cite{Barnes1983Jun}. Ces derniers n'en sont en effet qu'une implémentation, un cas particulier pour représenter des entités et leur connections. Ainsi, si les termes de graphe et réseau sont souvent utilisés de façon interchangeable hors de la recherche en informatique et  mathématique, il est à noter qu'ils désignent des concepts différents bien qu'imbriqués, et au vocabulaire spécifique. Les entités considérées, ici les gènes, sont appelés "nœuds" dans un réseau et "sommets" dans un graphe. De même, les connections reliant les entités seront nommées respectivement "lien" et "arrête" et peuvent être porteuses d'une pondération représentant une valeur de la connexion. 
 
 
+Les RCG se construisent conventionnellement à partir d'une matrice d'expression $n \times m$ d'indice $i = 1 … n$ pour les échantillons et de variable $j = 1 … m$ pour les gènes sur laquelle un score de similarité va être calculé. Ce terme généraliste permet d'englober la quantité importante de méthodes employée pour quantifier la similarité des gènes deux à deux. Ainsi, si ce score était initialement basé sur une approche naïve par corrélation de Pearson \cite{Carter2004}, d'autres scores plus robustes ont depuis été proposés. La corrélation de Spearman avec sa méthode est ainsi une méthode couramment utilisée en raison de sa sensibilité faible aux artefacts grâce à sa corrélation par rang \cite{Chowdhury2019,Serin2016,Kuehne2017}. Toujours dans les scores basés sur des coefficients de corrélation, la corrélation médiane bipondérée aussi appellée bicor \cite{Song2012} se base sur une corrélation par médiane qui se veut plus robuste que Pearson. Des mesures de distance sont aussi connues pour être utilisées en tant que score de similarité. C'est le cas de l'information mutuelle qui vise à mesurer la quantité d'information obtenable d'une variable en utilisant une autre pour estimer la dépendance entre celles-ci \cite{Kullback1997}. En définitive, le choix d'une de ces méthodes plus qu'une autre pour servir de score de similarité dépend de la nature des données (ex : linéaire ou non entre gènes) bien que la corrélation de Spearman et la bicor soient aujourd'hui les plus courantes \cite{Serin2016}.
 
 
+En 1999, Barabasi découvrent une propriété de topologie à laquelle répondent la quasi totalité des réseaux de très grande taille comme les interactions entre gènes : l'invariance d'échelle (en anglais \textit{scale-free}).
+
+% Continuer en parlant que ça a influé la theorie des reseaux et donc le developpement d'amelioration des scores de similarité en les transforamant en matrice d'adjacence. Plus tard Ritchie permettra à nouveau d'ameliorer ce score en amenant l'aspect de modularité topologique
 
 
+\begin{figure}
+    \centering
+    % \includegraphics{}
+    \caption{Étapes de réalisation d'une analyse par réseaux de co-expression.}
+    \label{fig:coexpr_pipeline}
+\end{figure}
 
+% L'analyse par réseaux de co-expression se sépare généralement en 3 parties : la construction du réseau, la détection de groupes des gènes se co-exprimant et l'exploitation de ces derniers. 
 
-Afin d'identifier et comprendre les gènes et transcrits acteurs de différentes condition et plus spécifiquement de maladies, l'analyse transcriptomique dispose de plusieurs outils. 
+Mélange historique / techniques
+- approche naive : la correlation + méthode de clustering genre kmeans
+- évolution vers l'utilisation de différentes métriques de distance et similarité
 
-
-Pour parvenir à déterminer la fonction physiologique des gènes, des transcrits, ou leur action dans le cadre d'une condition, plusieurs outils d'analyse sont à disposition.
-
-% les analyses d'expression de gènes ont plusieurs outils à disposition. 
-
-
-
- 
-
-
-
-% Les analyses de l'expression des gènes ont pour but majeur l'identification de gènes responsables o
-
-% \subsection{L'expression différentielle : les acteurs majeurs}
-\subsection{L'analyse différentielle : les acteurs majeurs du changement}
-
-
-- Méthode de capture des acteurs majeurs
-- Pas d'étude du système 
-- splicng alternatif
-- expression differentielle
-% - Des statistiques descriptives à l'expression différentielle %% Bof, j'ai pas retrouvé de stade "stats explo" 
-
-
-% \subsection{La modélisation du vivant : des acteurs au système}
-
-- De la régulation des gènes à son approximation par des modèles statistiques, en passant par la biologie des systemes qui est trop couteuse pour des organismes complexes %% mal formulé car dans le desordre (le dernier point devrait venir en 2e)
-- reseaux interaction proteine proteine
-- Transistion vers la modélisation par encodage de l'information dans des réseaux qui sont en fait des graph et qui sont moins couteux car probabilistes (ils ne sont pas la vérité mais une approximation)
-
-
-
-
-\subsection{Les réseaux biologiques : le système vu via la théorie des graphes}
-
-- Principe : les graphes sont une méthode de plus en plus utilisée dans la représentation du fonctionnement d'organismes puisqu'ils permettent d'avoir une vision à l'échelle du système tout entier.
-%% Jolie intro à s'inspire : https://www.nature.com/articles/s41467-019-08746-5
-- Différences / ressemblance entre graphe et reseau ?
-- Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
-- Les problèmes de visualisation de grands réseaux %% section layout de ce livre https://sites.fas.harvard.edu/~airoldi/pub/books/BookDraft-CsardiNepuszAiroldi2016.pdf
-
-
-
-%%%%%%%%%%%%%%%%%% LES RESEAUX DE CO-EXPRESSION %%%%%%%%%%%%%%%%%%
-
-
-\section{Les réseaux de  co-expression}
 
 % Carter, "l'origine" 10.1093/bioinformatics/bth234
 
@@ -381,8 +362,7 @@ Pour parvenir à déterminer la fonction physiologique des gènes, des transcrit
 
 % https://www.mdpi.com/2073-4425/3/3/344/htm
 
-\subsection{But}
-"Gene co-expression networks seek to identify transcrip- tional patterns indicative of functional interactions and regulatory relationships between genes" %%https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1700-9 + Barabási A-L, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12:56–68. + Furlong LI. Human diseases through the lens of network biology. Trends Genet. 2013;29:150–9.
+% - Les types de réseaux/graphes rencontrés en biologie et plus particulièrement en expression des gènes : small-world
 
 
 % ###### NORMALISAITON
@@ -397,7 +377,6 @@ Pour parvenir à déterminer la fonction physiologique des gènes, des transcrit
 % expression between all these other genes
 % These de Sipko van Damn
 
-\subsection{Principe}
 %% Relire `van Dam, S., Võsa, U., van der Graaf, A., Franke, L. & de Magalhães, J. P. Gene co-expression analysis for functional classification and gene–disease predictions. Brief. Bioinform. bbw139 (2017). doi:10.1093/bib/bbw139`
 \begin{itemize}
     \item Réseaux binaires (0 = pas de connexion, 1 = connexion). Pour et contres.
@@ -535,6 +514,9 @@ Cancer                                                                          
 
 % Le vieillissement est un phénomène à distinguer de la longévité qui ne tient pas compte de l'aspect dégradation de la santé. 
 
+% Inflammaging and Garb-aging : https://www.sciencedirect.com/science/article/abs/pii/S1043276016301254
+% Epigenetic, inflammationa and aging : https://www.sciencedirect.com/science/article/pii/B9780123978035000083
+
 % Si la quête pour l'immortalité n'est pas souhaitable pour plusieurs raisons tant éthiques qu'économiques \cite{Hayflick2000}, la recherche pour un vieillissement en bonne santé se doit-elle de continuer.
 
 De Magalhães s'interrogeait en 2003 \cite{deMagalhes2003} d'une programmation génétique du vieillissement. La question sous-jacente abordée était finalement de savoir si analyser et comprendre indépendemment chaque conséquence néfaste et maladie apparaissant avec l'âge n'était pas une course perdue d'avance pour les combattre. Ainsi, De Magalhães envisageait que comprendre le fonctionnement global du vieillissement serait plus pérenne pour retarder d'un seul coup l'apparition de quelques, si ce n'est toutes, maladies chez la personne âgée.
@@ -592,4 +574,8 @@ Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de sa
 %% Infos sur la peau : these super interessante => https://dumas.ccsd.cnrs.fr/dumas-01599807/document% \end{itemize}
 
 % ###########################################################################################################
+
+\section{Motivations et hypothèses de recherche}
+
+%% Reprendre la fin d'intro/intro pour guider
 
