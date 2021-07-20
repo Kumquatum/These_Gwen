@@ -267,7 +267,7 @@ j & = \text{échantillon} = 1,..., m \\
 k & = \text{table de comptes de lectures observés } n \times m 
 \end{align*}
 
-Le TMM quant à lui effectue une normalisation par le nombre de fragments d'ARN pour chaque gène dans chaque échantillon et s'en sert pour calculer la valeur M qui est rapport du niveau moyen en base 2, soit un log2 entre les échantillons de deux conditions (Équation \ref{mvalue}). Certains comptes pouvant être nulls ce que ne peut accepter un $log$, il est d'usage d'employer des pseudo-comptes qui sont des comptes auxquels on a ajouté 1 \cite{Booeshaghi2021Mar}. Parallèlement, il calcule la valeur A qui est la valeur absolue du niveau d'expression (Équation \ref{avalue}). Ces deux valeurs sont respectivement tronquées de 30\% et 5\% et servent à estimer une moyenne pondérée par référence (l'échantillon au quartile haut le plus proche de la moyenne des quartiles haut) (Équation \ref{weightedmean}) qui permet enfin de calculer le facteur de normalisation (Équation \ref{normtmmfactor}).
+Le TMM quant à lui effectue une normalisation par le nombre de fragments d'ARN pour chaque gène dans chaque échantillon et s'en sert pour calculer la valeur M qui est rapport du niveau moyen en base 2, soit un log2 entre les échantillons de deux conditions (Équation \ref{mvalue}). Certains comptes pouvant être nuls ce que ne peut accepter un $log$, il est d'usage d'employer des pseudo-comptes qui sont des comptes auxquels on a ajouté 1 \cite{Booeshaghi2021Mar}. Parallèlement, il calcule la valeur A qui est la valeur absolue du niveau d'expression (Équation \ref{avalue}). Ces deux valeurs sont respectivement tronquées de 30\% et 5\% et servent à estimer une moyenne pondérée par référence (l'échantillon au quartile haut le plus proche de la moyenne des quartiles haut) (Équation \ref{weightedmean}) qui permet enfin de calculer le facteur de normalisation (Équation \ref{normtmmfactor}).
 
 \begin{equation}\label{mvalue}
     M_g = \log_{2} \left(\frac{Y_{gk} / N_k}{Y_{gk'} / N_k'}\right)
@@ -298,8 +298,11 @@ Où :
 % Now, double trim the upper and lower percentages of the data (trim M values by 30% and A values by 5%)
 % Get weighted mean of M after trimming and calculate normalization factor 
 
+Une étude détaillée des performances et propriétés mathématiques du RLE et du TMM a par ailleurs été publiée en 2016 en reprenant les différentes étapes de leur normalisation pour en tirer des équivalences \cite{Maza2016} (Figure \ref{fig:maza2016_table2}). À ces méthodes de normalisation s'en ajoutent d'autres se basant sur le contenu en GC qui va favoriser ou défavoriser le séquençage, ou encore des méthodes utilisant, à l'instar des puces à ADN, des gènes contrôle, le plus souvent des gènes dit de ménage (en anglais \textit{housekeeping genes}). 
+% Si elles peuvent être adaptées à certains contextes d'analyse, elles sont cependant peu ou pas utilisées dans ceux sur lesquels on se concentre par la suite dans cette thèse. 
+Chaque méthode de normalisation va donc modifier considérablement la distribution des données d'expression et la stratégie de normalisation mise en place va et doit donc dépendre de l'analyse ultérieure faite sur les données. 
+% Dans le cadre de cette thèse qui aborde l'analyse par réseaux de co-expression de gènes, on ne considèrera par exemple qu
 
-Une étude détaillée des performances et propriétés mathématiques du RLE et du TMM a par ailleurs été publiée en 2016 en reprenant les différentes étapes de leur normalisation pour en tirer des équivalences \cite{Maza2016} (Figure \ref{fig:maza2016_table2}). On y mentionne d'ailleurs un filtÀ ces méthodes de normalisation s'ajoute des méthodes de normalisation se basant sur le contenu en GC qui va favoriser ou défavoriser le séquençage, ou encore des méthodes utilisant, à l'instar des puces à ADN, des gènes contrôle, le plus souvent des gènes dit de ménage (en anglais \textit{housekeeping genes}). Si elles peuvent être adaptées à certains contextes d'analyse, elles sont cependant peu ou pas utilisées dans ceux sur lesquels on se concentre par la suite dans cette thèse. 
 
 \begin{figure}[!h]
     \centering
@@ -326,18 +329,49 @@ L'analyse d'expression différentielle fut la première méthode dédiée spéci
 
 
 
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-
 % \subsection{Principe de la co-expression et définitions des réseaux}
 \subsection{Définitions des réseaux et principe de la co-expression}
 
-L'analyse par réseaux de co-expression de gènes (RCG, en anglais GCN pour \textit{Gene Co-expression Network}) a su bénéficier des avancées en théorie des réseaux depuis sa conception pour encoder au mieux les relations entre gènes et étudier les relations les liants \cite{Barabasi2011Jan}. La théorie des réseaux appartient elle-même à la théorie des graphes, structure mathématique derrière les réseaux \cite{Barnes1983Jun}. Ces derniers n'en sont en effet qu'une implémentation, un cas particulier pour représenter des entités et leur connections. Ainsi, si les termes de graphe et réseau sont souvent utilisés de façon interchangeable hors de la recherche en informatique et  mathématique, il est à noter qu'ils désignent des concepts différents bien qu'imbriqués, et au vocabulaire spécifique. Les entités considérées, ici les gènes, sont appelés "nœuds" dans un réseau et "sommets" dans un graphe. De même, les connections reliant les entités seront nommées respectivement "lien" et "arrête" et peuvent être porteuses d'une pondération représentant une valeur de la connexion. 
+L'analyse par réseaux de co-expression de gènes (RCG, en anglais GCN pour \textit{Gene Co-expression Network}) a su bénéficier des avancées en théorie des réseaux depuis sa conception pour encoder au mieux les relations entre gènes et étudier les relations les liants \cite{Barabasi2011Jan}. La théorie des réseaux appartient elle-même à la théorie des graphes, structure mathématique derrière les réseaux \cite{Barnes1983Jun}. Ces derniers n'en sont en effet qu'une implémentation, un cas particulier pour représenter des entités et leur connections. Ainsi, si les termes de graphe et réseau sont souvent utilisés de façon interchangeable hors de la recherche en informatique et  mathématique, il est à noter qu'ils désignent des concepts différents bien qu'imbriqués, et au vocabulaire spécifique. Les entités considérées, ici les gènes, sont appelés "nœuds" dans un réseau et "sommets" dans un graphe. De même, les connections reliant les entités seront nommées respectivement "lien" et "arrête". 
+% Les réseaux les plus simples utilisables sont de type binaire non dirigé : c'est un ensemble de nœuds où chaque lien indique la présence d'une relation 
+% Cette forme la plus basique des réseaux 
+Ces liens représentent ainsi de façon binaire la présence (valeur du lien égale à 1) ou l'absence, (valeur égale à 0) de relation entre les nœuds et donc dans les RGC entre les gènes. Les relations entre gènes en biologie ne sont toutefois pas aussi booléennes et nécessitent plus de finesse pour décrire la multiplicité et le degré des interactions. C'est pourquoi on utilise plus souvent des réseaux dit pondérés qui vont ajouter une valeur réelle $\mathbb{R}$, le plus souvent décimale $\mathbb{D}$ entre 0 et 1. Elles seront positive si le lien représente une co-expression conjointe, et négative s’il représente une co-expression opposée. Ainsi
+
+% et peuvent être porteuses d'une pondération représentant une valeur de la connexion. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_expr_group_sign.pdf}
+    \caption[Définition des liens du réseau pour des gènes se co-exprimant.]{Définition des liens du réseau pour des gènes se co-exprimant. A. Profils d'expression de plusieurs }
+    \label{fig:coexpr_corr_weight_sign}
+\end{figure}
 
 
-Les RCG se construisent conventionnellement à partir d'une matrice d'expression $n \times m$ d'indice $i = 1 … n$ pour les échantillons et de variable $j = 1 … m$ pour les gènes sur laquelle un score de similarité va être calculé. Ce terme généraliste permet d'englober la quantité importante de méthodes employée pour quantifier la similarité des gènes deux à deux. Ainsi, si ce score était initialement basé sur une approche naïve par corrélation de Pearson \cite{Carter2004}, d'autres scores plus robustes ont depuis été proposés. La corrélation de Spearman avec sa méthode est ainsi une méthode couramment utilisée en raison de sa sensibilité faible aux artefacts grâce à sa corrélation par rang \cite{Chowdhury2019,Serin2016,Kuehne2017}. Toujours dans les scores basés sur des coefficients de corrélation, la corrélation médiane bipondérée aussi appellée bicor \cite{Song2012} se base sur une corrélation par médiane qui se veut plus robuste que Pearson. Des mesures de distance sont aussi connues pour être utilisées en tant que score de similarité. C'est le cas de l'information mutuelle qui vise à mesurer la quantité d'information obtenable d'une variable en utilisant une autre pour estimer la dépendance entre celles-ci \cite{Kullback1997}. En définitive, le choix d'une de ces méthodes plus qu'une autre pour servir de score de similarité dépend de la nature des données (ex : linéaire ou non entre gènes) bien que la corrélation de Spearman et la bicor soient aujourd'hui les plus courantes \cite{Serin2016}.
+Les RCG se construisent conventionnellement à partir d'une matrice d'expression $n \times m$ d'indice $i = 1 … n$ pour les échantillons et de variable $j = 1 … m$. Une métrique est alors calculée sur chaque paire de gènes pour quantifier leur relation. Plusieurs approches existent dans le choix d'une métrique comme des modèles de mélange gaussien ou des probabilités bayésiennes. Mais l'approche la plus commune et sur laquelle on s'est concentré durant cette thèse est une approche par score de similarité. Ce terme généraliste permet d'englober la quantité importante de méthodes employée pour quantifier la similarité des gènes deux à deux. Ainsi, si ce score était initialement basé sur une approche naïve par corrélation de Pearson \cite{Carter2004} (Équation \ref{simscore_base_pearson}), d'autres scores plus robustes ont depuis été proposés. La corrélation de Spearman (Équation \ref{simscore_base_spearman}) avec sa méthode est ainsi une méthode couramment utilisée en raison de sa sensibilité faible aux artefacts grâce à sa corrélation par rang \cite{Chowdhury2019,Serin2016,Kuehne2017}. Toujours dans les scores basés sur des coefficients de corrélation, la corrélation médiane bipondérée aussi appellée bicor \cite{Song2012} (Équation \ref{simscore_base_bicor}) se base sur une corrélation par médiane qui se veut plus robuste que Pearson. Des mesures de distance sont aussi connues pour être utilisées en tant que score de similarité. C'est le cas de l'information mutuelle (Équation \ref{simscore_base_mi}) qui vise à mesurer la quantité d'information obtenable d'une variable en utilisant une autre pour estimer la dépendance entre celles-ci \cite{Kullback1997}. En définitive, le choix d'une de ces méthodes plus qu'une autre pour servir de score de similarité dépend de la nature des données (ex : linéaire ou non entre gènes) bien que la corrélation de Spearman et la bicor soient aujourd'hui les plus courantes \cite{Serin2016}.
+
+\begin{align} 
+    % \text{Soient } X,Y \text{ deux vecteurs numériques tels que } X = \\
+    \text{Pearson  } \operatorname{cor}_{jj'} & = \frac{\operatorname{cov}(X_j,X_j')}{\sigma_{X_{j}} \sigma_{X_{j'}}} \label{simscore_base_pearson} \\
+    \text{Spearman  } \operatorname{cor}_{jj'} & = \frac{\operatorname{cov}(rg_{X_j},rg_{X_{j'}})}{\sigma_{X_j}\sigma_{X_{j'}}} \label{simscore_base_spearman} \\
+    \text{bicor  } \operatorname{bicor}_{jj'} & = \frac{\underset{i}{\sum}\left(X_{ij}-\operatorname{med}(X_j)\right) w_{i}^{(X_{j})}\left(X_{ij'}-\operatorname{med}(X_{j'})\right) w_{i}^{(X_{j'})}}{\sqrt{\underset{i}{\sum}\left[\left(X_{ij}-\operatorname{med}(X_{j})\right) w_{i}^{(X_j)}\right]^{2}} \sqrt{\underset{i}{\sum}\left[\left(X_{ij'}-\operatorname{med}(X_{j'})\right) w_{i}^{(X_{j'})}\right]^{2}}} \label{simscore_base_bicor} \\
+    \text{Info. mut.  } \operatorname{mi}_{jj'} & = \sum_{i \in X_{j}} \sum_{i \in X_{j'}} p(X_j, X_{j'}) \log \left(\frac{p(X_j, X_{j'})}{p(X_j) p(X_{j'})}\right) \label{simscore_base_mi} 
+\end{align} \\
+Où :
+\begin{align*}
+    rg_X &= \text{rang des valeurs de } X \\
+    u_{i} &=\frac{X_{ij}-\operatorname{med}(X_{j})}{9 \operatorname{mad}(X_{j})}   &
+    v_{i} &=\frac{X_{ij'}-\operatorname{med}(X_{j'})}{9 \operatorname{mad}(X_{j'})} \\    
+    w_{i}^{(X)} &= \left(1-u_{i}^{2}\right)^{2} I\left(1-\left|u_{i}\right|\right)   &
+    I\left(1-\left|u_{i}\right|\right) &= \begin{cases}1 & \text{ si } 1-\left|u_{i}\right| > 0 \\ 0 & \text{ sinon}\end{cases} \\ 
+    % I\left(1-\left|u_{i}\right|\right) &= 1\text{ si } 1-\left|u_{i}\right| > 0 \text{ et } 0 \text{ sinon} \\
+    % \intertext{I\left(1-\left|u_{i}\right|\right) \text{ prend la valeur 1 si } 1-\left|u_{i}\right| > 0 \text{ et } 0 \text{ dans le cas contraire}} \\
+    p(X_j) & = \text{densité de la loi de } X_j
+\end{align*}
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 
 
-En 1999, Barabasi découvrent une propriété de topologie à laquelle répondent la quasi totalité des réseaux de très grande taille comme les interactions entre gènes : l'invariance d'échelle (en anglais \textit{scale-free}).
+En 1999, A. Barabasi et R. Albert découvrent une propriété de topologie à laquelle répondent la quasi-totalité des réseaux de très grande taille comme les interactions entre gènes : l'invariance d'échelle (en anglais \textit{scale-free}). 
 
 % Continuer en parlant que ça a influé la theorie des reseaux et donc le developpement d'amelioration des scores de similarité en les transforamant en matrice d'adjacence. Plus tard Ritchie permettra à nouveau d'ameliorer ce score en amenant l'aspect de modularité topologique
 
@@ -386,6 +420,7 @@ Mélange historique / techniques
 \subsection{Construction}
 \begin{itemize}
 \item l'impact de l'utilisation de microarray ou plutôt de RNA-seq https://academic.oup.com/bioinformatics/article/29/6/717/184320
+\item quelle normalisation ? microarray = mixed model (https://academic.oup.com/bioinformatics/article/21/7/1112/268967), rna-seq = pc correction (parsana 2019)
 \item Pourquoi utiliser les counts plutôt que les FPKM, TPM, etc.
 % In addition to the normalization issues that occur in single-cell RNA-seq, the optimal method for normalizing bulk RNA-seq data is also still not clear. The widely used Fragment/Reads Per Kilobase Million (FPKM) normalization has been debated [58] and although alternatives have and are being created, each method has its limitations (https://academic.oup.com/bib/article-lookup/doi/10.1093/bib/bbw139)
 \item Quelles étapes de pré-traitement ?

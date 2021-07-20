@@ -10,6 +10,7 @@
 ## Rédaction
 - [ ] Refaire les titres de table et figure pour qu'ils soient plus courts dans la liste à base de \caption[Titre résumé]{Titre classique : description}
 - [ ] Rajouter l'intro de chapitre 1 et notamment mentionner que l'article est CC-BY
+- [ ] Acronymes à rajouter, reprendre comme a fait Regis avec \acrfull et \acrshort
 
 ## Admninistratif
 - ~~[x] Faire signer par tous les auteurs de l'article GWENA une autorisation d'insertion dans la thèse~~
