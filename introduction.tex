@@ -327,13 +327,10 @@ L'analyse d'expression différentielle fut la première méthode dédiée spéci
 
 \begin{figure}[h!]
     \centering
-    % \includegraphics{}
+    \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_principle.pdf}
     \caption[Étapes de réalisation d'une analyse par réseaux de co-expression.]{Étapes de réalisation d'une analyse par réseaux de co-expression.}
     \label{fig:coexpr_pipeline}
 \end{figure}
-\todo[inline]{a compléter}
-
-% Barabási A-L, Gulbahce N, Loscalzo J. Network medicine: a network-based approach to human disease. Nat Rev Genet. 2011;12:56–68. + Furlong LI. Human diseases through the lens of network biology. Trends Genet. 2013;29:150–9.
 
 
 
@@ -421,7 +418,7 @@ Cette topologie d'invariance d'échelle va être encore précisée par E. Ravasz
     \label{fig:ravasz_hierarchical_clustering}
 \end{figure}
 
-Ainsi, les gènes au sein d'un réseau vont avoir tendance à s'organiser sous forme de multiples groupes de gènes, des \glspl{module}, formant eux-mêmes des modules plus importants. Une forte co-expression locale est présente et on y retrouve des gènes pivot intra-module qui centralisent la majorité des plus courts chemins. Les modules sont également reliés entre eux par un faible nombre de gènes pivots inter-modules qui font office de passerelle.
+Ainsi, les gènes au sein d'un réseau vont avoir tendance à s'organiser sous forme de multiples groupes de gènes, des \glspl{module}, formant eux-mêmes des modules plus importants. L'origine biologique de ce type d'organisation est l'objet de nombreuses hypothèses sans qu'aucune n'ait pu être estimée plus plausible qu'une autre \cite{lin}. Une forte co-expression locale est présente et on y retrouve des gènes pivot intra-module qui centralisent la majorité des plus courts chemins. Les modules sont également reliés entre eux par un faible nombre de gènes pivots inter-modules qui font office de passerelle.
 % Les genes intramodule sont interessants, techniquement pas les inter  % doi.org/10.1371/journal.pone.0061505 + 
 
 \footnotetext{Lien originel inclut dans la publication. Renvoi aujourd'hui une erreur "404 - page inconnue"}
@@ -448,48 +445,83 @@ Où :
 
 Le score de similarité qui en résulte est donc une métrique de la concordance entre les voisins directs de deux nœuds. D'autres améliorations ont également été proposées par la suite comme l'utilisation d'un score de recouvrement topologique généralisé \cite{Yip2007Dec} ou encore une implémentation différente du recouvrement de topologie, wTO \cite{Gysi2018}, pour pouvoir lui associer une valeur p. Chacun de ces scores ayant ses propres avantages et limites, la préférence de l'un ou l'autre pour la construction d'un réseau reposera avant tout sur la question de recherche. wTO est ainsi meilleur pour étudier les réseaux dans lesquels il est important de savoir directement si une interaction est activatrice ou inhibitrice/répressive. Le score de S. Horvath et B. Zhang présente lui une comparabilité accrue avec d'autres méthodes de construction de réseaux de co-expression aux métriques non signées. Une fois le score adapté choisi, il est enfin possible de détecter plus facilement les modules de co-expression.
 
-% En définitive, luel que
-% Il nécessite en contrepartie d'avoir des méthodes dédiée lor. 
-% Si contextuellement parlant
-% À partir de ce score de similarité amélioré, il est enfin possible de détecter plus facilement les modules de co-expression.
-
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-
-% L'identification des \glspl{module} repose sur l'assomption 
-% L'étape suivante d'une analyse par GCN étant la détection 
-% Au delà de la simple construction du réseau de co-expression, leur but est d'identifier 
-
-% R. Cohen and Havlin[10][11] showed analytically that scale-free networks are ultra-small worlds. In this case, due to hubs, the shortest paths become significantly smaller and scale as : $L\propto \log \log N$
-% [10] = "Structural properties of scale free networks". Handbook of Graphs and Networks. 
-% [11] = https://doi.org/10.1103%2FPhysRevLett.90.058701
-
-
-% Continuer en parlant que ça a influé la theorie des reseaux et donc le developpement d'amelioration des scores de similarité en les transforamant en matrice d'adjacence. Plus tard Ritchie permettra à nouveau d'ameliorer ce score en amenant l'aspect de modularité topologique
-
 
 
 \subsection{Détection de modules}
+
+
+Les modules sont l'unité majeure d'interprétation des GCN et regroupent les gènes au profil d'expression similaire au sein de plusieurs échantillons car ceux-ci tendent à représenter des fonctions physiologiques ou des phénotypes définis. La détection des modules vise donc à grouper les gènes dans le réseau en tenant compte des scores de similarité des gènes. Face au défi qu'est l'identification d'unités fonctionnelle dans des réseaux de régulation biologique complexes et chevauchants, de nombreuses méthodes ont été utilisées, au point qu'on les regroupe en plusieurs catégories \cite{Saelens2018} : 
+\begin{itemize}
+    \item Partitionnement : regroupement de gènes sur la base d'un score de similarité globale issu de la matrice d'expression des gènes
+    \item Décomposition : extraction des composants correspondant aux modules de co-expression en décomposant la matrice d'expression en un produit de matrices plus petites.
+    \item Bi-partitionnement : regroupement simultané de gènes et d'échantillons en biclusters sur la base d'un comportement local similaire en matière d'expression
+    \item Inférence de réseau itérative : optimisation itérative d'un réseau inféré et d'un ensemble de clusters
+    \item Inférence de réseau directe : inférence d'un réseau de régulation basé sur la similarité de l'expression génétique entre les régulateurs et les gènes cibles
+\end{itemize} 
+\hfill
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_category_detection_module.pdf}
+    \caption[Illustration des 5 catégories de méthodes de détection de modules.]{Illustration des 5 catégories de méthodes de détection de modules. Extrait de Saelens et al. 2018 (CC-BY) \cite{Saelens2018} et adapté pour être compatible au daltonisme. IR = Inférence de réseau.}
+    \label{fig:my_label}
+\end{figure}
+
+La détection de modules servant différents objectifs, certaines sont plus adaptées que d'autres dépendant de la question de recherche. Dans la majorité des cas, la détection de modules vise à répondre à 3 cas : avoir un aperçu global des données sans apport de connaissances extérieures comme des voies d'activations, identifier des fonctions biologiques ou des maladies, inférer des réseaux de régulation. La méthode par partitionnement permettant de répondre à tous ces besoins \cite{Filteau2013,Sundarrajan2016,Kogelman2014} et étant encore à ce jour la plus utilisée \cite{Saelens2018}, c'est sur elle qu'on s'est concentré dans cette thèse.
+
+Les procédures de partitionnement sont variées mais seules trois semblent être utilisées en majorité dans la recherche se servent des réseaux de co-expression : le partitionnement par connectivité, le partitionnement par centroïdes, et le partitionnement par distribution. Si ces deux dernières méthodes ont fait leurs preuves pour détecter des modules d'intérêt \cite{Ruan2006Dec,Shi2010Dec, Rau2017}, le partitionnement par connectivité, aussi appelé partitionnement hiérarchique reste une procédure largement utilisée \cite{Tang2018, Mao2009, Rotival2013}. Il est apprécié pour son compromis entre facilité de mise en place, pertinence des modules détectés, et besoins en ressources tant en temps qu'en puissance de calcul \cite{Saelens2018}. Il est également particulièrement adapté aux réseaux biologiques qui suivent une topologie modulaire hiérarchique comme on l'a rappelé précédemment. 
+
+La méthode initiale \cite{Murtagh2012Jan} consiste à construire un arbre de distances (un dendrogramme) en calculant un critère de liaison entre chaque point et en regroupant ensuite itérativement les points les plus proches (processus agglomératif) ou en divisant en deux à chaque tour les points (processus divisif). L'arbre final est ensuite coupé selon un seuil qui va définir les points regroupés ensemble, dans notre cas les gènes regroupés dans un même module. Ce seuil ayant été plusieurs fois critiqué pour son côté trop statique dans la hauteur de découpe, une amélioration consiste à rendre le seuil dynamique \cite{Langfelder2008_cutree}. Pour cela, la forme des branches du dendrogramme est analysée à la recherche de structures de sous clusters récursivement jusqu'à une stabilisation des sous cluster. Cette approche permet donc une définition de clusters de hauteur différente dans le dendrogramme pour chaque branche.
+
+\begin{figure}
+    \centering
+    % \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+\todo{Faire figure basée sur https://www.researchgate.net/figure/Example-of-hierarchical-clustering-clusters-are-consecutively-merged-with-the-most_fig3_273456906}
+
+Ces méthodes de construction et de détection des modules sont finalement celles implémentées dans le populaire package R WGCNA créé par P. Langfelder et S. Hortvath \cite{Langfelder2008}. Développé en 2008, ce package a permis de démocratiser l'analyse par réseaux de co-expression et de donner des modules prêt à être interprétés. Pour leur donner tout leur sens, il est cependant nécessaire d'effectuer des analyses supplémentaires.
+
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
 \begin{itemize}
     \item Notion de communauté
     \item Définition du partitionnement (clustering) et des différentes techniques
 \end{itemize}
 
+
+
 \subsection{Exploitation des modules de gènes}
 
-\subsubsection{Intégration biologique}
+
+\subsubsection{Approche guidée par la connaissance préalable : l'intégration biologique}
 %% AKA knowledge driven
+
+Les modules tendent à regrouper des gènes aux fonctions physiologiques semblables ou co-régulées \cite{}. Une façon de comprendre la raison du regroupement de ces gènes est donc de leur rattacher une fonction, une voie d'activation, un tissu, une maladie dans laquelle ils interviennent. Cependant, les gènes œuvrant rarement à une seule fonction, ils se retrouvent annoté de plusieurs fonctions \cite{}. Des fonctions non pertinentes dans le contexte du module peuvent donc s'y retrouver associées. Pour estimer lesquelles sont réellement significatives dans chaque module, on effectue donc des tests d'enrichissement \cite{}. 
+
+
+ORA / FCS / et le 3e dont j'ai oublié le nom
+
+
+
+% Guilt by association
+
 \begin{itemize}
     \item Enrichissement
     \item Test d'association
 \end{itemize}
 
-\subsubsection{Association phenotypique}
+% GCN can be used to make in silico functional predictions about genes. The Guilt By Association (GBA) paradigm [3] is used to predict function for genes that are not sufficiently studied and annotated using GCNs. GBA assumes that genes that strongly co-express must share functionality, thus we can use well-characterised genes to assign function to those that are not. % http://bmcsystbiol.biomedcentral.com/articles/10.1186/s12918-017-0420-6
+
 %% aussi knowledge driven
 
 %%\subsection{Capitalisation sur l'information intrinsèque aux données}
 
-\subsubsection{Étude topologique}
+\subsubsection{Approche guidée par les données : l'étude statistique et topologique}
 %% AKA data driven
+
+% When Is Hub Gene Selection Better than Standard Meta-Analysis? :  https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061505
 
 % They concluded that non-essential disease genes occupy functionally peripheral and topologically neutral positions in the cellular network <= En gros les hub genes sont intéressants pour l'étude de fonctionnalité, mais ce sont les gènes qui sont peipheriques aux hub genes qui sont intéressants pour les maladies
 % http://www.cbs.dtu.dk/courses/27040/teachingmaterials/Furlong_Cell2012.pdf
@@ -498,7 +530,7 @@ Le score de similarité qui en résulte est donc une métrique de la concordance
 %% Note : à voir si je présente aussi ici la comparaison de module vu que je vais ptet évoquer l'expression differentielle ici pour faire le parallele avec l'analyse transcripto classique. Sinon ça ira dans l'intro du chapitre avec l'article de GWENA.
 
 \begin{itemize}
-    \item Degré
+    \item Parler qu'on peut positionner les gènes détectés comme DE
     \item Définition de hub gene
     A trier / ordonner entre les différentes définitions, ce qu'elles visent, ce qu'elles appaortent et si possible une comparaison d'entre elles. On distinguera les mesure purement basées sur la theorie des graphs et celles impliquant des mesures statistique de significativité d'un gene comme hub (cf publi sur DHGA)
     \begin{itemize}
@@ -506,8 +538,9 @@ Le score de similarité qui en résulte est donc une métrique de la concordance
         \item Def 2 : Network hubs, the core elements in the network, can be defined using a range of different measures. These measures quantify distinct aspects of topological centrality, which can be defined as the capacity of a node to influence or be influenced by other nodes by virtue of its connection topology (Fornito et al., 2016).
     \end{itemize}
 \end{itemize}
-\subsubsection{Expression différentielle}
-Pas sur de foutre ca là... Peut etre plutot en intro de la section complete en guise de "En analyse RNA classique, une méthode data driven est l'expression différentielle, mais en co-expression on a a disposition plus d'information extractable, et ce grace a la theorie des graphes" 
+
+% Beyond modules and hubs: the potential of gene coexpression networks for investigating molecular mechanisms of complex brain disorders http://doi.wiley.com/10.1111/gbb.12106
+
 
 \subsubsection{Comparaison de modules}
 
