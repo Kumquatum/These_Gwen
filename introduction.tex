@@ -480,15 +480,9 @@ La méthode initiale \cite{Murtagh2012Jan} consiste à construire un arbre de di
     \label{fig:my_label}
 \end{figure}
 
-\todo{Faire figure basée sur https://www.researchgate.net/figure/Example-of-hierarchical-clustering-clusters-are-consecutively-merged-with-the-most_fig3_273456906}
+\todo{Faire figure basée sur \url{https://www.researchgate.net/figure/Example-of-hierarchical-clustering-clusters-are-consecutively-merged-with-the-most_fig3_273456906}}
 
 Ces méthodes de construction et de détection des modules sont finalement celles implémentées dans le populaire package R WGCNA créé par P. Langfelder et S. Hortvath \cite{Langfelder2008}. Développé en 2008, ce package a permis de démocratiser l'analyse par réseaux de co-expression et de donner des modules prêt à être interprétés. Pour leur donner tout leur sens, il est cependant nécessaire d'effectuer des analyses supplémentaires.
-
-\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FIN DE LA RÉDACTION PROPRE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
-\begin{itemize}
-    \item Notion de communauté
-    \item Définition du partitionnement (clustering) et des différentes techniques
-\end{itemize}
 
 
 
@@ -496,29 +490,57 @@ Ces méthodes de construction et de détection des modules sont finalement celle
 
 
 \subsubsection{Approche guidée par la connaissance préalable : l'intégration biologique}
-%% AKA knowledge driven
 
-Les modules tendent à regrouper des gènes aux fonctions physiologiques semblables ou co-régulées \cite{}. Une façon de comprendre la raison du regroupement de ces gènes est donc de leur rattacher une fonction, une voie d'activation, un tissu, une maladie dans laquelle ils interviennent. Cependant, les gènes œuvrant rarement à une seule fonction, ils se retrouvent annoté de plusieurs fonctions \cite{}. Des fonctions non pertinentes dans le contexte du module peuvent donc s'y retrouver associées. Pour estimer lesquelles sont réellement significatives dans chaque module, on effectue donc des tests d'enrichissement \cite{}. 
-
-
-ORA / FCS / et le 3e dont j'ai oublié le nom
+Les modules tendent à regrouper des gènes aux fonctions physiologiques semblables ou co-régulées \cite{Barabasi2011Jan,Lorenz2011}. Une façon de comprendre la raison du regroupement de ces gènes est donc de leur rattacher une fonction, une voie d'activation, un tissu, une maladie dans laquelle ils interviennent. Cette approche est alors qualifiée de guidée par la connaissance préalable (en anglais \textit{knowledge-driven}). Cependant, les gènes œuvrant rarement à une seule fonction, ils se retrouvent annoté de plusieurs fonctions \cite{Green2006Aug}. Des fonctions non pertinentes dans le contexte du module peuvent donc s'y retrouver associées. Pour estimer lesquelles sont réellement significatives dans chaque module, on effectue donc des analyses d'enrichissement \cite{Khatri2012} par rapport à diverses sources d'annotation (Table \ref{table:common_enrich_sources}). Appelée également par raccourci "analyse de voies d'activation" (en anglais \textit{pathway analysis}), cette analyse peut être effectuée de trois façons dépendamment des données disponibles en plus des identifiants de gènes : analyse de sur ou sous représentation, la cotation de classe fonctionnelle, et l'approche basée sur la topologie des voies d'activation. 
 
 
+\begin{table}[h!]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Source de données}                                                                          & \textbf{Acronyme} & \textbf{Description}                                                                                                                                                                                                                                        & \textbf{Compatible PT ?} \\ \midrule
+Gene Ontology                                                                                       & GO                & \begin{tabular}[c]{@{}l@{}}Modèle informatique de systèmes biologiques sous forme \\ d'ontologie décrivant des fonctions physiologiques, \\ moléculaires et cellulaire de différents organismes\end{tabular}                                                & oui                      \\
+\begin{tabular}[c]{@{}l@{}}Kyoto Encyclopedia of \\ Genes and Genomes\end{tabular}                  & KEGG              & \begin{tabular}[c]{@{}l@{}}Ensemble de bases de données relatives aux génomes, aux \\ voies métaboliques et aux composés biochimiques, associées \\ à une représentation en réseau des intéractions moléculaires\end{tabular}                               & oui                      \\
+Reactome                                                                                            & Reactome          & \begin{tabular}[c]{@{}l@{}}Processus biologiques humains annotés sous la forme d'une \\ série d'événements moléculaires imbriqués\end{tabular}                                                                                                              & oui                      \\
+WikiPathways                                                                                        & WP                & \begin{tabular}[c]{@{}l@{}}Ressource communautaire pour la contribution et la \\ maintenance de contenu dédié aux voies d'activation \\ métaboliques\end{tabular}                                                                                           & oui                      \\
+\begin{tabular}[c]{@{}l@{}}MicroRNA-Target \\ Interactions database\end{tabular}                    & mirTarBase        & \begin{tabular}[c]{@{}l@{}}Base de données revue des interactions micro ARN et \\ séquence cible\end{tabular}                                                                                                                                               & non                      \\
+TRANSFAC                                                                                            & TRANSFAC          & \begin{tabular}[c]{@{}l@{}}Ressource de facteurs de transcriptions, sites de liaisons et \\ éléments régulés\end{tabular}                                                                                                                                   & non                      \\
+\begin{tabular}[c]{@{}l@{}}Comprehensive Resource \\ of Mammalian \\ protein complexes\end{tabular} & CORUM             & \begin{tabular}[c]{@{}l@{}}Collection de complexes protéiques chez les mammifères \\ expérimentalement vérifiés\end{tabular}                                                                                                                                & non                      \\
+Human Protein Atlas                                                                                 & HPA               & \begin{tabular}[c]{@{}l@{}}Cartographie de l'ensemble des protéines humaines par type \\ cellulaire, tissu, organe\end{tabular}                                                                                                                             & non                      \\
+\begin{tabular}[c]{@{}l@{}}Human Phenotype \\ Ontology\end{tabular}                                 & HPO               & \begin{tabular}[c]{@{}l@{}}Modèle informatique de systèmes biologiques sous forme \\ d'ontologie décrivant des phénotypes humains\\ anormaux et/ou associés à des maladies\end{tabular}                                                                     & oui                      \\
+\begin{tabular}[c]{@{}l@{}}Molecular Signatures \\ Database\end{tabular}                            & MSigDB            & \begin{tabular}[c]{@{}l@{}}Ensemble de 9 collections d'annotations sur la localisation \\ chromosomique, les voies métaboliques, la régulation, les \\ signatures oncologique, l'immunologie, le type cellulaire, \\ et différentes ontologies\end{tabular} & non                      \\ \bottomrule
+\end{tabular}
+}
+\caption{Sources d'enrichissement communes en analyse d'enrichissement. PT = approche basée sur la topologie des voies d'activation}
+\label{table:common_enrich_sources}
+\end{table}
 
-% Guilt by association
+% Si besoin de trucs à rajouter, détailler les différentes BDD d'enrichissement disponibles : GO, KEGG (annotation fonctionnelle), OMIM, HPO, (maladies), TRANSFAC, CORUM (régulation), HPA (tissus), etc. 
 
-\begin{itemize}
-    \item Enrichissement
-    \item Test d'association
-\end{itemize}
+En l'absence d'autres données que les identifiants de gènes, on peut effectuer une analyse de sur ou sous représentation (en anglais \textit{over-representation analysis} ou ORA) par rapport à un contexte et une source d'annotation donnée \cite{Khatri2012}. Par exemple, on pourra chercher si un ensemble d'identifiants de gènes issus d'un module est sur représenté par rapport à la normale dans groupe de gènes annotant une voie métabolique sur l'ensemble des gènes chez l'humain (Figure \ref{}). Pour estimer si la sur représentation est significative, on utilise le plus souvent un test hyper-géométrique bien que d'autres distributions comme le chi\textsuperscript{2} ou la binomiale soient également utilisés plus occasionnellement \cite{Huang2009Jan}. Le test étant répété pour de nombreuses annotations, une correction pour test multiple est réalisée. L'inconvénient majeur de l'enrichissement par sur représentation réside dans sa considération de tous les gènes à égalité, ce qui est loin de représenter la réalité biologique qui est hiérarchique \cite{Khatri2012}.
 
-% GCN can be used to make in silico functional predictions about genes. The Guilt By Association (GBA) paradigm [3] is used to predict function for genes that are not sufficiently studied and annotated using GCNs. GBA assumes that genes that strongly co-express must share functionality, thus we can use well-characterised genes to assign function to those that are not. % http://bmcsystbiol.biomedcentral.com/articles/10.1186/s12918-017-0420-6
+Si en plus des identifiants de gènes on possède un score, par exemple un poids, un taux de variation, un rang, une valeur p, on peut effectuer une cotation de classe fonctionnelle (en anglais \textit{functional class scoring} ou FSC), aussi appelée de façon confondante "analyse d'enrichissement de collection de gènes" (en anglais \textit{gene set enrichment analysis} ou GSEA). Le choix du score à considérer pour gène va impacter fortement les enrichissements obtenus \cite{Ackermann2009Dec} et doit donc être choisi avec précaution. Pour obtenir l'enrichissement, la cotation de classe fonctionnelle va tout d'abord calculer une statistique de niveau de gènes (ex: valeur p, un rang, un taux d'erreur de type 1), si le score fournit n'est pas déjà de cette nature. Ces statistiques de niveau de gènes sont ensuite agglomérées par source d'annotation donnée selon une méthode de résumé de l'information comme une médiane, une statistique de Kolmogorov-Smirnov, ou une somme de rang de Wilcoxon \cite{Khatri2012}. Finalement, cette statistique agglomérée est testée pour sa significativité par test de permutation ou de comparaison au hasard. Si cette méthode répond à la limitation des tests de sur représentation évoqués plus haut, elle possède elle-même une limite majeure car elle considère les annotations données de façon indépendante. Les annotations se chevauchant régulièrement du fait de l'implication récurrente d'un gène dans plusieurs annotations, un biais est introduit à cette occasion.
 
-%% aussi knowledge driven
+La méthode d'enrichissement la plus récente est l'approche basée sur la topologie des voies d'activation (en anglais \textit{pathway topology based approache} ou PT). Cette méthode prend en compte non pas juste une liste d'identifiants de gènes et leur score associé, mais les liens existants entre les gènes dans les sources d'annotation données \cite{Khatri2012} (Table \ref{table:common_enrich_sources}). Ainsi, si une voie métabolique se voit changer l'agencement des liens entre les différents gènes, sans pour autant changer la liste des gènes, l'approche par topologie des voies d'activation sera capable d'en tenir compte dans son résultat d'enrichissement contrairement aux deux méthodes précédentes. Son fonctionnement est similaire à celui de la cotation par classe fonctionnelle, à la différence que la statistique de niveau de gène telle que ScorePAGE \cite{Rahnenfuhrer2004Jun} calcule un niveau de similarité entre chaque paire de gènes de l'annotation donnée et le divise par le nombre de réactions nécessaires pour connecter les deux gènes. L'apport d'information supplémentaire permet donc de préciser encore plus les enrichissements obtenus. Toutefois, cette méthode requière des sources d'annotation possédant des liens entre les gènes donnés, et celles-ci ne représentent qu'un faible nombre de sources.
+
+% \begin{figure}
+%     \centering
+%     % \includegraphics{} 
+%     \caption{Caption}
+%     \label{fig:my_label}
+% \end{figure}
+
+\todo[inline]{S'il y a le temps, reprendre la figure faite en p76 du carnet}
+
+En plus des tests d'enrichissement qui apportent une information généraliste par le biais des sources d'annotation, on peut apporter une information plus spécifique si des phénotypes sont fournis pour les échantillons via les tests d'association phénotypique \cite{Langfelder2008}. Afin de tester chaque module avec chaque phénotype, on cherche tout d'abord à représenter chaque module sous une forme moyenne. Pour ce faire, on effectue une décomposition en valeurs singulières de l'expression des gènes contenus dans un module, et on sélectionne la première composante calculée qu'on nommera gène propre (en anglais \textit{eigengene}). Dans le cas de variables quantitatives comme l'âge, la taille, le poids, il est directement possible d'effectuer un test de corrélation avec le gène propre d'un module pour déterminer si celui-ci est significativement associé à la variable phénotypique considérée. Dans le cas d'une variable qualitative, il est nécessaire de binariser la variable \cite{Lemoine2021Dec}. Cette technique consiste pour chaque modalité de la variable à la transformer en une variable à part entière qu'on remplira de 1 lorsque l'échantillon possède cette modalité, et 0 pour le reste de la variable ainsi que les autres variables modales (Figure \ref{}).
+
+\todo[inline]{Figure rapide d'exemple de binarisation de variable avec une variable à 3 modalités comme sexe : masculin, féminin, intersexe}
+
+Ces différentes approches guidées par la connaissance permettent finalement d'effectuer des prédictions fonctionnelles \textit{in silico} quand associée à l'analyse de GCN. Le paradigme de l'association par culpabilité (en anglais \textit{guilt by association}) présume en effet que des gènes fortement co-exprimés, comme ceux présents dans les modules, partagent des fonctions physiologiques communes ou contribuent à la même \cite{Ballouz2015}. Cette association qui a fait ses preuves est donc particulièrement utile pour l'annotation de gènes qui sont peu ou pas étudiés en se basant sur des enrichissements et associations phénotypiques obtenus \cite{Wolfe2005}. Il faut toutefois noter que si l'apport de connaissances établies permet d'acquérir de nouvelles connaissances et de comprendre le contexte biologique dans lequel se situent des modules, il apporte aussi avec lui un risque de biais. Les sources d'enrichissement sont par exemple disproportionnées concernant certains gènes ou familles de gènes \cite{Timmons2015Dec}. L'utilisation conjointe de méthodes dites guidées par les données (en anglais \textit{data-driven}) est donc un moyen de compléter de façon moins biaisée l'interprétation des modules.
+
 
 %%\subsection{Capitalisation sur l'information intrinsèque aux données}
-
-\subsubsection{Approche guidée par les données : l'étude statistique et topologique}
+\subsubsection{Approche guidée par les données : l'étude statistique et topologique}
 %% AKA data driven
 
 % When Is Hub Gene Selection Better than Standard Meta-Analysis? :  https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061505
