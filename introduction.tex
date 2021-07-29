@@ -540,50 +540,81 @@ Ces différentes approches guidées par la connaissance permettent finalement d'
 
 
 %%\subsection{Capitalisation sur l'information intrinsèque aux données}
-\subsubsection{Approche guidée par les données : l'étude statistique et topologique}
-%% AKA data driven
+% \subsubsection{Approche guidée par les données : l'étude statistique et topologique}
+\subsubsection{Approche guidée par les données : l'étude topologique}
 
-% When Is Hub Gene Selection Better than Standard Meta-Analysis? :  https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061505
+Les motifs d'organisation et les structures présentes dans un réseau sont depuis longtemps étudiées dans une volonté de rattacher ensemble topologie et fonction biologique. Les gènes concentrant les liens dans un réseau, les gènes pivots, étant des structures facilement notables, elles ont été étudiées très tôt. Les gènes pivots ont ainsi été trouvés associés à des gènes essentiels à la survie d'un organisme \cite{Jeong2001May}. Une analyse de ces gènes pivot croisée aux gènes responsables de maladies Mendéliennes, ces maladies mono-géniques, a cependant écarté cette hypothèse intuitive que les gènes pivots étaient la clef de ces maladies \cite{Goh2007May}. À la place, les gènes associés à ces maladies et aux maladies non-Mendéliennes ont plutôt été retrouvés en périphérie ou à des positions neutres du réseau \cite{Jeong2001May}. La détection des gènes pivots reste donc intéressante pour favoriser la détection de gènes aux fonctions essentielles ou bien, dans le cas de l'étude de leurs voisins, de la détection de gènes potentiellement liés à une maladie \cite{Langfelder2013}.
 
-% They concluded that non-essential disease genes occupy functionally peripheral and topologically neutral positions in the cellular network <= En gros les hub genes sont intéressants pour l'étude de fonctionnalité, mais ce sont les gènes qui sont peipheriques aux hub genes qui sont intéressants pour les maladies
-% http://www.cbs.dtu.dk/courses/27040/teachingmaterials/Furlong_Cell2012.pdf
-
-
-%% Note : à voir si je présente aussi ici la comparaison de module vu que je vais ptet évoquer l'expression differentielle ici pour faire le parallele avec l'analyse transcripto classique. Sinon ça ira dans l'intro du chapitre avec l'article de GWENA.
-
+La méthode de détection des gènes pivots a toutefois souffert d'une définition assez vague de ce que sont les gènes pivots. On retrouve ainsi des sélections telles que les 10 gènes les plus connectés \cite{Russo2018}, un pourcentage de gènes les plus connectés et une façon de mesurer cette connectivité qui varie selon l'étude \cite{Sundarrajan2016, Tang2018} ou encore un métrique de théorie des réseaux seuillée arbitrairement \cite{Saha2017}. Deux mesures parmi celles existantes ressortent pour leur définition de gènes pivots basé uniquement sur la topologie et un test statistique, sans seuil extérieur :
 \begin{itemize}
-    \item Parler qu'on peut positionner les gènes détectés comme DE
-    \item Définition de hub gene
-    A trier / ordonner entre les différentes définitions, ce qu'elles visent, ce qu'elles appaortent et si possible une comparaison d'entre elles. On distinguera les mesure purement basées sur la theorie des graphs et celles impliquant des mesures statistique de significativité d'un gene comme hub (cf publi sur DHGA)
-    \begin{itemize}
-        \item Def 1 : Network theory : "A node is defined as hub node, if its connection degree is greater than average connection degree of the network" %% https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5215982/
-        \item Def 2 : Network hubs, the core elements in the network, can be defined using a range of different measures. These measures quantify distinct aspects of topological centrality, which can be defined as the capacity of a node to influence or be influenced by other nodes by virtue of its connection topology (Fornito et al., 2016).
-    \end{itemize}
+    \item La sur-connectivité \cite{Das2017} : la connectivité, c’est-à-dire la somme des poids des liens d'un nœud, et testée statistiquement par rapport à la connectivité moyenne du réseau pour estimer si la différence est significative. Le degré est aussi parfois utilité comme mesure initiale.
+    \item L'adhésion au module \cite{Horvath2008} : la corrélation entre l'expression d'un gène et le gène propre d'un module est testée pour estimer sa significativité.
 \end{itemize}
 
-% Beyond modules and hubs: the potential of gene coexpression networks for investigating molecular mechanisms of complex brain disorders http://doi.wiley.com/10.1111/gbb.12106
+Plus précisément encore, ce type de mesure va permettre de détecter des gènes pivots dit intra-module (Figure \ref{}). D'autres gènes possèdent une structure de pivot mais se placent plutôt en passerelle entre les modules ou sous-modules du réseau lié à la topologie hiérarchique. Ceux-ci sont détectables par une analyse des nœuds les plus présents dans les plus courts chemins pour parcourir le réseau d'un nœud à un autre (Figure \ref{}). Leur implication et caractérisation biologique reste toutefois encore peu étudiée.
+
+\todo[inline]{Figure modules intra / inter hubs}
 
 
-\subsubsection{Comparaison de modules}
+\subsubsection{Comparaison de réseaux entre conditions : la co-expression différentielle}
 
-Ou co-expression différentielle
-%% "However, searching for differences in networks requires great sensitivity to the initial choice of data. For example, the absence of a shared link in mouse and human co-expression networks does not necessarily indicate divergent function. Instead, differences in the mouse and human co-expression networks may indicate differences in the technical platforms or the experimental conditions used to build the networks" http://doi.org/10.1371/journal.pgen.1000776
-
-\subsection{Interprétation des résultats}
-
-\subsubsection{Comparabilité des résultats issus de RNA-seq et de microarray}
-\begin{itemize}
-    \item Pas les meme hub genes %% "Microarray and RNA-seq-derived networks have different hub genes" https://academic.oup.com/bioinformatics/article/31/13/2123/196230
-\end{itemize}
+Les comparaisons sain contre malade, sauvage contre muté, ou toute autres conditions contrôle contre test ont toujours été une approche de choix pour comprendre les altérations d'une condition en biologie. Les GCN n'échappent pas à la règle et des méthodes de comparaison de réseau sont rapidement apparues \cite{Lai2004Nov}. L'analyse de co-expression différentielle (en anglais \textit{differential co-expression} ou DCE) est complémentaire de l'analyse classique d'expression différentielle en détectant les gènes dont les motifs de régulation changent sans que l'expression des gènes varie elle même significativement. Certains gènes associés à des maladies ont en effet un niveau d'expression constant mais avec une modification du transcrit telle qu'une mutation, un épissage alternatif, ou une altération post-transcriptionnelle qui vont venir affecter sa fonction \cite{delaFuente2010Jul}. Ce phénomène est observable dans le cas de perturbation d'éléments de régulation \cite{Rotival2013}, dans le cas de comparaisons de tissus \cite{Gov2017}, ou entre espèces similaires voir organismes \cite{Chowdhury2019}.
 
 
-%%%%%%% L'INTÉRÊT DE l'ANALYSE PAR CO-EXPRESSION POUR L'ÉTUDE DU VIEILLISSEMENT %%%%%%%
+Réaliser une analyse DCE demande cependant un regard critique sur les données utilisées en entrée tout comme sur la méthode de co-expression différentielle employée. Des différences de liens ou du poids leur étant associé ne sont ainsi pas suffisantes à elles seules pour indiquer une divergence de fonction et pourraient être le fruit de biais techniques, par exemple de la méthode de séquençage \cite{Southworth2009}. De la même manière que pour l'expression différentielle classique, il faut s'assurer de la significativité des changements de motif observés. Face à la diversité d'observations possibles, plusieurs méthodes ont vue le jour avec l'influence tant de la théorie des réseaux que de la biostatistique (Table \ref{table:chowdury_metrics_DCE}. Initialement partis d'une simple comparaison de l'expression moyenne par nœuds ou jusqu'à x nœuds voisins, les méthodes de co-expression différentielle ont évolué pour s'orienter sur de la détection de modifications de motifs complexes dans un réseau \cite{delaFuente2010Jul}. 
+
+\begin{table}[h!]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Name}                                                                               & \textbf{Description}                                                                                \\ \midrule
+\multirow{2}{*}{Density}                                                                    & It measures compactness of a module. Density is defined as the average connection strength of       \\
+                                                                                            & all pairs of genes present in a module.                                                             \\
+\multirow{2}{*}{Clustering coefficient}                                                     & Clustering co-efficient of a node quantifies the interconnectedness of its neighboring nodes. The   \\
+                                                                                            & average of clustering coefficients of all nodes measures the modularity of a module.                \\
+\multirow{5}{*}{Maximum adjacency ratio}                                                    & It generally deals with a weighted network and can be used to check whether a hub gene is           \\
+                                                                                            & connected to a large number of genes with moderate connection strengths or a few genes with         \\
+                                                                                            & strong connection strengths \cite{Horvath2008}. By computing the average MAR, we can distinguish among       \\
+                                                                                            & the connectivity patterns. More the correlation between MAR of nodes in two modules across          \\
+                                                                                            & conditions, then the preservation is higher.                                                        \\
+\multirow{3}{*}{\begin{tabular}[c]{@{}l@{}}Sign preserving mean\\ correlation\end{tabular}} & This module preservation strategy takes element-wise multiplication of the correlation matrices     \\
+                                                                                            & for the same module in two different samples groups and then takes the mean. Higher mean            \\
+                                                                                            & means more preservation.                                                                            \\
+\multirow{3}{*}{Eigengene based measure}                                                    & Eigengene is an arbitrary gene represents a module very well. To calculate preservation, one        \\
+                                                                                            & can take the correlation between the eigengenes of the corresponding modules of different           \\
+                                                                                            & phenotypes. Higher correlation means more preservation.                                             \\
+\multirow{3}{*}{Intra-modular connectivity}                                                 & The sum of connection strengths of neighbors of a node. To investigate preservation,                \\
+                                                                                            & correlation of intra-modular connectivity of nodes present in the same module of different          \\
+                                                                                            & phenotypes can be used. More correlation implies higher preservation.                               \\
+\multirow{2}{*}{Fitting coefficient (R2) \cite{Zhang2005a}}                                          & Scale-free topology criteria of a network can be quantified using the fitting coefficient of linear \\
+                                                                                            & regression.                                                                                         \\
+\multirow{2}{*}{Global network connectivity \cite{Taylor2009Feb}}                                      & This characteristic path length is the average of the shortest paths between all pairs of nodes in  \\
+                                                                                            & a network.                                                                                          \\
+\multirow{2}{*}{Zsummary \cite{Langfelder2011}}                                                         & It quantifies the amount of preservation of a module of reference in a test network by              \\
+                                                                                            & considering density and connectivity of that module in both networks.                               \\
+\multirow{2}{*}{MedianRank \cite{Langfelder2011}}                                                       & It gives the ranking of a reference network modules in a test network. The most preserved           \\
+                                                                                            & module gets the top rank.                                                                           \\ \cmidrule(l){2-2} 
+\end{tabular}
+}
+\caption[Statistiques pour la préservation des modules et la mesure des perturbations]{Statistics for Module Preservation and Disruption Measurement. Statistiques pour la préservation des modules et la mesure des perturbations. Issu de Chowdhury et al. \cite{Chowdhury2019} \textcopyright 2019 IEE. }
+\label{table:chowdury_metrics_DCE}
+\end{table}
+
+Les variations singulières de gènes en DCE sont généralement le reflet de maladies Mendélienne ou de traits phénotypiques monogéniques. Pour investiguer des conditions polygéniques, on utilise plus souvent l'échelle du module pour investiguer les différences de co-expression entre deux conditions. On parle alors d'analyse de préservation ou non préservation des modules de co-expression entre des conditions. De façon similaire à l'interprétation des modules qui peut se faire via des détections de voies d'activation ou via de la topologie, la co-expression différentielle peut reconnaitre les modules préservés ou non préservés en étudiant la conservation de voies d'activation ou de conservation de motifs de liens au sein du module \cite{Chowdhury2019}. Face à la diversité de changement de topologie, l'analyse par modification des liens requière toutefois plus de détail qu'une analyse présence/absence des comparaisons d'enrichissement. On peut ainsi observer des disparitions totales de modules, des compositions en gènes de modules variant, des séparations d'un module en plusieurs ou inversement, des changements de co-expression par grappe (Figure \ref{}).
+
+\todo[inline]{Figure inspirée de van Dam 2018}
+
+
+En 2005 lors de la publication de leur méthode d'analyse par co-expression, B. Zhang et S. Horvath présentent également 7 métriques de caractérisation de la topologie d'un réseau (Annexe .1.1) \cite{Zhang2005a}. En évaluant sur plusieurs aspects du réseau, elles permettent d'avoir une vision globale des perturbations que peut subir l'organisation d'un réseau lorsqu'il est étudié dans d'autres conditions. Ils s'en serviront d'ailleurs pour développer une méthode d'estimation de préservation des modules entre deux conditions. Cependant, face au large nombre de modules testés par analyses et en l'absence de correction de test multiple, de nombreux faux positifs ont pu être relevés \cite{Ritchie2016}. Une méthode développée par S. Ritchie en 2016 viendra toutefois contrer ce défaut dans la méthode de B. Zhang et S. Horvath en intégrant la mesure des 7 métriques au sein d'un test de permutation des identifiants de nœuds au sein du réseau. 
+
+\todo[inline]{Figure de Ritchie améliorée sur l'histoire des nœuds qui permutent}
+
 
 
 \section{Le vieillissement, système hautement imbriqué}
 
 %% Idée de début de paragraphe
-S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adpatés, c'est bien le vieillissement. Source multi-factorielle de changements dans l'organisme, il est chez l'humain à l'origine d'une dégradation progressive des fonctions de base du corps.
+S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adaptés, c'est bien le vieillissement. Source multi-factorielle de changements dans l'organisme, le vieillissement est chez l'humain à l'origine d'une dégradation progressive des fonctions de base du corps.
 
 % The human transcriptome, an unfinished story  https://www.mdpi.com/2073-4425/3/3/344/htm
 
@@ -682,6 +713,14 @@ Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de sa
 %% https://doi.org/10.1007/978-981-32-9005-1_3
 %% https://www.sciencedirect.com/science/article/abs/pii/S0959438820300878
 %% https://onlinelibrary.wiley.com/doi/abs/10.1111/acel.13280
+
+\section{L'intérêt de l'analyse par co-expression pour l'étude du vieillissement}
+
+- Vieillissement = phénomène progressif, multifactoriel
+- Deja des preuves de perte de connectivité
+- Similarités avec le cancerdans la littérature, confirmé avec la tendance aussi aux tissus cancérieux de perde de la connectivité
+- Une seule étude à ce jour s'est intéressé à cette perte de connectivité dans le casdre du vieillissement, Southworth, et c'était chez la souris. On se propose de réaliser cette étude sur de multiples tissus et chez l'humain.
+
 
 \section*{Phrases utiles à retravailler et intégrer}
 
