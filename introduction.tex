@@ -355,7 +355,7 @@ Les GCN se construisent conventionnellement à partir d'une matrice d'expression
 \subsection{Considérations préalables à l'analyse par réseaux de co-expression de gènes}
 
 % De même qu'il a fallut normal
-L'analyse de données de transcriptomiques par réseaux de co-expression nécessite des précautions et préparations en plus de celles effectuée sur chaque technologie de transcriptomique. Sur le plan de la normalisation, certaines normalisations de puce à ADN et de RNA-seq ne seront pas compatible avec l'analyse par co-expression telle que décrite dans la section suivante \cite{Zhang2005a}. Pour des données provenant de RNA-seq, les normalisations FPKM/RPKM et TPM ou tout autre normalisation visant à corriger pour le nombre total de lectures ou la taille des gènes sont à proscrire. En présence de gènes très fortement exprimés, le restant des gènes va décroître relativement ce qui va entraîner une co-expression artificielle entre ces gènes \cite{Spiko2017thesis}. Les informations pointant vers une normalisation adaptée en particulier pour le RNA-seq en co-expression sont toutefois manquantes\footnote{À ce jour et lors de la réalisation des travaux présentés dans cette thèse. Une publication préliminaire (en anglais \textit{preprint}) réalisé par A. Vandenbon en mars 2021 \cite{Vandenbon2021Mar} a toutefois réalisé une comparaison étendue de 6 normalisations pour relever que le quartile supérieur est la méthode la plus adaptée globalement.}. Les TMM et RLE sont conceptuellement compatibles mais les dernières publications tendent à utiliser la correction par composante principale \cite{Parsana2019} qui effectue en plus une correction de multiples biais et va en plus retirer des facteurs confondants non identifiés. Ces facteurs confondant sont d'ailleurs une source majeure de co-expression erronée car ils favorisent la corrélation de gènes sur des critères indépendant de la question biologique étudiée. Dans le cas des puces à ADN, une étude de Reverter et al. trouve la normalisation par modèles mixtes comme idéale \cite{Reverter2005Apr}. Cependant, une étude de Lim et al. trouve plus tard le MAS5 comme idéal mais sans comparaison avec la normalisation par modèle mixte \cite{Lim2007Jul}.
+L'analyse de données de transcriptomiques par réseaux de co-expression nécessite des précautions et préparations en plus de celles effectuée sur chaque technologie de transcriptomique. Sur le plan de la normalisation, certaines normalisations de puce à ADN et de RNA-seq ne seront pas compatible avec l'analyse par co-expression telle que décrite dans la section suivante \cite{Zhang2005a}. Pour des données provenant de RNA-seq, les normalisations FPKM/RPKM et TPM ou tout autre normalisation visant à corriger pour le nombre total de lectures ou la taille des gènes sont à proscrire. En présence de gènes très fortement exprimés, le restant des gènes va décroître relativement ce qui va entraîner une co-expression artificielle entre ces gènes \cite{Spiko2017thesis}. Les informations pointant vers une normalisation adaptée en particulier pour le RNA-seq en co-expression sont toutefois manquantes\footnote{À ce jour et lors de la réalisation des travaux présentés dans cette thèse. Une publication préliminaire (en anglais \textit{preprint}) réalisé par A. Vandenbon en mars 2021 \cite{Vandenbon2021Mar} a toutefois réalisé une comparaison étendue de 6 normalisations pour relever que le quartile supérieur est la méthode la plus adaptée globalement.}. Les TMM et RLE sont conceptuellement compatibles mais les dernières publications tendent à utiliser la correction par composante principale \cite{Parsana2019} qui effectue en plus une correction de multiples biais et va en plus retirer des facteurs confondants non identifiés. Ces facteurs confondants sont d'ailleurs une source majeure de co-expression erronée car ils favorisent la corrélation de gènes sur des critères indépendants de la question biologique étudiée. Dans le cas des puces à ADN, une étude de Reverter et al. trouve la normalisation par modèles mixtes comme idéale \cite{Reverter2005Apr}. Cependant, une étude de Lim et al. trouve plus tard le MAS5 comme idéal mais sans comparaison avec la normalisation par modèle mixte \cite{Lim2007Jul}.
 
 Malgré une normalisation visant à donner des résultats les plus proches de la vérité possible, chacune des technologies de transcriptomique, même si effectuées sur des échantillons identiques, va donner des réseaux différents comme l'a étudié Giorgi et al. \cite{Giorgi2013Mar}. Les réseaux basés sur des puces à ADN tendant à être plus similaires aux réseaux biologiques déjà connus par rapport au RNA-seq. Un biais est toutefois présent dans cette conclusion car les réseaux biologiques en question influent en partie le design des puces à ADN en termes de transcrits mesurés. Ainsi, les réseaux basés sur RNA-seq sont moins similaires aux réseaux biologiques car ils prennent en compte la totalité des transcrits présents et permettent une meilleure découverte de nouveaux gènes d'intérêt. La nature de cette différence, signal réel ou bruit, est toutefois un cas particulier à chaque couple réseau/organisme. Ballouz et al. sont venu en 2015 \cite{Ballouz2015} préciser les différences et ont constaté que la différence majeure repose sur la variation de topologie et plus particulièrement de connectivité. De nombreux gènes détectés comme pivot dans les réseaux basé sur puce à ADN ne sont pas retrouvés dans ceux à RNA-seq et inversement bien que leurs propriétés fonctionnelles soient les mêmes. En investiguant la contribution des transcrits aux gènes pivots, ils concluent que le RNA-seq tend à capturer plus de variation d'expression dans les données, mais qu'il est en contrepartie très sensible au bruit causé par les faibles intensités d'expression. 
 
@@ -611,44 +611,97 @@ En 2005 lors de la publication de leur méthode d'analyse par co-expression, B. 
 
 
 
-\section{Le vieillissement, système hautement imbriqué}
+\section{Le vieillissement, une imbrication complexe de dérèglements}
 
-%% Idée de début de paragraphe
-S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adaptés, c'est bien le vieillissement. Source multi-factorielle de changements dans l'organisme, le vieillissement est chez l'humain à l'origine d'une dégradation progressive des fonctions de base du corps.
 
-% The human transcriptome, an unfinished story  https://www.mdpi.com/2073-4425/3/3/344/htm
+Source multi-factorielle de changements dans l'organisme, le vieillissement est, chez l'humain, un continuum de dérèglements conduisant une personne en bonne santé à une réduction de sa qualité de vie en raison d'une dégradation progressive des fonctions de base du corps \cite{Berrut2013}. Ses différents aspects ne forment pas un chemin linéaire mais plutôt une arborescence où chaque individu va tendre à accumuler plus ou moins plus vite certaines marques du vieillissement. Si certaines de ces marques n'impactent que légèrement la dégradation de la personne vieillissante ou âgée, des événements traumatiques ou pathologiques tels qu'un AVC peuvent, par un effet de cascade, entraîner une accélération brutale dans la vitesse de dégradation. En augmentant la longévité des personnes, les avancées en santé publique et qualité de vie ont certes retardé la dégradation brutale, mais ont augmenté l'âge maximal et donc l'accumulation des marques du vieillissement, rendant cette population plus susceptible à des maladies chroniques telles que le cancer ou les maladies cardiovasculaires \cite{Khan2017Aug}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/4_aging/intro_4_aging_rate_marks.pdf}
+    \caption[Lois de distribution régissant le vieillissement sous un modèle simplifié]{Lois de distribution régissant le vieillissement sous un modèle simplifié :  L'exposition aux facteurs de vieillissement, l'accumulation cellulaire de dommages, l'augmentation exponentielle de la dégradation fonctionnelle et du risque de mortalité. Cette augmentation s'explique par le niveau constant de dommages causé aux cellules couplé à la réduction progressive des capacités de réparation qui est elle-même affectée par les dommages dans une boucle délétère \cite{Todhunter2018}.}
+    \label{fig:aging_rate_marks}
+\end{figure}
+
+On distingue 3 types de vieillissements : le vieillissement réussi ou en bonne santé, le vieillissement usuel, et le vieillissement pathologique \cite{vanBuchem2004Dec}. Le vieillissement réussi est décrit comme associé à l'absence de facteurs de risque pour la santé et avec une perte minime de condition physiologique : pas d'anomalies sanguines, pas de problèmes à l'effort, seulement un ralentissement de l'activité en raison d'une fatigue plus rapide \cite{Berrut2013}. Le vieillissement usuel est défini par une diminution des capacités fonctionnelles globales telles que visible en moyenne chez des personnes du même âge. Il implique les différents changements de régulation cellulaire et moléculaire qui vont se manifester à l'échelle de la personne par des déséquilibres métaboliques, des facteurs de risques augmentés, et des pathologies chroniques sans décompensation c’est-à-dire sans dégradation brutale suite à une rupture des mécanismes de compensation d'un dérèglement \cite{Berrut2013}. Enfin, le vieillissement pathologique est un terme ne faisant pas l'unanimité car étant un processus physiologique intrinsèque, il est discutable de le considérer comme une maladie. De ce fait, il est le plus souvent décrit comme recoupant deux notions : le vieillissement prématuré et le vieillissement en continuité avec le grand âge \cite{Belmin2014}. Tous ces vieillissements entretiennent évidemment des liens étroits d'un point de vue physiologique, mais on a souhaité dans cette thèse se concentrer sur le vieillissement usuel.
+
+
+\subsection{Définition moléculaire}
+
+% Le vieillissement usuel, qu'on nommera simplement par la suite vieillissement, est influencé par la génétique d'un individu \cite{Khan2017Aug, deMagalhaes2003Mar} ainsi que son environnement \cite{Jones2015Dec}. C'est un phénomène inévitable qui ne reflète pas nécessairement l'âge chronologique d'un individu mais plutôt un âge biologique \cite{Horvath2013Oct}. 
+Le vieillissement usuel, qu'on nommera simplement par la suite vieillissement, est inévitable et ne reflète pas nécessairement l'âge chronologique d'un individu mais plutôt un âge biologique \cite{Horvath2013Oct}. C'est un phénomène influencé par la génétique d'un individu \cite{Khan2017Aug, deMagalhaes2003Mar} ainsi que son environnement \cite{Jones2015Dec}. Des gènes associés à la longévité ont ainsi pu être identifiés mais sont loin d'expliquer la totalité du vieillissement au vu de sa très grande complexité moléculaire. Pour aider à la communication sur le sujet et pour tenter de catégoriser les différentes composantes du vieillissement, López-Otín et al. proposent en 2013 un découpage en 9 marques principales qui sont représentatives des causes, conséquences et résultats du vieillissment (Figure \ref{fig:hallmarks_aging}) \cite{Lopez-Otin2013} : 
+% instabilité génomique, attrition des télomères, altérations épigénétiques, perte de protéostasie, dérégulation de la perception des nutriments, dysfonction mitochondriale, senescence cellulaire, épuisement des cellules souche, communication intercellulaire altérée. 
+\begin{itemize}
+    \item Instabilité génomique : l'intégrité de l'ADN est régulièrement mise à l'épreuve lors de la vie cellulaire, qu'il s'agisse de contraintes physiques, de conditions chimiques ou d'agents biologiques \cite{Moskalev2013Mar}. Ils entraînent des mutations ponctuelles, des translocations, des duplications et des augmentation ou réduction de taille de chromosome, notamment au niveau des télomères. Pour conserver sa stabilité, des mécanismes de stabilité et réparation de l'ADN sont présents dans la cellule mais tendent à dysfonctionner avec l'âge, permettant aux dommages de perdurer et se transmettre \cite{Lord2012Jan}. 
+    \item Attrition des télomères : les télomères, extrémités des chromosomes, jouent un rôle de protection vis-à-vis de ceux-ci. Lors de la réplication cellulaire et en l'absence de télomérase dans la majorité des cellules, ils tendent toutefois à réduire en taille à chaque fois \cite{Lopez-Otin2013}. Leur taille initiale limite donc le nombre maximal de réplication qu'une cellule pourra avoir, nombre qui est appelé la limite de Hayflick \cite{Hayflick1961Dec}. Les télomères jouent donc un rôle dans la longévité globale mais peuvent être affectés par l'instabilité génomique ou des pathologies ponctuelles telles que des infections \cite{Ilmonen2008May}.
+    \item Altérations épigénétiques : l'épigénétique désigne tout mécanisme de modification du génome n'incluant pas d'altération de sa séquence. Lors du vieillissement, plusieurs de ces mécanismes comme la modification des histones chargés du repliement de la chromatine vont entraîner des modifications de la régulation de la transcription \cite{Fraga2007Aug}. La perturbation de certaines voies comme la voie métabolique de l'insuline vont alors jouer sur la longévité des individus \cite{Jin2011Aug}.
+    \item Perte de protéostasie : la protéostasie regroupe l'intégralité des mécanismes visant à permettre aux protéines d'acquérir et conserver leur repliement prévu, ainsi que les mécanismes de lyse des protéines pour éviter leur malfonctionnement en cas de dégâts \cite{Koga2011Apr}. Les liens précis entre les marques principales précédentes et la perte de protéostasie restent encore à comprendre malgré une association avérée de l'augmentation de mauvais repliement et de perte de proteolyse avec le vieillissement \cite{Koga2011Apr}.
+    \item Dérégulation de la perception des nutriments : la perception des fluctuations des niveaux de nutriments dans l'organisme telles que les sucres, acides aminés, et lipides est essentiel pour son fonctionnement et requière différentes voies d'activation spécifiques à chacun \cite{Houtkooper2010Jul}. Face à la déficience de régulation de nutriments chez les personnes âgées, il a été observé que plusieurs voies tendent à être perturbées, par exemple mTOR dans la perception des hautes concentrations en acides aminés \cite{Laplante2012Apr}.
+    \item Dysfonction mitochondriale : les mitochondries, organelles chargée entre autre de la respiration cellulaire, diminuent en activité avec le vieillissement ce qui cause un ralentissement de croissance \cite{Green2011Aug}. La production d'adénosine triphosphate (ATP) nécessaire aux nombreuses réactions cellulaires décroit donc et avec elle le métabolisme global de la cellule. Des dérivés réactifs de l'oxygène (en anglais \textit{reactive oxygen species} ou ROS) sont également mesurés en plus grande quantité en conséquence, bien que leur rôle soit ambigu. Il a été observé que leur présence tend dans certains contextes à stimuler des réponses de compensations du vieillissement qui augmentent la longévité, et dans d'autres contextes à diminuer la longévité en raison du stress cellulaire induit \cite{Ziegler2015Feb}.
+    \item Senescence cellulaire : la duplication cellulaire fait partie de la vie normale d'une cellule et se retrouve arrêté de façon stable lorsque la cellule est atteinte par un ou plusieurs mécanismes de senescence tel que le raccourcissement des télomères précédemment cité. D'autres formes de senescence existent toutefois sous la forme de sécurités mises en place par la cellule pour éviter la multiplication de cellules atteintes par des dommages conséquents à l'ADN \cite{Khan2017Aug}. Ces cellules sénescentes sont également connues pour contribuer à une inflammation chronique de faible intensité (en anglais \textit{inflammaging}) \cite{Kuilman2010Nov,Franceschi2014} et leur signalisation pro-senescence à travers les différents tissus \cite{Khan2017Aug}.
+    \item Épuisement des cellules souche : la réduction des capacités de différenciation et régénération des cellules souches sont la conséquence des altérations des dommages à l'ADN et des mécanismes de senescence en réponse pour limiter leur prolifération \cite{Sharpless2007Sep}. En atteignant par exemple les niches de cellules souches telles que celle des cellules hématopoïétiques, les dommages à l'ADN et à la régulation vont causer une diminution des capacités immunitaires (aussi appelée immuno-sénescence) ainsi qu'une anémie \cite{Lopez-Otin2013,Baker2016Feb}.
+    \item Communication intercellulaire altérée : les dérégulations de l'expression des gènes couplés à des stimulations de faible intensité du système immunitaire entrainent un brouillage de la communication entre cellules par diverses sécrétions dans la matrice extra-cellulaires \cite{Lopez-Otin2013}. Le système endocrinien comme paracrinien vont voir leurs capacités de coordination du métabolisme entre cellules réduites, ce qui va à son tour mener à des dommages dans l'ADN des cellules \cite{Khan2017Aug}. Ce phénomène peut s'accentuer localement au point d'engendrer un vieillissement accéléré d'un tissu qui peut promouvoir la senescence dans d'autres tissus au point qu'on le nomme vieillissement métastatique \cite{Lavasani2012Jan}.
+\end{itemize}
+\hfill
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{img/intro/4_aging/intro_4_aging_Lopez-Otin_hallmarks.pdf}
+    \caption{Marques principales du vieillissement et interconnections fonctionnelles. Adapté et traduit d'après López-Otín 2013 \cite{Lopez-Otin2013} (Cette traduction n'est pas officielle et n'a pas été approuvée par Elsevier). Les neuf marques principales proposées du vieillissement sont regroupées en trois catégories. (En haut) Les signes distinctifs considérés comme les causes primaires des dommages cellulaires. (Au milieu) Ceux qui sont considérés comme faisant partie des réponses compensatoires ou antagonistes aux dommages. Dans un premier temps, ces réponses atténuent les dommages, mais à terme, si elles sont chroniques ou exacerbées, elles deviennent elles-mêmes délétères. (En bas) Signes distinctifs intégratifs qui sont le résultat final des deux groupes de signes distinctifs précédents et sont finalement responsables du déclin fonctionnel associé au vieillissement.}
+    \label{fig:hallmarks_aging}
+\end{figure}
+
+Comme visible dans ces définitions ainsi que dans la Figure \ref{fig:hallmarks_aging}, plusieurs de ces marques principales du vieillissement tendent à s'entretenir les unes les autres dans un cercle vicieux s'accentuant à chaque cycle. Des mécanismes de compensations visent toutefois à contrer ce cycle en stoppant les cellules atteintes par la senescence, ou en restimulant leur régénération comme cela a pu être vu avec les ROS. Ces mécanismes sont d'ailleurs présents avant l'apparition du vieillissement qui n'est finalement qu'une illustration de la mise en échec progressive de la robustesse des mécanismes de compensation \cite{Ferrucci2020Feb}.
+
+
+% GWEN ! LÀ STOP ! MAJ DE LOPEZ-OTIN : https://onlinelibrary.wiley.com/doi/epdf/10.1111/acel.13080
+
+% Mortalité / longévité / fragilité 
+
+
+\subsection{Enjeux}
+
+% Age represents the primary risk factor for chronic diseases, including cardiovascular, malignant, and neurodegen- erative conditions. \cite{Khan2017Aug}
+
+
+% Le vieillissement est un phénomène à distinguer de la longévité qui ne tient pas compte de l'aspect dégradation de la santé. 
+
+% Inflammaging and Garb-aging : https://www.sciencedirect.com/science/article/abs/pii/S1043276016301254
+% Epigenetic, inflammationa and aging : https://www.sciencedirect.com/science/article/pii/B9780123978035000083
+
+% Si la quête pour l'immortalité n'est pas souhaitable pour plusieurs raisons tant éthiques qu'économiques \cite{Hayflick2000}, la recherche pour un vieillissement en bonne santé se doit-elle de continuer.
+
+De Magalhães s'interrogeait en 2003 \cite{deMagalhes2003} d'une programmation génétique du vieillissement. La question sous-jacente abordée était finalement de savoir si analyser et comprendre indépendemment chaque conséquence néfaste et maladie apparaissant avec l'âge n'était pas une course perdue d'avance pour les combattre. Ainsi, De Magalhães envisageait que comprendre le fonctionnement global du vieillissement serait plus pérenne pour retarder d'un seul coup l'apparition de quelques, si ce n'est toutes, maladies chez la personne âgée.
+
+Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de santé publique.
+
+
+\begin{itemize}
+    \item Susceptibilité aux maladies opportunistes
+    \item tdeetAutonomie patient
+    \item Médicalisation précoce
+\end{itemize}
+
+\subsection{La capture de l'information liée au vieillissement par la transcriptomique}
+% \subsection{L'étude du vieillissement à travers les réseaux de co-expression}
 
 % Aide à la justification de l'utilisation de la co-expression dans l'étude du vieillissement : 10.1016/j.arr.2009.10.006
 
-%% GROSSE REVIEW : 10.1007/978-3-030-25650-0
-
-\subsection{Définition biologique}
-
-%% Liens utiles :
-% The future of ageing https://www.nature.com/articles/35041709
-% Bouquin vieillissement https://library.oapen.org/bitstream/handle/20.500.12657/24382/1005732.pdf?sequence=1#page=98
-% Is mammalian aging genetically controlled https://sci-hub.se/https://link.springer.com/article/10.1023/A:1023356005749
-% https://www.nature.com/articles/35041709
-% https://www.nature.com/articles/nrm.2017.68 maladies définies comme associées à l'âge
-% ACcumulation erreurs et lien avec la mortalité (page 123) https://www.sciencedirect.com/science/article/abs/pii/S095506741730131X
-% Age dependant/independant mortality : https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality
-% REview biomarqueurs et forces d'action sur le vieillissement : https://sci-hub.se/10.1007/978-3-030-25650-0
-
-% "Two evolutionary theories of ageing — the mutation-accumulation and trade-off theories "
-
-
-%% À reformuler comme définition du vieillissement mais le contenu est sympa
-% Aging is the inevitable time-dependent decline in physiological organ function and is a major risk factor for cancer development. Due to advances in health care, hygiene control and food availability, life expectancy is increasing and the population in most developed countries is shifting to an increasing proportion of people at a cancer susceptible age.
+S'il est une condition biologique où les réseaux de co-expression sont particulièrement bien adaptés, c'est bien le vieillissement \cite{delaFuente2010Jul}.
 
 \begin{itemize}
-    \item Phenomène à la fois génétique (intrinseque) [] et environemental (extrinseque) 
-    \item Facteurs (hallmarks) : raccourcissement des télomères, phénomènes d'inflammation, réduction de la machinerie cellulaire
-    % Sterile inflammation, also known as ‘inflammaging’, is a hallmark of ageing and a contributing factor to many age-related diseases ( https://doi.org/10.1093/gerona/glu057). 
-    \item Manifestation : Ralentissement de la division cellulaire, développement de cellules non-fonctionnelles / nocives (aka tumeurs), malfonctionnement des tissus/organes
-    \item Le vieillissement, contrairement aux maladies mendéliennes, est multifactoriel est se manifeste donc sous la forme d'un spectre
-    \item Différence Âge chronologique / âge biologique
-    \item Différence vieillissement (aging), longévité (longevity/lifespan), survie en bonne santé (health-span) 
+    \item La dérégulation de la transcription comme phénomène précédemment mentionné
+    \item L'analyse d'expression différentielle + d'autres analyses discrètes (au sens de Barabasi) ont permis d'isoler plusieurs gènes associés à un ou plusieurs tissu vieillissant. \label{intro_biomarker_aging}
+    \item la création de bases de données liées au vieillissement sous toutes ses formes : gènes associés au vieillissement dans différents tissus et chez différentes espèces modèle, signatures de scenescence, gènes associés au ralentissement du vieillissement par restriction calorique, médicaments anti vieillissement, gènes associés à la longévité, changements liés au vieillissement à différents niveaux (biological levels, integrating molecular, physiological and pathological age-relate). En gros tout https://genomics.senescence.info/
+    \item L'insuffisance de la capture de biomarqueurs pour un processus aussi compliqué que le vieillissement. Donc la nécessité d'une étude en réseau
+    \item 
+    
 \end{itemize}
+%% https://doi.org/10.1007/978-981-32-9005-1_3
+%% https://www.sciencedirect.com/science/article/abs/pii/S0959438820300878
+%% https://onlinelibrary.wiley.com/doi/abs/10.1111/acel.13280
+
+
 
 \textbf{Bouts de textes récupérés de l'intro du chap2 car mieux ici}
 
@@ -679,40 +732,6 @@ Cancer                                                                          
 
 
 
-\subsection{Enjeux}
-
-% Le vieillissement est un phénomène à distinguer de la longévité qui ne tient pas compte de l'aspect dégradation de la santé. 
-
-% Inflammaging and Garb-aging : https://www.sciencedirect.com/science/article/abs/pii/S1043276016301254
-% Epigenetic, inflammationa and aging : https://www.sciencedirect.com/science/article/pii/B9780123978035000083
-
-% Si la quête pour l'immortalité n'est pas souhaitable pour plusieurs raisons tant éthiques qu'économiques \cite{Hayflick2000}, la recherche pour un vieillissement en bonne santé se doit-elle de continuer.
-
-De Magalhães s'interrogeait en 2003 \cite{deMagalhes2003} d'une programmation génétique du vieillissement. La question sous-jacente abordée était finalement de savoir si analyser et comprendre indépendemment chaque conséquence néfaste et maladie apparaissant avec l'âge n'était pas une course perdue d'avance pour les combattre. Ainsi, De Magalhães envisageait que comprendre le fonctionnement global du vieillissement serait plus pérenne pour retarder d'un seul coup l'apparition de quelques, si ce n'est toutes, maladies chez la personne âgée.
-
-Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de santé publique.
-
-
-\begin{itemize}
-    \item Susceptibilité aux maladies opportunistes
-    \item tdeetAutonomie patient
-    \item Médicalisation précoce
-\end{itemize}
-
-\subsection{La capture de l'information liée au vieillissement par la transcriptomique}
-\label{}
-
-\begin{itemize}
-    \item La dérégulation de la transcription comme phénomène précédemment mentionné
-    \item L'analyse d'expression différentielle + d'autres analyses discrètes (au sens de Barabasi) ont permis d'isoler plusieurs gènes associés à un ou plusieurs tissu vieillissant. \label{intro_biomarker_aging}
-    \item la création de bases de données liées au vieillissement sous toutes ses formes : gènes associés au vieillissement dans différents tissus et chez différentes espèces modèle, signatures de scenescence, gènes associés au ralentissement du vieillissement par restriction calorique, médicaments anti vieillissement, gènes associés à la longévité, changements liés au vieillissement à différents niveaux (biological levels, integrating molecular, physiological and pathological age-relate). En gros tout https://genomics.senescence.info/
-    \item L'insuffisance de la capture de biomarqueurs pour un processus aussi compliqué que le vieillissement. Donc la nécessité d'une étude en réseau
-    \item 
-    
-\end{itemize}
-%% https://doi.org/10.1007/978-981-32-9005-1_3
-%% https://www.sciencedirect.com/science/article/abs/pii/S0959438820300878
-%% https://onlinelibrary.wiley.com/doi/abs/10.1111/acel.13280
 
 \section{L'intérêt de l'analyse par co-expression pour l'étude du vieillissement}
 
@@ -722,37 +741,32 @@ Le vieillissement est donc, part les pathologies qu'il entraîne, un enjeu de sa
 - Une seule étude à ce jour s'est intéressé à cette perte de connectivité dans le casdre du vieillissement, Southworth, et c'était chez la souris. On se propose de réaliser cette étude sur de multiples tissus et chez l'humain.
 
 
-\section*{Phrases utiles à retravailler et intégrer}
 
-\begin{itemize}
-\item "Studies have shown that each gene is estimated on average to interact with four to eight other genes1 and to be involved in 10 biological functions" [10.1038/s41598-017-18705-z]
-\item "A very clear partition of different biological networks is provided by Christensen et al. [1], who separated these networks into five main categories as follows: [metabolic networks, signal transduction networks,transcriptional regulatory networks, protein-protein networks, functional gene networks]" [10.1093/bfgp/elt003]
-%% Bouquin à la coloc de Clément à Sète, pas retrouvé sur le net jusque là 
-\item "Le vieillissement est un continuum conduisant une personne en bonne santé à une réduction de sa réserve fonctionnelle, puis de sa capacité fonctionnelle et de sa qualité de vie. CEs différents aspects ne décrivent pas un chemin linéaire ou ordonné." [Patient agé : particularités de la consultation, Gilles Berrut]
-\item "It has been reported that nearly one in four studies uses public data to address a biological problem without generating new raw data (Rung and Brazma, 2013)." [10.3389/fpls.2016.00444]
-\end{itemize}
-
-
-%% Points que je veux aborder :
-%%  - Definition des reseau arrete / noeud
-%%  - Definition des modules par l'effet de modularité
-%%  - Ce à quoi ils peuvent servir : raccrochage de fonction a certains genes, detection de pathways, detection de reseaux de regulation
-
-
-
-%%    • Weighted aspect [trop general, aura plutot sa place dans la thèse]
-%% But because of the multi-functionality aspect of each gene, such GCN using only binary state between genes (1 = correlated, 0 = not correlated) lead to information loss\cite{Langfelder2008}. Therefore, a new class of GCN have been developed: weighted gene co-expression networks. One of the most famous implementation is the R package WGCNA\cite{Langfelder2008}, but one can also mention the recent wTO\cite{Gysi2018} package which consider both positive and negative correlation for GCN building. Instead of a simple pairwise correlation, these packages weight the similarity score by calculating a factor taking into account other properties of the network. In the case of WGCNA, it specifies an adjacency score which raise the similarity to a power, which will increase the strength of strong similarities while keeping low week ones. In the case of wTO, it determine an average accounting for all common neighbors of a node.
-
-%%    • Topological aspect
-%%    • Co-expression properties (Scale-free-network entre autres ?)
-
-
-
-%% Infos sur la peau : these super interessante => https://dumas.ccsd.cnrs.fr/dumas-01599807/document% \end{itemize}
-
-% ###########################################################################################################
 
 \section{Motivations et hypothèses de recherche}
 
 %% Reprendre la fin d'intro/intro pour guider
+
+
+
+% ###########################################################################################################
+
+% CONTENU SUPPLÉMENTAIRE AU BESOIN :
+% 
+% Phrases 
+% - "Studies have shown that each gene is estimated on average to interact with four to eight other genes1 and to be involved in 10 biological functions" [10.1038/s41598-017-18705-z]
+% - "A very clear partition of different biological networks is provided by Christensen et al. [1], who separated these networks into five main categories as follows: [metabolic networks, signal transduction networks,transcriptional regulatory networks, protein-protein networks, functional gene networks]" [10.1093/bfgp/elt003]
+% - "It has been reported that nearly one in four studies uses public data to address a biological problem without generating new raw data (Rung and Brazma, 2013)." [10.3389/fpls.2016.00444]
+% 
+% Liens 
+% - The human transcriptome, an unfinished story  https://www.mdpi.com/2073-4425/3/3/344/htm
+% - Infos sur la peau : these super interessante => https://dumas.ccsd.cnrs.fr/dumas-01599807/document% 
+% - "Two evolutionary theories of ageing — the mutation-accumulation and trade-off theories "
+% -  The future of ageing https://www.nature.com/articles/35041709
+% - Bouquin vieillissement https://library.oapen.org/bitstream/handle/20.500.12657/24382/1005732.pdf?sequence=1#page=98
+% - Is mammalian aging genetically controlled https://sci-hub.se/https://link.springer.com/article/10.1023/A:1023356005749
+% - https://www.nature.com/articles/nrm.2017.68 maladies définies comme associées à l'âge
+% - ACcumulation erreurs et lien avec la mortalité (page 123) https://www.sciencedirect.com/science/article/abs/pii/S095506741730131X
+% - Age dependant/independant mortality : https://en.wikipedia.org/wiki/Gompertz%E2%80%93Makeham_law_of_mortality
+% - REview biomarqueurs et forces d'action sur le vieillissement : https://sci-hub.se/10.1007/978-3-030-25650-0
 
