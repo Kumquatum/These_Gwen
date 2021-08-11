@@ -1,23 +1,14 @@
 % \setcounter{chapter}{2}
 % \setcounter{section}{2}
 \chapter{Chapitre 1 - GWENA: gene co-expression networks analysis and extended modules characterization in a single Bioconductor package}
-% \chapter*{Chapitre 1 - GWENA}
-% \phantomsection\addcontentsline{toc}{chapter}{Chapitre 1 - GWENA} 
 \label{chapter:gwena}
 
 
 \section{Résumé}
 
-\subsection{Contexte}
-L'analyse de l'expression des gènes par le biais de réseaux de co-expression peut être utilisée pour étudier les relations modulaires entre des gènes remplissant différentes fonctions biologiques. Une description approfondie de chacun des modules du réseau est donc une étape essentielle pour comprendre les processus sous-jacents contribuant à une maladie ou à un phénotype. L'intégration biologique, l'étude de la topologie et la comparaison des conditions (par exemple, sauvage vs mutant) sont les principales méthodes pour y parvenir, mais à ce jour, aucun outil ne les combine toutes en un seul pipeline.
+% 150 mots max, imposé par FESP
+L'analyse de l'expression des gènes par le biais de réseaux de co-expression peut être utilisée pour étudier les relations modulaires entre des gènes remplissant différentes fonctions biologiques. À ce jour, aucun outil ne combine en un pipeline pérenne les analyses usuelles ainsi que la co-expression différentielle et la visualisation de réseau. Nous présentons ici GWENA, un nouveau progiciel R disponible sur Bioconductor qui répond à ce besoin. Pour démontrer ses performances, nous avons appliqué GWENA sur deux ensembles de données de muscle squelettique provenant de patients jeunes et âgés de l'étude GTEx. De façon remarquable, nous avons priorisé plusieurs gènes pour l'étude du vieillissement ainsi que précisé le phénomène connu de perte de connectivité. En effet, parallèlement à cette déconnexion se déroule une reconnexion de divers gènes sur les gènes pivots du réseau, gènes codant pour des mécanismes de compensation.
 
-\subsection{Résultats}
-Nous présentons ici GWENA, un nouveau package R qui intègre la construction de réseaux de co-expression de gènes et la caractérisation complète des modules détectés par l'enrichissement d'ensembles de gènes, l'association phénotypique, la détection de gènes pivots, le calcul de métriques topologiques et la co-expression différentielle. Pour démontrer ses performances, nous avons appliqué GWENA sur deux ensembles de données de muscle squelettique provenant de patients jeunes et âgés de l'étude GTEx. De façon remarquable, nous avons priorisé un gène dont l'implication dans le développement et la croissance du muscle était inconnue. De plus, de nouvelles perspectives sur les variations des modèles de co-expression ont été identifiées. Le phénomène connu de perte de connectivité associé au vieillissement a été associé à une réorganisation globale des relations conduisant à l'expression de fonctions connues liées au vieillissement.
-
-\subsection{Conclusion}
-GWENA est un package R disponible via Bioconductor (\url{https://bioconductor.org/packages/release/bioc/html/GWENA.html}) qui a été développé pour effectuer une analyse étendue des réseaux de co-expression génique. Grâce aux informations biologiques et topologiques ainsi qu'à la co-expression différentielle, ce package aide à disséquer le rôle des relations entre les gènes dans les conditions de maladies ou les phénotypes ciblés. GWENA va au-delà des paquets existants qui effectuent des analyses de co-expression en incluant de nouveaux outils pour caractériser pleinement les modules, tels que la co-expression différentielle, des bases de données d'enrichissement supplémentaires et la visualisation du réseau.
-
-\todo[inline]{Changer le résumé FR par un résumé de MAXIMUM 250 mots (exigence FESP)}
 
 \section{Abstract}
 \subsection{Background}

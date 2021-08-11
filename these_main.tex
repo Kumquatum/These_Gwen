@@ -175,7 +175,20 @@
 \dedicace{Dédicace si désiré}                   % dédicace
 \cleardoublepage
 
-\epigraphe{Texte de l'épigraphe}{Source ou auteur}
+% \epigraphe{La vie est absurde, après si t'aime ce genre d'humour c'est plus facile à vivre.}{Isabelle Stévant}
+
+% \epigraphe{It's easier to ask forgiveness than it is to get permission.}{Rear Admiral Grace Murray Hopper (9 December 1906 – 1 January 1992), développeuse d'un des premiers langages compilés.}
+
+\hfill \vspace{4cm}
+
+\begin{epigraphs}\setlength{\itemsep}{4cm}
+\qitem{\textit{La vie est absurde, après si t'aime ce genre d'humour c'est plus facile à vivre.}}%
+      {Isabelle Stévant, chercheuse en bio-informatique et collègue du blog bioinfo-fr.net}
+\qitem{\textit{It's easier to ask forgiveness than it is to get permission.}}%
+      {Rear Admiral Grace Murray Hopper (9 December 1906 – 1 January 1992), développeuse d'un des premiers langages compilés.}
+\end{epigraphs}
+
+
 \cleardoublepage
 
 \include{remerciements}                         % remerciements
@@ -205,11 +218,10 @@
 \renewcommand{\appendixtocname}{Annexes}
 \appendixpage
 \begin{appendices}
-    \include{annexe_questions}
     \include{annexe_add_file_GWENA}
-    \include{annexe_netrep}
     \include{annexe_dbGaP}
     \include{annexe_chap2_genes_intersect_enrichments}
+    \include{annexe_projets_annexe}
 \end{appendices}
 
 
