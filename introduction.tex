@@ -40,7 +40,7 @@ Pour être produites, ces protéines suivent chacune un plan de construction dé
 
 Chez l'humain et plus généralement les eucaryotes, l'ADN est contenu dans le noyau de la cellule où il se trouve condensé après plusieurs étapes de repliement à l'aide de protéines appelées histones. La machinerie cellulaire de production des protéines étant située à l'extérieur du noyau, une étape intermédiaire de transcription est nécessaire afin de copier la séquence ADN d'un gène sous la forme d'une molécule capable de sortir du noyau : l'ARN messager (ARNm). Semblable à l'ADN, l'ARNm est cependant monobrin alors que l'ADN est double brin. Dans cette molécule, la thymine est remplacée par un autre nucléotide, l'uranine. La taille d'un brin d'ARNm est par ailleurs plus petite que celle d'un fragment d'ADN car il embarque l'information correspondant à un gène seulement. Chacun des triplets de nucléotides sur sa séquence, appelés codons, encode pour un des 20 types d'acides aminés constituant la protéine associée (Figure \ref{fig:intro_code_genetique}).
 
-\begin{figure*}[h]
+\begin{figure*}[hb]
     \centering
     \includegraphics[width=0.93\textwidth]{img/intro/1_context/intro_1_code_genetique.pdf}
     \caption[Correspondance des codons avec l'acide aminé produit.]{Correspondance des codons avec l'acide aminé produit. La lecture s'effectue du centre du cercle vers l'extérieur pour respecter le sens 5' \textrightarrow{} 3' de l'ARN. Le codon de la méthionine qui est le codon de départ de toute traduction est indiqué par un triangle vert, et les trois codons stop sont indiqués avec un carré rouge.}
@@ -50,7 +50,7 @@ Chez l'humain et plus généralement les eucaryotes, l'ADN est contenu dans le n
 
 Une fois copié depuis l'ADN, l'ARNm immature, composé de sous unités appelées introns et exons, sort du noyau vers le cytoplasme pour subir une étape de maturation. Durant celle-ci, il se voit retirer ses introns et certains exons ou sections d'exons selon les besoins de sous-fonction de la protéine finale. On nomme \textbf{transcrits} ces différentes versions d'ARNm issues d'un même gène (Figure \ref{fig:alternative_splicing}). Ainsi, on considère que la transcription d'un gène sous n'importe lequel de ses transcrits correspond à l'expression de son gène dans un échantillon. Par la suite, une étape de traduction de l'ARNm en une séquence d'acides aminés donnera une molécule qui sera la base de la protéine. Après le repliement de ce polymère et des modifications dites post-traductionnelles par la machinerie cellulaire, la protéine sera enfin opérationnelle pour réaliser la fonction qui lui incombe. 
 
-\begin{figure}[h]
+\begin{figure}[hb]
     \centering
     \includegraphics[width=\textwidth]{img/intro/1_context/intro_1_alternative_splicing.pdf}
     \caption{Épissage alternatif avec un exemple sur 5 exons et 3 protéines différentes pouvant donc résulter du même ARNm.}
@@ -100,7 +100,7 @@ Profitant de l'amélioration des technologies de séquençage génomique via tou
 
 Les puces à ADN et le RNA-seq sont encore aujourd'hui les deux technologies de quantification de l'expression des gènes utilisées, malgré le déclin annoncé des puces à ADN (Figure \ref{fig:intro_count_by_year_rnaseq_microarray_est}). Les bio-informaticien·ne·s sont donc amené·e·s à devoir traiter et analyser les données issues de ces deux approches en tenant compte des propriétés biologiques, techniques et statistiques respectives à chacune des deux technologies.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/2_meth_transcripto/intro_2_count_by_year_rnaseq_microarray_est.pdf}
     \caption[Évolution de l'utilisation des différentes techniques de transcriptomique en se basant sur le nombre de publications les mentionnant]{Évolution de l'utilisation des différentes techniques de transcriptomique en se basant sur le nombre de publications les mentionnant. Les résultats proviennent du site PubMed (\url{https://pubmed.ncbi.nlm.nih.gov}) avec les requêtes suivantes : \textbf{EST} = "cDNA library" OR "cDNA libraries" OR "complementary DNA library" OR "complementary DNA libraries" OR "expressed sequence tag" OR "expressed sequence tags", \textbf{Puce à ADN} = "micro array" OR "microarray" NOT "chromosomal", \textbf{RNA-seq} = "RNA Seq" OR "RNA-Seq" OR "RNASeq".}
@@ -145,7 +145,7 @@ Afin de transformer les images obtenues, quelle que soit la technique, en une do
 
 \subsubsection{Pré-traitement des données}
 
-\begin{figure}[!h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{img/intro/2_meth_transcripto/intro_2_true_microarray_picture_10.1016_j.fss.2004.10.012.png}
     \caption[Image d'une puce à ADN à deux canaux rouge et vert]{Image d'une puce à ADN à deux canaux rouge et vert. (a) Canal rouge en échelle de gris, (b) Canal vert en échelle de gris, (c,d) Canaux respectifs colorés selon leur fluorescence, (e) Puce à ADN visualisée en coloration RGB (\textit{Red Green Blue}). Des artefacts de fluorescence sont visibles en ligne 5. Issu de Lukac \textit{et al.} 2005 \cite{Lukac2005May}.}
@@ -207,7 +207,7 @@ L'utilisation des puces à ADN reste toutefois pertinente dans d'autres types d'
 
 Aujourd'hui, le séquençage de l'ARN (RNA-seq) est devenu la technologie privilégiée pour les études transcriptomiques. Issue des techniques de séquençage nouvelle génération, le RNA-seq permet d'étudier le transcriptome d'un organisme sans connaissance préalable de sa séquence \cite{Wang2009Jan}. Le protocole de préparation des transcrits est le même que pour les puces à ADN sauf dans le cas d'un séquençage direct de l'ARN. Après prélèvement des échantillons, les transcrits sont isolés par purification et rétro-transcrits en ADNc. Ceux-ci sont alors amplifiés par PCR et fragmentés selon la taille requise par la technologie de séquençage. Le séquençage peut se faire actuellement par seconde ou troisième génération dépendant de l'objectif poursuivit. Les technologies de seconde génération, avec notamment celle d'Illumina (Figure \ref{fig:intro_rnaseq_workflow}), sont ainsi adaptées dans le cadre d'une comparaison de conditions. Elles produisent rapidement un séquençage au rapport qualité prix raisonnable avec un minimum de 30 millions de lectures (en anglais \textit{reads}) alignées recommandées par le projet ENCODE \cite{ENCODE2012} pour de l'ARN total chez l'humain. Les technologies de troisième génération telles que PacBio ou Nanopore (Figure \ref{fig:intro_rnaseq_workflow}) quant à elles prennent plus de temps mais peuvent séquencer des fragments de taille bien supérieure à ceux de seconde génération. Cette capacité les rend donc particulièrement adaptées à l'analyse de la variété de transcrits issus de l'épissage alternatif \cite{Bergsma2018Jan}. 
 
-\begin{figure}[h]
+\begin{figure}[hb]
     \centering
     \includegraphics[width=\textwidth]{img/intro/2_meth_transcripto/intro_2_rnaseq_workflpow.pdf}
     \caption{Déroulé d'une opération de quantification d'expression par RNA-seq.}
@@ -277,7 +277,7 @@ Une étude détaillée des performances et propriétés mathématiques du RLE et
 % Dans le cadre de cette thèse qui aborde l'analyse par réseaux de co-expression de gènes, on ne considèrera par exemple qu
 
 
-\begin{figure}[!h]
+\begin{figure}[hb]
     \centering
     \includegraphics{img/intro/2_meth_transcripto/intro_2_maza2016_table2.pdf}
     \caption[Table de comparaison des étapes de normalisation avec équivalences re-exprimées]{Table de comparaison des étapes de normalisation avec équivalences re-exprimées. Issu de la Table 2 (tronquée) de Maza 2016 \cite{Maza2016}.}
@@ -294,7 +294,7 @@ L'explosion de la taille et quantité de jeux de données mis à disposition pub
 également l'inconvénient d'être limitées à quelques gènes d'un ou plusieurs mécanismes qui impliquent pourtant bien plus de gènes. À titre d'exemple, nombre de gènes associés à des maladies Mendéliennes sont exprimés dans plusieurs tissus sans entraîner nécessairement de dysfonctionnement, suggérant plutôt une interaction délétaire qu'un gène problématique à lui seul \cite{Hekselman2020Mar}. De plus, l'analyse d'expression différentielle est mise en difficulté dans le cas de gènes à large variance à travers les échantillons étant donné la tendance des plages de valeurs d'expression à se chevaucher \cite{Ostlund2014}. Elle en vient alors à manquer de sensibilité et va omettre des gènes dont l'implication est effective dans certaines conditions \cite{delaFuente2010Jul}. L'analyse par réseaux de co-expression de gènes a notamment été développée dans l'optique de répondre à ce type de problématique. En ne considérant non pas seulement les gènes mais leur dynamique ou profil d'expression et leur synchronisation, les réseaux de co-expression visent à identifier les motifs de variation de la transcription qui indiquent des interactions fonctionnelles ou de régulation des relations entre gènes \cite{Parsana2019}. La découverte d'information est cependant rarement faite à partir du simple réseau construit. Pour discerner les gènes interagissant préférentiellement ensemble, une méthode de partitionnement est appliquée et va définir des groupes de gènes qu'on nomme \glspl{module}. Ceux-ci sont ensuite interprétés à l'aide de différentes méthodes incluant de la connaissance a priori, ou de l'analyse topologique pour de la connaissance \textit{ex nihilo}. Il en résulte un pipeline d'analyse (Figure \ref{fig:coexpr_pipeline}) \cite{Zhang2005a} qu'on va décrire en détail dans les parties qui suivent.
 
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_principle.pdf}
     \caption[Étapes de réalisation d'une analyse par réseaux de co-expression.]{Étapes de réalisation d'une analyse par réseaux de co-expression.}
@@ -308,7 +308,7 @@ L'explosion de la taille et quantité de jeux de données mis à disposition pub
 
 L'analyse par réseaux de co-expression de gènes (en anglais \acrfull{GCN}) a su bénéficier des avancées conceptuelles en théorie des réseaux depuis sa conception pour encoder et étudier au mieux les relations entre gènes \cite{Barabasi2011Jan}. La théorie des réseaux appartient elle-même à la théorie des graphes, structure mathématique derrière les réseaux \cite{Barnes1983Jun}. Un \textbf{réseau} n'est en effet qu'une implémentation d'un \textbf{graphe}, un cas particulier, pour représenter des entités et leur connections dans un contexte donné. Ainsi, si les termes de graphe et réseau sont souvent utilisés de façon interchangeable hors de la recherche en informatique et mathématique, il est à noter qu'ils désignent des concepts différents bien qu'imbriqués, et au vocabulaire spécifique. Ainsi, les entités considérées, ici les gènes, sont appelés \textbf{nœuds} dans un réseau et \textbf{sommets} dans un graphe. De même, les connections reliant les entités seront nommées respectivement \textbf{lien} et \textbf{arrête}. Dans cette thèse, les termes de nœud et lien seront donc préférés car issus de la théorie des réseaux. Les liens représentent de façon binaire la présence (valeur du lien égale à 1) ou l'absence, (valeur égale à 0) de relation entre les nœuds. Les relations entre gènes en biologie ne sont toutefois pas aussi dichotomiques et nécessitent plus de granularité pour décrire la multiplicité et le niveau des interactions. Une même cellule échantillonnée à des temps différents aura un profil plus ou moins différent où les fonctions clefs auront peu changé mais celles plus variables auront varié bien plus. C'est pourquoi on utilise plus souvent des réseaux dit pondérés qui vont ajouter une valeur réelle $\mathbb{R}$, le plus souvent décimale $\mathbb{D}$ entre 0 et 1 qui vont représenter une force de liaison entre deux gènes. Si le réseau est \textbf{signé}, ces valeurs seront en plus positives si le lien représente une co-expression conjointe, et négative s’il représente une co-expression opposée (Figure \ref{fig:coexpr_corr_weight_sign}).
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_expr_group_sign.pdf}
     \caption[Définition des liens du réseau pour des gènes se co-exprimant.]{Définition des liens du réseau pour des gènes se co-exprimant. A. Profils d'expression de gènes selon plusieurs échantillons avec en bleu 3 gènes co-exprimés. B. Zoom sur l'expression de ces 3 gènes avec mise en avant de deux gènes avec un profil dans un sens et un gène avec un profil dans le sens inverse; les deux profils en sens identique ont donc un score de similarité positif entre eux, et négatif avec le troisième gène. C. Ces scores et leur signe sont utilisés pour visualiser les liens entre ces gènes sous forme de nœuds dans un réseau.}
@@ -410,7 +410,7 @@ Où :
     k_{i} &= \sum_{u} a_{i u} = \text{connectivité ou force du nœud}
 \end{align*}
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     \centering
     \includegraphics{img/intro/3_coexpr/intro_3_coexpr_ravasz_topological_overlap.pdf}
     \caption[Découverte de la modularité sous-jacente d'un réseau complexe]{Découverte de la modularité sous-jacente d'un réseau complexe, issu de Ravasz \textit{et al.} \cite{Ravasz2002} et adaptés pour être compatible avec le daltonisme. \textbf{(A)} Recouvrement topologique illustré sur un petit réseau hypothétique. Pour chaque paire de nœuds, $i$ et $j$, nous définissons le recouvrement topologique $O_T(i, j) = J_n(i, j)/[min (k_i,k_j)]$, où $J_n(i, j)$ désigne le nombre de nœuds auxquels $i$ et $j$ sont liés (+ 1 s'il existe un lien direct entre $i$ et $j$) et $[min (k_i,k_j)]$ est le plus petit des degrés $k_i$ et $k_j$. Sur chaque lien, nous indiquons le recouvrement topologique pour les nœuds connectés, et entre parenthèses à côté de chaque nœud, nous indiquons le coefficient de partitionnement du nœud. \textbf{(B)} La matrice de recouvrement topologique correspondant au petit réseau présenté en (A). Les lignes et les colonnes de la matrice ont été réorganisées par l'application d'une méthode de partitionnement par liaison moyenne \cite{Eisen1998Dec} à ses éléments, ce qui nous permet d'identifier et de placer à proximité les uns des autres les nœuds qui présentent un recouvrement topologique élevé. Le code couleur indique le degré de recouvrement topologique entre les nœuds. L'arbre associé reflète les trois modules distincts construits dans le modèle en (A), ainsi que le fait que les modules EFG et HIJK sont plus proches les uns des autres au sens topologique que le module ABC.}
@@ -435,7 +435,7 @@ Le module est l'unité majeure d'interprétation des \acrshort{GCN}. En effet, i
 \end{itemize} 
 \hfill
 
-\begin{figure}[h!]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_category_detection_module.pdf}
     \caption[Illustration des 5 catégories de méthodes de détection de modules.]{Illustration des 5 catégories de méthodes de détection de modules. Extrait de Saelens \textit{et al.} 2018 (CC-BY) \cite{Saelens2018} et adapté pour être compatible au daltonisme. IR = Inférence de réseau.}
@@ -468,7 +468,7 @@ Ces méthodes de construction et de détection des modules sont finalement celle
 Les modules tendent à regrouper des gènes aux fonctions physiologiques semblables ou co-régulés \cite{Barabasi2011Jan,Lorenz2011}. Une façon de comprendre la raison du regroupement de ces gènes est donc de leur rattacher une fonction, une voie d'activation, un tissu ou une maladie dans laquelle ils interviennent. Cette approche est alors qualifiée de guidée par la connaissance préalable (en anglais \textit{knowledge-driven}). Cependant, les gènes œuvrant rarement à une seule fonction, ils se retrouvent annoté de plusieurs fonctions \cite{Green2006Aug} plus ou moins pertinentes dans le contexte du module. Pour estimer lesquelles sont réellement significatives dans chaque module, on effectue donc des analyses d'enrichissement \cite{Khatri2012} par rapport à diverses sources d'annotations (Table \ref{table:common_enrich_sources}). Appelée également par raccourci analyse de voies d'activation (en anglais \textit{pathway analysis}), cette analyse peut être effectuée de trois façons dépendamment des méta-données disponibles : l'analyse de sur ou sous représentation, la cotation de classe fonctionnelle, et l'approche basée sur la topologie des voies d'activation. 
 
 
-\begin{table}[h!]
+\begin{table}[ht]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{@{}llll@{}}
 \toprule
@@ -506,7 +506,7 @@ La méthode d'enrichissement la plus récente est l'approche basée sur la topol
 
 En plus des tests d'enrichissement qui apportent une information généraliste par le biais des sources d'annotations, on peut apporter une information plus spécifique si des phénotypes sont fournis pour les échantillons via les tests d'association phénotypique \cite{Langfelder2008}. Afin de tester chaque module avec chaque phénotype, on cherche tout d'abord à représenter chaque module sous une forme moyenne. Pour ce faire, on effectue une décomposition en valeurs singulières de l'expression des gènes contenus dans un module, et on sélectionne la première composante calculée qu'on nommera gène propre (en anglais \textit{eigengene}). Dans le cas de variables quantitatives comme l'âge, la taille, le poids, il est directement possible d'effectuer un test de corrélation avec le gène propre d'un module pour déterminer si celui-ci est significativement associé à la variable phénotypique considérée. Dans le cas d'une variable qualitative, il est nécessaire de la binariser pour pouvoir effectuer l'association avec le gène propre \cite{Lemoine2021Dec}. Cette technique consiste transformer chaque modalité de la variable en une variable à part entière dont la valeur sera 1 lorsque l'échantillon possède cette modalité, et 0 pour le reste de la variable ainsi que les autres variables modales (Figure \ref{fig:binarisation}).
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_binarisation.pdf}
     \caption[Exemple de binarisation de variable catégorielle]{Exemple de binarisation de variable catégorielle. La variable du sexe comportant 3 modalités, homme, femme, et intersexe est transformée en 3 variables distinctes qui codent pour les catégories initiales par des valeurs binaires.}
@@ -530,7 +530,7 @@ La méthode de détection des gènes pivot a toutefois souffert d'une définitio
 
 Plus précisément encore, ce type de mesure va permettre de détecter des gènes pivots dit intra-module (Figure \ref{fig:hub_gene_intra_inter}). D'autres gènes possèdent une structure de pivot mais se placent plutôt en passerelle entre les modules ou sous-modules du réseau lié à la topologie hiérarchique. Ceux-ci sont détectables par une analyse des nœuds les plus présents dans les plus courts chemins pour parcourir le réseau d'un nœud à un autre (Figure \ref{fig:hub_gene_intra_inter}). Leur implication et caractérisation biologique reste toutefois encore peu étudiée.
 
-\begin{figure}[h]
+\begin{figure}[hb]
     \centering
     \includegraphics{img/intro/3_coexpr/intro_3_coexpr_hub_gene.pdf}
     \caption[Réseau illustrant la topologie présentée par les gènes pivot intra et inter-modules]{Réseau illustrant la topologie présentée par les gènes pivot intra et inter-modules. Les gènes pivot intra-module (en vert) sont centraux au sein des modules. Les gènes pivot inter-modules (en bleu) sont le lieu de passage d'une grande quantité de plus courts chemins (en rouge).}
@@ -586,7 +586,7 @@ Réaliser une analyse DCE demande cependant un regard critique sur les données 
 
 Les variations singulières de gènes en DCE sont généralement le reflet de maladies Mendéliennes ou de traits phénotypiques monogéniques. Pour investiguer des conditions polygéniques, on utilise plus souvent l'échelle du module pour investiguer les différences de co-expression entre deux conditions. On parle alors d'analyse de préservation ou non préservation des modules de co-expression entre des conditions. De façon similaire à l'interprétation des modules qui peut se faire via des détections de voies d'activation ou via de la topologie, la co-expression différentielle peut reconnaître les modules préservés ou non préservés en étudiant la conservation de voies d'activation ou de motifs de liens au sein du module \cite{Chowdhury2019}. Face à la diversité de changement de topologie, l'analyse par modification des liens requière toutefois plus de détail qu'une analyse présence/absence des comparaisons d'enrichissement. On peut ainsi observer des disparitions totales de modules, des variations de leur composition en gène, des séparations d'un module en plusieurs ou inversement, des changements de co-expression par grappe (Figure \ref{fig:differential_coexpression_patterns}).
 
-\begin{figure}[h]
+\begin{figure}[hb]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_codiff.pdf}
     \caption[Motifs de changements de co-expression entrainant une non-préservation des modules dans une analyse de co-expression différentielle]{Motifs de changements de co-expression entrainant une non-préservation des modules dans une analyse de co-expression différentielle. D'après Van Dam \textit{et al.} \cite{VanDam2018} et adaptés pour être compatible au daltonisme. Les motifs peuvent consister en une apparition ou disparition de module en raison des changement d'intensité de corrélation, une modification partielle des gènes inclus dans le module, une variation globale de l'intensité de co-expression sans changer la conformation du module comme une diminution de tous les liens, une séparation en deux d'un module initial ou une jointure de deux modules initiaux, un saut de la co-expression d'un sous groupe de gène vers un autre groupe en raison notamment de la présence de facteurs de transcription.}
@@ -597,7 +597,7 @@ Les variations singulières de gènes en DCE sont généralement le reflet de ma
 
 En 2005 lors de la publication de leur méthode d'analyse par co-expression, B. Zhang et S. Horvath présentent également sept métriques de caractérisation de la topologie d'un réseau (Annexe \ref{annexe:supp_file_GWENA}.1) \cite{Zhang2005a}. En évaluant sur plusieurs aspects du réseau, elles permettent d'avoir une vision globale des perturbations que peut subir l'organisation d'un réseau lorsqu'il est étudié dans d'autres conditions. Ils s'en serviront d'ailleurs pour développer une méthode d'estimation de préservation des modules entre deux conditions. Cependant, face au large nombre de modules testés par analyses et en l'absence de correction de test multiple, de nombreux faux positifs ont pu être relevés \cite{Ritchie2016}. Une méthode développée par S. Ritchie en 2016 viendra toutefois contrer ce défaut dans la méthode de B. Zhang et S. Horvath en intégrant la mesure des sept métriques au sein d'un test de permutation des identifiants de nœuds au sein du réseau \ref{fig:permutation_test}. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/3_coexpr/intro_3_coexpr_netrep_permut.pdf}
     \caption[Fonctionnement du test de permutation implémenté par S. Ritchie.]{Fonctionnement du test de permutation implémenté par S. Ritchie \cite{Ritchie2016}. Les réseaux construits dans chaque condition sont assignés d'un rôle : référence pour le réseau qui servira de contrôle, et test pour celui dans lequel sera vérifié la préservation du module. Le réseau de test est permuté plusieurs fois (minimum 1000 fois) et les sept statistiques sont calculées dans chacun pour finalement obtenir la distribution nulle du réseau. Un test de préservation est ensuite réalisé à l'aide des 7 statistiques calculées dans le réseau de référence et des distributions nulles. Si la totalité des sept valeurs p est significative, alors le module est dit préservé.}
@@ -614,7 +614,7 @@ En 2005 lors de la publication de leur méthode d'analyse par co-expression, B. 
 
 Source multi-factorielle de changements dans l'organisme, le vieillissement est, chez l'humain, un continuum de dérèglements conduisant une personne en bonne santé à une réduction de sa qualité de vie en raison d'une dégradation progressive des fonctions de base du corps \cite{Berrut2013}. Ses différents aspects ne forment pas un chemin linéaire mais plutôt une arborescence où chaque individu va tendre à accumuler plus ou moins plus vite certaines marques du vieillissement. Si certaines de ces marques n'impactent que légèrement la dégradation de la personne vieillissante ou âgée, des événements traumatiques ou pathologiques tels qu'un accident vasculaire cérébral peuvent, par un effet de cascade, entraîner une accélération brutale dans la vitesse de dégradation. En augmentant la longévité des personnes, les avancées en santé publique et qualité de vie ont alors retardé la dégradation fonctionnelle. Paradoxalement, elles ont cependant augmenté l'âge maximal et donc l'accumulation des marques du vieillissement, rendant cette population plus susceptible à des maladies chroniques telles que le cancer ou les maladies cardiovasculaires \cite{Khan2017Aug}. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{img/intro/4_aging/intro_4_aging_rate_marks.pdf}
     \caption[Lois de distribution régissant le vieillissement sous un modèle simplifié]{Lois de distribution régissant le vieillissement sous un modèle simplifié : l'exposition aux facteurs de vieillissement, l'accumulation cellulaire de dommages, l'augmentation exponentielle de la dégradation fonctionnelle et du risque de mortalité. Cette augmentation s'explique par le niveau constant de dommages causé aux cellules couplé à la réduction progressive des capacités de réparation qui est elle-même affectée par les dommages dans une boucle délétère \cite{Todhunter2018}.}
@@ -677,7 +677,7 @@ De la fragilité qu'engendrent ces maladies du vieillissement découlent de nomb
 
 Le vieillissement va directement impacter l'expression des gènes en raison des dérégulations causées. Les différentes marques principales du vieillissement seront donc perceptibles, chacune dans une mesure variable, à travers l'étude du transcriptome \cite{Saint2020Jun}. Ce profilage transcriptomique a permis par le passé l'identification de nombreux biomarqueurs uniques ou combinés associés à une marque principale du vieillissement ou à la longévité \cite{Melzer2020}. Les bases de données \textit{GenAge} \cite{DeMagalhaes2004} et \textit{Digital Aging Atlas} \cite{Craig2015} répertorient ainsi respectivement 307 gènes humains avérés associés au vieillissement et 2599 gènes humains impliqués dans des variations lors du vieillissement ou de la longévité. Une étude réalisée par de Magalhães \textit{et al.} identifie toutefois seulement 73 gènes constamment associés avec le vieillissement \cite{DeMagalhaes2009intro}. Les autres gènes présents dans ces différentes bases de données présentent des gènes variant spécifiquement dans un tissu, un sexe, ou en présence d'une maladie spécifique du vieillissement. Ils vont par ailleurs, pour une même marque principale du vieillissement comme le raccourcissement des télomères, avoir une manifestation différente entre tissus en raison de leur fonction ou leur taux de renouvellement (Table \ref{table:tissu_telomere_effet}).
 
-\begin{table}[h!]
+\begin{table}[hb]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{m{0.2\textwidth}m{0.2\textwidth}m{0.6\textwidth}}
 \textbf{Type de tissu}                                                                    & \textbf{Nom du tissu}                                            & \textbf{\begin{tabular}[c]{@{}l@{}}Manifestations pathologiques chez l'humain \\ avec syndromes télomériques\end{tabular}} \\ \hline

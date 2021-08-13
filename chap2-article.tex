@@ -113,7 +113,7 @@ La base de données GTEx n'échappe pas aux biais \citeB{chap2_Parsana2019, chap
 Malgré le progrès de techniques ciblées sur des facteurs confondants connus comme l'effet de lot, l'effet de centre de prélèvement, le sexe, le poids, etc., celles-ci ne sont pas capables de corriger pour des facteurs peu explicites ou diffus comme la classe sociale, l'alimentation, la façon de manipuler des techniciens, etc. La correction par composante principale (CP) vise à répondre à ce type de problématique et a montré de bons résultats selon une évaluation par validation de voies de signalisation au sain de modules détectés \citeB{chap2_Parsana2019}. Elle a également montré de meilleurs résultats que d'autres méthodes telles que la régression multiple, le taux exonique, ou encore le numéro d'intégrité d'ARN (\textit{RNA integrity number}, ou RIN). Fait important pour la co-expression en particulier, cette méthode conserve la propriété d'invariance d'échelle des données requise pour la construction des modules de co-expression dans notre méthode.
 
 
-\begin{table}[h!]
+\begin{table}[ht]
 \centering
 \begin{tabular}{llll}
 \multirow{2}{*}{\textbf{Tissu}} & \multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}Nombre de CP \\ corrigées\end{tabular}}} & \multicolumn{2}{l}{\textbf{Nombre d'échantillons}} \\ \cline{3-4} 
@@ -166,7 +166,7 @@ Dans chaque tissu on a isolé les modules de co-expression modérément préserv
 
 \subsection{Répartition des gènes en fonction de la tranche d'âge et du tissu}
 
-\begin{figure}[!hb]
+\begin{figure}[b]
     \centering
     \includegraphics[width=0.95\textwidth]{img/chap2/chap2_repartition_genes_modules_tissus.png}
     \caption{Répartition des gènes (en échelle log10) pour chaque tissu entre les deux tranches d'âge jeune (bleu) et âgée (rouge)}
@@ -182,7 +182,7 @@ Le but étant de rechercher des origines communes au vieillissement entre tous l
 
 On y constate que certains tissus tendent à avoir proportionnellement moins de modules préservés lors du vieillissement. Avec moins de 50 \% de préservation on retrouve notamment le muscle œsophagien et squelettique, ainsi que de la peau exposée au soleil et la thyroïde. À cela s'ajoute que la peau exposée au soleil et le muscle squelettique sont les deux tissus ayant le plus de modules non préservés proportionnellement à leur nombre de modules.
 
-\begin{table}[!ht]
+\begin{table}[h]
 \resizebox{\textwidth}{!}{
 \begin{tabular}{llllllllll}
 \multirow{2}{*}{\textbf{Tissu}} & \multicolumn{2}{l}{\textbf{Préservé}} & \multicolumn{2}{l}{\textbf{Modérement préservé}} & \multicolumn{2}{l}{\textbf{Non préservé}} & \multicolumn{2}{l}{\textbf{Non concluant}} & \textbf{Total} \\ \cline{2-10} 
