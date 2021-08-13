@@ -45,11 +45,8 @@
   %% Packages ajoutés par moi
   \usepackage{todonotes}            % Notes de TODO avec \todo
   \usepackage{multirow}             % Tables avec lignes fusionnées
-  
   \usepackage{alphabeta}            % Lettres grecques hors mode maths
   \usepackage{amsfonts}             % Lettres pour les ensembles en maths (entiers, réels, etc.)
-  \usepackage[acronym]{glossaries}  % Glossaire
-  \makeglossaries
   \usepackage{appendix}             % Test : Annexes formatées comme voulu
   \usepackage{textgreek}            % Lettres grecques hors formules de maths
   \usepackage{graphicx}             % Affichage d'image
@@ -67,8 +64,9 @@
   \usepackage{float}                % Positionnement des figures tables plus "facilement" ?
   \usepackage{silence}              % Permet de virer les warnings indésirables
   \WarningFilter{latex}{Label}      % Warnings sur ref multiples mais c'est voulu
-  \WarningFilter{glossaries}{Overriding \printglossary}  % Warnings sur le glossaire
-  \WarningFilter{glossaries}{overriding `theglossary'}
+%   \WarningFilter{glossaries}{Overriding \printglossary}  % Warnings sur le glossaire
+%   \WarningFilter{glossaries}{Overriding `theglossary'}
+  
   
   \usepackage[font=footnotesize]{caption} % Change la taille des textes de caption
 %   \usepackage[font=scriptsize]{caption} % Change la taille des textes de caption
@@ -83,9 +81,16 @@
   
 
   %% /!\ S'assurer que hyperref est le dernier paquetage chargé.
+  %% En fait non, faut mettre le glossaire apres sinon les liens glossaire ne fonctionnent pas
   \usepackage{hyperref}             % Gestion des hyperliens dans le document
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
   \urlstyle{same}
+  
+  \usepackage[acronym,noredefwarn]{glossaries}  % Glossaire
+  \makeglossaries
+%   \let\printglossary\relax
+%   \let\theglossary\relax
+%   \let\endtheglossary\relax
   
  % Marche pas, interactions foireuse avec multibib
 %   \usepackage{refcheck} % Aide à la vérification de labels/ref en duplicat ou non cités
