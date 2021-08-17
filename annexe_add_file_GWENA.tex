@@ -37,9 +37,12 @@ With the NetRep notation :
 Where : 
 \begin{small}
     \begin{align*}
-        cor.density & = \text{mean}(vect.Matrix(\text{sign}(r_{ij}^{[ref](q)}r{ij}^{[test](q)})))    & vect.Matrix(A) & = (a_{2,1},a_{3,1},...,a_{n,1},a_{n,n-1}) \\
-        avg.edge.wei & = density^{[test](q)} = \text{mean}(vect.Mat(A^{[test](q)}))        & r_{ij}^{[ref]} & = \text{cor}(x_i^{[ref]}, x_j^{[ref]})\\
-        mod.coh & = \text{mean}_{i\in Mq}((kME_i^{[test](q)})^2)        & r_{ij}^{[test]} & = \text{cor}(x_i^{[test]}, x_j^{[test]})\\
+        vect.Matrix(A) & = (a_{2,1},a_{3,1},...,a_{n,1},a_{n,n-1}) \\
+        r_{ij}^{[ref]} & = \text{cor}(x_i^{[ref]}, x_j^{[ref]}) \\
+        r_{ij}^{[test]} & = \text{cor}(x_i^{[test]}, x_j^{[test]}) \\
+        cor.density & = \text{mean}(vect.Matrix(\text{sign}(r_{ij}^{[ref](q)}r{ij}^{[test](q)}))) \\
+        avg.edge.wei & = density^{[test](q)} = \text{mean}(vect.Mat(A^{[test](q)})) \\
+        mod.coh & = \text{mean}_{i\in Mq}((kME_i^{[test](q)})^2) \\
         avg.node.contrib & = \text{mean}_{i\in Mq}(\text{sign}(kME_i^{[ref](q)})kME_i^{[test](q)})  \\
         concor.wei.deg & = \text{cor}(kIM)^{[ref](q)}, kIM^{[test](q)}  \\
         concor.nod.contrib & = \text{cor}_{i\in Mq}(kME_i^{[ref](q)},kME_i^{[test](q)})  \\
@@ -135,7 +138,7 @@ Correlation density in Figure \ref{fig:supp_fig_ageing_correlation_density} sugg
 \LTcapwidth=\textwidth
 % \setlength\LTright{3pt}
 % \setlength\LTleft{0pt}
-\begin{longtable}{@{}lp{5cm}lllp{5cm}l@{}}
+\begin{longtable}{@{}lp{4cm}lllp{4cm}l@{}}
 \caption[Enrichment table from module 7 sub module 6 in old condition]{Enrichment table from module 7 sub module 6 in old condition. Terms are sorted along their novelty (is the enrichment new compared to the enrichments from sub modules in the young age range) and then the source. Source is the enrichment database used on the gene set (GO:BP = Gene Ontology : Biological Process, GO:CC = Gene Ontology Cellular Compartment, GO:MF = Gene Ontology : Molecular Function, HP : Human Phenotype Ontology, WP = WikiPathway, KEGG = Kyoto Encyclopedia of Genes and Genomes, REAC = Reactome, TF = Transfac).}
 \\ \hline
 \textbf{source} & \textbf{term name}                                                                                                                & \textbf{is new} & \textbf{} & \textbf{source} & \textbf{term name}                                                                                                                                                    & \textbf{is new} \\ \hline
@@ -227,8 +230,8 @@ GO:BP           & positive regulation of wound healing                          
 \label{supp:table_c6_enrich}
 \end{longtable}
 
-
-The distribution of the newly and previously found terms in the enrichment analysis across the the sub-modules from young and old age range (Figure \ref{fig:supp_fig_upset_subclusters_enrichments}).
+\clearpage
+The distribution of the newly and previously found terms in the enrichment analysis across the sub-modules from young and old age range (Figure \ref{fig:supp_fig_upset_subclusters_enrichments}).
 
 \begin{figure}[ht]
     % \centering
