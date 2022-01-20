@@ -74,17 +74,18 @@
   \usepackage{titlesec}             % Permet d'utiliser /chapter sans * pour avoir la bonne numérotation
    \titleformat{\chapter}[display]
     {\normalfont\bfseries}{}{0pt}{\Huge}
-    
-  \usepackage[resetlabels]{multibib}             % Permet de faire des bibliographie par chapitre
-  \newcites{A,B}{References,Références}          % Défini une biblio A et B pour le chapitre 1 et 2
-  \renewcommand{\bibsection}{\section{\bibname}} % Passe les biblio en tant que section
+
   
 
   %% /!\ S'assurer que hyperref est le dernier paquetage chargé.
-  %% En fait non, faut mettre le glossaire apres sinon les liens glossaire ne fonctionnent pas
+  %% En fait non, faut mettre le glossaire et multibib apres sinon les liens ne fonctionnent pas
   \usepackage{hyperref}             % Gestion des hyperliens dans le document
   \hypersetup{colorlinks,allcolors=ULlinkcolor}
   \urlstyle{same}
+      
+  \usepackage[resetlabels]{multibib}             % Permet de faire des bibliographie par chapitre
+  \newcites{A,B}{References,Références}          % Défini une biblio A et B pour le chapitre 1 et 2
+  \renewcommand{\bibsection}{\section{\bibname}} % Passe les biblio en tant que section
   
   \usepackage[acronym,noredefwarn]{glossaries}  % Glossaire
   \makeglossaries
@@ -145,7 +146,7 @@
   %% Déclarations des pages de titre. Remplacer les éléments entre < >.
   %% Supprimer les caractères < >. Couper un long titre ou un long
   %% sous-titre manuellement avec \\.
-  \titre{Développement de méthodes et outils d'analyse transcriptomique par réseaux de co-expression de gènes pour la détection de gènes candidats dans le vieillissement de différents tissus humain}
+  \titre{Développement de méthodes et outils d'analyse transcriptomique par réseaux de co-expression de gènes pour la détection de gènes candidats dans le vieillissement de différents tissus humains}
   % \titre{Ceci est un exemple de long titre \\
   %   avec saut de ligne manuel}
   % \soustitre{Sous-titre le cas échéant}
@@ -216,8 +217,8 @@
 \include{introduction}                          % introduction
 \include{chap1-article}                         % chapitre 1
 \include{chap2-article}                         % chapitre 2, etc.
-\include{conclusion}                            % conclusion
 \include{discussion}                            % discussion
+\include{conclusion}                            % conclusion
 
 \renewcommand{\bibsection}{\chapter*{\bibname}}  % Repasse en chapitre la biblio qui était en section et enlève le numero devant
 \phantomsection\addcontentsline{toc}{chapter}{Bibliographie} % rajoute la biblio dans la TdM 
